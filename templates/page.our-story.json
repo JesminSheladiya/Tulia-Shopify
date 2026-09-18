@@ -12,11 +12,12 @@
     "generic_banner_ezLDwK": {
       "type": "generic-banner",
       "custom_css": [
-        ".container.gb__content {width: 768px;}"
+        ".container.gb__content {max-width: 768px; width: 100%;}"
       ],
       "name": "Generic - Banner",
       "settings": {
         "bg_image": "shopify://shop_images/our-science-banner-2_1.webp",
+        "mobile_theme_asset": "our-science-banner-verical.webp",
         "bg_color": "#420007",
         "overlay": 0,
         "height": "large",

@@ -94,6 +94,7 @@
       left: 0;
       right: 0;
       transform: none;
+      flex-wrap: wrap;
       flex-direction: row;
       justify-content: center;
       padding: 0 20px;
@@ -158,11 +159,17 @@
 <div class="soma-snap-container" id="soma-slider-{{ section.id }}">
   
   {%- assign first_block = section.blocks.first -%}
-  {%- if first_block and first_block.settings.image != blank -%}
-    <div class="soma-static-bg" style="background-image: url('{{ first_block.settings.image | image_url: width: 1800 }}');"></div>
-  {%- else -%}
-    <div class="soma-static-bg" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80');"></div>
-  {%- endif -%}
+  {%- liquid
+    assign static_bg_url = ''
+    if section.settings.bg_image != blank
+      assign static_bg_url = section.settings.bg_image | image_url: width: 1800
+    elsif first_block and first_block.settings.image != blank
+      assign static_bg_url = first_block.settings.image | image_url: width: 1800
+    else
+      assign static_bg_url = 'our-science.webp' | asset_url
+    endif
+  -%}
+  <div class="soma-static-bg" style="background-image: url('{{ static_bg_url }}');"></div>
 
   <div class="soma-vignette-overlay"></div>
 
@@ -279,6 +286,7 @@
     { "type": "color", "id": "gold_color", "label": "Gold Palette", "default": "#9a7e3d" },
     { "type": "color", "id": "text_color_main", "label": "Headline Color", "default": "#fcf9f8" },
     { "type": "range", "id": "img_opacity", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Image Opacity", "default": 30 },
+    { "type": "image_picker", "id": "bg_image", "label": "Static Background Image", "info": "Optional. Overrides everything. Falls back to first slide image, then our-science theme image." },
     {
       "type": "range",
       "id": "section_display_height",

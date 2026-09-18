@@ -1,9 +1,50 @@
 {%- liquid
   assign bg = section.settings.bg_image
+  assign bg_mobile_url = ''
+  if section.settings.bg_image_mobile != blank
+    assign bg_mobile_url = section.settings.bg_image_mobile | image_url: width: 1200
+  elsif section.settings.mobile_theme_asset != blank
+    assign bg_mobile_url = section.settings.mobile_theme_asset | asset_url
+  endif
 -%}
 <section class="generic-banner gb--{{ section.settings.height }} text-{{ section.settings.content_align }} valign-{{ section.settings.content_valign }} gb--{{ section.settings.text_color }}{% if bg == blank %} gb--solid{% endif %}"
   {% if bg != blank %}style="background-image: url('{{ bg | image_url: width: 2400 }}');"{% else %}style="background: {{ section.settings.bg_color }};"{% endif %}>
+{%- if bg_mobile_url != blank -%}
+<style>
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .generic-banner {
+      background-image: url('{{ bg_mobile_url }}') !important;
+      background-position: bottom;
+      height: 700px;    
+      align-items: flex-start !important;
+    }
+  }
+</style>
+{%- endif -%}
   {% if bg != blank %}<div class="gb__overlay" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }};"></div>{% endif %}
+  <style>
+    /* Generic banner responsive polish - all screens */
+    .generic-banner { background-repeat: no-repeat; }
+    .generic-banner .gb__content { max-width: 100%; }
+    @media screen and (max-width: 1024px) {
+      .generic-banner {
+        background-position: 75% 0px;
+      }
+      .gb--large { padding: 6rem 0; }
+      .generic-banner.text-left .gb__content { margin-left: 0; }
+    }
+    @media screen and (max-width: 749px) {
+      .gb--large { min-height: 60vh; min-height: 62svh; padding: 4.5rem 0; }
+      .gb--medium { padding: 4rem 0 2.5rem; }
+      .gb--small { padding: 3.5rem 0 2.5rem; }
+      .gb__title { font-size: 2rem; line-height: 1.15; }
+      .gb__subtext { font-size: 0.95rem; }
+    }
+    @media screen and (max-width: 380px) {
+      .gb__title { font-size: 1.75rem; }
+      .gb--large { padding: 4rem 0; }
+    }
+  </style>
   <div class="container gb__content">
     {%- if section.settings.eyebrow != blank -%}<span class="eyebrow gb__eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
     {%- if section.settings.heading != blank -%}<h2 class="gb__title">{{ section.settings.heading | escape | newline_to_br }}</h2>{%- endif -%}
@@ -27,6 +68,8 @@
   "settings": [
     { "type": "header", "content": "Background" },
     { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "image_picker", "id": "bg_image_mobile", "label": "Background image (mobile)", "info": "Optional. Overrides the desktop image on mobile." },
+    { "type": "text", "id": "mobile_theme_asset", "label": "Mobile theme asset (optional)", "info": "Theme Assets file name, e.g. our-science-banner-verical.webp. Used only when mobile image above is empty." },
     { "type": "color", "id": "bg_color", "label": "Background colour (no image)", "default": "#420007" },
     { "type": "range", "id": "overlay", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Image overlay", "default": 40 },
     { "type": "select", "id": "height", "label": "Height", "options": [
