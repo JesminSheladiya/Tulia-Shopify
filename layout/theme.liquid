@@ -64,8 +64,64 @@
 
   {% sections 'header-group' %}
 
+  {%- liquid
+    assign is_cs_product = false
+    if request.page_type == 'product' and product != blank
+      assign cs_p_down = product.title | strip | downcase
+      assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,daily care shampoo,' | split: ','
+      for cs_item in cs_names
+        assign cs_clean = cs_item | strip
+        if cs_clean != blank
+          if cs_p_down == cs_clean
+            assign is_cs_product = true
+          else
+            assign cs_words = cs_clean | split: ' '
+            assign sig_count = 0
+            assign match_count = 0
+            for w in cs_words
+              if w.size > 2 and w != 'the' and w != 'and' and w != 'for'
+                assign sig_count = sig_count | plus: 1
+                if cs_p_down contains w
+                  assign match_count = match_count | plus: 1
+                endif
+              endif
+            endfor
+            if sig_count >= 2 and match_count == sig_count
+              assign is_cs_product = true
+            endif
+          endif
+        endif
+      endfor
+    endif
+  -%}
   <main id="MainContent" role="main">
-    {{ content_for_layout }}
+    {%- if is_cs_product -%}
+      <section class="cs-splash">
+        {%- if product.featured_image -%}
+          <div class="cs-splash__bg"><img src="{{ product.featured_image | image_url: width: 1600 }}" width="1600" height="1000" alt="" loading="lazy"></div>
+        {%- endif -%}
+        <div class="cs-splash__content">
+          <p class="cs-splash__eyebrow">Tulia Cosmetics</p>
+          <h1 class="cs-splash__title">{{ product.title | escape }}</h1>
+          <span class="cs-splash__pill">Coming Soon</span>
+          <p class="cs-splash__text">This formulation is still in the lab. Explore the collection meanwhile.</p>
+          <a href="{{ routes.collections_url }}/all-products" class="btn btn-primary">Explore the collection</a>
+        </div>
+      </section>
+      <style>
+        .cs-splash { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 70vh; padding: 4rem 1.5rem; background: #fcf9f8; }
+        .cs-splash__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .cs-splash__bg img { width: 100%; height: 100%; object-fit: cover; filter: blur(12px); opacity: 0.35; }
+        .cs-splash__content { position: relative; z-index: 1; max-width: 560px; }
+        .cs-splash__eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--primary); font-weight: 600; margin-bottom: 1rem; }
+        .cs-splash__title { font-size: 2.5rem; line-height: 1.1; color: var(--primary); margin-bottom: 1.25rem; }
+        .cs-splash__pill { display: inline-block; background: #ffffff; color: #000000; padding: 8px 20px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); margin-bottom: 1.25rem; }
+        .cs-splash__text { color: var(--on-surface-variant); margin-bottom: 2rem; }
+        @media screen and (max-width: 768px) { .cs-splash__title { font-size: 1.9rem; } }
+      </style>
+    {%- else -%}
+      {{ content_for_layout }}
+    {%- endif -%}
   </main>
 
   {% sections 'footer-group' %}

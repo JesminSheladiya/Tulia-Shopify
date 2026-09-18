@@ -2,7 +2,7 @@
   Fallback demo cards for the mega-menu when no collection is connected yet.
   Accepts: mobile (boolean) to switch markup between desktop carousel and mobile list.
 {%- endcomment -%}
-{%- assign demo = 'gleam.jpg|gleam|Skin Lightening Facewash|pigmentation dullness oil|,supple.jpg|tint|Lip lightening Cream|pigmentation tint|new,sun-kissed.jpg|plump|Lip Balm|dullness hydration|,sun-kissed.jpg|sun-kissed|Physical Sunscreen Gel SPF 50+|oil|new,supple.jpg|supple|Buttermax Intensive Cream|hydration|,gleam.jpg|waves|All in One Shampoo|hair|,supple.jpg|smooth|All in One Conditioner|hair|,sun-kissed.jpg|shine|Hair Care Serum|hair|' | split: ',' -%}
+{%- assign demo = 'gleam.jpg|gleam|Skin Lightening Facewash|pigmentation dullness oil|,supple.jpg|tint|Lip lightening Cream|pigmentation tint|new,sun-kissed.jpg|plump|Lip Balm SPF 15|dullness hydration|,sun-kissed.jpg|sun-kissed|Physical Sunscreen Gel SPF 50+|oil|new,supple.jpg|supple|Buttermax Intensive Cream|hydration|,gleam.jpg|waves|All in One Shampoo|hair|,supple.jpg|smooth|All in One Conditioner|hair|,sun-kissed.jpg|shine|Hair Care Serum|hair|' | split: ',' -%}
 {%- for row in demo -%}
   {%- assign p = row | split: '|' -%}
   {%- if mobile -%}

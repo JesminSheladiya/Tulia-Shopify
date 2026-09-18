@@ -1,5 +1,5 @@
 {%- comment -%} Demo ritual cards shown until a collection is connected. {%- endcomment -%}
-{%- assign demo = 'gleam.jpg|gleam|Skin Lightening Facewash|pigmentation dullness oil|₹850|,supple.jpg|tint|Lip lightening Cream|pigmentation tint|₹650|new,sun-kissed.jpg|plump|Lip Balm|dullness hydration|₹450|,sun-kissed.jpg|sun-kissed|Physical Sunscreen Gel SPF 50+|oil|₹1750|new,supple.jpg|supple|Buttermax Intensive Cream|hydration|₹1300|,gleam.jpg|waves|All in One Shampoo|hair|₹950|,supple.jpg|smooth|All in One Conditioner|hair|₹1050|,sun-kissed.jpg|shine|Hair Care Serum|hair|₹1250|' | split: ',' -%}
+{%- assign demo = 'gleam.jpg|gleam|Skin Lightening Facewash|pigmentation dullness oil|₹850|,supple.jpg|tint|Lip lightening Cream|pigmentation tint|₹650|new,sun-kissed.jpg|plump|Lip Balm SPF 15|dullness hydration|₹450|,sun-kissed.jpg|sun-kissed|Physical Sunscreen Gel SPF 50+|oil|₹1750|new,supple.jpg|supple|Buttermax Intensive Cream|hydration|₹1300|,gleam.jpg|waves|All in One Shampoo|hair|₹950|,supple.jpg|smooth|All in One Conditioner|hair|₹1050|,sun-kissed.jpg|shine|Hair Care Serum|hair|₹1250|' | split: ',' -%}
 {%- for row in demo -%}
   {%- assign p = row | split: '|' -%}
   <div class="ritual-card group" data-category="{{ p[3] }}">
