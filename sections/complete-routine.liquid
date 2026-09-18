@@ -43,19 +43,27 @@
             <div class="cc-img-wrapper">
               {%- if badge != blank -%}<span class="cc-badge">{{ badge | escape }}</span>{%- endif -%}
               {%- if linked != blank and linked.featured_image -%}
-                <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+                {%- if is_coming_soon -%}
+                  <img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy">
+                {%- else -%}
+                  <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+                {%- endif -%}
               {%- endif -%}
-              {%- if linked != blank and linked.available -%}
-                <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
-                  <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
-                  <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
-                </form>
-              {%- elsif linked != blank -%}
-                <a href="{{ linked.url }}" class="btn-quick-add extracted-style-224">Quick Add</a>
-              {%- endif -%}
+              {%- unless is_coming_soon -%}
+                {%- if linked != blank and linked.available -%}
+                  <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
+                    <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
+                    <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
+                  </form>
+                {%- elsif linked != blank -%}
+                  <a href="{{ linked.url }}" class="btn-quick-add extracted-style-224">Quick Add</a>
+                {%- endif -%}
+              {%- endunless -%}
             </div>
             <h3 class="cc-title">{{ linked.title | default: entry.title.value | escape }}</h3>
-            <div class="cc-meta"><span>{%- if linked -%}{{ linked.price | money }}{%- endif -%}</span></div>
+            {%- unless is_coming_soon -%}
+              <div class="cc-meta"><span>{%- if linked -%}{{ linked.price | money }}{%- endif -%}</span></div>
+            {%- endunless -%}
             <div class="cc-line"></div>
             <div class="cc-desc">{% render 'mo-text', field: entry[section.settings.field_description], allow_newline: true %}</div>
           </div>
@@ -96,26 +104,34 @@
           <div class="cc-img-wrapper">
             {%- if block.settings.badge != blank -%}<span class="cc-badge">{{ block.settings.badge | escape }}</span>{%- endif -%}
             {%- if linked != blank and linked.featured_image -%}
-              <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+              {%- if is_coming_soon -%}
+                <img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy">
+              {%- else -%}
+                <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+              {%- endif -%}
             {%- elsif block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
             {%- else -%}
               <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
             {%- endif -%}
-            {%- if linked != blank and linked.available -%}
-              <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
-                <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
-                <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
-              </form>
-            {%- else -%}
-              <a href="{{ linked.url | default: '#' }}" class="btn-quick-add extracted-style-224">Quick Add</a>
-            {%- endif -%}
+            {%- unless is_coming_soon -%}
+              {%- if linked != blank and linked.available -%}
+                <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
+                  <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
+                </form>
+              {%- else -%}
+                <a href="{{ linked.url | default: '#' }}" class="btn-quick-add extracted-style-224">Quick Add</a>
+              {%- endif -%}
+            {%- endunless -%}
           </div>
           <h3 class="cc-title">{{ linked.title | default: block.settings.title | escape }}</h3>
-          <div class="cc-meta">
-            {%- if block.settings.size != blank -%}<span>{{ block.settings.size | escape }}</span><span>—</span>{%- endif -%}
-            <span>{%- if linked != blank -%}{{ linked.price | money }}{%- else -%}{{ block.settings.price | escape }}{%- endif -%}</span>
-          </div>
+          {%- unless is_coming_soon -%}
+            <div class="cc-meta">
+              {%- if block.settings.size != blank -%}<span>{{ block.settings.size | escape }}</span><span>—</span>{%- endif -%}
+              <span>{%- if linked != blank -%}{{ linked.price | money }}{%- else -%}{{ block.settings.price | escape }}{%- endif -%}</span>
+            </div>
+          {%- endunless -%}
           <div class="cc-line"></div>
           <div class="cc-desc">{{ block.settings.description | escape | default: linked.description | strip_html | truncatewords: 40 }}</div>
         </div>

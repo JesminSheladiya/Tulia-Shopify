@@ -106,7 +106,7 @@
         "paragraph_1": "Indian beauty has always been rich in nuance.",
         "paragraph_2": "And Tulia Cosmetics is thoughtfully formulated around the realities of these nuances our climate, our textures, our routines, and the features we've been far too long told to change. Born from that understanding, made for every hue and texture, everywhere.",
         "link_label": "Explore Our Science",
-        "link_url": ""
+        "link_url": "shopify://pages/our-story"
       }
     },
     "calibrated": {
@@ -190,7 +190,7 @@
       "type": "founder-quote",
       "settings": {
         "quote": "\"For years, we have adapted to heavy, western-made formulas designed for cool, dry geographies, making our skin unbalanced in its own environment. Tulia Cosmetics corrects that by bringing you skincare that blends high-performance essentials specifically calibrated for the unique humidity, UV levels, and biological needs of melanin-rich skin.\"",
-        "link_label": "SEE HOW WE FORMULATE",
+        "link_label": "",
         "link_url": "",
         "author_name": "Angelin",
         "author_title": "Founder, Tulia Cosmetics"

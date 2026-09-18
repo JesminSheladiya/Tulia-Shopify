@@ -63,7 +63,7 @@
           
           {%- if is_coming_soon -%}
             <div class="ritual-product-card-wrapper is-coming-soon-product">
-              {%- render 'product-card', product: product -%}
+              {%- render 'product-card', product: product, coming_soon: true -%}
             </div>
           {%- endif -%}
         {%- endfor -%}
@@ -77,12 +77,20 @@
 
 <!-- CSS & JS for Matching Blur, Centered Badge and Unclickable Cards -->
 <style>
-  /* Standard 3-column grid layout jo hamesha left se start hoga */
+  /* Responsive grid: 3-col desktop, 2-col tablet, 1-col mobile */
   #ritual-product-grid.ritual-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 24px;
     align-items: stretch;
+  }
+
+  /* Tablet par 2 columns */
+  @media screen and (max-width: 1024px) and (min-width: 769px) {
+    #ritual-product-grid.ritual-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px;
+    }
   }
 
   /* Jab koi product filter hone par hide ho, toh grid se bilkul remove ho jaye taaki space na bache */
@@ -144,6 +152,29 @@
   @media screen and (max-width: 768px) {
     #ritual-product-grid.ritual-grid {
       grid-template-columns: 1fr !important;
+      gap: 16px;
+    }
+    /* Filter buttons: horizontal scroll instead of tall wrap */
+    #ritual-finder .ritual-filters {
+      flex-wrap: nowrap !important;
+      justify-content: flex-start !important;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    #ritual-finder .ritual-filters::-webkit-scrollbar {
+      display: none;
+    }
+    #ritual-finder .ritual-filters .filter-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+  }
+
+  /* Chhote phones par tighter gap */
+  @media screen and (max-width: 380px) {
+    #ritual-product-grid.ritual-grid {
+      gap: 12px;
     }
   }
 </style>

@@ -153,7 +153,7 @@
                 
                 {%- if is_coming_soon -%}
                   <div class="ritual-product-card-wrapper is-coming-soon-product">
-                    {%- render 'product-card', product: product -%}
+                    {%- render 'product-card', product: product, coming_soon: true -%}
                   </div>
                 {%- endif -%}
               {%- endfor -%}

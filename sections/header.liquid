@@ -160,6 +160,27 @@
     </div>
     <div class="mobile-mega-list drag-scroll">
       {%- if mega_collection != blank and mega_collection.products_count > 0 -%}
+        <!-- 1. Active products first -->
+        {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
+          {%- liquid
+            assign p_title_down = product.title | strip | downcase
+            assign is_coming_soon = false
+            if coming_soon_list contains p_title_down
+              assign is_coming_soon = true
+            endif
+          -%}
+          {%- unless is_coming_soon -%}
+            <a href="{{ product.url }}" class="mobile-mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
+              <img src="{{ product.featured_image | image_url: width: 200 }}" width="200" height="250" alt="{{ product.title | escape }}" loading="lazy">
+              <div>
+                <h4>{{ product.title }}</h4>
+                <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
+              </div>
+              {%- if product.tags contains 'new' -%}<span class="mobile-mega-badge">new</span>{%- endif -%}
+            </a>
+          {%- endunless -%}
+        {%- endfor -%}
+        <!-- 2. Coming Soon products last -->
         {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
           {%- liquid
             assign p_title_down = product.title | strip | downcase
@@ -180,15 +201,6 @@
               </div>
               {%- if product.tags contains 'new' -%}<span class="mobile-mega-badge">new</span>{%- endif -%}
             </div>
-          {%- else -%}
-            <a href="{{ product.url }}" class="mobile-mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
-              <img src="{{ product.featured_image | image_url: width: 200 }}" width="200" height="250" alt="{{ product.title | escape }}" loading="lazy">
-              <div>
-                <h4>{{ product.title }}</h4>
-                <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
-              </div>
-              {%- if product.tags contains 'new' -%}<span class="mobile-mega-badge">new</span>{%- endif -%}
-            </a>
           {%- endif -%}
         {%- endfor -%}
       {%- else -%}

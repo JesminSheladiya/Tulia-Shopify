@@ -1,6 +1,9 @@
 {%- comment -%}
   Renders a Tulia "ritual" product card.
-  Accepts: product (required)
+  Accepts: product (required), coming_soon (optional, default false)
+  When coming_soon is true, the card has NO links, NO product URL,
+  NO price and NO buttons anywhere in the HTML - the inner page
+  cannot be opened even via inspect. Image is still shown (blurred by CSS/JS).
   Reuses the original .ritual-card markup/classes so styling is identical.
 {%- endcomment -%}
 
@@ -14,8 +17,30 @@
   if rating == blank
     assign rating = '4.9'
   endif
+  assign is_coming_soon = coming_soon | default: false
 -%}
 
+{%- if is_coming_soon -%}
+<div class="ritual-card group is-coming-soon-card" data-category="{{ product.tags | join: ' ' | downcase }}" aria-disabled="true">
+  <div class="ritual-img-wrapper">
+    {%- if product.tags contains 'new' or product.tags contains 'New' -%}
+      <div class="badge">NEW</div>
+    {%- endif -%}
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" width="600" height="600">
+    {%- else -%}
+      <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="ritual-info">
+    <h3 class="ritual-name italic-serif">{{ product.title }}</h3>
+    <p class="ritual-desc">{{ subtitle }}</p>
+    <div class="rating text-muted extracted-style-13">
+      ★★★★★ {{ rating }}
+    </div>
+  </div>
+</div>
+{%- else -%}
 <div class="ritual-card group" data-category="{{ product.tags | join: ' ' | downcase }}">
   <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
     <input type="hidden" name="id" value="{{ variant.id }}">
@@ -53,3 +78,4 @@
     </div>
   </form>
 </div>
+{%- endif -%}
