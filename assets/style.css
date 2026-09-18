@@ -5955,6 +5955,38 @@ grid-template-columns: repeat(3, 1fr) !important;
         display: block;
     }
 }
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Heritage tablet: stack like mobile, avoid broken 2-col wrap */
+    #heritage .grid-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    #heritage .grid-3 > div {
+        width: 100%;
+    }
+    #heritage .heritage-col-1 {
+        order: 1;
+        text-align: center;
+    }
+    #heritage .heritage-col-3 {
+        order: 2;
+        text-align: center;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #heritage .heritage-mobile-bottom {
+        order: 3;
+    }
+    #heritage .heritage-image-wrapper {
+        width: 100%;
+        max-width: 440px;
+        margin-left: 0;
+        display: block;
+    }
+}
 @media (max-width:768px){
 .ritual-name{
     font-size:1.3rem !important;

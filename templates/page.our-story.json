@@ -25,7 +25,7 @@
         "content_valign": "center",
         "text_color": "light",
         "eyebrow": "OUR STORY",
-        "heading": "A deeper understanding of melanin-rich skin.",
+        "heading": "be conscious of what touches your skin",
         "subtext": "",
         "button_1_label": "",
         "button_1_link": "",
@@ -62,10 +62,10 @@
         "editorial_theme": "warm_sand",
         "image_side": "left",
         "enable_dropcap": true,
-        "image": "shopify://shop_images/cream.jpg",
-        "top_description": "<p>For years, I have seen beauty shaped by formulas, standards, and routines that were never built with our skin in mind. Skin that lives with sun, humidity, tanning, pigmentation, and constant environmental stress. Skin that has always deserved more than a borrowed routine.</p>",
-        "highlight_quote": "I wanted Tulia Cosmetics to understand that rhythm.",
-        "bottom_description": "<p>With Tulia Cosmetics, my vision was to build a global skincare brand, born in India, rooted in science and designed for melanin-rich skin everywhere. Every formulation blends serious research with textures that feel indulgent, made for skin that has never quite fit the standard.</p>"
+        "image": "",
+        "top_description": "<p>what touches your skin today becomes the skin you carry for years, and hence, every ingredient we choose has to earn its place. we formulate intentionally because skin isn't just cared for how you look today. you're gonna have to preserve it for the years ahead, and that will begin with what you're putting on it right now.</p>",
+        "highlight_quote": "",
+        "bottom_description": ""
       }
     },
     "text_block_jaQH3p": {
@@ -102,8 +102,8 @@
           "settings": {
             "anchor_name": "Skin",
             "tag_text": "",
-            "title": "Skin should not adjust to skincare",
-            "subtitle": "but skincare should understand skin"
+            "title": "preserving skin longevity",
+            "subtitle": ""
           }
         },
         "usp_slide_BnEdjE": {
@@ -111,8 +111,8 @@
           "settings": {
             "anchor_name": "Skin",
             "tag_text": "",
-            "title": "Skincare need not be",
-            "subtitle": "a complicated set of steps"
+            "title": "supporting the skin's natural equilibrium",
+            "subtitle": ""
           }
         },
         "usp_slide_bL3pqf": {
@@ -120,8 +120,8 @@
           "settings": {
             "anchor_name": "Skin",
             "tag_text": "",
-            "title": "Good skincare should make you",
-            "subtitle": "feel at home in your skin"
+            "title": "being conscious of what touches your skin",
+            "subtitle": ""
           }
         }
       },
@@ -198,7 +198,7 @@
         "desc_font_size_mobile": 14,
         "desc_max_width": 700,
         "desc_margin_bottom": 0,
-        "cta_label": "Explore Tulia Cosmetics",
+        "cta_label": "Explore our products",
         "cta_link": "shopify://collections/all",
         "cta_font_size": 15,
         "cta_margin_top": 8,

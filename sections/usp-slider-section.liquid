@@ -192,7 +192,7 @@
           <div class="soma-text-container">
             <span class="soma-luxury-tag">{{ block.settings.tag_text }}</span>
             <h2 class="soma-luxury-title">{{ block.settings.title }}</h2>
-            <p class="soma-luxury-subtitle">{{ block.settings.subtitle }}</p>
+            {%- if block.settings.subtitle != blank -%}<p class="soma-luxury-subtitle">{{ block.settings.subtitle }}</p>{%- endif -%}
           </div>
         </div>
       </div>
