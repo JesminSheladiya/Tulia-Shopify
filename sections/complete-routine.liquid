@@ -1,6 +1,8 @@
 {%- liquid
   assign pmf = product.metafields.custom[section.settings.products_metafield_key]
   assign linked_products = pmf.value
+
+  assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'
 -%}
 <section id="complete-care-section" class="section bg-surface extracted-style-223">
   <div class="container text-center">
@@ -11,8 +13,33 @@
           {%- liquid
             assign linked = entry[section.settings.field_product].value
             assign badge = entry.title.value | split: '/' | first | strip
+            assign display_title = linked.title | default: entry.title.value | strip | downcase
+            assign is_coming_soon = false
+            for cs_item in coming_soon_input
+              assign cs_clean = cs_item | strip | downcase
+              if cs_clean != blank
+                if display_title == cs_clean
+                  assign is_coming_soon = true
+                else
+                  assign cs_words = cs_clean | split: ' '
+                  assign sig_count = 0
+                  assign match_count = 0
+                  for w in cs_words
+                    if w.size > 2 and w != 'the' and w != 'and' and w != 'for'
+                      assign sig_count = sig_count | plus: 1
+                      if display_title contains w
+                        assign match_count = match_count | plus: 1
+                      endif
+                    endif
+                  endfor
+                  if sig_count >= 2 and match_count == sig_count
+                    assign is_coming_soon = true
+                  endif
+                endif
+              endif
+            endfor
           -%}
-          <div class="complete-care-card group">
+          <div class="complete-care-card group{% if is_coming_soon %} is-coming-soon-product{% endif %}"{% if is_coming_soon %} aria-disabled="true"{% endif %}>
             <div class="cc-img-wrapper">
               {%- if badge != blank -%}<span class="cc-badge">{{ badge | escape }}</span>{%- endif -%}
               {%- if linked != blank and linked.featured_image -%}
@@ -36,7 +63,36 @@
       {%- else -%}
       {%- for block in section.blocks -%}
         {%- assign linked = block.settings.product -%}
-        <div class="complete-care-card group" {{ block.shopify_attributes }}>
+        {%- liquid
+          assign display_title = linked.title | default: block.settings.title | strip | downcase
+          assign is_coming_soon = block.settings.coming_soon
+          unless is_coming_soon
+            for cs_item in coming_soon_input
+              assign cs_clean = cs_item | strip | downcase
+              if cs_clean != blank
+                if display_title == cs_clean
+                  assign is_coming_soon = true
+                else
+                  assign cs_words = cs_clean | split: ' '
+                  assign sig_count = 0
+                  assign match_count = 0
+                  for w in cs_words
+                    if w.size > 2 and w != 'the' and w != 'and' and w != 'for'
+                      assign sig_count = sig_count | plus: 1
+                      if display_title contains w
+                        assign match_count = match_count | plus: 1
+                      endif
+                    endif
+                  endfor
+                  if sig_count >= 2 and match_count == sig_count
+                    assign is_coming_soon = true
+                  endif
+                endif
+              endif
+            endfor
+          endunless
+        -%}
+        <div class="complete-care-card group{% if is_coming_soon %} is-coming-soon-product{% endif %}" {{ block.shopify_attributes }}{% if is_coming_soon %} aria-disabled="true"{% endif %}>
           <div class="cc-img-wrapper">
             {%- if block.settings.badge != blank -%}<span class="cc-badge">{{ block.settings.badge | escape }}</span>{%- endif -%}
             {%- if linked != blank and linked.featured_image -%}
@@ -69,6 +125,47 @@
   </div>
 </section>
 
+<!-- Coming Soon: same pattern as collection page. Image markup untouched, clicks disabled via CSS, badge via JS -->
+<style>
+  #complete-care-section .complete-care-card.is-coming-soon-product a,
+  #complete-care-section .complete-care-card.is-coming-soon-product button {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+  }
+  #complete-care-section .complete-care-card.is-coming-soon-product .cc-meta,
+  #complete-care-section .complete-care-card.is-coming-soon-product .btn-quick-add {
+    display: none !important;
+  }
+</style>
+
+<script>
+  (function() {
+    function applyCompleteComingSoon() {
+      const wrappers = document.querySelectorAll('#complete-care-section .complete-care-card.is-coming-soon-product');
+      wrappers.forEach(wrapper => {
+        if (wrapper.dataset.csDone === '1') return;
+        wrapper.dataset.csDone = '1';
+        const img = wrapper.querySelector('.cc-img-wrapper img');
+        if (img) {
+          img.style.filter = 'blur(4px)';
+          let mediaContainer = img.parentElement;
+          mediaContainer.style.position = 'relative';
+          mediaContainer.style.overflow = 'hidden';
+          const badgeOverlay = document.createElement('div');
+          badgeOverlay.style.cssText = "position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); z-index: 2; pointer-events: none;";
+          badgeOverlay.innerHTML = '<span style="background: #ffffff; color: #000000; padding: 8px 16px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); white-space: nowrap;">Coming Soon</span>';
+          mediaContainer.appendChild(badgeOverlay);
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyCompleteComingSoon);
+    } else {
+      applyCompleteComingSoon();
+    }
+  })();
+</script>
+
 {% schema %}
 {
   "name": "Complete the routine",
@@ -78,7 +175,8 @@
     { "type": "paragraph", "content": "When the product has this product-list metafield, those products are shown. Otherwise the manual blocks are used." },
     { "type": "text", "id": "products_metafield_key", "label": "Product metafield key (custom.___)", "default": "other_products" },
     { "type": "text", "id": "field_product", "label": "Metaobject field: linked product", "default": "image" },
-    { "type": "text", "id": "field_description", "label": "Metaobject field: description", "default": "description" }
+    { "type": "text", "id": "field_description", "label": "Metaobject field: description", "default": "description" },
+    { "type": "textarea", "id": "coming_soon_products", "label": "Coming Soon Products (Exact Names)", "info": "Ek line mein ek product ka exact naam likhein. Same list as collection page.", "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo" }
   ],
   "blocks": [
     {
@@ -86,6 +184,7 @@
       "name": "Product",
       "settings": [
         { "type": "product", "id": "product", "label": "Product", "info": "Pulls live title, image, and price. Manual fields below are used as a fallback." },
+        { "type": "checkbox", "id": "coming_soon", "label": "Coming Soon (non-clickable)", "default": false },
         { "type": "text", "id": "badge", "label": "Badge", "default": "PREP" },
         { "type": "image_picker", "id": "image", "label": "Fallback image" },
         { "type": "text", "id": "title", "label": "Fallback title", "default": "Tulia Skin Lightening & Brightening Facewash" },

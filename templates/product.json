@@ -625,7 +625,8 @@
         "title": "{{ product.metafields.custom.give_your_heading.value }}",
         "products_metafield_key": "other_products",
         "field_product": "image",
-        "field_description": "description"
+        "field_description": "description",
+        "coming_soon_products": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo"
       }
     },
     "faq": {
