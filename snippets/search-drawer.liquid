@@ -11,3 +11,43 @@
     <div class="search-drawer__results" data-predictive-results aria-live="polite"></div>
   </div>
 </div>
+<style>
+  /* Coming Soon predictive results: unclickable, blurred image, badge, no price */
+  .search-result.is-coming-soon {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  .search-result__media {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-radius: var(--radius-sm);
+  }
+  .search-result__media img {
+    filter: blur(4px);
+    display: block;
+  }
+  .search-result__badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    pointer-events: none;
+  }
+  .search-result__badge span {
+    background: #ffffff;
+    color: #000000;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+</style>

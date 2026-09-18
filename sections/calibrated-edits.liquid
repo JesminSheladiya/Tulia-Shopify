@@ -44,6 +44,13 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'edit' -%}
             <div class="edit-card extracted-style-38" {{ block.shopify_attributes }}>
+              {%- liquid
+                assign edit_link = block.settings.link
+                if block.settings.coming_soon
+                  assign edit_link = blank
+                endif
+              -%}
+              {%- if edit_link != blank -%}<a href="{{ edit_link }}" aria-label="{{ block.settings.title | escape }}" style="display: block; text-decoration: none; color: inherit;">{%- endif -%}
               <div class="extracted-style-39" style="overflow: hidden; display: block; width: 100%; aspect-ratio: 1 / 1; position: relative;">
                 {%- if block.settings.image != blank -%}
                   <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-40 {% if block.settings.coming_soon %}coming-soon-blur{% endif %}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: right center; {%- if block.settings.coming_soon -%}filter: blur(6px); transition: filter 0.3s ease;{%- endif -%}">
@@ -57,6 +64,7 @@
                   </div>
                 {%- endif -%}
               </div>
+              {%- if edit_link != blank -%}</a>{%- endif -%}
 
               <h3 class="edit-hover-title extracted-style-41">{{ block.settings.title | escape }}</h3>
               <p class="edit-desc extracted-style-42">{{ block.settings.description | escape }}</p>

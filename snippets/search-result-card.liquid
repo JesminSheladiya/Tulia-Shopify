@@ -1,5 +1,7 @@
 {%- comment -%}
   Unified search-result card for any result type. Param: item (search result object).
+  Coming Soon products render WITHOUT any link/URL/price - image shown
+  blurred with a Coming Soon badge, inner page cannot be opened.
 {%- endcomment -%}
 {%- liquid
   assign r_type = item.object_type
@@ -23,7 +25,31 @@
       assign r_label = 'Collection'
       assign r_icon = 'category'
   endcase
+  assign is_coming_soon = false
+  if r_type == 'product'
+    assign t_down = item.title | strip | downcase
+    assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,daily care shampoo,'
+    if cs_names contains t_down
+      assign is_coming_soon = true
+    endif
+  endif
 -%}
+{%- if is_coming_soon -%}
+<div class="result-card is-coming-soon" aria-disabled="true">
+  <div class="result-card__media">
+    {%- if r_image != blank -%}
+      <img src="{{ r_image | image_url: width: 600 }}" width="600" height="450" alt="{{ item.title | escape }}" loading="lazy">
+    {%- else -%}
+      <div class="result-card__placeholder"><span class="material-symbols-outlined">{{ r_icon }}</span></div>
+    {%- endif -%}
+    <span class="result-card__tag">{{ r_label }}</span>
+    <span class="result-card__soonbadge"><span>Coming Soon</span></span>
+  </div>
+  <div class="result-card__body">
+    <h3 class="result-card__title">{{ item.title }}</h3>
+  </div>
+</div>
+{%- else -%}
 <a href="{{ item.url }}" class="result-card">
   <div class="result-card__media">
     {%- if r_image != blank -%}
@@ -56,3 +82,4 @@
     </span>
   </div>
 </a>
+{%- endif -%}
