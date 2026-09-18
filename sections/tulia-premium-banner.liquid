@@ -1,0 +1,243 @@
+{%- comment -%}
+  Tulia - Premium Minimal Banner Section
+  Fixed: sub_letter_spacing decimal digit error.
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --tulia-banner-bg: {{ section.settings.bg_color }};
+    --tulia-font-serif: "Playfair Display", "Didot", "Georgia", serif;
+    --tulia-font-sans:"Mattone", sans-serif;
+    
+    background-color: var(--tulia-banner-bg);
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    margin-top: {{ section.settings.margin_top_mobile }}px;
+    margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+  }
+
+  @media (min-width: 750px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      margin-top: {{ section.settings.margin_top_desktop }}px;
+      margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+    }
+  }
+
+  .tulia-banner-container {
+    max-width: {{ section.settings.container_max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: {{ section.settings.text_alignment }};
+    display: flex;
+    flex-direction: column;
+    align-items: {% if section.settings.text_alignment == 'center' %}center{% elsif section.settings.text_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+
+  .tulia-banner-subheading {
+    font-family: var(--tulia-font-sans);
+    font-size: {{ section.settings.sub_font_size_mobile }}px;
+    font-weight: {{ section.settings.sub_font_weight }};
+    /* Fixed: Using px to avoid decimal errors */
+    letter-spacing: {{ section.settings.sub_letter_spacing }}px;
+    text-transform: {{ section.settings.sub_text_transform }};
+    color: {{ section.settings.sub_color }};
+    margin: 0 0 {{ section.settings.sub_margin_bottom }}px 0;
+    line-height: 1.2;
+  }
+
+  .tulia-banner-heading {
+    font-family: "Mattone", sans-serif;
+    font-size: {{ section.settings.heading_font_size_mobile }}px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: {{ section.settings.heading_color_primary }};
+    margin: 0 0 {{ section.settings.heading_margin_bottom }}px 0;
+  }
+
+  .tulia-banner-heading em {
+    font-style: italic;
+    color: {{ section.settings.heading_color_accent }};
+  }
+
+  .tulia-banner-description {
+    font-family: var(--tulia-font-sans);
+    font-size: {{ section.settings.desc_font_size_mobile }}px;
+    line-height: 1.7;
+    color: {{ section.settings.desc_color }};
+    max-width: {{ section.settings.desc_max_width }}px;
+    margin: 0 0 {{ section.settings.desc_margin_bottom }}px 0;
+  }
+
+  .tulia-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--tulia-font-sans);
+    font-size: {{ section.settings.cta_font_size }}px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: {{ section.settings.cta_color }};
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    margin-top: {{ section.settings.cta_margin_top }}px;
+    text-decoration:underline;
+  }
+
+  .tulia-banner-cta svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+  }
+
+  .tulia-banner-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 750px) {
+    .tulia-banner-subheading {
+      font-size: {{ section.settings.sub_font_size_desktop }}px;
+    }
+    .tulia-banner-heading {
+      font-size:48px !important;
+    }
+    .tulia-banner-description {
+      font-size: {{ section.settings.desc_font_size_desktop }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="tulia-banner-container">
+  {%- if section.settings.subheading != blank -%}
+    <p class="tulia-banner-subheading">{{ section.settings.subheading }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="tulia-banner-heading">
+      {{ section.settings.heading }}
+    </h2>
+  {%- endif -%}
+
+  {%- if section.settings.description != blank -%}
+    <div class="tulia-banner-description">
+      {{ section.settings.description }}
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+    <a href="{{ section.settings.cta_link }}" class="tulia-banner-cta">
+      <span>{{ section.settings.cta_label }}</span>
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Tulia Premium Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "min": 600,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Max Width",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#FAF6F0" },
+    { "type": "color", "id": "heading_color_primary", "label": "Heading Primary", "default": "#2D161A" },
+    { "type": "color", "id": "heading_color_accent", "label": "Heading Accent (Italic)", "default": "#C5A880" },
+    { "type": "color", "id": "sub_color", "label": "Subheading Color", "default": "#705B5E" },
+    { "type": "color", "id": "desc_color", "label": "Description Color", "default": "#705B5E" },
+    { "type": "color", "id": "cta_color", "label": "CTA Color", "default": "#4A0E17" },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Title",
+      "default": "Welcome to <em>The Flow of Rebirth</em>"
+    },
+    { "type": "range", "id": "heading_font_size_desktop", "min": 20, "max": 100, "step": 2, "unit": "px", "label": "Size (Desktop)", "default": 56 },
+    { "type": "range", "id": "heading_font_size_mobile", "min": 20, "max": 60, "step": 2, "unit": "px", "label": "Size (Mobile)", "default": 36 },
+    { "type": "range", "id": "heading_margin_bottom", "min": 0, "max": 80, "step": 4, "unit": "px", "label": "Bottom Margin", "default": 24 },
+    {
+      "type": "header",
+      "content": "Subheading"
+    },
+    { "type": "text", "id": "subheading", "label": "Subheading Text", "default": "EXPLORE TULIA" },
+    { "type": "range", "id": "sub_font_size_desktop", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Size (Desktop)", "default": 12 },
+    { "type": "range", "id": "sub_font_size_mobile", "min": 8, "max": 20, "step": 1, "unit": "px", "label": "Size (Mobile)", "default": 11 },
+    /* --- FIXED SETTING BELOW --- */
+    {
+      "type": "range",
+      "id": "sub_letter_spacing",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Letter Spacing (px)",
+      "default": 2
+    },
+    { "type": "select", "id": "sub_font_weight", "label": "Weight", "options": [{"value":"400","label":"Normal"},{"value":"500","label":"Medium"},{"value":"600","label":"Bold"}], "default": "500" },
+    { "type": "select", "id": "sub_text_transform", "label": "Case", "options": [{"value":"none","label":"Normal"},{"value":"uppercase","label":"UPPERCASE"}], "default": "uppercase" },
+    { "type": "range", "id": "sub_margin_bottom", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Bottom Margin", "default": 12 },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Premium skincare for Indian rhythms.</p>" },
+    { "type": "range", "id": "desc_font_size_desktop", "min": 12, "max": 30, "step": 1, "unit": "px", "label": "Size (Desktop)", "default": 16 },
+    { "type": "range", "id": "desc_font_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Size (Mobile)", "default": 14 },
+    { "type": "range", "id": "desc_max_width", "min": 300, "max": 1200, "step": 50, "unit": "px", "label": "Content Max Width", "default": 700 },
+    { "type": "range", "id": "desc_margin_bottom", "min": 0, "max": 80, "step": 4, "unit": "px", "label": "Bottom Margin", "default": 0 },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    { "type": "text", "id": "cta_label", "label": "Label", "default": "Shop All" },
+    { "type": "url", "id": "cta_link", "label": "Link", "default": "/collections/all" },
+    { "type": "range", "id": "cta_font_size", "min": 8, "max": 20, "step": 1, "unit": "px", "label": "Font Size", "default": 11 },
+    { "type": "range", "id": "cta_margin_top", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Top Margin", "default": 24 },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    { "type": "range", "id": "padding_top_desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80, "label": "Padding Top" },
+    { "type": "range", "id": "padding_bottom_desktop", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80, "label": "Padding Bottom" },
+    { "type": "range", "id": "padding_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48, "label": "Padding Top (Mob)" },
+    { "type": "range", "id": "padding_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48, "label": "Padding Bottom (Mob)" }
+  ],
+  "presets": [
+    { "name": "Tulia Premium Banner" }
+  ]
+}
+{% endschema %}

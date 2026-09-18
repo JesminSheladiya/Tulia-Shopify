@@ -1,0 +1,37 @@
+<div class="feature-icons-strip extracted-style-80">
+  <div class="container feature-icons-container extracted-style-81">
+    {%- for block in section.blocks -%}
+      <div class="feature-icon-item extracted-style-82" {{ block.shopify_attributes }}>
+        <span class="material-symbols-outlined extracted-style-83">{{ block.settings.icon | escape }}</span> {{ block.settings.label | escape }}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature icons strip",
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material icon name", "default": "check" },
+        { "type": "text", "id": "label", "label": "Label", "default": "PARABEN-FREE" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature icons strip",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "pets", "label": "CRUELTY-FREE" } },
+        { "type": "feature", "settings": { "icon": "check", "label": "PARABEN-FREE" } },
+        { "type": "feature", "settings": { "icon": "check", "label": "SULFATE-FREE" } },
+        { "type": "feature", "settings": { "icon": "check_circle", "label": "MADE IN INDIA" } },
+        { "type": "feature", "settings": { "icon": "fact_check", "label": "PATCH-TESTED" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

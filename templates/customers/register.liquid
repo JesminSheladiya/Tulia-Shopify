@@ -1,0 +1,20 @@
+<section class="section container reveal" style="max-width:480px;margin:0 auto;">
+  <div class="text-center mb-large">
+    <h1 class="section-title italic-serif text-primary">Create account</h1>
+    <div class="divider mx-auto"></div>
+  </div>
+  {%- form 'create_customer' -%}
+    {{ form.errors | default_errors }}
+    {%- assign field_css = 'width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);' -%}
+    <label for="FirstName">First name</label>
+    <input type="text" name="customer[first_name]" id="FirstName" style="{{ field_css }}">
+    <label for="LastName">Last name</label>
+    <input type="text" name="customer[last_name]" id="LastName" style="{{ field_css }}">
+    <label for="Email">Email</label>
+    <input type="email" name="customer[email]" id="Email" style="{{ field_css }}">
+    <label for="CreatePassword">Password</label>
+    <input type="password" name="customer[password]" id="CreatePassword" style="{{ field_css }}">
+    <button type="submit" class="btn btn-primary">Create</button>
+  {%- endform -%}
+  <p style="margin-top:1.5rem;">Already have an account? <a href="{{ routes.account_login_url }}" style="text-decoration:underline;">Sign in</a></p>
+</section>

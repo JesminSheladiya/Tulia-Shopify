@@ -1,0 +1,32 @@
+{%- assign items = section.settings.items | newline_to_br | strip_newlines | split: '<br />' -%}
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    {%- for repeat in (1..2) -%}
+      <div class="ticker-content">
+        {%- for item in items -%}
+          {%- assign trimmed = item | strip -%}
+          {%- if trimmed != blank -%}
+            <span class="ticker-item">{{ trimmed | escape }}</span>
+            <span class="ticker-item">&bull;</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ticker",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Ticker phrases",
+      "info": "One phrase per line.",
+      "default": "Made for Indian Skin\nClinically Proven\nVegan Certified\nStress-Skin Tested\nPETA Approved\nPalm Oil-Free\npH-Balanced Formula\nAnti-Pollution Tested\nSafe for Sensitive Skin\nPatch-Test Approved"
+    }
+  ],
+  "presets": [{ "name": "Ticker" }]
+}
+{% endschema %}

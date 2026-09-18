@@ -1,0 +1,102 @@
+<section class="section border-t border-outline-variant extracted-style-208">
+  <div class="container">
+    <div class="grid grid-12 gap-large">
+      <!-- Left: summary -->
+      <div class="col-4">
+        <h2 class="italic-serif text-primary mb-medium extracted-style-209">{{ section.settings.heading | escape }}</h2>
+        <div id="review-summary-container" class="extracted-style-210">
+          <span class="extracted-style-211">{{ section.settings.rating | escape }}</span>
+          <div id="review-summary-stars-container" class="extracted-style-38">
+            <div class="extracted-style-142">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span class="extracted-style-143">★</span>
+            </div>
+            <p class="extracted-style-204">Based on {{ section.settings.review_count | escape }} reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: review list -->
+      <div class="col-8 extracted-style-212">
+        <div class="review-filters drag-scroll extracted-style-213">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'filter' -%}
+              <button class="filter-btn {% if forloop.first %}active extracted-style-214{% else %}extracted-style-215{% endif %}" data-filter="{{ block.settings.filter | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="reviews-container custom-scrollbar extracted-style-216">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'review' -%}
+              <div class="review-card extracted-style-217" data-category="{{ block.settings.categories | escape }}" {{ block.shopify_attributes }}>
+                <div class="extracted-style-218">
+                  <div class="extracted-style-219">
+                    {%- assign stars = block.settings.rating | times: 1 -%}
+                    {%- for i in (1..5) -%}{%- if i <= stars -%}<span>★</span>{%- else -%}<span style="opacity:.3;">★</span>{%- endif -%}{%- endfor -%}
+                  </div>
+                  <span class="extracted-style-204">Verified Buyer</span>
+                </div>
+                <h5 class="extracted-style-220">{{ block.settings.title | escape }}</h5>
+                <p class="extracted-style-221">{{ block.settings.text | escape }}</p>
+                <p class="extracted-style-222">{{ block.settings.author | escape }} — {{ block.settings.date | escape }}</p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product reviews",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Loved by Tulia Cosmetics Users" },
+    { "type": "text", "id": "rating", "label": "Average rating", "default": "4.8" },
+    { "type": "text", "id": "review_count", "label": "Review count", "default": "124" }
+  ],
+  "blocks": [
+    {
+      "type": "filter",
+      "name": "Filter",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "All" },
+        { "type": "text", "id": "filter", "label": "Filter value", "default": "all" }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Stars", "default": 5 },
+        { "type": "text", "id": "title", "label": "Title", "default": "Soft and comfortable" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "I liked how lightweight this cream feels. It does not feel sticky and keeps my lips soft for a long time." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Anonymous" },
+        { "type": "text", "id": "date", "label": "Date", "default": "2 days ago" },
+        { "type": "text", "id": "categories", "label": "Filter categories", "info": "Space separated.", "default": "soft non-sticky" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product reviews",
+      "blocks": [
+        { "type": "filter", "settings": { "label": "All", "filter": "all" } },
+        { "type": "filter", "settings": { "label": "Soft lips", "filter": "soft" } },
+        { "type": "filter", "settings": { "label": "Dark lips", "filter": "dark" } },
+        { "type": "filter", "settings": { "label": "Moisturizing", "filter": "moisturizing" } },
+        { "type": "filter", "settings": { "label": "Non-sticky", "filter": "non-sticky" } },
+        { "type": "filter", "settings": { "label": "Daily use", "filter": "daily" } },
+        { "type": "filter", "settings": { "label": "Smooth texture", "filter": "smooth" } },
+        { "type": "filter", "settings": { "label": "Visible care", "filter": "visible" } },
+        { "type": "filter", "settings": { "label": "Easy routine", "filter": "easy" } },
+        { "type": "review", "settings": { "rating": 5, "title": "Soft and comfortable", "text": "I liked how lightweight this cream feels. It does not feel sticky and keeps my lips soft for a long time.", "author": "Anonymous", "date": "2 days ago", "categories": "soft non-sticky" } },
+        { "type": "review", "settings": { "rating": 5, "title": "Good for daily lip care", "text": "I started using it at night and my lips feel smoother now. The texture is very easy to apply.", "author": "Anonymous", "date": "1 week ago", "categories": "smooth easy daily" } },
+        { "type": "review", "settings": { "rating": 5, "title": "Works well with routine use", "text": "The cream feels gentle and nourishing. I use it twice a day and my lips look more cared for.", "author": "Anonymous", "date": "2 weeks ago", "categories": "visible daily moisturizing" } },
+        { "type": "review", "settings": { "rating": 5, "title": "Nice texture", "text": "It spreads easily and does not feel heavy. Good product for everyday lip care.", "author": "Anonymous", "date": "1 month ago", "categories": "smooth daily" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

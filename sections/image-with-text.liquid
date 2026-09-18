@@ -1,0 +1,314 @@
+{%- comment -%}
+  Tulia - Premium Editorial Story Section
+  Designed with ultra-premium typography, optional drop-cap,
+  and dual-tone color schemes (Warm Sand & Midnight Velvet).
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --tulia-font-serif: "Playfair Display", "Didot", "Georgia", serif;
+    --tulia-font-sans: "Mattone", sans-serif;
+
+    {%- if section.settings.editorial_theme == 'warm_sand' -%}
+      --tulia-bg: #FAF6F0;
+      --tulia-text: #2D161A;
+      --tulia-text-secondary: #705B5E;
+      --tulia-accent: #4A0E17;
+      --tulia-border: #EBE2D5;
+    {%- elsif section.settings.editorial_theme == 'midnight_velvet' -%}
+      --tulia-bg: #150406;
+      --tulia-text: #FAF6F0;
+      --tulia-text-secondary: #D4C9C3;
+      --tulia-accent: #C5A880;
+      --tulia-border: #2D1217;
+    {%- else -%}
+      --tulia-bg: transparent;
+      --tulia-text: currentColor;
+      --tulia-text-secondary: currentColor;
+      --tulia-accent: currentColor;
+      --tulia-border: rgba(0,0,0,0.08);
+    {%- endif -%}
+  }
+
+  .tulia-story-wrapper {
+    background-color: var(--tulia-bg);
+    color: var(--tulia-text);
+    padding: 50px 0 20px 0;
+    transition: all 0.5s ease;
+    font-family: "Mattone", sans-serif;
+  }
+
+  @media (min-width: 990px) {
+    .tulia-story-wrapper {
+      padding: 120px 0;
+    }
+  }
+
+  .tulia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 990px) {
+    .tulia-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 80px;
+    }
+    .tulia-media-col {
+      grid-column: span 5;
+    }
+    .tulia-text-col {
+      grid-column: span 7;
+    }
+    .tulia-grid--reverse .tulia-media-col {
+      grid-column: 8 / span 5;
+    }
+    .tulia-grid--reverse .tulia-text-col {
+      grid-column: 1 / span 7;
+      grid-row: 1;
+    }
+  }
+
+  /* Media/Image Styling */
+  .tulia-image-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  }
+
+  .tulia-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tulia-image-container:hover img {
+    transform: scale(1.02);
+  }
+
+  .tulia-frame-accent {
+    position: absolute;
+    inset: 24px;
+    pointer-events: none;
+    border: 1px solid rgba(197, 168, 128, 0.2);
+  }
+
+  /* Typography Styling - Font size regular 16px across all devices */
+  .tulia-prose {
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    color: var(--tulia-text-secondary);
+  }
+
+  /* Drop-cap configuration */
+  {%- if section.settings.enable_dropcap -%}
+    .tulia-top-block p:first-of-type::first-letter {
+      font-family: "Mattone", sans-serif;
+      font-size: 3em;
+      float: left;
+      line-height: 0.85;
+      margin-right: 12px;
+      margin-top: 4px;
+      color: var(--tulia-accent);
+      font-weight: 600;
+    }
+  {%- endif -%}
+
+  .tulia-prose p {
+    margin-bottom: 24px;
+  }
+
+  /* Center Quote Accent */
+  .tulia-quote-block {
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid var(--tulia-border);
+    border-bottom: 1px solid var(--tulia-border);
+    text-align: center;
+  }
+
+  .tulia-quote-text {
+    font-family: "Mattone", sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--tulia-accent);
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 750px) {
+    .tulia-quote-text {
+      font-size: 18px;
+      text-align: left;
+    }
+  }
+
+  /* Luxury footer tags */
+  .tulia-editorial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--tulia-border);
+    padding-top: 32px;
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .tulia-serif-link {
+    font-family: var(--tulia-font-serif);
+    font-style: italic;
+    text-transform: lowercase;
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  .tulia-caption {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+{%- endstyle -%}
+
+<div class="tulia-story-wrapper">
+  <div class="tulia-grid {% if section.settings.image_side == 'right' %}tulia-grid--reverse{% endif %}">
+
+    <!-- Media / Image Column -->
+    <div class="tulia-media-col">
+      <div class="tulia-image-container">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 990px) 45vw, 100vw',
+            widths: '400, 600, 800, 1000, 1200'
+          }}
+        {%- else -%}
+          <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, #3D0C13, #200407); display: flex; align-items: center; justify-content: center; position: relative;">
+            <div class="tulia-frame-accent"></div>
+            <div style="text-align: center; color: #C5A880; font-family: 'Mattone', sans-serif; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px;">
+              Tulia Brand Narrative
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Content / Typography Column -->
+    <div class="tulia-text-col">
+      <div class="tulia-prose">
+
+        <!-- Top Narrative Paragraphs -->
+        {%- if section.settings.top_description != blank -%}
+          <div class="tulia-top-block">{{ section.settings.top_description }}</div>
+        {%- endif -%}
+
+        <!-- Highlighted Editorial Quote Block (Apostrophes/Quotes removed) -->
+        {%- if section.settings.highlight_quote != blank -%}
+          <div class="tulia-quote-block">
+            <blockquote class="tulia-quote-text">
+              {{ section.settings.highlight_quote }}
+            </blockquote>
+          </div>
+        {%- endif -%}
+
+        <!-- Bottom Narrative Paragraphs -->
+        {%- if section.settings.bottom_description != blank -%}
+          <div class="tulia-bottom-block">{{ section.settings.bottom_description }}</div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tulia Premium Story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Aesthetic Preferences"
+    },
+    {
+      "type": "select",
+      "id": "editorial_theme",
+      "label": "Editorial Palette Preset",
+      "options": [
+        { "value": "warm_sand", "label": "Warm Sand (Light Luxury)" },
+        { "value": "midnight_velvet", "label": "Midnight Velvet (Dark Luxury)" },
+        { "value": "theme_default", "label": "Inherit Theme Colors" }
+      ],
+      "default": "warm_sand"
+    },
+    {
+      "type": "select",
+      "id": "image_side",
+      "label": "Image Side",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_dropcap",
+      "label": "Enable Drop Cap (Classical Editorial)",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Image & Captions"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Brand Image"
+    },
+    {
+      "type": "header",
+      "content": "Narrative Prose Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "top_description",
+      "label": "Top Narrative Paragraphs",
+      "default": "<p>For years, I have seen beauty shaped by formulas, standards, and routines that were never built with our skin in mind. Skin that lives with sun, humidity, tanning, pigmentation, and constant environmental stress. Skin that has always deserved more than a borrowed routine.</p>"
+    },
+    {
+      "type": "text",
+      "id": "highlight_quote",
+      "label": "Middle Highlighted Quote",
+      "default": "I wanted Tulia Cosmetics to understand that rhythm."
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_description",
+      "label": "Bottom Narrative Paragraphs",
+      "default": "<p>With Tulia Cosmetics, my vision was to build a global skincare brand, born in India, rooted in science and designed for melanin-rich skin everywhere. Every formulation blends serious research with textures that feel indulgent, made for skin that has never quite fit the standard.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tulia Premium Story"
+    }
+  ]
+}
+{% endschema %}

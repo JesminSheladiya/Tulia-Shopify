@@ -1,0 +1,55 @@
+{%- comment -%}
+  Renders a Tulia "ritual" product card.
+  Accepts: product (required)
+  Reuses the original .ritual-card markup/classes so styling is identical.
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign subtitle = product.metafields.custom.subtitle
+  if subtitle == blank
+    assign subtitle = product.type
+  endif
+  assign rating = product.metafields.custom.rating
+  if rating == blank
+    assign rating = '4.9'
+  endif
+-%}
+
+<div class="ritual-card group" data-category="{{ product.tags | join: ' ' | downcase }}">
+  <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
+    <input type="hidden" name="id" value="{{ variant.id }}">
+    <div class="ritual-img-wrapper">
+
+
+      
+      
+      {%- if product.tags contains 'new' or product.tags contains 'New' -%}
+        <div class="badge">NEW</div>
+      {%- endif -%}
+      <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" width="600" height="600">
+        {%- else -%}
+          <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy">
+        {%- endif -%}
+      </a>
+      <button type="submit" class="btn-add-to-bag-img" {% unless product.available %}disabled{% endunless %}>
+        {%- if product.available -%}ADD TO BAG{%- else -%}SOLD OUT{%- endif -%}
+      </button>
+    </div>
+    <div class="ritual-info">
+      <a href="{{ product.url }}"><h3 class="ritual-name italic-serif">{{ product.title }}</h3></a>
+      <p class="ritual-desc">{{ subtitle }}</p>
+      <div class="rating text-muted extracted-style-13">
+        ★★★★★ {{ rating }}
+      </div>
+      <div class="price-row extracted-style-14">
+        <p class="ritual-price extracted-style-15">{{ variant.price | money }}</p>
+        <button type="submit" class="btn-round-add extracted-style-16" aria-label="Add {{ product.title | escape }} to bag" {% unless product.available %}disabled{% endunless %}>
+          <span class="material-symbols-outlined extracted-style-17">add</span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

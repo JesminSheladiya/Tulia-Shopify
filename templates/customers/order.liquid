@@ -1,0 +1,43 @@
+<section class="section container reveal" style="max-width:900px;margin:0 auto;">
+  <div class="text-center mb-large">
+    <h1 class="section-title italic-serif text-primary">Order {{ order.name }}</h1>
+    <p class="section-subtitle">Placed on {{ order.created_at | date: '%B %e, %Y' }}</p>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;margin-bottom:2rem;">
+    <thead>
+      <tr style="text-align:left;border-bottom:1px solid var(--outline-variant);">
+        <th style="padding:.6rem 0;">Product</th><th>Qty</th><th>Price</th><th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for line in order.line_items -%}
+        <tr style="border-bottom:1px solid var(--outline-variant);">
+          <td style="padding:.6rem 0;">{{ line.title }}</td>
+          <td>{{ line.quantity }}</td>
+          <td>{{ line.price | money }}</td>
+          <td>{{ line.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+
+  <div style="text-align:right;">
+    <p>Subtotal: {{ order.subtotal_price | money }}</p>
+    {%- for shipping in order.shipping_methods -%}<p>Shipping ({{ shipping.title }}): {{ shipping.price | money }}</p>{%- endfor -%}
+    <p style="font-size:1.2rem;"><strong>Total: {{ order.total_price | money }}</strong></p>
+  </div>
+
+  <div class="grid grid-2 gap-large align-start" style="margin-top:2rem;">
+    <div>
+      <h3 class="ritual-name italic-serif mb-medium">Shipping address</h3>
+      {%- if order.shipping_address -%}<div>{{ order.shipping_address | format_address }}</div>{%- endif -%}
+    </div>
+    <div>
+      <h3 class="ritual-name italic-serif mb-medium">Billing address</h3>
+      {%- if order.billing_address -%}<div>{{ order.billing_address | format_address }}</div>{%- endif -%}
+    </div>
+  </div>
+
+  <p style="margin-top:2rem;"><a href="{{ routes.account_url }}" class="link-underline">Back to account</a></p>
+</section>

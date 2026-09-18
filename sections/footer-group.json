@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col_shop": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "SHOP",
+            "menu": "",
+            "fallback_links": "Skincare | /collections/pigmentation-amp-tan\nHaircare | /collections/hair-scalp\nLip Care | /collections/hydration-barrier\nAll Products | /collections/all\nBestsellers | /collections/all-products?sort_by=best-selling"
+          }
+        },
+        "col_brand": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "BRAND",
+            "menu": "",
+            "fallback_links": "Our Story | /pages/by-concern\nContact Us | /pages/contact\nRetail Partner | /pages/become-our-partner"
+          }
+        },
+        "col_learn": {
+          "type": "menu_column",
+          "disabled": true,
+          "settings": {
+            "heading": "LEARN",
+            "menu": "",
+            "fallback_links": "Journal | /blogs/news\nOur Formulation | #"
+          }
+        },
+        "col_help": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "HELP",
+            "menu": "",
+            "fallback_links": "Shipping & Returns |/policies/shipping-policy\nTrack Order | #\nPrivacy Policy |/policies/privacy-policy\nTerms & Conditions |/policies/terms-of-service\nRefund Policy |/policies/refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "col_shop",
+        "col_brand",
+        "col_learn",
+        "col_help"
+      ],
+      "settings": {
+        "waitlist_heading": "",
+        "newsletter_eyebrow": "OUR WEEKLY NEWSLETTER",
+        "newsletter_title": "Outgrow the standards",
+        "newsletter_desc": "Subscribe to our monthly newsletter to get the inside story",
+        "show_localization": true,
+        "copyright": "Copyright © [year] Tulia Cosmetics. All rights reserved.",
+        "credit": "Developed with ❤ by Chimpzlab",
+        "credit_brand": "Chimpzlab",
+        "credit_url": "https://chimpzlab.com"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

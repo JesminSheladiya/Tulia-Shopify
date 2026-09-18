@@ -1,0 +1,82 @@
+<section class="section bg-surface extracted-style-185">
+  <div class="container">
+    <div class="text-center mb-large">
+      <h2 class="section-title italic-serif text-primary mb-small">{{ section.settings.title | escape }}</h2>
+    </div>
+    <div class="grid grid-2 gap-large extracted-style-194">
+      <div class="extracted-style-195">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 900 }}" width="900" height="1125" alt="{{ section.settings.title | escape }}" class="extracted-style-196" loading="lazy">
+        {%- else -%}
+          <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="1080" height="1350" alt="{{ section.settings.title | escape }}" class="extracted-style-196" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="acc-container">
+        {%- for block in section.blocks -%}
+          {%- assign acc_id = 'acc-' | append: forloop.index -%}
+          {%- liquid
+            assign bmf = product.metafields.custom[block.settings.metafield_key]
+            assign bentries = bmf.value
+          -%}
+          <div class="acc-item {% if forloop.first %}active{% endif %}" id="{{ acc_id }}" {{ block.shopify_attributes }}>
+            <div class="acc-header" onclick="toggleAcc('{{ acc_id }}')">{{ block.settings.label | escape }}</div>
+            <div class="acc-content">
+              {%- if block.settings.metafield_key != blank and bentries != blank and bentries.size > 0 -%}
+                {%- for e in bentries -%}
+                  <div class="extracted-style-147">
+                    <span class="extracted-style-198">{{ e[block.settings.field_percent].value | escape }}</span>
+                    <p class="extracted-style-199">{% render 'mo-text', field: e[block.settings.field_text], allow_newline: true %}</p>
+                  </div>
+                {%- endfor -%}
+              {%- else -%}
+                {%- assign stats = block.settings.stats | newline_to_br | strip_newlines | split: '<br />' -%}
+                {%- for stat in stats -%}
+                  {%- assign s = stat | split: '|' -%}
+                  {%- if s[0] != blank -%}
+                    <div class="extracted-style-147">
+                      <span class="extracted-style-198">{{ s[0] | strip | escape }}</span>
+                      <p class="extracted-style-199">{{ s[1] | strip | escape }}</p>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Clinical results",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Clinical results vs Consumer Results" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Result group",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "consumer study results" },
+        { "type": "textarea", "id": "stats", "label": "Stats (fallback)", "info": "Used when no metafield below. One per line as: 100% | description", "default": "100% | AGREED THE CREAM INSTANTLY RELIEVES OVERNIGHT DRYNESS WITHOUT FEELING HEAVY OR WAXY\n96% | AGREED THEIR LIPS FELT NOTICEABLY SOFTER AND MORE SUPPLE WITHIN THE FIRST WEEK OF CONSISTENT USE\n92% | AGREED THEY SAW A VISIBLE REDUCTION IN DARK PATCHES AND AN IMPROVEMENT IN OVERALL LIP TONE" },
+        { "type": "header", "content": "Dynamic data (metaobjects)" },
+        { "type": "text", "id": "metafield_key", "label": "Product metafield key (custom.___)", "info": "e.g. clinical_efficacy_results or consumer_perception_results" },
+        { "type": "text", "id": "field_percent", "label": "Metaobject field: percentage", "default": "percentage" },
+        { "type": "text", "id": "field_text", "label": "Metaobject field: statement", "default": "text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical results",
+      "blocks": [
+        { "type": "result", "settings": { "label": "consumer study results", "stats": "100% | AGREED THE CREAM INSTANTLY RELIEVES OVERNIGHT DRYNESS WITHOUT FEELING HEAVY OR WAXY\n96% | AGREED THEIR LIPS FELT NOTICEABLY SOFTER AND MORE SUPPLE WITHIN THE FIRST WEEK OF CONSISTENT USE\n92% | AGREED THEY SAW A VISIBLE REDUCTION IN DARK PATCHES AND AN IMPROVEMENT IN OVERALL LIP TONE" } },
+        { "type": "result", "settings": { "label": "clinical results", "stats": "98% | DEMONSTRATED A MEASURED INCREASE IN DEEP CELLULAR HYDRATION AND MOISTURE RETENTION\n94% | SHOWED A CLINICALLY SIGNIFICANT REDUCTION IN SURFACE MELANIN CONCENTRATION AND HYPERPIGMENTATION" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

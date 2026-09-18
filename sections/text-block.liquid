@@ -1,0 +1,39 @@
+<section class="section {{ section.settings.bg }}">
+  <div class="container generic-text text-{{ section.settings.align }}" style="max-width: {{ section.settings.max_width }}px;">
+    {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-title text-primary">{{ section.settings.heading | escape | newline_to_br }}</h2>
+      {%- if section.settings.show_divider -%}<div class="divider {% if section.settings.align == 'center' %}mx-auto{% endif %}"></div>{%- endif -%}
+    {%- endif -%}
+    {%- if section.settings.body != blank -%}<div class="rte generic-text__body">{{ section.settings.body }}</div>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="link-with-icon generic-text__link">
+        <span>{{ section.settings.button_label | escape }}</span>
+        <span class="material-symbols-outlined">arrow_right_alt</span>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Generic - Text",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Story" },
+    { "type": "textarea", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "show_divider", "label": "Show divider", "default": true },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>With Tulia, my vision was to create a premium Indian skincare brand that brings together science-led formulations, sensorial textures, and a deeper understanding of melanin-rich skin.</p>" },
+    { "type": "select", "id": "align", "label": "Text alignment", "options": [
+      { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" }
+    ], "default": "center" },
+    { "type": "range", "id": "max_width", "min": 480, "max": 1100, "step": 20, "unit": "px", "label": "Max width", "default": 820 },
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "", "label": "Surface" }, { "value": "bg-surface-alt", "label": "Surface alt" }, { "value": "bg-surface-low", "label": "Surface low" }
+    ], "default": "" },
+    { "type": "header", "content": "Link" },
+    { "type": "text", "id": "button_label", "label": "Link label" },
+    { "type": "url", "id": "button_link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Generic - Text" }]
+}
+{% endschema %}

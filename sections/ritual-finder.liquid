@@ -1,0 +1,223 @@
+{%- liquid
+  assign ritual_collection = collections[section.settings.collection]
+  
+  assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'
+  assign coming_soon_list = ''
+  for item in coming_soon_input
+    assign clean_item = item | strip | downcase
+    if clean_item != blank
+      assign coming_soon_list = coming_soon_list | append: clean_item | append: ','
+    endif
+  endfor
+-%}
+<section id="ritual-finder" class="section reveal bg-surface-alt">
+  <div class="container">
+    <div class="section-header text-center mb-large">
+      {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+      <h2 class="section-title text-primary ritual-headline extracted-style-12">{{ section.settings.title | escape }}</h2>
+      <div class="divider mx-auto"></div>
+      {%- if section.settings.subtitle != blank -%}<p class="section-subtitle">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+    </div>
+
+    <!-- Filters -->
+    <div class="ritual-filters mb-medium" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'filter' -%}
+          <button class="filter-btn {% if forloop.first %}active{% endif %}" data-filter="{{ block.settings.filter | escape }}" {{ block.shopify_attributes }}>
+            {{ block.settings.label | escape }}
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-3 ritual-grid" id="ritual-product-grid">
+      {%- if ritual_collection != blank and ritual_collection.products_count > 0 -%}
+        
+        <!-- 1. Normal / Available Products First -->
+        {%- for product in ritual_collection.products limit: section.settings.products_limit -%}
+          {%- liquid
+            assign p_title_down = product.title | strip | downcase
+            assign is_coming_soon = false
+            if coming_soon_list contains p_title_down
+              assign is_coming_soon = true
+            endif
+          -%}
+          
+          {%- unless is_coming_soon -%}
+            <div class="ritual-product-card-wrapper">
+              {%- render 'product-card', product: product -%}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+
+        <!-- 2. Coming Soon Products Last -->
+        {%- for product in ritual_collection.products limit: section.settings.products_limit -%}
+          {%- liquid
+            assign p_title_down = product.title | strip | downcase
+            assign is_coming_soon = false
+            if coming_soon_list contains p_title_down
+              assign is_coming_soon = true
+            endif
+          -%}
+          
+          {%- if is_coming_soon -%}
+            <div class="ritual-product-card-wrapper is-coming-soon-product">
+              {%- render 'product-card', product: product -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+      {%- else -%}
+        {%- render 'ritual-demo-cards' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<!-- CSS & JS for Matching Blur, Centered Badge and Unclickable Cards -->
+<style>
+  /* Standard 3-column grid layout jo hamesha left se start hoga */
+  #ritual-product-grid.ritual-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  /* Jab koi product filter hone par hide ho, toh grid se bilkul remove ho jaye taaki space na bache */
+  #ritual-product-grid.ritual-grid .ritual-product-card-wrapper:has(.ritual-card[style*="display: none"]),
+  #ritual-product-grid.ritual-grid .ritual-product-card-wrapper .ritual-card[style*="display: none"] {
+    display: none !important;
+  }
+  
+  .ritual-product-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Equal height alignment ke liye inner structure */
+  .ritual-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .ritual-card > form {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .ritual-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+  }
+
+  .price-row {
+    margin-top: auto !important;
+  }
+
+  .ritual-product-card-wrapper.is-coming-soon-product {
+    position: relative;
+  }
+  
+  /* Disable clicks on links and buttons for coming soon products */
+  .ritual-product-card-wrapper.is-coming-soon-product a,
+  .ritual-product-card-wrapper.is-coming-soon-product button {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Coming Soon products ke price aur buttons hide karne ke liye */
+  .ritual-product-card-wrapper.is-coming-soon-product .price-row,
+  .ritual-product-card-wrapper.is-coming-soon-product .ritual-price,
+  .ritual-product-card-wrapper.is-coming-soon-product .btn-round-add,
+  .ritual-product-card-wrapper.is-coming-soon-product .btn-add-to-bag-img {
+    display: none !important;
+  }
+
+  /* Mobile screen par 1 column */
+  @media screen and (max-width: 768px) {
+    #ritual-product-grid.ritual-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const wrappers = document.querySelectorAll('.ritual-product-card-wrapper.is-coming-soon-product');
+    
+    wrappers.forEach(wrapper => {
+      const img = wrapper.querySelector('img');
+      if (img) {
+        // Match exact blur intensity with Explore The Edits section (approx 4px)
+        img.style.filter = 'blur(4px)';
+        img.style.transition = 'filter 0.3s ease';
+        
+        let mediaContainer = img.closest('.card__inner, .product-card__image, .card__media, .media, div[class*="image"], div[class*="media"]');
+        if (!mediaContainer) {
+          mediaContainer = img.parentElement;
+        }
+        
+        mediaContainer.style.position = 'relative';
+        mediaContainer.style.overflow = 'hidden';
+        
+        // Centered Badge Overlay matching the design style
+        const badgeOverlay = document.createElement('div');
+        badgeOverlay.className = 'coming-soon-absolute-badge';
+        badgeOverlay.style.cssText = "position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); z-index: 10; pointer-events: none;";
+        badgeOverlay.innerHTML = '<span style="background: #ffffff; color: #000000; padding: 8px 16px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Coming Soon</span>';
+        
+        mediaContainer.appendChild(badgeOverlay);
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Ritual finder",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE RITUAL FINDER" },
+    { "type": "text", "id": "title", "label": "Title", "default": "What is your skin telling you?" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Discover the formulation your skin has been asking for" },
+    { "type": "collection", "id": "collection", "label": "Products collection" },
+    { "type": "range", "id": "products_limit", "min": 3, "max": 24, "step": 1, "label": "Max products", "default": 8 },
+    { 
+      "type": "textarea", 
+      "id": "coming_soon_products", 
+      "label": "Coming Soon Products (Exact Names)", 
+      "info": "Ek line me ek product ka exact naam likhein",
+      "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter",
+      "name": "Filter button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "All products" },
+        { "type": "text", "id": "filter", "label": "Filter (product tag, or 'all')", "default": "all" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual finder",
+      "blocks": [
+        { "type": "filter", "settings": { "label": "All products", "filter": "all" } },
+        { "type": "filter", "settings": { "label": "Pigmentation & tan", "filter": "pigmentation" } },
+        { "type": "filter", "settings": { "label": "Dullness & Uneven Tone", "filter": "dullness" } },
+        { "type": "filter", "settings": { "label": "Oil & Humidity", "filter": "oil" } },
+        { "type": "filter", "settings": { "label": "Hydration & Barrier", "filter": "hydration" } },
+        { "type": "filter", "settings": { "label": "Hair & Scalp", "filter": "hair" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+<section class="section extracted-style-200">
+  <div class="container text-center">
+    <h2 class="section-title italic-serif text-primary mb-large">{{ section.settings.title | escape }}</h2>
+    <div class="extracted-style-201">
+      {%- for block in section.blocks -%}
+        <div class="recommended-card extracted-style-202" {{ block.shopify_attributes }}>
+          <h4 class="extracted-style-203">{{ block.settings.title | escape }}</h4>
+          <p class="extracted-style-204">{{ block.settings.subtitle | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Recommended for",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Recommended For" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Dark-looking lips" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "To improve natural tone" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recommended for",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Dark-looking lips", "subtitle": "To improve natural tone" } },
+        { "type": "card", "settings": { "title": "Dry and dull lips", "subtitle": "For deep moisturization" } },
+        { "type": "card", "settings": { "title": "Sun exposure", "subtitle": "Lips affected by daily sun" } },
+        { "type": "card", "settings": { "title": "Uneven lip line", "subtitle": "Helps refine lip edges" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

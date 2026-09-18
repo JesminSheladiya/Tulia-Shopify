@@ -1,0 +1,77 @@
+<section class="video-gallery-section reveal">
+  <div class="container text-center mb-large">
+    <h2 class="section-title italic-serif">{{ section.settings.title | escape }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p class="section-subtitle mt-2 max-w-lg mx-auto">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+  </div>
+
+  <button class="reels-prev extracted-style-49" aria-label="Previous"><span class="material-symbols-outlined extracted-style-50">chevron_left</span></button>
+  <button class="reels-next extracted-style-51" aria-label="Next"><span class="material-symbols-outlined extracted-style-50">chevron_right</span></button>
+
+  <div class="container extracted-style-52">
+    <div class="reels-container extracted-style-53">
+      {%- for block in section.blocks -%}
+        <div class="reel-item group extracted-style-54" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 500 }}" width="500" height="889" alt="{{ block.settings.product_title | escape }}" class="extracted-style-55" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'influencer_video.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.product_title | escape }}" class="extracted-style-55" loading="lazy">
+          {%- endif -%}
+          <div class="extracted-style-56"><div class="extracted-style-57"><div class="extracted-style-58"></div></div></div>
+          <div class="extracted-style-59"><span class="material-symbols-outlined extracted-style-60">play_circle</span></div>
+          {%- if block.settings.product_title != blank -%}
+            <div class="extracted-style-61">
+              <a href="{{ block.settings.link | default: '#' }}" class="video-product extracted-style-62" style="text-decoration:none;color:inherit;">
+                <div class="video-product-img extracted-style-63">
+                  {%- if block.settings.product_image != blank -%}
+                    <img src="{{ block.settings.product_image | image_url: width: 120 }}" width="120" height="120" alt="{{ block.settings.product_title | escape }}" class="extracted-style-64">
+                  {%- else -%}
+                    <img src="{{ 'cleanser_pill.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.product_title | escape }}" class="extracted-style-64">
+                  {%- endif -%}
+                </div>
+                <div class="video-product-info">
+                  <p class="extracted-style-65">{{ block.settings.product_title | escape }}</p>
+                  <span class="extracted-style-66">{{ block.settings.product_price | escape }}</span>
+                </div>
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Video gallery",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Stories of Rebirth" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Real rituals. Real skin. See the transformation." }
+  ],
+  "blocks": [
+    {
+      "type": "reel",
+      "name": "Reel",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Reel thumbnail" },
+        { "type": "url", "id": "link", "label": "Product link" },
+        { "type": "text", "id": "product_title", "label": "Product title", "default": "Skin Lightening Facewash" },
+        { "type": "text", "id": "product_price", "label": "Product price", "default": "₹850" },
+        { "type": "image_picker", "id": "product_image", "label": "Product image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video gallery",
+      "blocks": [
+        { "type": "reel", "settings": { "product_title": "Skin Lightening Facewash", "product_price": "₹850" } },
+        { "type": "reel", "settings": { "product_title": "Buttermax Intensive Cream", "product_price": "₹1300" } },
+        { "type": "reel", "settings": { "product_title": "Physical Sunscreen Gel SPF 50+", "product_price": "₹1750" } },
+        { "type": "reel", "settings": { "product_title": "Cleansing Oil", "product_price": "₹950" } },
+        { "type": "reel", "settings": { "product_title": "Rebirth Serum", "product_price": "₹1500" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,58 @@
+{%- comment -%}
+  Unified search-result card for any result type. Param: item (search result object).
+{%- endcomment -%}
+{%- liquid
+  assign r_type = item.object_type
+  assign r_image = null
+  assign r_label = 'Result'
+  assign r_icon = 'description'
+  case r_type
+    when 'product'
+      assign r_image = item.featured_image
+      assign r_label = 'Product'
+      assign r_icon = 'shopping_bag'
+    when 'article'
+      assign r_image = item.image
+      assign r_label = 'Journal'
+      assign r_icon = 'article'
+    when 'page'
+      assign r_label = 'Page'
+      assign r_icon = 'description'
+    when 'collection'
+      assign r_image = item.image
+      assign r_label = 'Collection'
+      assign r_icon = 'category'
+  endcase
+-%}
+<a href="{{ item.url }}" class="result-card">
+  <div class="result-card__media">
+    {%- if r_image != blank -%}
+      <img src="{{ r_image | image_url: width: 600 }}" width="600" height="450" alt="{{ item.title | escape }}" loading="lazy">
+    {%- else -%}
+      <div class="result-card__placeholder"><span class="material-symbols-outlined">{{ r_icon }}</span></div>
+    {%- endif -%}
+    <span class="result-card__tag">{{ r_label }}</span>
+  </div>
+  <div class="result-card__body">
+    <h3 class="result-card__title">{{ item.title }}</h3>
+    {%- if r_type == 'product' -%}
+      <div class="result-card__price">
+        {%- if item.compare_at_price > item.price -%}<s>{{ item.compare_at_price | money }}</s> {% endif -%}
+        {{ item.price | money }}
+      </div>
+    {%- else -%}
+      {%- assign r_desc = item.excerpt | default: item.content | default: item.description -%}
+      {%- if r_desc != blank -%}
+        <p class="result-card__desc">{{ r_desc | strip_html | truncatewords: 18 }}</p>
+      {%- endif -%}
+    {%- endif -%}
+    <span class="result-card__link">
+      {%- case r_type -%}
+        {%- when 'product' -%}View product
+        {%- when 'article' -%}Read article
+        {%- when 'collection' -%}Browse collection
+        {%- else -%}View page
+      {%- endcase -%} →
+    </span>
+  </div>
+</a>

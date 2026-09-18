@@ -1,0 +1,291 @@
+{%- liquid
+  assign banner_img = section.settings.banner_image | default: collection.image
+  
+  assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'
+  assign coming_soon_list = ''
+  for item in coming_soon_input
+    assign clean_item = item | strip | downcase
+    if clean_item != blank
+      assign coming_soon_list = coming_soon_list | append: clean_item | append: ','
+    endif
+  endfor
+-%}
+
+{%- if section.settings.show_banner -%}
+  <section class="collection-hero{% if banner_img == blank %} collection-hero--plain{% endif %}"
+    {% if banner_img != blank %}style="background-image: url('{{ banner_img | image_url: width: 2200 }}');"{% endif %}>
+    <div class="collection-hero__overlay"></div>
+    <div class="container collection-hero__content">
+      {%- if section.settings.show_breadcrumb -%}
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span aria-hidden="true">/</span>
+          <span class="breadcrumb__current">{{ collection.title }}</span>
+        </nav>
+      {%- endif -%}
+      <h1 class="collection-hero__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="collection-hero__desc">{{ collection.description | strip_html | truncatewords: 30 }}</div>
+      {%- endif -%}
+      <p class="collection-hero__count">{{ collection.products_count }} product{% if collection.products_count != 1 %}s{% endif %}</p>
+    </div>
+  </section>
+{%- else -%}
+  <div class="collection-plain-head">
+    <div class="container">
+      {%- if section.settings.show_breadcrumb -%}
+        <nav class="breadcrumb breadcrumb--dark" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span aria-hidden="true">/</span>
+          <span class="breadcrumb__current">{{ collection.title }}</span>
+        </nav>
+      {%- endif -%}
+      <div class="section-header text-center mb-large">
+        <h6 class="eyebrow text-muted">{{ collection.products_count }} product{% if collection.products_count != 1 %}s{% endif %}</h6>
+        <h1 class="section-title text-primary">{{ collection.title }}</h1>
+        <div class="divider mx-auto"></div>
+        {%- if collection.description != blank -%}
+          <div class="section-subtitle">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<section class="section collection-grid-section">
+  <div class="container">
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      <div class="collection-toolbar">
+        <span class="collection-count">{{ collection.products_count }} product{% if collection.products_count != 1 %}s{% endif %}</span>
+
+        {%- if collection.sort_options.size > 0 -%}
+          <form method="get" class="collection-sort">
+            <label for="SortBy">Sort by</label>
+            <select name="sort_by" id="SortBy" onchange="this.form.submit()">
+              {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == current_sort %}selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+            {%- comment -%} keep active filters when sorting {%- endcomment -%}
+            {%- for filter in collection.filters -%}
+              {%- for value in filter.active_values -%}
+                <input type="hidden" name="{{ value.param_name }}" value="{{ value.value }}">
+              {%- endfor -%}
+              {%- if filter.type == 'price_range' -%}
+                {%- if filter.min_value.value -%}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}">{%- endif -%}
+                {%- if filter.max_value.value -%}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}">{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </form>
+        {%- endif -%}
+      </div>
+
+      <div class="collection-layout {% if collection.filters.size == 0 %}collection-layout--full{% endif %}">
+        {%- if collection.filters.size > 0 -%}
+          <aside class="collection-filters">
+            <form method="get">
+              <div class="collection-filters__head">
+                <span>Filter</span>
+                <a href="{{ collection.url }}" class="collection-filters__clear">Clear all</a>
+              </div>
+              {%- for filter in collection.filters -%}
+                <details class="filter-group" open>
+                  <summary>{{ filter.label }}</summary>
+                  {%- case filter.type -%}
+                    {%- when 'list', 'boolean' -%}
+                      <ul class="filter-values">
+                        {%- for value in filter.values -%}
+                          <li>
+                            <label class="filter-value">
+                              <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} {% if value.count == 0 and value.active == false %}disabled{% endif %} onchange="this.form.submit()">
+                              <span>{{ value.label }} <span class="filter-count">({{ value.count }})</span></span>
+                            </label>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- when 'price_range' -%}
+                      <div class="filter-price">
+                        <label>Min <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" placeholder="0"></label>
+                        <label>Max <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" placeholder="{{ filter.range_max | money_without_currency }}"></label>
+                        <button type="submit" class="btn btn-primary filter-apply">Apply</button>
+                      </div>
+                  {%- endcase -%}
+                </details>
+              {%- endfor -%}
+              {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+              <input type="hidden" name="sort_by" value="{{ current_sort }}">
+              <noscript><button type="submit" class="btn btn-primary">Apply filters</button></noscript>
+            </form>
+          </aside>
+        {%- endif -%}
+
+        <div class="collection-products">
+          {%- if collection.products.size > 0 -%}
+            <div class="grid grid-3 ritual-grid" id="collection-product-grid">
+              
+              <!-- 1. Normal / Available Products First -->
+              {%- for product in collection.products -%}
+                {%- liquid
+                  assign p_title_down = product.title | strip | downcase
+                  assign is_coming_soon = false
+                  if coming_soon_list contains p_title_down
+                    assign is_coming_soon = true
+                  endif
+                -%}
+                
+                {%- unless is_coming_soon -%}
+                  <div class="ritual-product-card-wrapper">
+                    {%- render 'product-card', product: product -%}
+                  </div>
+                {%- endunless -%}
+              {%- endfor -%}
+
+              <!-- 2. Coming Soon Products Last -->
+              {%- for product in collection.products -%}
+                {%- liquid
+                  assign p_title_down = product.title | strip | downcase
+                  assign is_coming_soon = false
+                  if coming_soon_list contains p_title_down
+                    assign is_coming_soon = true
+                  endif
+                -%}
+                
+                {%- if is_coming_soon -%}
+                  <div class="ritual-product-card-wrapper is-coming-soon-product">
+                    {%- render 'product-card', product: product -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+              <nav class="pagination" style="text-align:center;margin-top:3rem;">
+                {%- if paginate.previous -%}<a class="btn btn-primary" href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+                <span style="margin:0 1rem;">Page {{ paginate.current_page }} / {{ paginate.pages }}</span>
+                {%- if paginate.next -%}<a class="btn btn-primary" href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+              </nav>
+            {%- endif -%}
+          {%- else -%}
+            <p class="text-center">No products match these filters. <a href="{{ collection.url }}" style="text-decoration:underline;">Clear all</a></p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endpaginate -%}
+  </div>
+</section>
+
+<!-- CSS & JS for Coming Soon blur effect, unclickable cards, equal height & price hiding -->
+<style>
+  #collection-product-grid.ritual-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .ritual-product-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ritual-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .ritual-card > form {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .ritual-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+  }
+
+  .price-row {
+    margin-top: auto !important;
+  }
+
+  .ritual-product-card-wrapper.is-coming-soon-product {
+    position: relative;
+  }
+  
+  /* Disable clicks on links and buttons for coming soon products */
+  .ritual-product-card-wrapper.is-coming-soon-product a,
+  .ritual-product-card-wrapper.is-coming-soon-product button {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Hide prices and add to bag buttons for coming soon products */
+  .ritual-product-card-wrapper.is-coming-soon-product .price-row,
+  .ritual-product-card-wrapper.is-coming-soon-product .ritual-price,
+  .ritual-product-card-wrapper.is-coming-soon-product .btn-round-add,
+  .ritual-product-card-wrapper.is-coming-soon-product .btn-add-to-bag-img {
+    display: none !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    #collection-product-grid.ritual-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const wrappers = document.querySelectorAll('.ritual-product-card-wrapper.is-coming-soon-product');
+    
+    wrappers.forEach(wrapper => {
+      const img = wrapper.querySelector('img');
+      if (img) {
+        img.style.filter = 'blur(4px)';
+        img.style.transition = 'filter 0.3s ease';
+        
+        let mediaContainer = img.closest('.card__inner, .product-card__image, .card__media, .media, div[class*="image"], div[class*="media"]');
+        if (!mediaContainer) {
+          mediaContainer = img.parentElement;
+        }
+        
+        mediaContainer.style.position = 'relative';
+        mediaContainer.style.overflow = 'hidden';
+        
+        const badgeOverlay = document.createElement('div');
+        badgeOverlay.className = 'coming-soon-absolute-badge';
+        badgeOverlay.style.cssText = "position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); z-index: 10; pointer-events: none;";
+        badgeOverlay.innerHTML = '<span style="background: #ffffff; color: #000000; padding: 8px 16px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Coming Soon</span>';
+        
+        mediaContainer.appendChild(badgeOverlay);
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    { "type": "header", "content": "Banner" },
+    { "type": "checkbox", "id": "show_banner", "label": "Show banner", "default": true },
+    { "type": "image_picker", "id": "banner_image", "label": "Banner image", "info": "Falls back to the collection's image, then an on-brand gradient." },
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "header", "content": "Products" },
+    { "type": "range", "id": "products_per_page", "min": 4, "max": 24, "step": 1, "label": "Products per page", "default": 12 },
+    { 
+      "type": "textarea", 
+      "id": "coming_soon_products", 
+      "label": "Coming Soon Products (Exact Names)", 
+      "info": "Ek line mein ek product ka exact naam likhein",
+      "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo"
+    }
+  ]
+}
+{% endschema %}

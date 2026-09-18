@@ -1,0 +1,60 @@
+{%- assign payments = section.settings.payment_methods | newline_to_br | strip_newlines | split: '<br />' -%}
+<section class="bg-surface trust-badges-section extracted-style-93">
+  <div class="container grid grid-4 text-center align-start">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'badge' -%}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <span class="material-symbols-outlined trust-icon extracted-style-94">{{ block.settings.icon | escape }}</span>
+          <h4 class="trust-title extracted-style-95">{{ block.settings.title | escape }}</h4>
+          <p class="trust-desc extracted-style-96">{{ block.settings.description | escape | newline_to_br }}</p>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_payments -%}
+    <div class="container extracted-style-97">
+      <p class="text-center extracted-style-98">{{ section.settings.payments_heading | escape }}</p>
+      <div class="payment-methods-grid extracted-style-99">
+        {%- for method in payments -%}
+          {%- assign m = method | strip -%}
+          {%- if m != blank -%}<span class="extracted-style-100">{{ m | escape }}</span>{%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "settings": [
+    { "type": "header", "content": "Payment methods" },
+    { "type": "checkbox", "id": "show_payments", "label": "Show payment methods row", "default": true },
+    { "type": "text", "id": "payments_heading", "label": "Heading", "default": "Accepted Payment Methods" },
+    { "type": "textarea", "id": "payment_methods", "label": "Methods", "info": "One per line.", "default": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI" }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material icon name", "default": "local_shipping" },
+        { "type": "text", "id": "title", "label": "Title", "default": "FREE SHIPPING" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "On all orders over ₹999, dispatched\nin 24-48 hrs" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust badges",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "local_shipping", "title": "FREE SHIPPING", "description": "On all orders over ₹999, dispatched\nin 24-48 hrs" } },
+        { "type": "badge", "settings": { "icon": "credit_card", "title": "COD & UPI", "description": "Cash on delivery, UPI, cards &\nEMI at checkout" } },
+        { "type": "badge", "settings": { "icon": "replay", "title": "EASY 30-DAY RETURNS", "description": "Not your match? Return\nwithin 30 days, full refund" } },
+        { "type": "badge", "settings": { "icon": "lock", "title": "REAL SUPPORT", "description": "Mon-Sat, 10am-7pm\nIST - +91 XXXXX XXXXX" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,257 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign eyebrow = product.metafields.custom.collection_label | default: product.type
+  assign rating = product.metafields.custom.rating | default: '4.8'
+  assign review_count = product.metafields.custom.review_count | default: '124'
+-%}
+
+<div class="container breadcrumb-bar">{% render 'breadcrumb' %}</div>
+
+<section class="container mb-large extracted-style-130">
+  <div class="grid grid-12 gap-large align-start">
+    <!-- Left: Hero Image Gallery -->
+    <div class="col-7">
+      <div class="hero-gallery extracted-style-131">
+        <div class="hero-thumbnails extracted-style-132">
+          {%- if product.images.size > 0 -%}
+            {%- for image in product.images -%}
+              <div class="product-thumbnail extracted-style-133" data-image="{{ image | image_url: width: 1000 }}">
+                <img src="{{ image | image_url: width: 160 }}" width="160" height="200" alt="{{ image.alt | escape | default: product.title }}" class="extracted-style-134" loading="lazy">
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign demo_imgs = 'supple.jpg,1.jpeg,2.jpeg,3.jpeg,dusky-edit.jpg' | split: ',' -%}
+            {%- for img in demo_imgs -%}
+              <div class="product-thumbnail extracted-style-133" data-image="{{ img | asset_url }}">
+                <img src="{{ img | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="extracted-style-134" loading="lazy">
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+          <div class="mobile-spacer extracted-style-135"></div>
+        </div>
+        <div id="main-image-container" class="extracted-style-136">
+          {%- if product.featured_image -%}
+            <img id="main-product-image" src="{{ product.featured_image | image_url: width: 1000 }}" width="1000" height="1250" alt="{{ product.title | escape }}" class="extracted-style-137">
+          {%- else -%}
+            <img id="main-product-image" src="{{ 'supple.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="extracted-style-137">
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Product Information -->
+    <div class="col-5">
+      {%- if eyebrow != blank -%}<p class="extracted-style-138">{{ eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="italic-serif text-primary extracted-style-139">{{ product.title }}</h1>
+
+      {%- if product.description != blank -%}
+        <p class="text-on-surface-variant mb-medium extracted-style-140">{{ product.description | strip_html | truncatewords: 60 }}</p>
+      {%- endif -%}
+
+      {% comment %} Reviews {% endcomment %}
+      {% comment %} <div class="extracted-style-141">
+        <div class="extracted-style-142">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span class="extracted-style-143">★</span>
+        </div>
+        <span class="text-on-surface-variant extracted-style-144">{{ rating }} Based on {{ review_count }} reviews</span>
+      </div> {% endcomment %}
+
+      <div class="extracted-style-145">
+        <div class="extracted-style-146" id="pdp-price">{{ current_variant.price | money }}</div>
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+          <s class="text-muted">{{ current_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </div>
+
+      {%- form 'product', product, class: 'pdp-form' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" id="pdp-variant-id">
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="extracted-style-147">
+              <p class="extracted-style-148">{{ option.name }}</p>
+              <div class="extracted-style-149">
+                {%- for value in option.values -%}
+                  <button type="button" class="btn size-btn {% if option.selected_value == value %}active extracted-style-150{% else %}extracted-style-151{% endif %}"
+                    data-option-index="{{ forloop.parentloop.index0 }}" data-value="{{ value | escape }}" onclick="tuliaSelectOption(this)">{{ value }}</button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        {%- if product.available -%}
+
+          <!-- Connecting the new external JS asset file -->
+          {{ 'pincode-checker.js' | asset_url | script_tag }}
+
+          <!-- Fully Customizable Pincode Checker Widget -->
+          <div class="tulia-pincode-checker" style="margin: 25px 0 15px 0; padding: 18px; border: 1px solid #dcd1c4; border-radius: 4px; background-color: #faf8f5; max-width: 100%; box-sizing: border-box;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; color: #5a4a42;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="width: 100%; height: 100%; fill: currentColor;">
+                  <path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.57a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"></path>
+                </svg>
+              </span>
+              <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #1a1a1a; letter-spacing: 0.5px;">Check Delivery Availability</h4>
+            </div>
+
+            <div style="display: flex; gap: 8px; width: 100%; box-sizing: border-box;">
+              <input type="text" id="tulia-pin-input" placeholder="Enter 6-digit Pincode" maxlength="6" pattern="\d*" inputmode="numeric" oninput="handlePinInput(this)" style="flex: 1; padding: 11px 14px; border: 1px solid #b5a89e; border-radius: 2px; font-size: 14px; outline: none; background: #fff; color: #000; box-sizing: border-box;">
+              <button type="button" id="tulia-check-btn" onclick="tuliaCheckPincode()" disabled style="background: #b5a89e; color: #ffffff; border: none; padding: 11px 22px; border-radius: 2px; cursor: not-allowed; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s, opacity 0.2s; opacity: 0.7;">Check</button>
+            </div>
+            
+            <div id="tulia-pin-response" style="margin-top: 12px; font-size: 13px; line-height: 1.5; display: none; padding-top: 4px;"></div>
+          </div>
+
+          {% comment %} product-details-page-wishlist {% endcomment %}
+          <xb-wishlist-button 
+            xb-product-id="{{ product.id }}" 
+            xb-variant-id="{{ current_variant.id | default: product.selected_or_first_available_variant.id }}" 
+            xb-title="{{ product.title | escape }}" 
+            xb-handle="{{ product.handle }}" 
+            xb-price="{{ product.price | money_without_currency }}" 
+            xb-count="0"
+            style="margin-bottom: 15px; display: block;">
+          </xb-wishlist-button>
+
+
+      
+          <button type="submit" id="pdp-submit" class="btn btn-primary extracted-style-154"
+            data-add-label="{{ section.settings.add_label | default: 'Add to bag' | escape }}"
+            data-soldout-label="{{ 'products.product.sold_out' | t }}">{{ section.settings.add_label | default: 'Add to bag' }}</button>
+        {%- else -%}
+          <button type="button" class="btn btn-primary extracted-style-154 waitlist-trigger">{{ section.settings.notify_label | default: 'Notify' }}</button>
+        {%- endif -%}
+      {%- endform -%}
+ 
+      {%- if section.settings.show_coupon -%}
+        <div class="extracted-style-155">
+          <div class="extracted-style-156">
+            <span class="material-symbols-outlined extracted-style-17">local_activity</span>
+            <span class="extracted-style-157">{{ section.settings.coupon_text | escape }}</span>
+          </div>
+          <button type="button" class="extracted-style-158">Apply</button>
+        </div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="extracted-style-159">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'spec' -%}
+              <li class="extracted-style-160" {{ block.shopify_attributes }}>
+                <span class="material-symbols-outlined extracted-style-161">{{ block.settings.icon | escape }}</span>
+                {{ block.settings.text | escape }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Variant map so the size buttons keep the cart form + price in sync.
+  window.tuliaProductVariants = {{ product.variants | json }};
+
+  function tuliaSelectOption(btn) {
+    // Toggle active state only within this option's button row.
+    var row = btn.closest('.extracted-style-149') || btn.parentElement;
+    row.querySelectorAll('.size-btn').forEach(function (b) {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--on-surface-variant)';
+      b.style.borderColor = 'var(--outline)';
+    });
+    btn.classList.add('active');
+    btn.style.background = 'var(--primary)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--primary)';
+    tuliaUpdateVariant();
+  }
+
+  // Format cents using the store money format string so prices always match
+  // Shopify's money filter output (symbol, separators and decimals).
+  function tuliaFormatMoney(cents) {
+    var fmt = window.tuliaMoneyFormat || ('{' + '{amount}}');
+    var amount = cents / 100;
+    function grp(num, decimals) {
+      var parts = (Math.round(num * 100) / 100).toFixed(decimals).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return parts.join('.');
+    }
+    return fmt
+      .replace(/\{\{\s*amount\s*\}\}/g, grp(amount, 2))
+      .replace(/\{\{\s*amount_no_decimals\s*\}\}/g, grp(amount, 0))
+      .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/g, grp(amount, 2))
+      .replace(/\{\{\s*amount_no_decimals_with_comma_separator\s*\}\}/g, grp(amount, 0));
+  }
+
+  function tuliaUpdateVariant() {
+    var btns = document.querySelectorAll('.pdp-form .size-btn.active');
+    var chosen = [];
+    btns.forEach(function (b) { chosen[parseInt(b.dataset.optionIndex, 10)] = b.dataset.value; });
+    var variants = window.tuliaProductVariants || [];
+    var match = variants.find(function (v) {
+      return (chosen[0] == null || v.option1 === chosen[0]) &&
+             (chosen[1] == null || v.option2 === chosen[1]) &&
+             (chosen[2] == null || v.option3 === chosen[2]);
+    });
+    var btn = document.getElementById('pdp-submit');
+    if (match) {
+      var idInput = document.getElementById('pdp-variant-id');
+      var priceEl = document.getElementById('pdp-price');
+      if (idInput) idInput.value = match.id;
+      if (priceEl) {
+        priceEl.textContent = tuliaFormatMoney(match.price);
+      }
+      if (btn) {
+        if (match.available) {
+          btn.disabled = false;
+          btn.textContent = btn.dataset.addLabel;
+        } else {
+          btn.disabled = true;
+          btn.textContent = btn.dataset.soldoutLabel;
+        }
+      }
+    } else if (btn) {
+      btn.disabled = true;
+      btn.textContent = '{{ 'products.product.unavailable' | t }}';
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "text", "id": "add_label", "label": "Add to cart label", "default": "Add to bag" },
+    { "type": "text", "id": "notify_label", "label": "Sold-out label", "default": "Notify" },
+    { "type": "header", "content": "Coupon row" },
+    { "type": "checkbox", "id": "show_coupon", "label": "Show coupon row", "default": true },
+    { "type": "text", "id": "coupon_text", "label": "Coupon text", "default": "Enter coupon code to unlock available offers." }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec item",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material icon name", "default": "water_drop" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Lightweight, non-sticky" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product",
+      "blocks": [
+        { "type": "spec", "settings": { "icon": "water_drop", "text": "Lightweight, non-sticky" } },
+        { "type": "spec", "settings": { "icon": "today", "text": "Suitable for daily use" } },
+        { "type": "spec", "settings": { "icon": "spa", "text": "Uneven-looking lips" } },
+        { "type": "spec", "settings": { "icon": "health_and_safety", "text": "Smooth & healthy" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,188 @@
+{%- liquid
+  assign footer_logo = section.settings.logo_white | default: settings.logo_white
+-%}
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <!-- Left Column -->
+    <div class="footer-left-col">
+      <div class="footer-logo-wrapper extracted-style-102">
+        {%- if footer_logo != blank -%}
+          <img src="{{ footer_logo | image_url: width: 320 }}" width="320" height="87" alt="{{ shop.name | escape }}" class="extracted-style-103">
+        {%- else -%}
+          <img src="{{ 'logo-white.png' | asset_url }}" width="432" height="148" alt="{{ shop.name | escape }}" class="extracted-style-103">
+        {%- endif -%}
+      </div>
+      <div class="footer-links-grid extracted-style-104">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'menu_column' -%}
+            <div class="footer-col" {{ block.shopify_attributes }}>
+              <h3 class="footer-heading">{{ block.settings.heading | escape }}</h3>
+              <ul class="footer-links">
+                {%- if block.settings.menu != blank -%}
+                  {%- for link in linklists[block.settings.menu].links -%}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- assign items = block.settings.fallback_links | newline_to_br | strip_newlines | split: '<br />' -%}
+                  {%- for item in items -%}
+                    {%- assign parts = item | split: '|' -%}
+                    <li><a href="{{ parts[1] | default: '#' | strip }}">{{ parts[0] | strip }}</a></li>
+                  {%- endfor -%}
+                {%- endif -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="footer-social-section extracted-style-105">
+        <h3 class="stay-in-touch waitlist-trigger extracted-style-106">{{ section.settings.waitlist_heading | escape }}</h3>
+        <div class="social-icons extracted-style-107">
+          <span class="mobile-social-text extracted-style-108">Social Media</span>
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_youtube_link != blank -%}
+            <a href="{{ settings.social_youtube_link }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="footer-right-col">
+      <div class="footer-image-banner">
+        {%- if section.settings.branding_image != blank -%}
+          <img src="{{ section.settings.branding_image | image_url: width: 800 }}" width="800" height="450" alt="{{ shop.name | escape }}">
+        {%- else -%}
+          <img src="{{ 'tulia-branding.png' | asset_url }}" width="1600" height="900" alt="{{ shop.name | escape }}">
+        {%- endif -%}
+      </div>
+
+      <div class="newsletter-wrapper">
+        <h4 class="newsletter-eyebrow mb-small extracted-style-109">{{ section.settings.newsletter_eyebrow | escape }}</h4>
+        <h3 class="newsletter-title mb-small extracted-style-110">{{ section.settings.newsletter_title | escape }}</h3>
+        <p class="newsletter-desc mb-medium text-white">{{ section.settings.newsletter_desc | escape }}</p>
+        {%- form 'customer', class: 'newsletter-form-footer' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p class="text-white">Thanks for subscribing.</p>
+          {%- else -%}
+            <input type="email" name="contact[email]" placeholder="your-email@example.com" required class="input-line">
+            <button type="submit" class="btn-arrow" aria-label="Subscribe">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+
+  {%- liquid
+    assign show_loc = false
+    if section.settings.show_localization
+      if localization.available_countries.size > 1 or localization.available_languages.size > 1
+        assign show_loc = true
+      endif
+    endif
+  -%}
+  {%- if show_loc -%}
+    <div class="footer-localization">
+      <div class="container footer-localization__inner">
+        {%- if localization.available_countries.size > 1 -%}
+          {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+            <label for="FooterCountry">Country/region</label>
+            <select id="FooterCountry" name="country_code" onchange="this.form.submit()">
+              {%- for country in localization.available_countries -%}
+                <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>{{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})</option>
+              {%- endfor -%}
+            </select>
+          {%- endform -%}
+        {%- endif -%}
+        {%- if localization.available_languages.size > 1 -%}
+          {%- form 'localization', id: 'FooterLangForm', class: 'localization-form' -%}
+            <label for="FooterLang">Language</label>
+            <select id="FooterLang" name="locale_code" onchange="this.form.submit()">
+              {%- for language in localization.available_languages -%}
+                <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+              {%- endfor -%}
+            </select>
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="footer-bottom-bar">
+    <div class="container footer-bottom-content extracted-style-111">
+      <div class="copyright-text extracted-style-112">
+        {%- assign current_year = 'now' | date: '%Y' -%}
+        {{ section.settings.copyright | replace: '[year]', current_year }}
+      </div>
+      {%- if section.settings.credit != blank -%}
+        {%- liquid
+          assign credit_out = section.settings.credit
+          if section.settings.credit_url != blank and section.settings.credit_brand != blank
+            assign brand_link = '<a href="' | append: section.settings.credit_url | append: '" target="_blank" rel="noopener noreferrer" class="credit-link">' | append: section.settings.credit_brand | append: '</a>'
+            assign credit_out = section.settings.credit | replace: section.settings.credit_brand, brand_link
+          endif
+        -%}
+        <div class="developed-by-text extracted-style-112">{{ credit_out }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "header", "content": "Branding" },
+    { "type": "image_picker", "id": "logo_white", "label": "Footer logo (white)" },
+    { "type": "image_picker", "id": "branding_image", "label": "Branding banner image" },
+    { "type": "text", "id": "waitlist_heading", "label": "Waitlist heading", "default": "Join Our Waitlist" },
+    { "type": "header", "content": "Newsletter" },
+    { "type": "text", "id": "newsletter_eyebrow", "label": "Eyebrow", "default": "OUR WEEKLY NEWSLETTER" },
+    { "type": "text", "id": "newsletter_title", "label": "Title", "default": "Outgrow the standards" },
+    { "type": "textarea", "id": "newsletter_desc", "label": "Description", "default": "Subscribe to our monthly newsletter to get the inside story" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "checkbox", "id": "show_localization", "label": "Show country/language selector", "info": "Appears when your store has more than one market or language.", "default": true },
+    { "type": "text", "id": "copyright", "label": "Copyright text", "info": "Use [year] for the current year.", "default": "Copyright © [year] Tulia Cosmetics. All rights reserved." },
+    { "type": "text", "id": "credit", "label": "Credit text", "default": "Developed with ❤ by Chimpzlab" },
+    { "type": "text", "id": "credit_brand", "label": "Credit — linked word", "info": "The word in the credit text turned into a link.", "default": "Chimpzlab" },
+    { "type": "text", "id": "credit_url", "label": "Credit — link URL", "default": "https://chimpzlab.com" }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "SHOP" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "info": "Pick a navigation menu. If empty, the fallback links below are used." },
+        { "type": "textarea", "id": "fallback_links", "label": "Fallback links", "info": "One per line as: Label | /url", "default": "Skincare | #\nHaircare | #\nLip Care | #\nAll Products | /collections/all\nBestsellers | #" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        { "type": "menu_column", "settings": { "heading": "SHOP", "fallback_links": "Skincare | #\nHaircare | #\nLip Care | #\nAll Products | /collections/all\nBestsellers | #" } },
+        { "type": "menu_column", "settings": { "heading": "BRAND", "fallback_links": "Our Story | #\nThe Flow of Rebirth | #\nContact Us | #\nStockists | #\nRetail Partner | #" } },
+        { "type": "menu_column", "settings": { "heading": "LEARN", "fallback_links": "Skin, Decoded | /blogs/news\nOur Formulation | #\nMade for Indian Skin | #" } },
+        { "type": "menu_column", "settings": { "heading": "HELP", "fallback_links": "FAQs | #\nShipping & Returns | #\nTrack Order | #\nPrivacy Policy | #" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

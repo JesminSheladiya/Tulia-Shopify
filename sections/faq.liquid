@@ -1,0 +1,75 @@
+{%- liquid
+  assign mf = product.metafields.custom[section.settings.metafield_key]
+  assign entries = mf.value
+-%}
+<section class="section bg-surface extracted-style-225">
+  <div class="container text-center max-w-4xl mx-auto">
+    <h2 class="section-title italic-serif text-primary mb-medium">{{ section.settings.title | escape }}</h2>
+    <div class="extracted-style-124">
+      {%- if entries != blank and entries.size > 0 -%}
+        {%- for entry in entries -%}
+          {%- liquid
+            assign q = entry[section.settings.field_question].value
+            if q == blank
+              assign q = 'Question ' | append: forloop.index
+            endif
+            assign a = entry[section.settings.field_answer].value
+          -%}
+          <details class="group extracted-style-226">
+            <summary class="extracted-style-227">
+              {{ q | escape }}
+              <span class="material-symbols-outlined">add</span>
+            </summary>
+            <div class="extracted-style-228">{{ a | escape }}</div>
+          </details>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <details class="group extracted-style-226" {{ block.shopify_attributes }}>
+            <summary class="extracted-style-227">
+              {{ block.settings.question | escape }}
+              <span class="material-symbols-outlined">add</span>
+            </summary>
+            <div class="extracted-style-228">{{ block.settings.answer | escape }}</div>
+          </details>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Common Inquiries" },
+    { "type": "header", "content": "Dynamic data (metaobjects)" },
+    { "type": "paragraph", "content": "When the product has the metafield below, questions are pulled from those metaobjects. Otherwise the manual blocks are used." },
+    { "type": "text", "id": "metafield_key", "label": "Product metafield key (custom.___)", "default": "faqs" },
+    { "type": "text", "id": "field_question", "label": "Metaobject field: question", "default": "question" },
+    { "type": "text", "id": "field_answer", "label": "Metaobject field: answer", "default": "answer" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How often should I apply it?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Apply it exclusively at night to let active ingredients safely renew your lips overnight." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "How often should I apply it?", "answer": "Apply it exclusively at night to let active ingredients safely renew your lips overnight." } },
+        { "type": "qa", "settings": { "question": "Can it be used during the day?", "answer": "Intentionally designed to be used exclusively as part of your nighttime skincare routine, applying it before bed allows the formula to work optimally during the skin's natural overnight renewal cycle" } },
+        { "type": "qa", "settings": { "question": "When will I see results?", "answer": "Deep hydration is instant, while visible tone correction typically surfaces within four to six weeks." } },
+        { "type": "qa", "settings": { "question": "Is it safe for sensitive lips?", "answer": "Yes, it balances active brighteners with soothing botanicals, but avoid using it on cracked skin." } },
+        { "type": "qa", "settings": { "question": "Does it feel heavy?", "answer": "No, the premium formula melts immediately into the skin, leaving a lightweight, soft finish." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

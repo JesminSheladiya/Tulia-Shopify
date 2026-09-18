@@ -1,0 +1,109 @@
+{%- liquid
+  assign pmf = product.metafields.custom[section.settings.products_metafield_key]
+  assign linked_products = pmf.value
+-%}
+<section id="complete-care-section" class="section bg-surface extracted-style-223">
+  <div class="container text-center">
+    <h2 class="section-title italic-serif text-primary mb-large">{{ section.settings.title | escape }}</h2>
+    <div class="grid grid-3 gap-large">
+      {%- if section.settings.products_metafield_key != blank and linked_products != blank and linked_products.size > 0 -%}
+        {%- for entry in linked_products -%}
+          {%- liquid
+            assign linked = entry[section.settings.field_product].value
+            assign badge = entry.title.value | split: '/' | first | strip
+          -%}
+          <div class="complete-care-card group">
+            <div class="cc-img-wrapper">
+              {%- if badge != blank -%}<span class="cc-badge">{{ badge | escape }}</span>{%- endif -%}
+              {%- if linked != blank and linked.featured_image -%}
+                <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+              {%- endif -%}
+              {%- if linked != blank and linked.available -%}
+                <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
+                  <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
+                </form>
+              {%- elsif linked != blank -%}
+                <a href="{{ linked.url }}" class="btn-quick-add extracted-style-224">Quick Add</a>
+              {%- endif -%}
+            </div>
+            <h3 class="cc-title">{{ linked.title | default: entry.title.value | escape }}</h3>
+            <div class="cc-meta"><span>{%- if linked -%}{{ linked.price | money }}{%- endif -%}</span></div>
+            <div class="cc-line"></div>
+            <div class="cc-desc">{% render 'mo-text', field: entry[section.settings.field_description], allow_newline: true %}</div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+      {%- for block in section.blocks -%}
+        {%- assign linked = block.settings.product -%}
+        <div class="complete-care-card group" {{ block.shopify_attributes }}>
+          <div class="cc-img-wrapper">
+            {%- if block.settings.badge != blank -%}<span class="cc-badge">{{ block.settings.badge | escape }}</span>{%- endif -%}
+            {%- if linked != blank and linked.featured_image -%}
+              <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+            {%- elsif block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+            {%- endif -%}
+            {%- if linked != blank and linked.available -%}
+              <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart style="margin:0;">
+                <input type="hidden" name="id" value="{{ linked.selected_or_first_available_variant.id }}">
+                <button type="submit" class="btn-quick-add extracted-style-224">Quick Add</button>
+              </form>
+            {%- else -%}
+              <a href="{{ linked.url | default: '#' }}" class="btn-quick-add extracted-style-224">Quick Add</a>
+            {%- endif -%}
+          </div>
+          <h3 class="cc-title">{{ linked.title | default: block.settings.title | escape }}</h3>
+          <div class="cc-meta">
+            {%- if block.settings.size != blank -%}<span>{{ block.settings.size | escape }}</span><span>—</span>{%- endif -%}
+            <span>{%- if linked != blank -%}{{ linked.price | money }}{%- else -%}{{ block.settings.price | escape }}{%- endif -%}</span>
+          </div>
+          <div class="cc-line"></div>
+          <div class="cc-desc">{{ block.settings.description | escape | default: linked.description | strip_html | truncatewords: 40 }}</div>
+        </div>
+      {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Complete the routine",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Give your skin the complete care" },
+    { "type": "header", "content": "Dynamic data (product references)" },
+    { "type": "paragraph", "content": "When the product has this product-list metafield, those products are shown. Otherwise the manual blocks are used." },
+    { "type": "text", "id": "products_metafield_key", "label": "Product metafield key (custom.___)", "default": "other_products" },
+    { "type": "text", "id": "field_product", "label": "Metaobject field: linked product", "default": "image" },
+    { "type": "text", "id": "field_description", "label": "Metaobject field: description", "default": "description" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product", "info": "Pulls live title, image, and price. Manual fields below are used as a fallback." },
+        { "type": "text", "id": "badge", "label": "Badge", "default": "PREP" },
+        { "type": "image_picker", "id": "image", "label": "Fallback image" },
+        { "type": "text", "id": "title", "label": "Fallback title", "default": "Tulia Skin Lightening & Brightening Facewash" },
+        { "type": "text", "id": "size", "label": "Size", "default": "70gm" },
+        { "type": "text", "id": "price", "label": "Fallback price", "default": "₹850" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "A rich, creamy exfoliating cleanser formulated with vitamin C and micro-globules to deeply wash away daily impurities while actively preparing your skin tone for target treatments" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Complete the routine",
+      "blocks": [
+        { "type": "product", "settings": { "badge": "PREP", "title": "Tulia Skin Lightening & Brightening Facewash", "size": "70gm", "price": "₹850", "description": "A rich, creamy exfoliating cleanser formulated with vitamin C and micro-globules to deeply wash away daily impurities while actively preparing your skin tone for target treatments" } },
+        { "type": "product", "settings": { "badge": "HYDRATE", "title": "Tulia Lip Balm", "size": "9gm", "price": "₹330", "description": "A daily pocket essential packed with kokum and shea butters to lock in long-lasting moisture and guard your lips against the elements all day long" } },
+        { "type": "product", "settings": { "badge": "PROTECT", "title": "Tulia Physical Sunscreen Gel", "size": "50gm", "price": "₹1750", "description": "An ultra-transparent, non-comedogenic zinc oxide shield that leaves zero white patches while providing absolute broad-spectrum protection against UV damage" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

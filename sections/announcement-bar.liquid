@@ -1,0 +1,37 @@
+{%- if section.settings.show_strip -%}
+  <div class="top-waitlist-strip {% if section.settings.trigger_waitlist %}waitlist-trigger{% endif %}"
+       {% if section.settings.link != blank and section.settings.trigger_waitlist == false %}onclick="window.location.href='{{ section.settings.link }}'" style="cursor:pointer;"{% endif %}>
+    <span class="waitlist-text">{{ section.settings.text | escape }}</span>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement strip",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_strip",
+      "label": "Show strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "JOIN OUR WAITLIST"
+    },
+    {
+      "type": "checkbox",
+      "id": "trigger_waitlist",
+      "label": "Open the waitlist popup on click",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link (used when popup is off)"
+    }
+  ]
+}
+{% endschema %}

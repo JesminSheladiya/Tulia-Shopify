@@ -1,0 +1,121 @@
+{%- liquid
+  assign frames_count = section.settings.frames_count
+-%}
+
+<style>
+  /* Hero Banner Responsive Fixes */
+  .hero-banner {
+    position: relative;
+    width: 100%;
+  }
+  
+  .hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 15px;
+    {% comment %} margin-top: 15px; {% endcomment %}
+  }
+  
+  /* Sirf laptop screen (1024px to 1440px) ke liye content ko thoda sa adjust kiya hai taaki heading/eyebrow header ke peeche cut na ho aur poora content saaf dikhe. Baaki devices par sab kuch bilkul pehle jaisa rahega. */
+  @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .hero-banner .hero-content {
+      top: 10% !important;
+    }
+    .hero-banner .hero-title {
+      font-size: 3.5rem !important;
+      line-height: 1.15 !important;
+    }
+  }
+</style>
+
+<section class="hero-banner" id="hero">
+  <div class="scroll-container">
+    <div class="canvas-wrapper">
+      {%- if section.settings.use_sequence -%}
+        <img id="sequence-img" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
+      {%- elsif section.settings.fallback_image != blank -%}
+        <img id="sequence-img" src="{{ section.settings.fallback_image | image_url: width: 1920 }}" width="1920" height="2400" alt="{{ section.settings.title | strip_html | escape }}">
+      {%- else -%}
+        <img id="sequence-img" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
+      {%- endif -%}
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content container">
+      <div class="hero-text-block left-aligned">
+        <div class="hero-content-inner extracted-style-6">
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="hero-eyebrow text-white extracted-style-7" id="hero-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+          {%- endif -%}
+          <h1 class="hero-title hero-text-shadow text-white font-bold extracted-style-8" id="hero-title">{{ section.settings.title | escape | newline_to_br }}</h1>
+          {%- if section.settings.description != blank -%}
+            <p class="hero-desc hero-text-shadow text-white extracted-style-9" id="hero-desc">{{ section.settings.description | escape }}</p>
+          {%- endif -%}
+
+          <div class="hero-cta extracted-style-10" id="hero-cta">
+            {%- if section.settings.cta1_label != blank -%}
+              <a href="{{ section.settings.cta1_link | default: '#' }}" class="btn btn-outline-light">{{ section.settings.cta1_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.cta2_label != blank -%}
+              <a href="{{ section.settings.cta2_link | default: '#' }}" class="btn btn-primary-light">{{ section.settings.cta2_label | escape }}</a>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.pointer != blank -%}
+            <p class="hero-pointer text-white extracted-style-11" id="hero-pointer">{{ section.settings.pointer | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- if section.settings.scroll_link != blank -%}
+      <a href="{{ section.settings.scroll_link }}" class="scroll-down-btn text-white">
+        Scroll Down <span class="material-symbols-outlined">expand_more</span>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if section.settings.use_sequence -%}
+  <script>
+    window.tuliaHeroFrames = [
+      {%- for i in (1..frames_count) -%}
+        {%- assign num = i | prepend: '00' -%}
+        {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
+        {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
+        "{{ 'frame-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+    window.tuliaHeroFramesMobile = [
+      {%- for i in (1..frames_count) -%}
+        {%- assign num = i | prepend: '00' -%}
+        {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
+        {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
+        "{{ 'frame-v-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    { "type": "header", "content": "Scroll animation" },
+    { "type": "checkbox", "id": "use_sequence", "label": "Use bundled scroll image sequence", "default": true },
+    { "type": "range", "id": "frames_count", "min": 2, "max": 26, "step": 1, "label": "Number of frames", "default": 26 },
+    { "type": "image_picker", "id": "fallback_image", "label": "Static background (used when sequence is off)" },
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Science-backed Premium Formulations" },
+    { "type": "textarea", "id": "title", "label": "Title", "info": "Each line becomes a new line.", "default": "Made for\nIndian Skin" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Formulations calibrated for our humidity, UV index and melanin-rich skin" },
+    { "type": "text", "id": "pointer", "label": "Sub pointer line", "default": "Cruelty-free | Dermatologist-Approved | Made in India" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "cta1_label", "label": "Button 1 label", "default": "Shop Bestsellers" },
+    { "type": "url", "id": "cta1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "cta2_label", "label": "Button 2 label", "default": "Find your Ritual" },
+    { "type": "url", "id": "cta2_link", "label": "Button 2 link" },
+    { "type": "url", "id": "scroll_link", "label": "Scroll-down link" }
+  ],
+  "presets": [{ "name": "Hero banner" }]
+}
+{% endschema %}

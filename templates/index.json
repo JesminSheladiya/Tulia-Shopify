@@ -1,0 +1,427 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "use_sequence": true,
+        "frames_count": 26,
+        "eyebrow": "Science-backed Premium Formulations",
+        "title": "Born in India,\nMade for the World",
+        "description": "Formulations calibrated for our humidity, UV index and melanin-rich skin",
+        "pointer": "Cruelty-free | Made in India",
+        "cta1_label": "Shop Bestsellers",
+        "cta1_link": "",
+        "cta2_label": "Find your Ritual",
+        "cta2_link": "",
+        "scroll_link": "#ritual-finder"
+      }
+    },
+    "ticker": {
+      "type": "ticker",
+      "settings": {
+        "items": "Clinically Proven\nVegan Certified\nPalm Oil-Free\npH-Balanced Formula\nAnti-Pollution Tested\nSafe for Sensitive Skin"
+      }
+    },
+    "ritual": {
+      "type": "ritual-finder",
+      "blocks": {
+        "f_all": {
+          "type": "filter",
+          "settings": {
+            "label": "All products",
+            "filter": "all"
+          }
+        },
+        "f_pig": {
+          "type": "filter",
+          "settings": {
+            "label": "Pigmentation & tan",
+            "filter": "pigmentation"
+          }
+        },
+        "f_dull": {
+          "type": "filter",
+          "settings": {
+            "label": "Dullness & Uneven Tone",
+            "filter": "dullness"
+          }
+        },
+        "f_oil": {
+          "type": "filter",
+          "settings": {
+            "label": "Oil & Humidity",
+            "filter": "oil"
+          }
+        },
+        "f_hyd": {
+          "type": "filter",
+          "settings": {
+            "label": "Hydration & Barrier",
+            "filter": "hydration"
+          }
+        },
+        "f_hair": {
+          "type": "filter",
+          "settings": {
+            "label": "Hair & Scalp",
+            "filter": "hair"
+          }
+        }
+      },
+      "block_order": [
+        "f_all",
+        "f_pig",
+        "f_dull",
+        "f_oil",
+        "f_hyd",
+        "f_hair"
+      ],
+      "custom_css": [
+        "#ritual-finder {padding-top: 80px; padding-bottom: 80px;}",
+        ".extracted-style-13 {display: none;}"
+      ],
+      "settings": {
+        "eyebrow": "THE RITUAL FINDER",
+        "title": "What is your skin telling you?",
+        "subtitle": "Discover the formulation your skin has been asking for",
+        "collection": "all-products",
+        "products_limit": 12,
+        "coming_soon_products": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo"
+      }
+    },
+    "heritage": {
+      "type": "heritage",
+      "settings": {
+        "eyebrow": "Our Heritage",
+        "title": "For every bronze and honey, for \nevery wavy and straight",
+        "paragraph_1": "Indian beauty has always been rich in nuance.",
+        "paragraph_2": "And Tulia Cosmetics is thoughtfully formulated around the realities of these nuances our climate, our textures, our routines, and the features we've been far too long told to change. Born from that understanding, made for every hue and texture, everywhere.",
+        "link_label": "Explore Our Science",
+        "link_url": ""
+      }
+    },
+    "calibrated": {
+      "type": "calibrated-edits",
+      "blocks": {
+        "r1": {
+          "type": "reality",
+          "settings": {
+            "icon": "light_mode",
+            "title": "High UV index",
+            "text": "Photo-stable physical defense (SPF 50+) that protects melanin-rich skin without a chalky white cast."
+          }
+        },
+        "r2": {
+          "type": "reality",
+          "settings": {
+            "icon": "water_drop",
+            "title": "Humidity & sebum",
+            "text": "Lightweight, fast-absorbing textures balanced for sweat and oil — hydration that never sits greasy."
+          }
+        },
+        "r3": {
+          "type": "reality",
+          "settings": {
+            "icon": "location_on",
+            "title": "Melanin-rich skin",
+            "text": "Tone-evening actives that brighten and fade pigmentation — never harsh chemical bleaching."
+          }
+        },
+        "e3": {
+          "type": "edit",
+          "settings": {
+            "image": "shopify://shop_images/explore-edit-1.webp",
+            "coming_soon": false,
+            "title": "The Tint Edit",
+            "description": "Lip balm, Lip lightening cream",
+            "button_label": "Shop The Tint Edit",
+            "link": "https://tuliacosmetics.myshopify.com/collections/the-tint-edit"
+          }
+        },
+        "e1": {
+          "type": "edit",
+          "settings": {
+            "image": "shopify://shop_images/dusky-edit_33903a32-8d12-496c-8947-ca4190d568d5.jpg",
+            "coming_soon": true,
+            "title": "The Dusky Edit",
+            "description": "Sunscreen, Buttermax cream, Skin lightening facewash",
+            "button_label": "Shop The Dusky Edit",
+            "link": ""
+          }
+        },
+        "e2": {
+          "type": "edit",
+          "settings": {
+            "image": "shopify://shop_images/waves-edit_cd5cabcb-f1fa-48fc-a009-0822e09bba65.jpg",
+            "coming_soon": true,
+            "title": "The Waves Edit",
+            "description": "Shampoo + Conditioner + Serum",
+            "button_label": "Shop The Waves Edit",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "e3",
+        "e1",
+        "e2"
+      ],
+      "settings": {
+        "eyebrow": "CALIBRATED, NOT BORROWED",
+        "title": "Built for the way your skin actually lives",
+        "paragraph": "For too long we adapted to heavy, western-made formulas designed for cool, dry geographies. Tulia Cosmetics is engineered the other way round",
+        "tags": "PARABEN-FREE               \nSULFATE-FREE\n---\nNO MINERAL OIL\nPATCH-TESTED",
+        "edits_title": "Explore The Edits"
+      }
+    },
+    "founder": {
+      "type": "founder-quote",
+      "settings": {
+        "quote": "\"For years, we have adapted to heavy, western-made formulas designed for cool, dry geographies, making our skin unbalanced in its own environment. Tulia Cosmetics corrects that by bringing you skincare that blends high-performance essentials specifically calibrated for the unique humidity, UV levels, and biological needs of melanin-rich skin.\"",
+        "link_label": "SEE HOW WE FORMULATE",
+        "link_url": "",
+        "author_name": "Angelin",
+        "author_title": "Founder, Tulia Cosmetics"
+      }
+    },
+    "video": {
+      "type": "video-gallery",
+      "blocks": {
+        "v1": {
+          "type": "reel",
+          "settings": {
+            "link": "",
+            "product_title": "Skin Lightening Facewash",
+            "product_price": "₹850",
+            "product_image": "shopify://shop_images/supple_5ab093a7-9703-4626-bc99-f08750581039.jpg"
+          }
+        },
+        "v2": {
+          "type": "reel",
+          "settings": {
+            "link": "",
+            "product_title": "Buttermax Intensive Cream",
+            "product_price": "₹1300",
+            "product_image": "shopify://shop_images/supple_5ab093a7-9703-4626-bc99-f08750581039.jpg"
+          }
+        },
+        "v3": {
+          "type": "reel",
+          "settings": {
+            "link": "",
+            "product_title": "Physical Sunscreen Gel SPF 50+",
+            "product_price": "₹1750",
+            "product_image": "shopify://shop_images/gleam_9cd16ee2-3f9d-4737-a8d6-bcbb68f6a879.jpg"
+          }
+        },
+        "v4": {
+          "type": "reel",
+          "settings": {
+            "link": "",
+            "product_title": "Cleansing Oil",
+            "product_price": "₹950",
+            "product_image": "shopify://shop_images/supple_5ab093a7-9703-4626-bc99-f08750581039.jpg"
+          }
+        },
+        "v5": {
+          "type": "reel",
+          "settings": {
+            "link": "",
+            "product_title": "Rebirth Serum",
+            "product_price": "₹1500",
+            "product_image": "shopify://shop_images/supple_5ab093a7-9703-4626-bc99-f08750581039.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4",
+        "v5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Stories of Rebirth",
+        "subtitle": "Real rituals. Real skin. See the transformation."
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Awesome! The level of customer service is excellent every time. \"Perfect on the first try or quickly adjusted.\" I'm so happy 😊",
+            "name": "DIVYA MENON",
+            "product": "Buttermax Intensive",
+            "product_image": "shopify://shop_images/supple_5ab093a7-9703-4626-bc99-f08750581039.jpg"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The products have a story just like the designers. I love my Tulia Cosmetics Skin Lightening Facewash! It truly feels refreshing every morning.",
+            "name": "PRIYA NATARAJAN",
+            "product": "Skin Lightening Facewash",
+            "product_image": "shopify://shop_images/gleam_9cd16ee2-3f9d-4737-a8d6-bcbb68f6a879.jpg"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've been looking for physical sunscreen that doesn't leave a white cast. Tulia Cosmetics formula is absolutely perfect for my skin tone!",
+            "name": "AISHWARYA RAO",
+            "product": "Physical Sunscreen Gel",
+            "product_image": "shopify://shop_images/sun-kissed_8f9c0dae-22eb-41b4-a69f-8d1b7aaf68cb.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Unfiltered"
+      }
+    },
+    "features": {
+      "type": "feature-icons",
+      "blocks": {
+        "i1": {
+          "type": "feature",
+          "settings": {
+            "icon": "pets",
+            "label": "CRUELTY-FREE"
+          }
+        },
+        "i2": {
+          "type": "feature",
+          "settings": {
+            "icon": "check",
+            "label": "PARABEN-FREE"
+          }
+        },
+        "i3": {
+          "type": "feature",
+          "settings": {
+            "icon": "check",
+            "label": "SULFATE-FREE"
+          }
+        },
+        "i4": {
+          "type": "feature",
+          "settings": {
+            "icon": "check_circle",
+            "label": "MADE IN INDIA"
+          }
+        },
+        "i5": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "icon": "fact_check",
+            "label": "PATCH-TESTED"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5"
+      ],
+      "settings": {}
+    },
+    "blog": {
+      "type": "blog-posts",
+      "disabled": true,
+      "settings": {
+        "title": "Skin, Decoded",
+        "subtitle": "Unraveling the complexities of melanin-rich skin lens.",
+        "link_label": "View All Articles",
+        "blog": "news",
+        "posts_limit": 3
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "icon": "local_shipping",
+            "title": "FREE SHIPPING",
+            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "icon": "credit_card",
+            "title": "COD & UPI",
+            "description": "Cash on delivery, UPI, cards &\nEMI at checkout"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "icon": "replay",
+            "title": "EASY 30-DAY RETURNS",
+            "description": "Not your match? Return\nwithin 30 days, full refund"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "HELP & SUPPORT",
+            "description": "Mon-Sat, 10am-7pm\nIST - +91-8148148487"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "custom_css": [
+        ".extracted-style-93 {padding: 2rem 0 2rem 0;}"
+      ],
+      "settings": {
+        "show_payments": true,
+        "payments_heading": "Accepted Payment Methods",
+        "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "ritual",
+    "heritage",
+    "calibrated",
+    "founder",
+    "video",
+    "testimonials",
+    "features",
+    "blog",
+    "trust"
+  ]
+}

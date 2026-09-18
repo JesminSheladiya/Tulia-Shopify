@@ -1,0 +1,46 @@
+<section class="section container reveal" style="max-width:900px;margin:0 auto;">
+  <div class="flex-between align-end mb-large">
+    <div>
+      <h1 class="section-title italic-serif text-primary">My account</h1>
+      <p class="section-subtitle">{{ customer.name }} — {{ customer.email }}</p>
+    </div>
+    <a href="{{ routes.account_logout_url }}" class="link-underline">Log out</a>
+  </div>
+
+  <div class="grid grid-2 gap-large align-start">
+    <div>
+      <h3 class="ritual-name italic-serif mb-medium">Order history</h3>
+      {%- if customer.orders.size > 0 -%}
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--outline-variant);">
+              <th style="padding:.6rem 0;">Order</th><th>Date</th><th>Total</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for order in customer.orders -%}
+              <tr style="border-bottom:1px solid var(--outline-variant);">
+                <td style="padding:.6rem 0;"><a href="{{ order.customer_url }}" style="text-decoration:underline;">{{ order.name }}</a></td>
+                <td>{{ order.created_at | date: '%b %e, %Y' }}</td>
+                <td>{{ order.total_price | money }}</td>
+                <td>{{ order.financial_status_label }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      {%- else -%}
+        <p class="text-muted">You haven't placed any orders yet.</p>
+      {%- endif -%}
+    </div>
+
+    <div>
+      <h3 class="ritual-name italic-serif mb-medium">Default address</h3>
+      {%- if customer.default_address -%}
+        <div class="text-on-surface">{{ customer.default_address | format_address }}</div>
+      {%- else -%}
+        <p class="text-muted">No address on file.</p>
+      {%- endif -%}
+      <a href="{{ routes.account_addresses_url }}" class="link-underline" style="display:inline-block;margin-top:1rem;">Manage addresses</a>
+    </div>
+  </div>
+</section>

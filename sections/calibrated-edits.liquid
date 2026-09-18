@@ -1,0 +1,126 @@
+{%- liquid
+  assign tags = section.settings.tags | newline_to_br | strip_newlines | split: '<br />'
+-%}
+<div class="layered-scroll-wrapper extracted-style-26">
+  <section id="calibrated-section" class="indian-skin-realities extracted-style-27">
+    <div class="container">
+      <div class="grid grid-12 gap-large align-start realities-grid-container">
+        <div class="col-5 realities-left">
+          {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow extracted-style-28">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+          <h2 class="section-title extracted-style-29">{{ section.settings.title | escape }}</h2>
+          {%- if section.settings.paragraph != blank -%}<p class="extracted-style-30">{{ section.settings.paragraph | escape }}</p>{%- endif -%}
+          <div class="extracted-style-31">
+            {%- for t in tags -%}
+              {%- assign trimmed = t | strip -%}
+              {%- if trimmed == '---' -%}
+                <div class="extracted-style-32"></div>
+              {%- elsif trimmed != blank -%}
+                <span class="tag-outline">{{ trimmed | escape }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="col-7 realities-right">
+          <div class="grid grid-3 gap-gutter realities-cards">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'reality' -%}
+                <div class="reality-card pop-on-hover extracted-style-33" {{ block.shopify_attributes }}>
+                  <span class="material-symbols-outlined mb-medium extracted-style-34">{{ block.settings.icon | escape }}</span>
+                  <h4 class="extracted-style-35">{{ block.settings.title | escape }}</h4>
+                  <p class="extracted-style-36">{{ block.settings.text | escape }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="explore" class="section reveal extracted-style-37">
+    <div class="container">
+      <h2 class="section-title text-center text-primary mb-large">{{ section.settings.edits_title | escape }}</h2>
+      <div class="grid grid-3 gap-large extracted-style-19">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'edit' -%}
+            <div class="edit-card extracted-style-38" {{ block.shopify_attributes }}>
+              <div class="extracted-style-39" style="overflow: hidden; display: block; width: 100%; aspect-ratio: 1 / 1; position: relative;">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-40 {% if block.settings.coming_soon %}coming-soon-blur{% endif %}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: right center; {%- if block.settings.coming_soon -%}filter: blur(6px); transition: filter 0.3s ease;{%- endif -%}">
+                {%- else -%}
+                  <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-40 {% if block.settings.coming_soon %}coming-soon-blur{% endif %}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: right center; {%- if block.settings.coming_soon -%}filter: blur(6px); transition: filter 0.3s ease;{%- endif -%}">
+                {%- endif -%}
+
+                {%- if block.settings.coming_soon -%}
+                  <div class="coming-soon-badge-wrapper" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.3); z-index: 2;">
+                    <span style="background: #ffffff; color: #000000; padding: 8px 16px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">Coming Soon</span>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <h3 class="edit-hover-title extracted-style-41">{{ block.settings.title | escape }}</h3>
+              <p class="edit-desc extracted-style-42">{{ block.settings.description | escape }}</p>
+              
+              {%- if block.settings.coming_soon -%}
+                <span class="btn btn-primary extracted-style-43" style="opacity: 0.6; pointer-events: none; cursor: not-allowed; display: inline-block; text-align: center;">{{ block.settings.button_label | escape }}</span>
+              {%- else -%}
+                <a href="{{ block.settings.link | default: '#' }}" class="btn btn-primary extracted-style-43">{{ block.settings.button_label | escape }}</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Calibrated + Edits",
+  "settings": [
+    { "type": "header", "content": "Calibrated section" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "CALIBRATED, NOT BORROWED" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "Built for the way Indian skin actually lives" },
+    { "type": "textarea", "id": "paragraph", "label": "Paragraph", "default": "For too long we adapted to heavy, western-made formulas designed for cool, dry geographies. Tulia is engineered the other way round" },
+    { "type": "textarea", "id": "tags", "label": "Tag chips", "info": "One per line. Use --- on its own line for a divider.", "default": "PARABEN-FREE\nSULFATE-FREE\n---\nNO MINERAL OIL\nPATCH-TESTED" },
+    { "type": "header", "content": "Explore The Edits" },
+    { "type": "text", "id": "edits_title", "label": "Edits title", "default": "Explore The Edits" }
+  ],
+  "blocks": [
+    {
+      "type": "reality",
+      "name": "Reality card",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material icon name", "default": "light_mode" },
+        { "type": "text", "id": "title", "label": "Title", "default": "High UV index" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Photo-stable physical defense (SPF 50+) that protects melanin-rich skin without a chalky white cast." }
+      ]
+    },
+    {
+      "type": "edit",
+      "name": "Edit card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "checkbox", "id": "coming_soon", "label": "Coming Soon Product", "default": false },
+        { "type": "text", "id": "title", "label": "Title", "default": "The Dusky Edit" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Sunscreen, Buttermax cream, Skin lightening facewash" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Dusky Edit" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Calibrated + Edits",
+      "blocks": [
+        { "type": "reality", "settings": { "icon": "light_mode", "title": "High UV index", "text": "Photo-stable physical defense (SPF 50+) that protects melanin-rich skin without a chalky white cast." } },
+        { "type": "reality", "settings": { "icon": "water_drop", "title": "Humidity & sebum", "text": "Lightweight, fast-absorbing textures balanced for sweat and oil — hydration that never sits greasy." } },
+        { "type": "reality", "settings": { "icon": "location_on", "title": "Melanin-rich skin", "text": "Tone-evening actives that brighten and fade pigmentation — never harsh chemical bleaching." } },
+        { "type": "edit", "settings": { "title": "The Dusky Edit", "description": "Sunscreen, Buttermax cream, Skin lightening facewash", "button_label": "Shop The Dusky Edit", "coming_soon": false } },
+        { "type": "edit", "settings": { "title": "The Waves Edit", "description": "Shampoo + Conditioner + Serum", "button_label": "Shop The Waves Edit", "coming_soon": false } },
+        { "type": "edit", "settings": { "title": "The Tint Edit", "description": "Lip balm, Lip lightening cream", "button_label": "Shop The Tint Edit", "coming_soon": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

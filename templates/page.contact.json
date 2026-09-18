@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "generic_banner_pYfLhJ": {
+      "type": "generic-banner",
+      "name": "Generic - Banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/tulia-branding.png",
+        "bg_color": "#420007",
+        "overlay": 40,
+        "height": "large",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "light",
+        "eyebrow": "",
+        "heading": "Contact Us",
+        "subtext": "",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_1_style": "btn-primary-light",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "contact_us_jhQXqW": {
+      "type": "contact-us",
+      "name": "Tulia Contact Page",
+      "settings": {
+        "banner_image": "shopify://shop_images/desktop-ezgif-frame-009.png",
+        "phone": "+91 8148148487",
+        "email": "tulia@baptisthealthcare.in",
+        "hours": "10:00 AM to 06:30 PM",
+        "gst": "33AAKCB3314M1ZQ",
+        "address": "Plot No: 2, Tiruneermalai Main Rd, Subbaraya Nagar, Chromepet, Chennai, Tamil Nadu 600044",
+        "map": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2218852310816!2d80.12299937507626!3d12.957648887356433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525f005c652f4b%3A0x38b34c4e7930144!2sPLOT%20NO%20%3A%202%2C%20Tiruneermalai%20Main%20Rd%2C%20Subbaraya%20Nagar!5e0!3m2!1sen!2sin!4v1783414857267!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "generic_banner_pYfLhJ",
+    "contact_us_jhQXqW"
+  ]
+}

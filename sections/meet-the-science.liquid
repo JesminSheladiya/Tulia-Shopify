@@ -1,0 +1,97 @@
+{%- liquid
+  assign mf = product.metafields.custom[section.settings.metafield_key]
+  assign entries = mf.value
+-%}
+<section id="sacred-ingredients" class="section extracted-style-172">
+  <div id="meet-science-grid" class="container">
+    <div class="text-center mb-large">
+      <h2 class="section-title italic-serif mb-small extracted-style-173">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="extracted-style-174">{{ section.settings.subtitle | escape | newline_to_br }}</p>
+      {%- endif -%}
+    </div>
+    <div class="meet-science-grid">
+      {%- if entries != blank and entries.size > 0 -%}
+        {%- for entry in entries -%}
+          {%- liquid
+            assign t = entry[section.settings.field_title].value | strip
+            if t == blank
+              assign t = entry.system.handle | replace: '-', ' ' | capitalize
+            endif
+            assign sci = entry[section.settings.field_science]
+            assign good = entry[section.settings.field_good_for]
+            assign img = entry[section.settings.field_image].value
+          -%}
+          <div class="ingredient-card-hover extracted-style-175">
+            <div class="extracted-style-176">
+              {%- if img -%}
+                <img src="{{ img | image_url: width: 600 }}" width="600" height="600" alt="{{ t | escape }}" class="extracted-style-64" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ t | escape }}" class="extracted-style-64" loading="lazy">
+              {%- endif -%}
+            </div>
+            <h4 class="extracted-style-177">{{ t | escape }}</h4>
+            {%- if sci.value != blank -%}<div class="extracted-style-178">{% render 'mo-text', field: sci, allow_newline: true %}</div>{%- endif -%}
+            {%- if good.value != blank -%}<div class="extracted-style-179"><div class="extracted-style-180">{% render 'mo-text', field: good, allow_newline: true %}</div></div>{%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <div class="ingredient-card-hover extracted-style-175" {{ block.shopify_attributes }}>
+            <div class="extracted-style-176">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+              {%- endif -%}
+            </div>
+            <h4 class="extracted-style-177">{{ block.settings.title | escape }}</h4>
+            <p class="extracted-style-178"><strong>The Science:</strong> {{ block.settings.science | escape }}</p>
+            <div class="extracted-style-179">
+              <p class="extracted-style-180"><strong>Good For:</strong> {{ block.settings.good_for | escape }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Meet the Science",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Meet the Science" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Low-effort skincare crafted by matching high-performance dermatological actives with concentrated botanical extracts\nto ensure every single inclusion serves a deliberate skin-brightening function" },
+    { "type": "header", "content": "Dynamic data (metaobjects)" },
+    { "type": "paragraph", "content": "When the product has the metafield below, cards are pulled from those metaobjects. Otherwise the manual blocks are used." },
+    { "type": "text", "id": "metafield_key", "label": "Product metafield key (custom.___)", "default": "meet_the_science" },
+    { "type": "text", "id": "field_image", "label": "Metaobject field: image", "default": "image" },
+    { "type": "text", "id": "field_title", "label": "Metaobject field: title", "default": "title" },
+    { "type": "text", "id": "field_science", "label": "Metaobject field: science text", "default": "description" },
+    { "type": "text", "id": "field_good_for", "label": "Metaobject field: good for", "default": "good_for" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Kojic Acid Dipalmitate" },
+        { "type": "textarea", "id": "science", "label": "Science text", "default": "A stabilized, highly effective derivative of kojic acid that works seamlessly to inhibit melanin synthesis, gently fading stubborn discoloration and evening out the natural lip line." },
+        { "type": "textarea", "id": "good_for", "label": "Good for", "default": "Fading dark spots, preventing future pigmentation" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Meet the Science",
+      "blocks": [
+        { "type": "ingredient", "settings": { "title": "Kojic Acid Dipalmitate", "science": "A stabilized, highly effective derivative of kojic acid that works seamlessly to inhibit melanin synthesis, gently fading stubborn discoloration and evening out the natural lip line.", "good_for": "Fading dark spots, preventing future pigmentation" } },
+        { "type": "ingredient", "settings": { "title": "Glycolic Acid", "science": "A micro-exfoliating alpha hydroxy acid that softly dissolves dead skin cells on the surface, accelerating cellular turnover to welcome a smoother, more radiant texture.", "good_for": "Refining lip texture, Enhancing product absorption" } },
+        { "type": "ingredient", "settings": { "title": "Liquorice and Mulberry Extract", "science": "A dual-action antioxidant blend that naturally illuminates dullness, neutralizes environmental stressors, and helps restore the healthy, inherent rosiness of your lips.", "good_for": "Soothing delicate skin, Restoring natural lip tone" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

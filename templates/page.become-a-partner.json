@@ -1,0 +1,162 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "generic_banner_cK3AeP": {
+      "type": "generic-banner",
+      "disabled": true,
+      "name": "Generic - Banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Jun_9_2026_04_25_34_PM.png",
+        "bg_color": "#420007",
+        "overlay": 40,
+        "height": "large",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "light",
+        "eyebrow": "",
+        "heading": "",
+        "subtext": "",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_1_style": "btn-primary-light",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "hero": {
+      "type": "generic-banner",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#f6f6f6",
+        "overlay": 45,
+        "height": "large",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "dark",
+        "eyebrow": "Retail Partner",
+        "heading": "Give Clients More to Return To",
+        "subtext": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
+        "button_1_label": "Become a Retail Partner",
+        "button_1_link": "#",
+        "button_1_style": "btn-primary",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "benefits": {
+      "type": "card-grid",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "",
+            "title": "Elevate every service",
+            "text": "Premium, science-led formulations that complement your treatments and leave a lasting impression.",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "",
+            "title": "Build client loyalty",
+            "text": "A take-home ritual that keeps clients connected to your studio between visits.",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "",
+            "title": "A thoughtful retail extension",
+            "text": "Curated, calibrated for Indian skin — an effortless addition to your shelf.",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Why partner with Tulia",
+        "heading": "A ritual worth returning for",
+        "subheading": "",
+        "header_align": "center",
+        "card_align": "left",
+        "columns": "3",
+        "bg": "bg-surface-alt"
+      }
+    },
+    "cta": {
+      "type": "generic-banner",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#420007",
+        "overlay": 40,
+        "height": "small",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "light",
+        "eyebrow": "",
+        "heading": "Let's build something beautiful together",
+        "subtext": "",
+        "button_1_label": "Become a Retail Partner",
+        "button_1_link": "#",
+        "button_1_style": "btn-primary-light",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "soma_retail_partner_bTNgNJ": {
+      "type": "soma-retail-partner",
+      "name": "SOMA Retail Partner",
+      "settings": {
+        "subtitle": "RETAIL PARTNER",
+        "title": "Give Clients More to Return To",
+        "description": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
+        "btn_text": "BECOME A RETAIL PARTNER",
+        "popup_title": "Partner With TULIA",
+        "popup_desc": "Please fill out this form and our partnership team will reach out within 24-48 hours.",
+        "bg_color": "#fcf9f8",
+        "text_title_color": "#370b11",
+        "text_desc_color": "#555555",
+        "accent_color": "#9a7e3d",
+        "btn_bg_color": "#370b11",
+        "btn_text_color": "#fcf9f8",
+        "btn_hover_color": "#9a7e3d",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "margin_top_desktop": 0,
+        "margin_bottom_desktop": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "margin_top_mobile": 0,
+        "margin_bottom_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "generic_banner_cK3AeP",
+    "hero",
+    "benefits",
+    "cta",
+    "soma_retail_partner_bTNgNJ"
+  ]
+}

@@ -1,0 +1,197 @@
+<section id="about" class="bg-surface-low angelin-section reveal">
+  <div class="container angelin-container-custom">
+    
+    <!-- LEFT COLUMN: PORTRAIT IMAGE -->
+    <div class="angelin-image-col">
+      <div class="quote-image-wrapper">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 900 }}" width="900" height="1125" alt="{{ section.settings.author_name | escape }}" class="angelin-img">
+        {%- else -%}
+          <img src="{{ 'angelin.png' | asset_url }}" width="1080" height="1350" alt="{{ section.settings.author_name | escape }}" class="angelin-img">
+        {%- endif -%}
+        
+        <!-- Overlapping Author Card -->
+        <div class="quote-author-card">
+          <p class="author-name">{{ section.settings.author_name | escape }}</p>
+          <p class="author-title">{{ section.settings.author_title | escape }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RIGHT COLUMN: QUOTE TEXT & LINK -->
+    <div class="angelin-quote-col">
+      <div class="quote-content">
+        <!-- Pure CSS large background decorative quote mark applied via wrapper styles below -->
+        <blockquote class="blockquote scroll-fade-quote">{{ section.settings.quote | escape }}</blockquote>
+        
+        <div class="divider" style="opacity: 0.3; margin: 2rem 0 1.5rem 0; border-bottom: 1px solid currentColor;"></div>
+        
+        {%- if section.settings.link_label != blank -%}
+          <a href="{{ section.settings.link_url | default: '#' }}" class="link-with-icon mt-large">
+            <span class="link-text-line">{{ section.settings.link_label | escape }}</span>
+            <span class="material-symbols-outlined arrow-icon">arrow_right_alt</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .angelin-section {
+    padding: 60px 0 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .angelin-container-custom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 60px;
+  }
+  .angelin-image-col {
+    flex: 1;
+    max-width: 45%;
+    position: relative;
+  }
+  .quote-image-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+  }
+  .angelin-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+  }
+  .quote-author-card {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #3d0008; 
+    color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 2px;
+    z-index: 2;
+    min-width: 160px;
+  }
+  .author-name {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .author-title {
+    margin: 4px 0 0 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+  .angelin-quote-col {
+    flex: 1;
+    max-width: 50%;
+  }
+  .quote-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Added padding top so the overlapping big quote doesn't clip with text layout bounds */
+    padding-top: 40px; 
+  }
+  
+  /* FIXED: Pure CSS Translucent Giant Watermark Inverted Comma */
+  .quote-content::before {
+    content: "“";
+    position: absolute;
+    top: -30px;
+    left: -25px;
+    font-size: 140px;
+    font-family: Georgia, serif;
+    line-height: 1;
+    color: #000000;
+    opacity: 0.06; /* Gives that exact soft light-grey watermark look */
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .blockquote {
+    font-size: 20px;
+    line-height: 1.6;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    color: #222222;
+    position: relative;
+    z-index: 1;
+  }
+  .link-with-icon {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3d0008;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    width: fit-content;
+    margin-top: 10px;
+  }
+  .link-text-line {
+    border-bottom: 1px solid #3d0008;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .arrow-icon {
+    margin-left: 8px;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+  .link-with-icon:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 767px) {
+    .angelin-container-custom {
+      flex-direction: column-reverse; 
+      gap: 40px;
+      padding: 0 20px;
+    }
+    .angelin-image-col, .angelin-quote-col {
+      max-width: 100%;
+      width: 100%;
+    }
+    .blockquote {
+      font-size: 17px;
+    }
+    .quote-content {
+      padding-top: 30px;
+    }
+    .quote-content::before {
+      font-size: 100px;
+      top: -15px;
+      left: -10px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Founder quote",
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "\"For years, we have adapted to heavy, western-made formulas designed for cool, dry geographies, making our skin unbalanced in our own environment. Tulia corrects that by bringing you skincare that blends high-performance essentials specifically calibrated for the unique humidity, UV levels, and biological needs of Indian skin.\"" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "SEE HOW WE FORMULATE" },
+    { "type": "url", "id": "link_url", "label": "Link" },
+    { "type": "image_picker", "id": "image", "label": "Portrait image" },
+    { "type": "text", "id": "author_name", "label": "Author name", "default": "Angelin" },
+    { "type": "text", "id": "author_title", "label": "Author title", "default": "Founder, Tulia" }
+  ],
+  "presets": [{ "name": "Founder quote" }]
+}
+{% endschema %}

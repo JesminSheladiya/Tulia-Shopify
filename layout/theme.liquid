@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+
+
+  
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- else -%}
+    <link rel="icon" href="{{ 'fav-icon.png' | asset_url }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% comment %} Google Fonts used by the original Tulia design {% endcomment %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+
+  <style>
+    @font-face {
+      font-family: 'Mattone';
+      src: url('{{ "Mattone-Regular.otf" | asset_url }}') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --primary: {{ settings.color_primary }};
+      --primary-container: {{ settings.color_primary_container }};
+      --secondary: {{ settings.color_secondary }};
+      --surface: {{ settings.color_surface }};
+      --on-surface: {{ settings.color_on_surface }};
+    }
+
+    body { background-color: {{ settings.color_surface }}; }
+  </style>
+
+</head>
+
+<body class="template-{{ request.page_type | handle }}">
+
+  {% sections 'header-group' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  {% render 'sticky-bottom-bar' %}
+  {% render 'waitlist-modal' %}
+
+  {%- if settings.cart_type == 'drawer' -%}
+    {% section 'cart-drawer' %}
+  {%- endif -%}
+
+  {% render 'search-drawer' %}
+
+  <script>
+    window.tuliaCartAjax = {{ settings.cart_ajax | json }};
+    window.tuliaCartType = {{ settings.cart_type | json }};
+    window.tuliaPredictiveSearch = {{ settings.predictive_search | json }};
+    window.tuliaRoutes = {
+      cart_add: "{{ routes.cart_add_url }}",
+      cart_change: "{{ routes.cart_change_url }}",
+      cart_update: "{{ routes.cart_update_url }}",
+      cart: "{{ routes.cart_url }}",
+      predictive: "{{ routes.predictive_search_url }}"
+    };
+    window.tuliaMoneyFormat = {{ shop.money_format | json }};
+  </script>
+  <script src="{{ 'script.js' | asset_url }}" defer></script>
+  <script src="{{ 'product_detail.js' | asset_url }}" defer></script>
+  <script src="{{ 'tulia-cart.js' | asset_url }}" defer></script>
+  <script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
+
+
+  {% comment %} -------Custom Script For '&'------- {% endcomment %}
+<script>
+  function fixCartDrawerAmpersand() {
+    const cartTitles = document.querySelectorAll('.cart-drawer__item-title, .ritual-name, .product-single__title, .product-title, h1, h2, h3');
+    
+    cartTitles.forEach(function(title) {
+      if (title.querySelector('.fixed-amp')) return;
+      if (title.innerHTML.includes('&amp;') || title.innerHTML.includes('&amp;amp;')) {
+        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: Arial, sans-serif !important; font-style: normal !important; display: inline-block !important;">&</span>');
+      } else if (title.innerText.includes('&') || title.textContent.includes('&')) {
+        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: Arial, sans-serif !important; font-style: normal !important; display: inline-block !important;">&</span>');
+      }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", fixCartDrawerAmpersand);
+  const cartObserver = new MutationObserver(function() {
+    fixCartDrawerAmpersand();
+  });
+
+  cartObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+</script>
+
+
+
+
+
+
+</body>
+
+</html>

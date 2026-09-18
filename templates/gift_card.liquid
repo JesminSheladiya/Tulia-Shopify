@@ -1,0 +1,40 @@
+{% layout 'theme' %}
+<section class="section container reveal" style="max-width:560px;margin:0 auto;text-align:center;">
+  {%- if settings.logo_color != blank -%}
+    <img src="{{ settings.logo_color | image_url: width: 280 }}" width="280" height="76" alt="{{ shop.name | escape }}" style="max-width:160px;margin:0 auto 1.5rem;">
+  {%- endif -%}
+
+  <h1 class="section-title italic-serif text-primary">Your gift card</h1>
+  <div class="divider mx-auto"></div>
+
+  <p class="section-subtitle mb-medium">Here is your {{ gift_card.initial_value | money }} gift card for {{ shop.name }}.</p>
+
+  <div class="giftcard">
+    <div class="giftcard__balance">
+      {%- if gift_card.balance != gift_card.initial_value -%}
+        <span class="giftcard__balance-amount">{{ gift_card.balance | money }}</span>
+        <span class="giftcard__balance-label">remaining of {{ gift_card.initial_value | money }}</span>
+      {%- else -%}
+        <span class="giftcard__balance-amount">{{ gift_card.balance | money }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if gift_card.expired -%}
+      <p class="giftcard__expired">This gift card has expired.</p>
+    {%- elsif gift_card.expires_on -%}
+      <p class="giftcard__expiry">Expires {{ gift_card.expires_on | date: '%B %e, %Y' }}</p>
+    {%- endif -%}
+
+    <div class="giftcard__code" aria-label="Gift card code">{{ gift_card.code | format_code }}</div>
+
+    <p class="giftcard__hint">Use this code at checkout to redeem your balance.</p>
+  </div>
+
+  <div class="giftcard__actions">
+    <a href="{{ shop.url }}" class="btn btn-primary">Start shopping</a>
+    <button type="button" class="btn btn-outline-light" style="border-color:var(--primary);color:var(--primary);" onclick="window.print();">Print</button>
+    {%- if gift_card.pass_url -%}
+      <a href="{{ gift_card.pass_url }}" class="giftcard__wallet">Add to Apple Wallet</a>
+    {%- endif -%}
+  </div>
+</section>

@@ -1,0 +1,85 @@
+<section class="section {{ section.settings.bg }}">
+  <div class="container">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="section-header text-{{ section.settings.header_align }} mb-large">
+        {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="section-title text-primary">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if section.settings.subheading != blank -%}<p class="section-subtitle">{{ section.settings.subheading | escape }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="grid grid-{{ section.settings.columns }} gap-large">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign img = block.settings.image
+          assign tag = 'div'
+          if block.settings.link != blank
+            assign tag = 'a'
+          endif
+        -%}
+        <{{ tag }} {% if tag == 'a' %}href="{{ block.settings.link }}"{% endif %} class="generic-card card-align-{{ section.settings.card_align }}" {{ block.shopify_attributes }}>
+          {%- if img != blank -%}
+            <div class="generic-card__media">
+              <img src="{{ img | image_url: width: 800 }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            </div>
+          {%- endif -%}
+          <div class="generic-card__body">
+            {%- if block.settings.eyebrow != blank -%}<span class="eyebrow text-muted">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
+            {%- if block.settings.title != blank -%}<h3 class="generic-card__title">{{ block.settings.title | escape }}</h3>{%- endif -%}
+            {%- if block.settings.text != blank -%}<p class="generic-card__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+            {%- if block.settings.button_label != blank -%}
+              <span class="btn btn-primary generic-card__btn">{{ block.settings.button_label | escape }}</span>
+            {%- endif -%}
+          </div>
+        </{{ tag }}>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Generic - Cards",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "header", "content": "Alignment" },
+    { "type": "select", "id": "header_align", "label": "Header alignment", "options": [
+      { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" }
+    ], "default": "center" },
+    { "type": "select", "id": "card_align", "label": "Card content alignment", "options": [
+      { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }
+    ], "default": "left" },
+    { "type": "select", "id": "columns", "label": "Columns", "options": [
+      { "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" }
+    ], "default": "3" },
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "", "label": "Surface" }, { "value": "bg-surface-alt", "label": "Surface alt" }, { "value": "bg-surface-low", "label": "Surface low" }
+    ], "default": "" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "A short supporting description for this card." },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Generic - Cards",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Card one" } },
+        { "type": "card", "settings": { "title": "Card two" } },
+        { "type": "card", "settings": { "title": "Card three" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

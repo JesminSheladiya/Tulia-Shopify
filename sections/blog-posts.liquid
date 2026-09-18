@@ -1,0 +1,56 @@
+{%- liquid
+  assign blog = blogs[section.settings.blog]
+-%}
+<section id="blog" class="section container reveal">
+  <div class="flex-between mb-large align-end">
+    <div class="max-w-xl">
+      <h2 class="section-title italic-serif text-primary">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.subtitle != blank -%}<p class="section-subtitle">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+    </div>
+    {%- if blog != blank -%}
+      <a href="{{ blog.url }}" class="link-underline">{{ section.settings.link_label | escape }}</a>
+    {%- else -%}
+      <a href="#" class="link-underline">{{ section.settings.link_label | escape }}</a>
+    {%- endif -%}
+  </div>
+
+  <div class="grid grid-3">
+    {%- if blog != blank and blog.articles_count > 0 -%}
+      {%- for article in blog.articles limit: section.settings.posts_limit -%}
+        <a href="{{ article.url }}" class="blog-card group" style="color:inherit;">
+          <div class="blog-img-wrapper">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 700 }}" width="700" height="500" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="1080" height="1350" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="blog-content">
+            {%- if article.tags.size > 0 -%}<span class="eyebrow text-muted">{{ article.tags.first }}</span>{%- endif -%}
+            <h4 class="blog-title">{{ article.title }}</h4>
+            <p class="blog-desc">{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+            <div class="extracted-style-90">
+              <span class="extracted-style-91">Read more</span>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+    {%- else -%}
+      {%- render 'blog-demo-cards' -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Skin, Decoded" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Unraveling the complexities of melanin-rich skin lens." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "View All Articles" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "range", "id": "posts_limit", "min": 1, "max": 6, "step": 1, "label": "Posts to show", "default": 3 }
+  ],
+  "presets": [{ "name": "Blog posts" }]
+}
+{% endschema %}

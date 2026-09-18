@@ -1,0 +1,269 @@
+{%- liquid
+  assign frames_count = section.settings.frames_count
+-%}
+
+<section class="hero-banner scroll-usp-section" id="hero-{{ section.id }}">
+  <div class="scroll-container">
+    
+    <!-- Canvas / Image Sequence Wrapper -->
+    <div class="canvas-wrapper">
+      {%- if section.settings.use_sequence -%}
+        <img id="sequence-img-{{ section.id }}" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="Scroll Sequence Animation">
+      {%- elsif section.settings.fallback_image != blank -%}
+        <img id="sequence-img-{{ section.id }}" src="{{ section.settings.fallback_image | image_url: width: 1920 }}" width="1920" height="2400" alt="Static Background">
+      {%- else -%}
+        <img id="sequence-img-{{ section.id }}" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="Scroll Sequence Animation">
+      {%- endif -%}
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Dynamic Scrolling USPs Container -->
+    <div class="usp-overlay-container container">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'usp' -%}
+          <div class="scrolling-usp-block usp-block-{{ block.id }}" 
+               data-start-frame="{{ block.settings.start_frame }}" 
+               data-end-frame="{{ block.settings.end_frame }}"
+               {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <h3 class="usp-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="usp-text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+          
+          {%- style -%}
+            .usp-block-{{ block.id }} {
+              top: {{ block.settings.top_pos }}%;
+              left: {{ block.settings.left_pos }}%;
+              width: {{ block.settings.block_width }}px;
+              max-width: 100%;
+              background-color: {{ block.settings.bg_color }};
+              border-radius: {{ block.settings.border_radius }}px;
+              
+              /* Padding Custom Settings */
+              padding-top: {{ block.settings.pad_top }}px;
+              padding-bottom: {{ block.settings.pad_bottom }}px;
+              padding-left: {{ block.settings.pad_left }}px;
+              padding-right: {{ block.settings.pad_right }}px;
+
+              /* Margin Custom Settings */
+              margin-top: {{ block.settings.mar_top }}px;
+              margin-bottom: {{ block.settings.mar_bottom }}px;
+              margin-left: {{ block.settings.mar_left }}px;
+              margin-right: {{ block.settings.mar_right }}px;
+            }
+            .usp-block-{{ block.id }} .usp-title {
+              color: {{ block.settings.heading_color }};
+              font-size: {{ block.settings.heading_size }}px;
+              font-weight: {{ block.settings.heading_weight }};
+            }
+            .usp-block-{{ block.id }} .usp-text {
+              color: {{ block.settings.text_color }};
+              font-size: {{ block.settings.text_size }}px;
+              font-weight: {{ block.settings.text_weight }};
+            }
+            @media (max-width: 767px) {
+              .usp-block-{{ block.id }} {
+                top: {{ block.settings.top_pos_mobile }}% !important;
+                left: {{ block.settings.left_pos_mobile }}% !important;
+                width: {{ block.settings.block_width_mobile }}px !important;
+              }
+              .usp-block-{{ block.id }} .usp-title {
+                font-size: {{ block.settings.heading_size_mobile }}px !important;
+              }
+              .usp-block-{{ block.id }} .usp-text {
+                font-size: {{ block.settings.text_size_mobile }}px !important;
+              }
+            }
+          {%- endstyle -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.scroll_link != blank -%}
+      <a href="{{ section.settings.scroll_link }}" class="scroll-down-btn text-white">
+        Scroll Down <span class="material-symbols-outlined">expand_more</span>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .scroll-usp-section {
+    position: relative;
+    width: 100%;
+  }
+  .usp-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .scrolling-usp-block {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    box-sizing: border-box;
+    pointer-events: auto;
+  }
+  .scrolling-usp-block.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .usp-title {
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .usp-text {
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sectionId = "{{ section.id }}";
+    const imgElement = document.getElementById(`sequence-img-${sectionId}`);
+    const uspBlocks = document.querySelectorAll(`#hero-${sectionId} .scrolling-usp-block`);
+    
+    const desktopFrames = [
+      {%- for i in (1..frames_count) -%}
+        {%- assign num = i | prepend: '00' -%}
+        {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
+        {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
+        "{{ 'frame-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+
+    const mobileFrames = [
+      {%- for i in (1..frames_count) -%}
+        {%- assign num = i | prepend: '00' -%}
+        {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
+        {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
+        "{{ 'frame-v-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+
+    const totalFrames = {{ frames_count }};
+    
+    window.addEventListener("scroll", function() {
+      const section = document.getElementById(`hero-${sectionId}`);
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const scrollWindowTop = window.scrollY;
+      const sectionTop = section.offsetTop;
+
+      let progress = (scrollWindowTop - sectionTop) / (sectionHeight - window.innerHeight);
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+
+      const currentFrameIndex = Math.floor(progress * (totalFrames - 1));
+      const frameNumber = currentFrameIndex + 1;
+
+      if(imgElement && {{ section.settings.use_sequence }}) {
+        const framesArray = window.innerWidth < 768 ? mobileFrames : desktopFrames;
+        if(framesArray[currentFrameIndex]) {
+          imgElement.src = framesArray[currentFrameIndex];
+        }
+      }
+
+      uspBlocks.forEach(block => {
+        const startFrame = parseInt(block.getAttribute('data-start-frame'), 10);
+        const endFrame = parseInt(block.getAttribute('data-end-frame'), 10);
+
+        if (frameNumber >= startFrame && frameNumber <= endFrame) {
+          block.classList.add('is-active');
+        } else {
+          block.classList.remove('is-active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Hero banner with USPs",
+  "settings": [
+    { "type": "header", "content": "Scroll animation" },
+    { "type": "checkbox", "id": "use_sequence", "label": "Use bundled scroll image sequence", "default": true },
+    { "type": "range", "id": "frames_count", "min": 2, "max": 26, "step": 1, "label": "Number of frames", "default": 26 },
+    { "type": "image_picker", "id": "fallback_image", "label": "Static background (used when sequence is off)" },
+    { "type": "url", "id": "scroll_link", "label": "Scroll-down link" }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Scrolling USP Text",
+      "settings": [
+        { "type": "header", "content": "Content Setup" },
+        { "type": "text", "id": "title", "label": "USP Heading", "default": "Free" },
+        { "type": "textarea", "id": "text", "label": "USP Description", "default": "to define ourselves however we want, no matter what the world tells us." },
+        
+        { "type": "header", "content": "Timing (Frame Range)" },
+        { "type": "number", "id": "start_frame", "label": "Show at Frame Number", "default": 1 },
+        { "type": "number", "id": "end_frame", "label": "Hide at Frame Number", "default": 8 },
+        
+        { "type": "header", "content": "Desktop Position & Size" },
+        { "type": "range", "id": "top_pos", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Vertical Position (Top)", "default": 30 },
+        { "type": "range", "id": "left_pos", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Horizontal Position (Left)", "default": 10 },
+        { "type": "range", "id": "block_width", "min": 150, "max": 800, "step": 10, "unit": "px", "label": "Block Width", "default": 320 },
+
+        { "type": "header", "content": "Mobile Position & Size" },
+        { "type": "range", "id": "top_pos_mobile", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Mobile Position (Top)", "default": 40 },
+        { "type": "range", "id": "left_pos_mobile", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Mobile Position (Left)", "default": 5 },
+        { "type": "range", "id": "block_width_mobile", "min": 100, "max": 500, "step": 10, "unit": "px", "label": "Mobile Width", "default": 280 },
+
+        { "type": "header", "content": "Color Picker Controls" },
+        { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#000000" },
+        { "type": "color", "id": "text_color", "label": "Description Color", "default": "#333333" },
+        { "type": "color", "id": "bg_color", "label": "Background Color", "default": "transparent" },
+
+        { "type": "header", "content": "Desktop Typography Sizes" },
+        { "type": "range", "id": "heading_size", "min": 12, "max": 80, "step": 1, "unit": "px", "label": "Heading Size", "default": 24 },
+        { "type": "select", "id": "heading_weight", "label": "Heading Weight", "default": "700",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi-Bold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        { "type": "range", "id": "text_size", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Description Size", "default": 16 },
+        { "type": "select", "id": "text_weight", "label": "Description Weight", "default": "400",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi-Bold" }
+          ]
+        },
+
+        { "type": "header", "content": "Mobile Typography Sizes" },
+        { "type": "range", "id": "heading_size_mobile", "min": 12, "max": 50, "step": 1, "unit": "px", "label": "Mobile Heading Size", "default": 20 },
+        { "type": "range", "id": "text_size_mobile", "min": 10, "max": 30, "step": 1, "unit": "px", "label": "Mobile Description Size", "default": 14 },
+
+        { "type": "header", "content": "Padding Settings" },
+        { "type": "range", "id": "pad_top", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Top", "default": 0 },
+        { "type": "range", "id": "pad_bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Bottom", "default": 0 },
+        { "type": "range", "id": "pad_left", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Left", "default": 0 },
+        { "type": "range", "id": "pad_right", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Padding Right", "default": 0 },
+        { "type": "range", "id": "border_radius", "min": 0, "max": 50, "step": 1, "unit": "px", "label": "Background Rounded Corners", "default": 0 },
+
+        { "type": "header", "content": "Margin Settings" },
+        { "type": "range", "id": "mar_top", "min": -50, "max": 50, "step": 1, "unit": "px", "label": "Margin Top", "default": 0 },
+        { "type": "range", "id": "mar_bottom", "min": -50, "max": 50, "step": 1, "unit": "px", "label": "Margin Bottom", "default": 0 },
+        { "type": "range", "id": "mar_left", "min": -50, "max": 50, "step": 1, "unit": "px", "label": "Margin Left", "default": 0 },
+        { "type": "range", "id": "mar_right", "min": -50, "max": 50, "step": 1, "unit": "px", "label": "Margin Right", "default": 0 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Hero banner with USPs" }]
+}
+{% endschema %}

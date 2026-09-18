@@ -1,0 +1,32 @@
+<section class="section container reveal" style="max-width:480px;margin:0 auto;">
+  <div class="text-center mb-large">
+    <h1 class="section-title italic-serif text-primary">Login</h1>
+    <div class="divider mx-auto"></div>
+  </div>
+
+  <div id="RecoverPassword" style="display:none;">
+    <h3 class="ritual-name italic-serif mb-medium">Reset your password</h3>
+    {%- form 'recover_customer_password' -%}
+      {%- if form.posted_successfully? -%}<p class="text-muted">We've sent you an email with a link to update your password.</p>{%- endif -%}
+      <label for="RecoverEmail">Email</label>
+      <input type="email" name="email" id="RecoverEmail" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="#" onclick="document.getElementById('RecoverPassword').style.display='none';document.getElementById('CustomerLogin').style.display='block';return false;" style="display:block;margin-top:1rem;text-decoration:underline;">Cancel</a>
+    {%- endform -%}
+  </div>
+
+  <div id="CustomerLogin">
+    {%- form 'customer_login' -%}
+      {{ form.errors | default_errors }}
+      <label for="CustomerEmail">Email</label>
+      <input type="email" name="customer[email]" id="CustomerEmail" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);">
+      {%- if form.password_needed -%}
+        <label for="CustomerPassword">Password</label>
+        <input type="password" name="customer[password]" id="CustomerPassword" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 .5rem;color:var(--on-surface);">
+        <a href="#" onclick="document.getElementById('RecoverPassword').style.display='block';document.getElementById('CustomerLogin').style.display='none';return false;" style="display:block;margin-bottom:1rem;text-decoration:underline;">Forgot your password?</a>
+      {%- endif -%}
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    {%- endform -%}
+    <p style="margin-top:1.5rem;">New customer? <a href="{{ routes.account_register_url }}" style="text-decoration:underline;">Create an account</a></p>
+  </div>
+</section>

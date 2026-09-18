@@ -1,0 +1,246 @@
+{%- liquid
+  assign mega_collection = collections[section.settings.mega_collection]
+  assign logo = section.settings.logo | default: settings.logo_color
+  assign shop_all_link = section.settings.shop_all_link
+  if shop_all_link == blank and mega_collection != blank
+    assign shop_all_link = mega_collection.url
+  endif
+-%}
+
+<!-- TopAppBar -->
+<header class="site-header">
+  <div class="container header-container">
+    <div class="header-left">
+      <button class="icon-btn mobile-menu" aria-label="Open menu"><span class="material-symbols-outlined">menu</span></button>
+      <nav class="main-nav desktop-nav">
+        <div class="mega-menu-trigger">
+          <a href="{{ section.settings.shop_link | default: shop_all_link | default: '/collections/all' }}" class="nav-link shop-link" id="shop-trigger">{{ section.settings.shop_label }}</a>
+          <div class="mega-menu" id="mega-menu">
+            <div class="mega-tabs">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'filter_tab' -%}
+                  <span class="mega-tab {% if forloop.first %}active{% endif %}" data-filter="{{ block.settings.filter | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            <div class="mega-carousel-container extracted-style-1">
+              <button class="mega-nav-btn left-nav extracted-style-2" aria-label="Scroll left"
+                onclick="document.querySelector('.mega-carousel').scrollBy({left: -280, behavior: 'smooth'})"><span class="material-symbols-outlined">chevron_left</span></button>
+              <div class="mega-carousel drag-scroll">
+                {%- if mega_collection != blank and mega_collection.products_count > 0 -%}
+                  {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
+                    <a href="{{ product.url }}" class="mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
+                      {%- if product.tags contains 'new' -%}<span class="mega-badge">NEW</span>{%- endif -%}
+                      <img src="{{ product.featured_image | image_url: width: 320 }}" width="320" height="400" alt="{{ product.title | escape }}" loading="lazy">
+                      <div>
+                        <h4>{{ product.title }}</h4>
+                        <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
+                      </div>
+                    </a>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- render 'mega-demo-cards' -%}
+                {%- endif -%}
+              </div>
+              <button class="mega-nav-btn right-nav extracted-style-3" aria-label="Scroll right"
+                onclick="document.querySelector('.mega-carousel').scrollBy({left: 280, behavior: 'smooth'})"><span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+            <div class="extracted-style-4">
+              <a href="{{ shop_all_link | default: '/collections/all' }}" class="btn extracted-style-5">{{ section.settings.shop_all_label }}</a>
+            </div>
+          </div>
+        </div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' and block.settings.position == 'left' -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+    </div>
+
+    <a href="{{ routes.root_url }}" class="logo-link">
+      {%- if logo != blank -%}
+        <img src="{{ logo | image_url: width: 320 }}" width="320" height="87" alt="{{ shop.name | escape }}" class="header-logo">
+      {%- else -%}
+        <img src="{{ 'logo-color.png' | asset_url }}" width="432" height="118" alt="{{ shop.name | escape }}" class="header-logo">
+      {%- endif -%}
+    </a>
+
+    <div class="header-right">
+      <nav class="main-nav desktop-nav">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' and block.settings.position == 'right' -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+      <div class="header-icons">
+        {%- if section.settings.show_search -%}
+          <button type="button" class="icon-btn" aria-label="Search" data-search-open><span class="material-symbols-outlined">search</span></button>
+        {%- endif -%}
+
+
+          {% comment %} header-wishlist {% endcomment %}
+              <xb-wishlist-header class='xb-wishlist__header' style="position: relative; display: inline-flex; align-items: center; justify-content: center; cursor: pointer;">
+              <div class='xb-header__icon' style="display: flex; align-items: center; justify-content: center;">
+                <span class='svg-wrapper' style="display: block; width: 24px; height: 24px; color: #420007;">
+                  <!-- Standard SVG Heart Icon (No theme asset file required) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="width: 100%; height: 100%; fill: #420007;">
+                    <path d="M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z"></path>
+                  </svg>
+                </span>
+              </div>
+              <span class='xb-product-quantity xb-product-quantity--bottom-right'></span>
+              </xb-wishlist-header>
+
+
+
+
+
+        {%- if section.settings.show_cart -%}
+          <a href="{{ routes.cart_url }}" class="icon-btn" aria-label="Cart" style="position:relative;" {% if settings.cart_type == 'drawer' %}data-cart-open{% endif %}>
+            <span class="material-symbols-outlined">local_mall</span>
+            <span data-cart-count class="cart-count-bubble">{{ cart.item_count }}</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-overlay" id="mobile-overlay">
+  <div class="mobile-overlay-header">
+     <a href="{{ routes.root_url }}">
+    {%- if logo != blank -%}
+      <img src="{{ logo | image_url: width: 240 }}" width="240" height="66" alt="{{ shop.name | escape }}" class="extracted-style-115">
+    {%- else -%}
+      <img src="{{ 'logo-color.png' | asset_url }}" width="432" height="118" alt="{{ shop.name | escape }}" class="extracted-style-115">
+    {%- endif -%} 
+  </a>
+    <button id="close-mobile-menu" class="extracted-style-116" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="mobile-overlay-content">
+    <div class="mobile-mega-tabs drag-scroll">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'filter_tab' -%}
+          <span class="mobile-mega-tab {% if forloop.first %}active{% endif %}" data-filter="{{ block.settings.filter | escape }}">{{ block.settings.label | escape }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="mobile-mega-list drag-scroll">
+      {%- if mega_collection != blank and mega_collection.products_count > 0 -%}
+        {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
+          <a href="{{ product.url }}" class="mobile-mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
+            <img src="{{ product.featured_image | image_url: width: 200 }}" width="200" height="250" alt="{{ product.title | escape }}" loading="lazy">
+            <div>
+              <h4>{{ product.title }}</h4>
+              <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
+            </div>
+            {%- if product.tags contains 'new' -%}<span class="mobile-mega-badge">new</span>{%- endif -%}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- render 'mega-demo-cards', mobile: true -%}
+      {%- endif -%}
+    </div>
+    <div class="extracted-style-117">
+      <a href="{{ shop_all_link | default: '/collections/all' }}" class="btn extracted-style-118">{{ section.settings.shop_all_label }}</a>
+    </div>
+    <nav class="extracted-style-119">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nav_link' -%}
+          <a href="{{ block.settings.link | default: '#' }}" class="nav-link extracted-style-120">{{ block.settings.label | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+</div>
+
+
+
+
+
+<style>
+    .xb-product-quantity {
+     top: 4px !important;
+    right: -1px !important;
+    height:18px !important;
+    width:18px !important;
+    font-size:0.64rem !important;
+    font-weight:500 ;
+    background-color: #420007 !important;
+    }
+    /* Hide if count is 0 (optional based on app structure) */
+    .xb-product-quantity:empty {
+      display: none !important;
+    }
+  </style>
+
+
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Overrides the theme logo. Falls back to the bundled logo." },
+    { "type": "header", "content": "Shop mega-menu" },
+    { "type": "text", "id": "shop_label", "label": "Shop link label", "default": "Shop" },
+    { "type": "url", "id": "shop_link", "label": "Shop link destination" },
+    { "type": "collection", "id": "mega_collection", "label": "Products shown in mega-menu" },
+    { "type": "range", "id": "mega_limit", "min": 4, "max": 16, "step": 1, "label": "Number of products", "default": 8 },
+    { "type": "text", "id": "shop_all_label", "label": "Footer button label", "default": "SHOP THE COLLECTION" },
+    { "type": "url", "id": "shop_all_link", "label": "Footer button link" },
+    { "type": "header", "content": "Icons" },
+    { "type": "checkbox", "id": "show_search", "label": "Show search icon", "default": true },
+    { "type": "checkbox", "id": "show_cart", "label": "Show cart icon", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Link" },
+        { "type": "url", "id": "link", "label": "Link" },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            { "value": "left", "label": "Left of logo" },
+            { "value": "right", "label": "Right of logo" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "filter_tab",
+      "name": "Mega-menu filter tab",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "All products" },
+        { "type": "text", "id": "filter", "label": "Filter (product tag, or 'all')", "default": "all" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "filter_tab", "settings": { "label": "All products", "filter": "all" } },
+        { "type": "filter_tab", "settings": { "label": "Pigmentation & tan", "filter": "pigmentation" } },
+        { "type": "filter_tab", "settings": { "label": "Dullness & Uneven Tone", "filter": "dullness" } },
+        { "type": "filter_tab", "settings": { "label": "Oil & Humidity", "filter": "oil" } },
+        { "type": "filter_tab", "settings": { "label": "Hydration & Barrier", "filter": "hydration" } },
+        { "type": "filter_tab", "settings": { "label": "Hair & Scalp", "filter": "hair" } },
+        { "type": "nav_link", "settings": { "label": "By Concern", "position": "left" } },
+        { "type": "nav_link", "settings": { "label": "The Edits", "position": "left" } },
+        { "type": "nav_link", "settings": { "label": "Our Science", "position": "right" } },
+        { "type": "nav_link", "settings": { "label": "Journal", "position": "right" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

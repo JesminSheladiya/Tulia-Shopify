@@ -1,0 +1,764 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benifit_1_icon.value }}",
+            "text": "{{ product.metafields.custom.benifit_1_content.value }}"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benifit_2_icon.value }}",
+            "text": "{{ product.metafields.custom.benefit_2_content.value }}"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benefit_3_icon.value }}",
+            "text": "{{ product.metafields.custom.benefit_3_content.value }}"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benefit_4_icon.value }}",
+            "text": "{{ product.metafields.custom.benefit_4_content.value }}"
+          }
+        },
+        "spec_XEbDK7": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benefit_5_icon.value }}",
+            "text": "{{ product.metafields.custom.benefit_5_content.value }}"
+          }
+        },
+        "spec_PhTPHj": {
+          "type": "spec",
+          "settings": {
+            "icon": "{{ product.metafields.custom.benefit_6_icon.value }}",
+            "text": "{{ product.metafields.custom.benefit_6_content.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "spec_XEbDK7",
+        "spec_PhTPHj"
+      ],
+      "settings": {
+        "add_label": "Add to bag",
+        "notify_label": "Notify",
+        "show_coupon": true,
+        "coupon_text": "Enter coupon code to unlock available offers."
+      }
+    },
+    "ingredients": {
+      "type": "product-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name1.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content1.value }}"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name2.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content2.value }}"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name3.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content3.value }}"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name4.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content4.value }}"
+          }
+        },
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "brightness_auto",
+            "title": "{{ product.metafields.custom.benefits_name1.value }}",
+            "text": "{{ product.metafields.custom.benefits_content1.value }}"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "water_drop",
+            "title": "{{ product.metafields.custom.benefits_name2.value }}",
+            "text": "{{ product.metafields.custom.benefits_content2.value }}"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "routine",
+            "title": "{{ product.metafields.custom.benefits_name3.value }}",
+            "text": "{{ product.metafields.custom.benefits_content3.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "ingredients_label": "Ingredients",
+        "benefits_label": "Benefits"
+      }
+    },
+    "science": {
+      "type": "meet-the-science",
+      "blocks": {
+        "c1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Kojic Acid Dipalmitate",
+            "science": "A stabilized, highly effective derivative of kojic acid that works seamlessly to inhibit melanin synthesis, gently fading stubborn discoloration and evening out the natural lip line.",
+            "good_for": "Fading dark spots, preventing future pigmentation"
+          }
+        },
+        "c2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Glycolic Acid",
+            "science": "A micro-exfoliating alpha hydroxy acid that softly dissolves dead skin cells on the surface, accelerating cellular turnover to welcome a smoother, more radiant texture.",
+            "good_for": "Refining lip texture, Enhancing product absorption"
+          }
+        },
+        "c3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Liquorice and Mulberry Extract",
+            "science": "A dual-action antioxidant blend that naturally illuminates dullness, neutralizes environmental stressors, and helps restore the healthy, inherent rosiness of your lips.",
+            "good_for": "Soothing delicate skin, Restoring natural lip tone"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "custom_css": [
+        ".extracted-style-176 {display: none;}"
+      ],
+      "settings": {
+        "title": "Meet the Science",
+        "subtitle": "Low-effort lip care crafted by matching high-performance brightening actives with concentrated botanical extracts, so every single inclusion serves a deliberate pigmentation-correcting function.",
+        "metafield_key": "meet_the_science",
+        "field_image": "image",
+        "field_title": "title",
+        "field_science": "description",
+        "field_good_for": "good_for"
+      }
+    },
+    "ritual": {
+      "type": "ritual-steps",
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "When to Use",
+            "text": "Immediately after shampooing, to lock in essential hydration and restore softness to your lengths."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "How to Use",
+            "text": "Immediately after shampooing, to lock in essential hydration and restore softness to your lengths."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Pro Tips",
+            "text": "Use a wide-tooth comb to glide the conditioner evenly through your lengths while waiting, so every strand is perfectly coated."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3"
+      ],
+      "settings": {
+        "title": "Your Nighttime Ritual",
+        "image": "{{ product.metafields.custom.product_retuals.value }}",
+        "metafield_key": "your_daily_ritual",
+        "field_title": "title",
+        "field_text": "description"
+      }
+    },
+    "clinical": {
+      "type": "clinical-results",
+      "blocks": {
+        "r1": {
+          "type": "result",
+          "disabled": true,
+          "settings": {
+            "label": "consumer study results",
+            "stats": "100% | AGREED THE CREAM INSTANTLY RELIEVES OVERNIGHT DRYNESS WITHOUT FEELING HEAVY OR WAXY\n96% | AGREED THEIR LIPS FELT NOTICEABLY SOFTER AND MORE SUPPLE WITHIN THE FIRST WEEK OF CONSISTENT USE\n92% | AGREED THEY SAW A VISIBLE REDUCTION IN DARK PATCHES AND AN IMPROVEMENT IN OVERALL LIP TONE",
+            "metafield_key": "consumer_perception_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        },
+        "r2": {
+          "type": "result",
+          "settings": {
+            "label": "clinical results",
+            "stats": "98% | DEMONSTRATED A MEASURED INCREASE IN DEEP CELLULAR HYDRATION AND MOISTURE RETENTION\n94% | SHOWED A CLINICALLY SIGNIFICANT REDUCTION IN SURFACE MELANIN CONCENTRATION AND HYPERPIGMENTATION",
+            "metafield_key": "clinical_efficacy_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Clinical results"
+      }
+    },
+    "clinical_results_without_img_UJRyPf": {
+      "type": "clinical-results-without-img",
+      "blocks": {
+        "result_item_qfnKQA": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "clinical_efficacy_results",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "99%",
+            "description": "demonstrated a clinically proven improvement in lip barrier defense in severe wind and cold weather"
+          }
+        },
+        "result_item_RyM3Wx": {
+          "type": "result_item",
+          "disabled": true,
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "96%",
+            "description": "showed an immediate and measurable increase in deep layer hydration"
+          }
+        }
+      },
+      "block_order": [
+        "result_item_qfnKQA",
+        "result_item_RyM3Wx"
+      ],
+      "name": "Product Clinical Stats",
+      "settings": {
+        "heading": "Clinical results",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "recommended": {
+      "type": "recommended-for",
+      "blocks": {
+        "rc1": {
+          "type": "card",
+          "settings": {
+            "title": "{{ product.metafields.custom.recommended_title.value }}",
+            "subtitle": "{{ product.metafields.custom.recommended_content1.value }}"
+          }
+        },
+        "rc2": {
+          "type": "card",
+          "settings": {
+            "title": "{{ product.metafields.custom.recommended_title2.value }}",
+            "subtitle": "{{ product.metafields.custom.recommended_content2.value }}"
+          }
+        },
+        "rc3": {
+          "type": "card",
+          "settings": {
+            "title": "{{ product.metafields.custom.recommended_title3.value }}",
+            "subtitle": "{{ product.metafields.custom.recommended_content3.value }}"
+          }
+        },
+        "rc4": {
+          "type": "card",
+          "settings": {
+            "title": "{{ product.metafields.custom.recommended_title4.value }}",
+            "subtitle": "{{ product.metafields.custom.recommended_content4.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "rc1",
+        "rc2",
+        "rc3",
+        "rc4"
+      ],
+      "custom_css": [
+        ".extracted-style-200 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Recommended For"
+      }
+    },
+    "reels": {
+      "type": "product-reels",
+      "blocks": {
+        "rl1": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My honest lip care routine”"
+          }
+        },
+        "rl2": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Day and night with Tulia Cosmetics”"
+          }
+        },
+        "rl3": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Care for uneven-looking lips”"
+          }
+        },
+        "rl4": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Lip care mistakes to avoid”"
+          }
+        },
+        "rl5": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My nightly routine”"
+          }
+        }
+      },
+      "block_order": [
+        "rl1",
+        "rl2",
+        "rl3",
+        "rl4",
+        "rl5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Real Lip Care, Real Routine",
+        "subtitle": "Watch how Tulia Cosmetics fits easily into a daily skincare routine."
+      }
+    },
+    "1782987714e446332e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LQRXxQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "judge_me_reviews_cards_carousel_Yme3D8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LQRXxQ",
+        "judge_me_reviews_cards_carousel_Yme3D8"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "All",
+            "filter": "all"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Soft lips",
+            "filter": "soft"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Dark lips",
+            "filter": "dark"
+          }
+        },
+        "f4": {
+          "type": "filter",
+          "settings": {
+            "label": "Moisturizing",
+            "filter": "moisturizing"
+          }
+        },
+        "f5": {
+          "type": "filter",
+          "settings": {
+            "label": "Non-sticky",
+            "filter": "non-sticky"
+          }
+        },
+        "f6": {
+          "type": "filter",
+          "settings": {
+            "label": "Daily use",
+            "filter": "daily"
+          }
+        },
+        "f7": {
+          "type": "filter",
+          "settings": {
+            "label": "Smooth texture",
+            "filter": "smooth"
+          }
+        },
+        "f8": {
+          "type": "filter",
+          "settings": {
+            "label": "Visible care",
+            "filter": "visible"
+          }
+        },
+        "f9": {
+          "type": "filter",
+          "settings": {
+            "label": "Easy routine",
+            "filter": "easy"
+          }
+        },
+        "rv1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Soft and comfortable",
+            "text": "I liked how lightweight this cream feels. It does not feel sticky and keeps my lips soft for a long time.",
+            "author": "Anonymous",
+            "date": "2 days ago",
+            "categories": "soft non-sticky"
+          }
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Good for daily lip care",
+            "text": "I started using it at night and my lips feel smoother now. The texture is very easy to apply.",
+            "author": "Anonymous",
+            "date": "1 week ago",
+            "categories": "smooth easy daily"
+          }
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Works well with routine use",
+            "text": "The cream feels gentle and nourishing. I use it twice a day and my lips look more cared for.",
+            "author": "Anonymous",
+            "date": "2 weeks ago",
+            "categories": "visible daily moisturizing"
+          }
+        },
+        "rv4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Nice texture",
+            "text": "It spreads easily and does not feel heavy. Good product for everyday lip care.",
+            "author": "Anonymous",
+            "date": "1 month ago",
+            "categories": "smooth daily"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "rv1",
+        "rv2",
+        "rv3",
+        "rv4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Loved by Tulia Cosmetics Users",
+        "rating": "4.8",
+        "review_count": "124"
+      }
+    },
+    "complete": {
+      "type": "complete-routine",
+      "blocks": {
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "PREP",
+            "title": "Tulia Skin Lightening & Brightening Facewash",
+            "size": "70gm",
+            "price": "₹850",
+            "description": "A rich, creamy exfoliating cleanser formulated with vitamin C and micro-globules to deeply wash away daily impurities while actively preparing your skin tone for target treatments"
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "HYDRATE",
+            "title": "Tulia Lip Balm",
+            "size": "9gm",
+            "price": "₹330",
+            "description": "A daily pocket essential packed with kokum and shea butters to lock in long-lasting moisture and guard your lips against the elements all day long"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "badge": "PROTECT",
+            "title": "Tulia Physical Sunscreen Gel",
+            "size": "50gm",
+            "price": "₹1750",
+            "description": "An ultra-transparent, non-comedogenic zinc oxide shield that leaves zero white patches while providing absolute broad-spectrum protection against UV damage"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "custom_css": [
+        ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "{{ product.metafields.custom.give_your_heading.value }}",
+        "products_metafield_key": "other_products",
+        "field_product": "image",
+        "field_description": "description"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "How often should I apply it?",
+            "answer": "Apply it exclusively at night to let active ingredients safely renew your lips overnight."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Can it be used during the day?",
+            "answer": "Intentionally designed to be used exclusively as part of your nighttime skincare routine, applying it before bed allows the formula to work optimally during the skin's natural overnight renewal cycle"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "When will I see results?",
+            "answer": "Deep hydration is instant, while visible tone correction typically surfaces within four to six weeks."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it safe for sensitive lips?",
+            "answer": "Yes, it balances active brighteners with soothing botanicals, but avoid using it on cracked skin."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Does it feel heavy?",
+            "answer": "No, the premium formula melts immediately into the skin, leaving a lightweight, soft finish."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Common Inquiries",
+        "metafield_key": "faqs",
+        "field_question": "question",
+        "field_answer": "answer"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "tb1": {
+          "type": "badge",
+          "settings": {
+            "icon": "local_shipping",
+            "title": "FREE SHIPPING",
+            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+          }
+        },
+        "tb2": {
+          "type": "badge",
+          "disabled": true,
+          "settings": {
+            "icon": "health_and_safety",
+            "title": "DERMATOLOGICALLY TESTED",
+            "description": "Safe for all lips,\nclinically proven formula"
+          }
+        },
+        "tb3": {
+          "type": "badge",
+          "settings": {
+            "icon": "spa",
+            "title": "GENTLE FORMULATION",
+            "description": "Made for dark, dull,\nand uneven-looking lips"
+          }
+        },
+        "tb4": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "SECURE CHECKOUT",
+            "description": "100% secure payments\nwith COD & UPI options"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3",
+        "tb4"
+      ],
+      "custom_css": [
+        ".trust-badges-section .grid-4 {grid-template-columns: repeat(3, 1fr);}"
+      ],
+      "settings": {
+        "show_payments": false,
+        "payments_heading": "Accepted Payment Methods",
+        "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
+      }
+    },
+    "178351271991294ecc": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    },
+    "17835875473b0e0ca5": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ingredients",
+    "science",
+    "ritual",
+    "clinical",
+    "clinical_results_without_img_UJRyPf",
+    "recommended",
+    "reels",
+    "1782987714e446332e",
+    "reviews",
+    "complete",
+    "faq",
+    "trust",
+    "178351271991294ecc",
+    "17835875473b0e0ca5"
+  ]
+}

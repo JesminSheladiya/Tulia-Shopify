@@ -1,0 +1,14 @@
+{%- comment -%}
+  Renders a metaobject field, handling rich_text vs plain text.
+  Params: field (the metaobject field drop), allow_newline (bool, for plain text)
+{%- endcomment -%}
+{%- liquid
+  assign field_type = field.type | default: ''
+-%}
+{%- if field_type contains 'rich_text' -%}
+  {{ field | metafield_tag }}
+{%- elsif allow_newline -%}
+  {{ field.value | escape | newline_to_br }}
+{%- else -%}
+  {{ field.value | escape }}
+{%- endif -%}

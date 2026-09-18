@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "color_primary": "#420007",
+    "color_primary_container": "#630f17",
+    "color_secondary": "#735c00",
+    "color_surface": "#fcf9f8",
+    "color_on_surface": "#1b1c1c",
+    "social_instagram_link": "https://www.instagram.com/tuliacosmetics",
+    "cart_type": "drawer",
+    "cart_ajax": true,
+    "cart_show_free_shipping": true,
+    "free_shipping_threshold": "999",
+    "cart_show_note": true,
+    "predictive_search": true,
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "13047258039897440615": {
+        "type": "shopify://apps/judge-me-reviews/blocks/cart_drawer_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "widget_type": "review-widget"
+        }
+      },
+      "12342438634123318931": {
+        "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": false,
+        "settings": {
+          "selector_collection": ".ritual-card .ritual-img-wrapper a"
+        }
+      }
+    }
+  },
+  "presets": {
+    "Tulia": {
+      "color_primary": "#420007",
+      "color_primary_container": "#630f17",
+      "color_secondary": "#735c00",
+      "color_surface": "#fcf9f8",
+      "color_on_surface": "#1b1c1c"
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "/* Homepage ko chhodkar baaki saare pages ke upar space dene ke liye */body:not(.template-index) #MainContent,body:not(.template-index) .main-content {padding-top: 80px !important;}",
+      " /* Agar sirf Policy pages par hi dikkat hai toh yeh use karein */.shopify-policy__container {padding-top: 80px !important; padding-bottom: 60px !important;}"
+    ]
+  }
+}

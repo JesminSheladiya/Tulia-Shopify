@@ -1,0 +1,60 @@
+<section class="section extracted-style-205">
+  <button class="reels-prev extracted-style-49" aria-label="Previous"><span class="material-symbols-outlined extracted-style-50">chevron_left</span></button>
+  <button class="reels-next extracted-style-51" aria-label="Next"><span class="material-symbols-outlined extracted-style-50">chevron_right</span></button>
+
+  <div class="container text-center mb-large">
+    <h2 class="section-title italic-serif extracted-style-83">{{ section.settings.title | escape }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p class="section-subtitle mt-2 max-w-lg mx-auto extracted-style-206">{{ section.settings.subtitle | escape }}</p>{%- endif -%}
+  </div>
+
+  <div class="container extracted-style-52">
+    <div class="reels-container extracted-style-53">
+      {%- for block in section.blocks -%}
+        <div class="reel-item group extracted-style-54" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 500 }}" width="500" height="889" alt="{{ block.settings.caption | escape }}" class="extracted-style-55" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'influencer_video.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.caption | escape }}" class="extracted-style-55" loading="lazy">
+          {%- endif -%}
+          <div class="extracted-style-56"><div class="extracted-style-57"></div></div>
+          <div class="extracted-style-59"><span class="material-symbols-outlined extracted-style-60">play_circle</span></div>
+          {%- if block.settings.caption != blank -%}
+            <div class="extracted-style-61"><p class="extracted-style-207">{{ block.settings.caption | escape }}</p></div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product reels",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Real Lip Care, Real Routine" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Watch how Tulia fits easily into a daily skincare routine." }
+  ],
+  "blocks": [
+    {
+      "type": "reel",
+      "name": "Reel",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Thumbnail" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "“My honest lip care routine”" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product reels",
+      "blocks": [
+        { "type": "reel", "settings": { "caption": "“My honest lip care routine”" } },
+        { "type": "reel", "settings": { "caption": "“Day and night with Tulia”" } },
+        { "type": "reel", "settings": { "caption": "“Care for uneven-looking lips”" } },
+        { "type": "reel", "settings": { "caption": "“Lip care mistakes to avoid”" } },
+        { "type": "reel", "settings": { "caption": "“My nightly routine”" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

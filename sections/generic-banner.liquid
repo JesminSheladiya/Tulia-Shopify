@@ -1,0 +1,63 @@
+{%- liquid
+  assign bg = section.settings.bg_image
+-%}
+<section class="generic-banner gb--{{ section.settings.height }} text-{{ section.settings.content_align }} valign-{{ section.settings.content_valign }} gb--{{ section.settings.text_color }}{% if bg == blank %} gb--solid{% endif %}"
+  {% if bg != blank %}style="background-image: url('{{ bg | image_url: width: 2400 }}');"{% else %}style="background: {{ section.settings.bg_color }};"{% endif %}>
+  {% if bg != blank %}<div class="gb__overlay" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }};"></div>{% endif %}
+  <div class="container gb__content">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow gb__eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="gb__title">{{ section.settings.heading | escape | newline_to_br }}</h2>{%- endif -%}
+    {%- if section.settings.subtext != blank -%}<p class="gb__subtext">{{ section.settings.subtext | escape }}</p>{%- endif -%}
+    {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
+      <div class="gb__cta">
+        {%- if section.settings.button_1_label != blank -%}
+          <a href="{{ section.settings.button_1_link | default: '#' }}" class="btn {{ section.settings.button_1_style }}">{{ section.settings.button_1_label | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_2_label != blank -%}
+          <a href="{{ section.settings.button_2_link | default: '#' }}" class="btn {{ section.settings.button_2_style }}">{{ section.settings.button_2_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Generic - Banner",
+  "settings": [
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "color", "id": "bg_color", "label": "Background colour (no image)", "default": "#420007" },
+    { "type": "range", "id": "overlay", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Image overlay", "default": 40 },
+    { "type": "select", "id": "height", "label": "Height", "options": [
+      { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" }
+    ], "default": "large" },
+    { "type": "header", "content": "Alignment" },
+    { "type": "select", "id": "content_align", "label": "Text alignment", "options": [
+      { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" }, { "value": "right", "label": "Right" }
+    ], "default": "center" },
+    { "type": "select", "id": "content_valign", "label": "Vertical alignment", "options": [
+      { "value": "top", "label": "Top" }, { "value": "center", "label": "Centre" }, { "value": "bottom", "label": "Bottom" }
+    ], "default": "center" },
+    { "type": "header", "content": "Content" },
+    { "type": "select", "id": "text_color", "label": "Text colour", "options": [
+      { "value": "light", "label": "Light (on dark/image)" }, { "value": "dark", "label": "Dark (on light)" }
+    ], "default": "light" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "A deeper understanding of melanin-rich skin." },
+    { "type": "textarea", "id": "subtext", "label": "Subtext" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "button_1_label", "label": "Button 1 label" },
+    { "type": "url", "id": "button_1_link", "label": "Button 1 link" },
+    { "type": "select", "id": "button_1_style", "label": "Button 1 style", "options": [
+      { "value": "btn-primary-light", "label": "Solid light" }, { "value": "btn-outline-light", "label": "Outline light" }, { "value": "btn-primary", "label": "Solid dark" }
+    ], "default": "btn-primary-light" },
+    { "type": "text", "id": "button_2_label", "label": "Button 2 label" },
+    { "type": "url", "id": "button_2_link", "label": "Button 2 link" },
+    { "type": "select", "id": "button_2_style", "label": "Button 2 style", "options": [
+      { "value": "btn-outline-light", "label": "Outline light" }, { "value": "btn-primary-light", "label": "Solid light" }, { "value": "btn-primary", "label": "Solid dark" }
+    ], "default": "btn-outline-light" }
+  ],
+  "presets": [{ "name": "Generic - Banner" }]
+}
+{% endschema %}

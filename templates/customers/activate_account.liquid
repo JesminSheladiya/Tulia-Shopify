@@ -1,0 +1,19 @@
+<section class="section container reveal" style="max-width:480px;margin:0 auto;">
+  <div class="text-center mb-large">
+    <h1 class="section-title italic-serif text-primary">Activate account</h1>
+    <div class="divider mx-auto"></div>
+    <p class="section-subtitle">Create your password to activate your account.</p>
+  </div>
+  {%- assign field_css = 'width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);' -%}
+  {%- form 'activate_customer_password' -%}
+    {{ form.errors | default_errors }}
+    <label for="ActivatePassword">Password</label>
+    <input type="password" name="customer[password]" id="ActivatePassword" style="{{ field_css }}">
+    <label for="ActivatePasswordConfirm">Confirm password</label>
+    <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirm" style="{{ field_css }}">
+    <div style="display:flex;gap:1rem;">
+      <button type="submit" class="btn btn-primary">Activate</button>
+      <button type="submit" name="decline" class="btn btn-outline-light" style="border-color:var(--primary);color:var(--primary);">Decline</button>
+    </div>
+  {%- endform -%}
+</section>

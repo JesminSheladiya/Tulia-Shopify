@@ -1,0 +1,132 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": {
+        "show_strip": true,
+        "text": "JOIN OUR WAITLIST",
+        "trigger_waitlist": true,
+        "link": ""
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "tab_all": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "All products",
+            "filter": "all"
+          }
+        },
+        "tab_pig": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "Pigmentation & tan",
+            "filter": "pigmentation"
+          }
+        },
+        "tab_dull": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "Dullness & Uneven Tone",
+            "filter": "dullness"
+          }
+        },
+        "tab_oil": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "Oil & Humidity",
+            "filter": "oil"
+          }
+        },
+        "tab_hyd": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "Hydration & Barrier",
+            "filter": "hydration"
+          }
+        },
+        "tab_hair": {
+          "type": "filter_tab",
+          "settings": {
+            "label": "Hair & Scalp",
+            "filter": "hair"
+          }
+        },
+        "nav_concern": {
+          "type": "nav_link",
+          "disabled": true,
+          "settings": {
+            "label": "By Concern",
+            "link": "",
+            "position": "left"
+          }
+        },
+        "nav_edits": {
+          "type": "nav_link",
+          "settings": {
+            "label": "The Edits",
+            "link": "/#explore",
+            "position": "left"
+          }
+        },
+        "nav_science": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Our Science",
+            "link": "shopify://pages/our-story",
+            "position": "right"
+          }
+        },
+        "nav_journal": {
+          "type": "nav_link",
+          "disabled": true,
+          "settings": {
+            "label": "Journal",
+            "link": "/#blog",
+            "position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "tab_all",
+        "tab_pig",
+        "tab_dull",
+        "tab_oil",
+        "tab_hyd",
+        "tab_hair",
+        "nav_concern",
+        "nav_edits",
+        "nav_science",
+        "nav_journal"
+      ],
+      "settings": {
+        "shop_label": "Shop",
+        "shop_link": "",
+        "mega_collection": "all-products",
+        "mega_limit": 12,
+        "shop_all_label": "SHOP THE COLLECTION",
+        "shop_all_link": "",
+        "show_search": true,
+        "show_cart": true
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

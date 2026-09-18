@@ -1,0 +1,37 @@
+{%- comment -%}
+  Auto breadcrumb based on the current page. Optional param: light (bool) for dark backgrounds.
+{%- endcomment -%}
+{%- liquid
+  assign bc_class = 'breadcrumb breadcrumb--dark'
+  if light
+    assign bc_class = 'breadcrumb'
+  endif
+-%}
+<nav class="{{ bc_class }}" aria-label="Breadcrumb">
+  <a href="{{ routes.root_url }}">Home</a>
+  <span aria-hidden="true">/</span>
+  {%- case request.page_type -%}
+    {%- when 'product' -%}
+      {%- assign bc_col = collection -%}
+      {%- if bc_col == blank -%}{%- assign bc_col = product.collections.first -%}{%- endif -%}
+      {%- if bc_col != blank and bc_col.handle != blank -%}
+        <a href="{{ bc_col.url }}">{{ bc_col.title }}</a>
+        <span aria-hidden="true">/</span>
+      {%- endif -%}
+      <span class="breadcrumb__current">{{ product.title }}</span>
+    {%- when 'article' -%}
+      <a href="{{ blog.url }}">{{ blog.title }}</a>
+      <span aria-hidden="true">/</span>
+      <span class="breadcrumb__current">{{ article.title }}</span>
+    {%- when 'blog' -%}
+      <span class="breadcrumb__current">{{ blog.title }}</span>
+    {%- when 'page' -%}
+      <span class="breadcrumb__current">{{ page.title }}</span>
+    {%- when 'search' -%}
+      <span class="breadcrumb__current">Search</span>
+    {%- when 'collection' -%}
+      <span class="breadcrumb__current">{{ collection.title }}</span>
+    {%- else -%}
+      <span class="breadcrumb__current">{{ page_title }}</span>
+  {%- endcase -%}
+</nav>

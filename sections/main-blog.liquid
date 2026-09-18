@@ -1,0 +1,42 @@
+<section id="blog" class="section container reveal">
+  {% render 'breadcrumb' %}
+  <div class="flex-between mb-large align-end">
+    <div class="max-w-xl">
+      <h1 class="section-title italic-serif text-primary">{{ blog.title }}</h1>
+    </div>
+  </div>
+
+  <div class="grid grid-3">
+    {%- paginate blog.articles by 9 -%}
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" class="blog-card group" style="color:inherit;">
+          <div class="blog-img-wrapper">
+            {%- if article.image -%}
+              <img src="{{ article.image | image_url: width: 700 }}" width="700" height="500" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="1080" height="1350" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="blog-content">
+            {%- if article.tags.size > 0 -%}<span class="eyebrow text-muted">{{ article.tags.first }}</span>{%- endif -%}
+            <h4 class="blog-title">{{ article.title }}</h4>
+            <p class="blog-desc">{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+            <div class="extracted-style-90"><span class="extracted-style-91">Read more</span></div>
+          </div>
+        </a>
+      {%- endfor -%}
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination" style="grid-column:1 / -1;text-align:center;margin-top:2rem;">
+          {%- if paginate.previous -%}<a class="btn btn-primary" href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+          <span style="margin:0 1rem;">Page {{ paginate.current_page }} / {{ paginate.pages }}</span>
+          {%- if paginate.next -%}<a class="btn btn-primary" href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

@@ -1,0 +1,319 @@
+{%- comment -%}
+  SOMA Premium Slider - Static Background Image with Dynamic Content
+{%- endcomment -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --slider-bg-color: {{ section.settings.bg_color | default: '#370b11' }};
+    --slider-gold-accent: {{ section.settings.gold_color | default: '#9a7e3d' }};
+    --slider-text-pure: {{ section.settings.text_color_main | default: '#fcf9f8' }};
+    
+    --title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --tag-size-desktop: {{ section.settings.tag_size_desktop }}px;
+    --tag-size-mobile: {{ section.settings.tag_size_mobile }}px;
+    --sub-size-desktop: {{ section.settings.sub_size_desktop }}px;
+    --sub-size-mobile: {{ section.settings.sub_size_mobile }}px;
+
+    --section-display-height: {{ section.settings.section_display_height }}vh;
+  }
+
+  .soma-snap-container {
+    position: relative;
+    width: 100%;
+    height: var(--section-display-height);
+    background-color: var(--slider-bg-color);
+    overflow: hidden;
+  }
+
+  /* Static Background Image jo scroll ya slide change hone par badlegi nahi */
+  .soma-static-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: {{ section.settings.img_opacity | divided_by: 100.0 }};
+    z-index: 1;
+  }
+
+  .soma-snap-slider {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    z-index: 3;
+  }
+
+  .soma-snap-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .soma-snap-slide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .soma-vignette-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 20%, var(--slider-bg-color) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .soma-left-tracker {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  @media (max-width: 991px) {
+    .soma-left-tracker {
+      top: 12%;
+      left: 0;
+      right: 0;
+      transform: none;
+      flex-direction: row;
+      justify-content: center;
+      padding: 0 20px;
+      width: 100%;
+    }
+  }
+
+  .soma-tracker-node { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .soma-node-num { font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(252, 249, 248, 0.25); }
+  .soma-node-line { width: 32px; height: 1px; background-color: rgba(252, 249, 248, 0.15); position: relative; }
+  .soma-node-progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background-color: var(--slider-gold-accent); transition: width 0.3s ease; }
+  .soma-node-label { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(252, 249, 248, 0.3); }
+
+  .soma-tracker-node.node-active .soma-node-num { color: var(--slider-gold-accent); }
+  .soma-tracker-node.node-active .soma-node-label { color: var(--slider-text-pure); }
+  .soma-tracker-node.node-active .soma-node-progress-fill { width: 100%; }
+
+  .soma-center-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .soma-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .soma-luxury-tag { font-family: 'Inter', sans-serif; font-size: var(--tag-size-mobile); color: var(--slider-gold-accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
+  .soma-luxury-title { font-family: 'Mattone', sans-serif; font-size: var(--title-size-mobile); color: var(--slider-text-pure); line-height: 1.2; margin-bottom: 10px; }
+  .soma-luxury-subtitle { font-family: 'Kanit', sans-serif; font-size: var(--sub-size-mobile); color: var(--slider-gold-accent); font-style: italic; }
+
+  @media (min-width: 768px) {
+    .soma-luxury-tag { font-size: var(--tag-size-desktop); }
+    .soma-luxury-title { font-size: 48px !important; }
+    .soma-luxury-subtitle { font-size: var(--sub-size-desktop); }
+  }
+
+  .soma-bottom-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+  }
+
+  .soma-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(252,249,248,0.3); border: none; cursor: pointer; transition: all 0.3s ease; }
+  .soma-dot.dot-active { background: #fff; transform: scale(1.3); }
+</style>
+
+<div class="soma-snap-container" id="soma-slider-{{ section.id }}">
+  
+  {%- assign first_block = section.blocks.first -%}
+  {%- if first_block and first_block.settings.image != blank -%}
+    <div class="soma-static-bg" style="background-image: url('{{ first_block.settings.image | image_url: width: 1800 }}');"></div>
+  {%- else -%}
+    <div class="soma-static-bg" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80');"></div>
+  {%- endif -%}
+
+  <div class="soma-vignette-overlay"></div>
+
+  <div class="soma-left-tracker">
+    {%- for block in section.blocks -%}
+      <div class="soma-tracker-node {% if forloop.first %}node-active{% endif %}" id="snap-node-{{ forloop.index0 }}" onclick="scrollToSnapSlide({{ forloop.index0 }})">
+        <span class="soma-node-num">0{{ forloop.index }}</span>
+        <div class="soma-node-line">
+          <div class="soma-node-progress-fill"></div>
+        </div>
+        <span class="soma-node-label">{{ block.settings.anchor_name }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="soma-snap-slider" id="soma-scroll-pane-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      <div class="soma-snap-slide" id="snap-slide-{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        <div class="soma-center-stage">
+          <div class="soma-text-container">
+            <span class="soma-luxury-tag">{{ block.settings.tag_text }}</span>
+            <h2 class="soma-luxury-title">{{ block.settings.title }}</h2>
+            <p class="soma-luxury-subtitle">{{ block.settings.subtitle }}</p>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="soma-bottom-dots">
+    {%- for block in section.blocks -%}
+      <button class="soma-dot {% if forloop.first %}dot-active{% endif %}" id="snap-dot-{{ forloop.index0 }}" onclick="scrollToSnapSlide({{ forloop.index0 }})"></button>
+    {%- endfor -%}
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollPane = document.getElementById('soma-scroll-pane-{{ section.id }}');
+    if (!scrollPane) return;
+
+    const totalSlides = {{ section.blocks.size }};
+    let autoPlayInterval = null;
+    const isAutoPlayEnabled = {{ section.settings.autoplay_enable | default: false }};
+    const autoPlaySpeed = {{ section.settings.autoplay_speed | default: 5 }} * 1000;
+    let currentActiveIndex = 0;
+
+    function syncNavigationUI() {
+      const slideHeight = scrollPane.offsetHeight;
+      const currentScroll = scrollPane.scrollTop;
+      currentActiveIndex = Math.min(Math.floor((currentScroll + (slideHeight / 2)) / slideHeight), totalSlides - 1);
+
+      for (let i = 0; i < totalSlides; i++) {
+        const node = document.getElementById(`snap-node-${i}`);
+        const dot = document.getElementById(`snap-dot-${i}`);
+
+        if (i === currentActiveIndex) {
+          if (node) node.classList.add('node-active');
+          if (dot) dot.classList.add('dot-active');
+        } else {
+          if (node) node.classList.remove('node-active');
+          if (dot) dot.classList.remove('dot-active');
+        }
+      }
+    }
+
+    window.scrollToSnapSlide = function(index) {
+      const slideHeight = scrollPane.offsetHeight;
+      scrollPane.scrollTo({
+        top: index * slideHeight,
+        behavior: 'smooth'
+      });
+      resetAutoPlayTimer();
+    };
+
+    function startAutoPlay() {
+      if (!isAutoPlayEnabled || totalSlides <= 1) return;
+      autoPlayInterval = setInterval(function() {
+        let nextIndex = currentActiveIndex + 1;
+        if (nextIndex >= totalSlides) {
+          nextIndex = 0;
+        }
+        const slideHeight = scrollPane.offsetHeight;
+        scrollPane.scrollTo({
+          top: nextIndex * slideHeight,
+          behavior: 'smooth'
+        });
+      }, autoPlaySpeed);
+    }
+
+    function resetAutoPlayTimer() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      }
+    }
+
+    scrollPane.addEventListener('scroll', syncNavigationUI);
+    scrollPane.addEventListener('touchstart', () => clearInterval(autoPlayInterval), {passive: true});
+    scrollPane.addEventListener('touchend', resetAutoPlayTimer, {passive: true});
+    scrollPane.addEventListener('mousedown', () => clearInterval(autoPlayInterval));
+    scrollPane.addEventListener('mouseup', resetAutoPlayTimer);
+
+    startAutoPlay();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "SOMA USP Slider Fixed",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Canvas Color", "default": "#370b11" },
+    { "type": "color", "id": "gold_color", "label": "Gold Palette", "default": "#9a7e3d" },
+    { "type": "color", "id": "text_color_main", "label": "Headline Color", "default": "#fcf9f8" },
+    { "type": "range", "id": "img_opacity", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Image Opacity", "default": 30 },
+    {
+      "type": "range",
+      "id": "section_display_height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Section Box Height",
+      "default": 75
+    },
+    { "type": "header", "content": "Auto Scroll Settings" },
+    { "type": "checkbox", "id": "autoplay_enable", "label": "Enable Auto Scroll", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 2, "max": 10, "step": 1, "unit": "s", "label": "Change Slide Every", "default": 5 },
+    { "type": "header", "content": "Desktop Sizing" },
+    { "type": "range", "id": "title_size_desktop", "min": 20, "max": 80, "default": 56, "label": "Title Size Desktop" },
+    { "type": "range", "id": "tag_size_desktop", "min": 10, "max": 25, "default": 11, "label": "Tag Size Desktop" },
+    { "type": "range", "id": "sub_size_desktop", "min": 16, "max": 45, "default": 28, "label": "Subtitle Size Desktop" },
+    { "type": "header", "content": "Mobile Sizing" },
+    { "type": "range", "id": "title_size_mobile", "min": 18, "max": 50, "default": 32, "label": "Title Size Mobile" },
+    { "type": "range", "id": "tag_size_mobile", "min": 8, "max": 20, "default": 10, "label": "Tag Size Mobile" },
+    { "type": "range", "id": "sub_size_mobile", "min": 12, "max": 30, "default": 20, "label": "Subtitle Size Mobile" }
+  ],
+  "blocks": [
+    {
+      "type": "usp_slide",
+      "name": "Slide Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background Image (First slide image will be static)" },
+        { "type": "text", "id": "anchor_name", "label": "Nav Title", "default": "Skin" },
+        { "type": "text", "id": "tag_text", "label": "Top Badge Label", "default": "Philosophy — Skin" },
+        { "type": "text", "id": "title", "label": "Main Headline", "default": "Skin should not adjust to skincare" },
+        { "type": "text", "id": "subtitle", "label": "Italic Muted Phrase", "default": "but skincare should understand skin" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SOMA USP Slider Fixed" }]
+}
+{% endschema %}

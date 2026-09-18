@@ -1,0 +1,20 @@
+{%- comment -%}
+  Sticky bottom add-to-bag bar. JS (script.js) reveals it once #sacred-ingredients
+  scrolls into view, which only exists on the product template.
+{%- endcomment -%}
+{%- if product -%}
+  {%- assign sticky_variant = product.selected_or_first_available_variant -%}
+  <div id="sticky-bottom-bar">
+    <div class="container sticky-bar-content">
+      <p class="sticky-bar-text">{{ product.metafields.custom.call_to_action.value | default: product.metafields.custom.sticky_text.value | default: product.title }}</p>
+      <div class="extracted-style-113">
+        <form method="post" action="{{ routes.cart_add_url }}" data-ajax-cart>
+          <input type="hidden" name="id" value="{{ sticky_variant.id }}">
+          <button type="submit" class="btn btn-primary extracted-style-114" {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}{{ sticky_variant.price | money }}{%- else -%}Sold out{%- endif -%}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

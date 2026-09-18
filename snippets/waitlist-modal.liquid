@@ -1,0 +1,21 @@
+{%- comment -%} Global "Join our waitlist" modal. Triggered by any .waitlist-trigger element. {%- endcomment -%}
+<div class="waitlist-modal-overlay" id="waitlist-modal">
+  <div class="waitlist-modal-content">
+    <button class="waitlist-modal-close" id="waitlist-close" aria-label="Close">&times;</button>
+    <h2 class="extracted-style-121">Be the First to Experience Tulia</h2>
+    <p class="extracted-style-122">Join our waitlist and get early access to Tulia’s upcoming skincare essentials, exclusive launch updates, and special first-access offers.</p>
+    {%- form 'customer', class: 'extracted-style-123' -%}
+      <input type="hidden" name="contact[tags]" value="waitlist">
+      {%- if form.posted_successfully? -%}
+        <p class="extracted-style-128">Thank you — you’re on the list. We’ll be in touch.</p>
+      {%- else -%}
+        <div class="extracted-style-124">
+          <label class="extracted-style-125" for="WaitlistEmail">Email Address</label>
+          <input type="email" id="WaitlistEmail" name="contact[email]" placeholder="Enter your email" required class="extracted-style-126">
+        </div>
+        <button type="submit" class="btn btn-primary extracted-style-127">Join the Waitlist</button>
+      {%- endif -%}
+    {%- endform -%}
+    <p class="extracted-style-128">We’ll only send you important launch updates and early access details.</p>
+  </div>
+</div>

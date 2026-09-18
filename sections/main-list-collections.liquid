@@ -1,0 +1,32 @@
+<section class="section reveal bg-surface-alt">
+  <div class="container">
+    <div class="section-header text-center mb-large">
+      <h1 class="section-title text-primary">{{ section.settings.title | escape }}</h1>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="grid grid-3 gap-large">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" class="edit-card extracted-style-38" style="color:inherit;">
+          <div class="extracted-style-39">
+            {%- if collection.image or collection.products.first.featured_image -%}
+              <img src="{{ collection.image | default: collection.products.first.featured_image | image_url: width: 600 }}" width="600" height="750" alt="{{ collection.title | escape }}" class="extracted-style-40" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="1080" height="1350" alt="{{ collection.title | escape }}" class="extracted-style-40" loading="lazy">
+            {%- endif -%}
+          </div>
+          <h3 class="edit-hover-title extracted-style-41">{{ collection.title }}</h3>
+          <p class="edit-desc extracted-style-42">{{ collection.products_count }} products</p>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Collections" }
+  ]
+}
+{% endschema %}

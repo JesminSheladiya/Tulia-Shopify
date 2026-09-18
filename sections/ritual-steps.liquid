@@ -1,0 +1,85 @@
+{%- liquid
+  assign mf = product.metafields.custom[section.settings.metafield_key]
+  assign entries = mf.value
+-%}
+<section class="section extracted-style-185">
+  <div class="container">
+    <div class="grid grid-2 gap-large align-center extracted-style-186">
+      <div class="extracted-style-105">
+        <h2 class="section-title italic-serif text-primary extracted-style-187">{{ section.settings.title | escape | newline_to_br }}</h2>
+        <div class="extracted-style-188">
+          {%- if entries != blank and entries.size > 0 -%}
+            {%- for entry in entries -%}
+              {%- liquid
+                assign st = entry[section.settings.field_title].value
+                if st == blank
+                  assign st = 'Step ' | append: forloop.index
+                endif
+                assign sx = entry[section.settings.field_text]
+              -%}
+              <div class="extracted-style-189">
+                <span class="extracted-style-190">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                <div>
+                  <h5 class="extracted-style-191">{{ st | escape }}</h5>
+                  <p class="extracted-style-192">{% render 'mo-text', field: sx, allow_newline: true %}</p>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in section.blocks -%}
+              <div class="extracted-style-189" {{ block.shopify_attributes }}>
+                <span class="extracted-style-190">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                <div>
+                  <h5 class="extracted-style-191">{{ block.settings.title | escape }}</h5>
+                  <p class="extracted-style-192">{{ block.settings.text | escape }}</p>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="extracted-style-193">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 900 }}" width="900" height="900" alt="{{ section.settings.title | strip_newlines | escape }}" class="extracted-style-64" loading="lazy">
+        {%- else -%}
+          <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ section.settings.title | strip_newlines | escape }}" class="extracted-style-64" loading="lazy">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ritual steps",
+  "settings": [
+    { "type": "textarea", "id": "title", "label": "Title", "default": "Your\nNighttime Ritual" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "header", "content": "Dynamic data (metaobjects)" },
+    { "type": "paragraph", "content": "When the product has the metafield below, steps are pulled from those metaobjects. Otherwise the manual blocks are used." },
+    { "type": "text", "id": "metafield_key", "label": "Product metafield key (custom.___)", "default": "your_daily_ritual" },
+    { "type": "text", "id": "field_title", "label": "Metaobject field: step title", "default": "title" },
+    { "type": "text", "id": "field_text", "label": "Metaobject field: step text", "default": "description" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "When to Use" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Final step of your evening skincare routine to allow the concentrated actives to repair and brighten." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "When to Use", "text": "Final step of your evening skincare routine to allow the concentrated actives to repair and brighten without disruption from daytime elements or sun exposure" } },
+        { "type": "step", "settings": { "title": "How to Use", "text": "Gently squeeze the tube and use the cooling applicator to glide a generous, even layer across clean, dry lips right before bed" } },
+        { "type": "step", "settings": { "title": "Pro Tips", "text": "To optimize your brightening results, gently use a damp cloth to remove dead skin cells before application, ensuring the active ingredients penetrate deeply into the skin barrier" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

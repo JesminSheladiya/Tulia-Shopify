@@ -1,0 +1,21 @@
+{%- comment -%} Demo ritual cards shown until a collection is connected. {%- endcomment -%}
+{%- assign demo = 'gleam.jpg|gleam|Skin Lightening Facewash|pigmentation dullness oil|₹850|,supple.jpg|tint|Lip lightening Cream|pigmentation tint|₹650|new,sun-kissed.jpg|plump|Lip Balm|dullness hydration|₹450|,sun-kissed.jpg|sun-kissed|Physical Sunscreen Gel SPF 50+|oil|₹1750|new,supple.jpg|supple|Buttermax Intensive Cream|hydration|₹1300|,gleam.jpg|waves|All in One Shampoo|hair|₹950|,supple.jpg|smooth|All in One Conditioner|hair|₹1050|,sun-kissed.jpg|shine|Hair Care Serum|hair|₹1250|' | split: ',' -%}
+{%- for row in demo -%}
+  {%- assign p = row | split: '|' -%}
+  <div class="ritual-card group" data-category="{{ p[3] }}">
+    <div class="ritual-img-wrapper">
+      {%- if p[5] == 'new' -%}<div class="badge">NEW</div>{%- endif -%}
+      <a href="{{ routes.all_products_collection_url }}"><img src="{{ p[0] | asset_url }}" width="1080" height="1350" alt="{{ p[1] }}" class="ritual-img" loading="lazy"></a>
+      <a href="{{ routes.all_products_collection_url }}" class="btn-add-to-bag-img">ADD TO BAG</a>
+    </div>
+    <div class="ritual-info">
+      <h3 class="ritual-name italic-serif">{{ p[1] }}</h3>
+      <p class="ritual-desc">{{ p[2] }}</p>
+      <div class="rating text-muted extracted-style-13">★★★★★ 4.9</div>
+      <div class="price-row extracted-style-14">
+        <p class="ritual-price extracted-style-15">{{ p[4] }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-round-add extracted-style-16"><span class="material-symbols-outlined extracted-style-17">add</span></a>
+      </div>
+    </div>
+  </div>
+{%- endfor -%}

@@ -1,0 +1,36 @@
+<section class="section container reveal" style="max-width:760px;margin:0 auto;">
+  <div class="flex-between align-end mb-large">
+    <h1 class="section-title italic-serif text-primary">Your addresses</h1>
+    <a href="{{ routes.account_url }}" class="link-underline">Back to account</a>
+  </div>
+
+  {%- assign field_css = 'width:100%;border:1px solid var(--outline);padding:.6rem;border-radius:var(--radius-sm);margin:.35rem 0 1rem;color:var(--on-surface);' -%}
+
+  <h3 class="ritual-name italic-serif mb-medium">Add a new address</h3>
+  {%- form 'customer_address', customer.new_address -%}
+    <input type="text" name="address[first_name]" placeholder="First name" style="{{ field_css }}">
+    <input type="text" name="address[last_name]" placeholder="Last name" style="{{ field_css }}">
+    <input type="text" name="address[address1]" placeholder="Address" style="{{ field_css }}">
+    <input type="text" name="address[city]" placeholder="City" style="{{ field_css }}">
+    <input type="text" name="address[province]" placeholder="State / Province" style="{{ field_css }}">
+    <input type="text" name="address[zip]" placeholder="ZIP / Postal code" style="{{ field_css }}">
+    <input type="text" name="address[country]" placeholder="Country" style="{{ field_css }}">
+    <input type="tel" name="address[phone]" placeholder="Phone" style="{{ field_css }}">
+    <button type="submit" class="btn btn-primary">Add address</button>
+  {%- endform -%}
+
+  <h3 class="ritual-name italic-serif mb-medium" style="margin-top:2.5rem;">Saved addresses</h3>
+  {%- for address in customer.addresses -%}
+    <div class="review-card extracted-style-217" style="margin-bottom:1rem;">
+      <div>{{ address | format_address }}</div>
+      <div style="margin-top:.75rem;display:flex;gap:1rem;">
+        <a href="{{ address.url }}" class="link-underline">Edit</a>
+        <a href="{{ address.url }}" data-confirm-message="Are you sure?" class="link-underline" onclick="Shopify.CustomerAddress &amp;&amp; Shopify.CustomerAddress.destroy(this);return false;">Delete</a>
+      </div>
+    </div>
+  {%- else -%}
+    <p class="text-muted">No saved addresses.</p>
+  {%- endfor -%}
+</section>
+
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>

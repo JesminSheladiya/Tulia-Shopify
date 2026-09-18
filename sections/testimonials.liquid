@@ -1,0 +1,65 @@
+<section class="bg-surface reveal extracted-style-67">
+  <div class="container">
+    <div class="extracted-style-68">
+      <h2 class="section-title text-primary extracted-style-69">{{ section.settings.title | escape }}</h2>
+    </div>
+    <div class="grid grid-3">
+      {%- for block in section.blocks -%}
+        <div class="minimal-testimonial extracted-style-70" {{ block.shopify_attributes }}>
+          <div>
+            <span class="material-symbols-outlined extracted-style-71">format_quote</span>
+            <p class="extracted-style-72">{{ block.settings.quote | escape }}</p>
+          </div>
+          <div class="extracted-style-73">
+            {%- if block.settings.customer_image != blank -%}
+              <img src="{{ block.settings.customer_image | image_url: width: 120 }}" width="120" height="120" alt="{{ block.settings.name | escape }}" class="extracted-style-74">
+            {%- else -%}
+              <img src="{{ 'testimonial_woman.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.name | escape }}" class="extracted-style-74">
+            {%- endif -%}
+            <div class="extracted-style-75">
+              <h4 class="extracted-style-76">{{ block.settings.name | escape }}</h4>
+              <p class="extracted-style-77">{{ block.settings.product | escape }}</p>
+            </div>
+            {%- if block.settings.product_image != blank -%}
+              <img src="{{ block.settings.product_image | image_url: width: 160 }}" width="160" height="160" alt="{{ block.settings.product | escape }}" class="extracted-style-78">
+            {%- else -%}
+              <img src="{{ 'moss_jar_main.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.product | escape }}" class="extracted-style-78">
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Unfiltered" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Awesome! The level of customer service is excellent every time. \"Perfect on the first try or quickly adjusted.\" I'm so happy 😊" },
+        { "type": "image_picker", "id": "customer_image", "label": "Customer image" },
+        { "type": "text", "id": "name", "label": "Customer name", "default": "DIVYA MENON" },
+        { "type": "text", "id": "product", "label": "Product name", "default": "Buttermax Intensive" },
+        { "type": "image_picker", "id": "product_image", "label": "Product image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "name": "DIVYA MENON", "product": "Buttermax Intensive", "quote": "Awesome! The level of customer service is excellent every time. \"Perfect on the first try or quickly adjusted.\" I'm so happy 😊" } },
+        { "type": "testimonial", "settings": { "name": "PRIYA NATARAJAN", "product": "Skin Lightening Facewash", "quote": "The products have a story just like the designers. I love my Tulia Skin Lightening Facewash! It truly feels refreshing every morning." } },
+        { "type": "testimonial", "settings": { "name": "AISHWARYA RAO", "product": "Physical Sunscreen Gel", "quote": "I've been looking for physical sunscreen that doesn't leave a white cast. Tulia's formula is absolutely perfect for my skin tone!" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

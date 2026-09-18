@@ -1,0 +1,41 @@
+<article class="section container reveal" style="max-width:820px;margin:0 auto;">
+  {% render 'breadcrumb' %}
+  <header class="text-center mb-large">
+    {%- if article.tags.size > 0 -%}<span class="eyebrow text-muted">{{ article.tags.first }}</span>{%- endif -%}
+    <h1 class="section-title italic-serif text-primary">{{ article.title }}</h1>
+    <p class="section-subtitle">{{ article.published_at | date: '%B %e, %Y' }}{% if article.author != blank %} — {{ article.author }}{% endif %}</p>
+  </header>
+
+  {%- if article.image -%}
+    <div class="article-cover">
+      <img src="{{ article.image | image_url: width: 1600 }}" width="{{ article.image.width }}" height="{{ article.image.height }}" alt="{{ article.title | escape }}">
+    </div>
+  {%- endif -%}
+
+  <div class="rte text-content text-on-surface" style="line-height:1.8;">{{ article.content }}</div>
+
+  <div class="mb-large" style="margin-top:3rem;">
+    <a href="{{ blog.url }}" class="link-with-icon">
+      <span class="material-symbols-outlined">arrow_left_alt</span>
+      <span>Back to {{ blog.title }}</span>
+    </a>
+  </div>
+
+  {%- if blog.comments_enabled? -%}
+    <div id="comments" style="margin-top:3rem;">
+      {%- if article.comments_count > 0 -%}
+        <h3 class="section-title" style="font-size:1.6rem;">{{ article.comments_count }} comments</h3>
+        {%- for comment in article.comments -%}
+          <div class="review-card extracted-style-217" style="margin-bottom:1rem;">
+            <p class="extracted-style-221">{{ comment.content }}</p>
+            <p class="extracted-style-222">{{ comment.author }} — {{ comment.created_at | date: '%B %e, %Y' }}</p>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

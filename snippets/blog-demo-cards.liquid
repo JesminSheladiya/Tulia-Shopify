@@ -1,0 +1,17 @@
+{%- comment -%} Demo blog cards until a blog is connected. {%- endcomment -%}
+{%- assign demo = 'Skin Science|What K-Beauty Gets Wrong|Why the 10-step routine might be doing more harm than good for tropical climates and melanin-rich skin.,Ingredients|Why Indian Skin Tans|Understanding melanocyte activity and how to manage pigmentation without harsh chemical bleaching.,Education|The Truth About White Cast|Demystifying physical blockers and finding the perfect finish for deeper skin tones.' | split: ',' -%}
+{%- assign imgs = 'dusky-edit.jpg,waves-edit.jpg,tint-edit.jpg' | split: ',' -%}
+{%- for row in demo -%}
+  {%- assign p = row | split: '|' -%}
+  <div class="blog-card group">
+    <div class="blog-img-wrapper">
+      <img src="{{ imgs[forloop.index0] | asset_url }}" width="1080" height="1350" alt="{{ p[1] }}" class="blog-img" loading="lazy">
+    </div>
+    <div class="blog-content">
+      <span class="eyebrow text-muted">{{ p[0] }}</span>
+      <h4 class="blog-title">{{ p[1] }}</h4>
+      <p class="blog-desc">{{ p[2] }}</p>
+      <div class="extracted-style-90"><a href="#" class="extracted-style-91">Read more</a></div>
+    </div>
+  </div>
+{%- endfor -%}

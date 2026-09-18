@@ -1,0 +1,37 @@
+<section class="section container reveal search-page">
+  <div class="text-center mb-large">
+    <h1 class="section-title italic-serif text-primary">{{ 'general.search.search' | t }}</h1>
+    <div class="divider mx-auto"></div>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.search' | t }}">
+      <button type="submit" class="btn btn-primary">{{ 'general.search.search' | t }}</button>
+    </form>
+  </div>
+
+  {%- if search.performed -%}
+    {%- if search.results.size > 0 -%}
+      <p class="text-center section-subtitle mb-large">{{ 'general.search.results_with_count' | t: count: search.results_count, terms: search.terms }}</p>
+      {%- paginate search.results by 24 -%}
+        <div class="results-grid">
+          {%- for item in search.results -%}
+            {%- render 'search-result-card', item: item -%}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" style="text-align:center;margin-top:3rem;">
+            {%- if paginate.previous -%}<a class="btn btn-primary" href="{{ paginate.previous.url }}">Previous</a>{%- endif -%}
+            <span style="margin:0 1rem;">Page {{ paginate.current_page }} / {{ paginate.pages }}</span>
+            {%- if paginate.next -%}<a class="btn btn-primary" href="{{ paginate.next.url }}">Next</a>{%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <p class="text-center section-subtitle">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+    {%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

@@ -1,0 +1,84 @@
+<section class="section extracted-style-162">
+  <div class="container">
+    <div class="extracted-style-163">
+      <details class="group extracted-style-164" open>
+        <summary class="extracted-style-165">
+          {{ section.settings.ingredients_label | escape }}
+          <span class="material-symbols-outlined">expand_more</span>
+        </summary>
+        <div class="extracted-style-166">
+          <div class="extracted-style-167">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'ingredient' -%}
+                <p class="extracted-style-168" {{ block.shopify_attributes }}><strong class="extracted-style-120">{{ block.settings.name | escape }}</strong><br>{{ block.settings.description | escape }}</p>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </details>
+
+      <details class="group extracted-style-164" open>
+        <summary class="extracted-style-165">
+          {{ section.settings.benefits_label | escape }}
+          <span class="material-symbols-outlined">expand_more</span>
+        </summary>
+        <div class="extracted-style-166">
+          <div class="grid grid-3 gap-large extracted-style-124">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'benefit' -%}
+                <div {{ block.shopify_attributes }}>
+                  <span class="material-symbols-outlined extracted-style-169">{{ block.settings.icon | escape }}</span>
+                  <h4 class="extracted-style-170">{{ block.settings.title | escape }}</h4>
+                  <p class="extracted-style-171">{{ block.settings.text | escape }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients & Benefits",
+  "settings": [
+    { "type": "text", "id": "ingredients_label", "label": "Ingredients label", "default": "Ingredients" },
+    { "type": "text", "id": "benefits_label", "label": "Benefits label", "default": "Benefits" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Kesar" },
+        { "type": "text", "id": "description", "label": "Description", "default": "Helps support a brighter and more even-looking lip tone while adding a rich, care-led touch to the formula." }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Material icon name", "default": "brightness_auto" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Improves Appearance" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Helps improve the look of dark and uneven lips, supporting a healthier-looking natural lip tone." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients & Benefits",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Kesar", "description": "Helps support a brighter and more even-looking lip tone while adding a rich, care-led touch to the formula." } },
+        { "type": "ingredient", "settings": { "name": "Haridra", "description": "Known for its comforting properties, it helps care for delicate lips and supports a healthier-looking appearance." } },
+        { "type": "ingredient", "settings": { "name": "Non-Nano Zinc", "description": "Helps protect the lips from daily environmental stress while keeping the formula gentle for regular use." } },
+        { "type": "ingredient", "settings": { "name": "Nourishing Base", "description": "Keeps the lips soft, smooth, and moisturized, making the cream suitable for a simple nighttime lip care routine." } },
+        { "type": "benefit", "settings": { "icon": "brightness_auto", "title": "Improves Appearance", "text": "Helps improve the look of dark and uneven lips, supporting a healthier-looking natural lip tone." } },
+        { "type": "benefit", "settings": { "icon": "water_drop", "title": "Moisturizing", "text": "Keeps lips soft, smooth, and moisturized. Helps reduce dryness and dullness effectively." } },
+        { "type": "benefit", "settings": { "icon": "routine", "title": "Comfortable Use", "text": "Lightweight texture for comfortable daily use. Easy to apply during the day or night without stickiness." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

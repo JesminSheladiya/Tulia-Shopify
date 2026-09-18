@@ -1,0 +1,220 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "generic_banner_ezLDwK": {
+      "type": "generic-banner",
+      "custom_css": [
+        ".container.gb__content {width: 768px;}"
+      ],
+      "name": "Generic - Banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/our-science-banner-2_1.webp",
+        "bg_color": "#420007",
+        "overlay": 0,
+        "height": "large",
+        "content_align": "left",
+        "content_valign": "center",
+        "text_color": "light",
+        "eyebrow": "OUR STORY",
+        "heading": "A deeper understanding of melanin-rich skin.",
+        "subtext": "",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_1_style": "btn-primary-light",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "image_with_text_YTAyUm": {
+      "type": "image-with-text",
+      "disabled": true,
+      "name": "Generic - Image + Text",
+      "settings": {
+        "editorial_theme": "warm_sand",
+        "image_side": "left",
+        "enable_dropcap": true,
+        "image": "shopify://shop_images/ezgif-frame-018.png",
+        "top_description": "<p>For years, I have seen beauty shaped by formulas, standards, and routines that were not always created for our climate, our tones, our concerns, or the way we live every day. Indian skin has its own rhythm. It lives with sun, humidity, pigmentation, tanning, dryness, and constant environmental stress.</p>",
+        "highlight_quote": "I wanted Tulia to understand that rhythm.",
+        "bottom_description": "<p>With Tulia, my vision was to create a premium Indian skincare brand that brings together science-led formulations, sensorial textures, and a deeper understanding of melanin-rich skin. Every product is designed to feel purposeful, elegant, and relevant to the way Indian skin lives.</p>"
+      }
+    },
+    "image_with_text_KWNdp8": {
+      "type": "image-with-text",
+      "custom_css": [
+        ".mobile-only {display: none !important;}",
+        "@media screen and (max-width: 749px) {.soma-luxury-title, h2.soma-luxury-title, blockquote, p.quote-text-class {font-size: 17px !important; line-height: 1.4 !important; } .mobile-only {display: block !important; margin-top: 0; }}",
+        ".tulia-media-col {display: none;}",
+        "@media (min-width: 990px) {.tulia-grid {grid-template-columns: none; } .tulia-text-col {grid-column: span 10; }}"
+      ],
+      "name": "Generic - Image + Text",
+      "settings": {
+        "editorial_theme": "warm_sand",
+        "image_side": "left",
+        "enable_dropcap": true,
+        "image": "shopify://shop_images/cream.jpg",
+        "top_description": "<p>For years, I have seen beauty shaped by formulas, standards, and routines that were never built with our skin in mind. Skin that lives with sun, humidity, tanning, pigmentation, and constant environmental stress. Skin that has always deserved more than a borrowed routine.</p>",
+        "highlight_quote": "I wanted Tulia Cosmetics to understand that rhythm.",
+        "bottom_description": "<p>With Tulia Cosmetics, my vision was to build a global skincare brand, born in India, rooted in science and designed for melanin-rich skin everywhere. Every formulation blends serious research with textures that feel indulgent, made for skin that has never quite fit the standard.</p>"
+      }
+    },
+    "text_block_jaQH3p": {
+      "type": "text-block",
+      "disabled": true,
+      "name": "Generic - Text",
+      "settings": {
+        "eyebrow": "Welcome to The Flow of Rebirth",
+        "heading": "",
+        "show_divider": true,
+        "body": "",
+        "align": "center",
+        "max_width": 820,
+        "bg": "",
+        "button_label": "Explore Tulia",
+        "button_link": ""
+      }
+    },
+    "usp_slider_section_7bwbwk": {
+      "type": "usp-slider-section",
+      "blocks": {
+        "usp_slide_cgGfhj": {
+          "type": "usp_slide",
+          "disabled": true,
+          "settings": {
+            "anchor_name": "Skin",
+            "tag_text": "Philosophy — Skin",
+            "title": "Skin should not adjust to skincare",
+            "subtitle": "but skincare should understand skin"
+          }
+        },
+        "usp_slide_P4FdJh": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "Skin",
+            "tag_text": "",
+            "title": "Skin should not adjust to skincare",
+            "subtitle": "but skincare should understand skin"
+          }
+        },
+        "usp_slide_BnEdjE": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "Skin",
+            "tag_text": "",
+            "title": "Skincare need not be",
+            "subtitle": "a complicated set of steps"
+          }
+        },
+        "usp_slide_bL3pqf": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "Skin",
+            "tag_text": "",
+            "title": "Good skincare should make you",
+            "subtitle": "feel at home in your skin"
+          }
+        }
+      },
+      "block_order": [
+        "usp_slide_cgGfhj",
+        "usp_slide_P4FdJh",
+        "usp_slide_BnEdjE",
+        "usp_slide_bL3pqf"
+      ],
+      "name": "Scroll USP Story Slider",
+      "settings": {
+        "bg_color": "#420007",
+        "gold_color": "#d89e2b",
+        "text_color_main": "#fcf9f8",
+        "img_opacity": 20,
+        "section_display_height": 70,
+        "autoplay_enable": true,
+        "autoplay_speed": 3,
+        "title_size_desktop": 56,
+        "tag_size_desktop": 11,
+        "sub_size_desktop": 28,
+        "title_size_mobile": 32,
+        "tag_size_mobile": 10,
+        "sub_size_mobile": 20
+      }
+    },
+    "generic_banner_MrnVHK": {
+      "type": "generic-banner",
+      "disabled": true,
+      "name": "Generic - Banner",
+      "settings": {
+        "bg_color": "#f6f6f6",
+        "overlay": 40,
+        "height": "small",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "dark",
+        "eyebrow": "",
+        "heading": "Welcome to The Flow of Rebirth",
+        "subtext": "",
+        "button_1_label": "explore tulia",
+        "button_1_link": "",
+        "button_1_style": "btn-primary",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "tulia_premium_banner_mE8CEc": {
+      "type": "tulia-premium-banner",
+      "name": "Tulia Premium Banner",
+      "settings": {
+        "text_alignment": "center",
+        "container_max_width": 1400,
+        "bg_color": "#faf6f0",
+        "heading_color_primary": "#2d161a",
+        "heading_color_accent": "#420007",
+        "sub_color": "#705b5e",
+        "desc_color": "#705b5e",
+        "cta_color": "#4a0e17",
+        "heading": "Welcome to <em>The Flow of Rebirth</em>",
+        "heading_font_size_desktop": 56,
+        "heading_font_size_mobile": 36,
+        "heading_margin_bottom": 24,
+        "subheading": "",
+        "sub_font_size_desktop": 12,
+        "sub_font_size_mobile": 11,
+        "sub_letter_spacing": 2,
+        "sub_font_weight": "500",
+        "sub_text_transform": "uppercase",
+        "sub_margin_bottom": 12,
+        "description": "",
+        "desc_font_size_desktop": 16,
+        "desc_font_size_mobile": 14,
+        "desc_max_width": 700,
+        "desc_margin_bottom": 0,
+        "cta_label": "Explore Tulia Cosmetics",
+        "cta_link": "shopify://collections/all",
+        "cta_font_size": 15,
+        "cta_margin_top": 8,
+        "padding_top_desktop": 160,
+        "padding_bottom_desktop": 160,
+        "padding_top_mobile": 92,
+        "padding_bottom_mobile": 92
+      }
+    }
+  },
+  "order": [
+    "generic_banner_ezLDwK",
+    "image_with_text_YTAyUm",
+    "image_with_text_KWNdp8",
+    "text_block_jaQH3p",
+    "usp_slider_section_7bwbwk",
+    "generic_banner_MrnVHK",
+    "tulia_premium_banner_mE8CEc"
+  ]
+}
