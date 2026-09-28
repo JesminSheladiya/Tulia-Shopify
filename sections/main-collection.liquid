@@ -89,7 +89,9 @@
                 <span>Filter</span>
                 <a href="{{ collection.url }}" class="collection-filters__clear">Clear all</a>
               </div>
+
               {%- for filter in collection.filters -%}
+                {%- unless filter.label == 'Size' -%}
                 <details class="filter-group" open>
                   <summary>{{ filter.label }}</summary>
                   {%- case filter.type -%}
@@ -112,6 +114,47 @@
                       </div>
                   {%- endcase -%}
                 </details>
+
+                {%- if filter.type == 'price_range' -%}
+                  <!-- Concern filter group (client-side, tag-based) - injected after Price -->
+                  <details class="filter-group concern-filter-group" open>
+                    <summary>Concern</summary>
+                    <ul class="filter-values">
+                      <li>
+                        <label class="filter-value">
+                          <input type="checkbox" class="concern-checkbox" data-concern="pigmentation" {% if request.query.filter.p.m.custom.tags == 'pigmentation' %}checked{% endif %}>
+                          <span>Pigmentation & tan</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="filter-value">
+                          <input type="checkbox" class="concern-checkbox" data-concern="dullness" {% if request.query.filter.p.m.custom.tags == 'dullness' %}checked{% endif %}>
+                          <span>Dullness & Uneven Tone</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="filter-value">
+                          <input type="checkbox" class="concern-checkbox" data-concern="oil" {% if request.query.filter.p.m.custom.tags == 'oil' %}checked{% endif %}>
+                          <span>Oil & Humidity</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="filter-value">
+                          <input type="checkbox" class="concern-checkbox" data-concern="hydration" {% if request.query.filter.p.m.custom.tags == 'hydration' %}checked{% endif %}>
+                          <span>Hydration & Barrier</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="filter-value">
+                          <input type="checkbox" class="concern-checkbox" data-concern="hair" {% if request.query.filter.p.m.custom.tags == 'hair' %}checked{% endif %}>
+                          <span>Hair & Scalp</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </details>
+                {%- endif -%}
+
+                {%- endunless -%}
               {%- endfor -%}
               {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
               <input type="hidden" name="sort_by" value="{{ current_sort }}">
@@ -266,6 +309,42 @@
         mediaContainer.appendChild(badgeOverlay);
       }
     });
+  });
+
+  // Client-side Concern filter (single page, no reload, multiple select)
+  // Kuch select na ho to sab products dikhte hain (default all)
+  document.addEventListener("DOMContentLoaded", function() {
+    const concernCheckboxes = document.querySelectorAll('.concern-checkbox');
+    const productWrappers = document.querySelectorAll('#collection-product-grid .ritual-product-card-wrapper');
+
+    function applyConcernFilter() {
+      const selectedConcerns = Array.from(concernCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.dataset.concern);
+
+      const showAll = selectedConcerns.length === 0;
+
+      productWrappers.forEach(wrapper => {
+        const card = wrapper.querySelector('.ritual-card');
+        if (!card) return;
+
+        const categories = card.getAttribute('data-category') || '';
+
+        if (showAll) {
+          wrapper.style.display = 'flex';
+        } else {
+          const matches = selectedConcerns.some(concern => categories.includes(concern));
+          wrapper.style.display = matches ? 'flex' : 'none';
+        }
+      });
+    }
+
+    concernCheckboxes.forEach(cb => {
+      cb.addEventListener('change', applyConcernFilter);
+    });
+
+    // Initialize on load
+    applyConcernFilter();
   });
 </script>
 

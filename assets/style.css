@@ -7378,7 +7378,7 @@ p.policies-title {
 
 @media (min-width:768px) {
     .ritual-name {
-        height: 70px !important;
+        height: auto !important;
     }
 }
 
