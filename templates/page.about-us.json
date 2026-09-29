@@ -87,19 +87,42 @@
         "bg": ""
       }
     },
-    "text_roots": {
-      "type": "text-block",
-      "name": "Generic - Text",
+    "premium_roots": {
+      "type": "tulia-premium-banner",
+      "name": "Tulia Premium Banner",
       "settings": {
-        "eyebrow": "Our Roots",
-        "heading": "Born in India, made for the world",
-        "show_divider": true,
-        "body": "<p>TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.</p>",
-        "align": "center",
-        "max_width": 820,
-        "bg": "bg-surface-alt",
-        "button_label": "",
-        "button_link": ""
+        "text_alignment": "center",
+        "container_max_width": 1400,
+        "bg_color": "#420007",
+        "heading_color_primary": "#fcf9f8",
+        "heading_color_accent": "#d89e2b",
+        "sub_color": "#e8cfa0",
+        "desc_color": "#f3e7e4",
+        "cta_color": "#fcf9f8",
+        "heading": "Born in India, <em>made for the world</em>",
+        "heading_font_size_desktop": 56,
+        "heading_font_size_mobile": 36,
+        "heading_margin_bottom": 24,
+        "subheading": "OUR ROOTS",
+        "sub_font_size_desktop": 12,
+        "sub_font_size_mobile": 11,
+        "sub_letter_spacing": 2,
+        "sub_font_weight": "500",
+        "sub_text_transform": "uppercase",
+        "sub_margin_bottom": 12,
+        "description": "<p>TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.</p>",
+        "desc_font_size_desktop": 16,
+        "desc_font_size_mobile": 14,
+        "desc_max_width": 700,
+        "desc_margin_bottom": 0,
+        "cta_label": "",
+        "cta_link": "",
+        "cta_font_size": 15,
+        "cta_margin_top": 8,
+        "padding_top_desktop": 160,
+        "padding_bottom_desktop": 160,
+        "padding_top_mobile": 92,
+        "padding_bottom_mobile": 92
       }
     },
     "premium_rebirth": {
@@ -145,7 +168,7 @@
     "generic_banner_about",
     "heritage_belief",
     "cards_drive",
-    "text_roots",
+    "premium_roots",
     "premium_rebirth"
   ]
 }
