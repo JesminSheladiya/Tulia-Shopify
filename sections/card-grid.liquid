@@ -7,7 +7,7 @@
         {%- if section.settings.subheading != blank -%}<p class="section-subtitle">{{ section.settings.subheading | escape }}</p>{%- endif -%}
       </div>
     {%- endif -%}
-    <div class="grid grid-{{ section.settings.columns }} gap-large">
+    <div class="grid grid-{{ section.settings.columns }} {% if section.settings.tight_gap %}gap-tight{% else %}gap-large{% endif %}">
       {%- for block in section.blocks -%}
         {%- liquid
           assign img = block.settings.image
@@ -38,6 +38,10 @@
 </section>
 
 <style>
+  .grid.gap-tight { gap: 1.5rem; }
+  @media screen and (max-width: 768px) {
+    .grid.gap-tight { gap: 1rem; }
+  }
   .generic-card__icon {
     display: inline-flex;
     align-items: center;
@@ -71,7 +75,8 @@
     ], "default": "3" },
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "", "label": "Surface" }, { "value": "bg-surface-alt", "label": "Surface alt" }, { "value": "bg-surface-low", "label": "Surface low" }
-    ], "default": "" }
+    ], "default": "" },
+    { "type": "checkbox", "id": "tight_gap", "label": "Tight card gap", "default": false }
   ],
   "blocks": [
     {

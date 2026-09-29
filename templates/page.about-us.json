@@ -85,7 +85,8 @@
         "header_align": "center",
         "card_align": "left",
         "columns": "2",
-        "bg": ""
+        "bg": "",
+        "tight_gap": true
       }
     },
     "roots_banner": {
@@ -115,41 +116,16 @@
       }
     },
     "premium_rebirth": {
-      "type": "tulia-premium-banner",
-      "name": "Tulia Premium Banner",
+      "type": "rebirth-cta",
+      "name": "Rebirth CTA",
       "settings": {
-        "text_alignment": "center",
-        "container_max_width": 1400,
         "bg_color": "#faf6f0",
-        "heading_color_primary": "#2d161a",
-        "heading_color_accent": "#420007",
-        "sub_color": "#705b5e",
-        "desc_color": "#705b5e",
-        "cta_color": "#4a0e17",
-        "heading": "The Rebirth, <em>a clearer purpose</em>",
-        "heading_font_size_desktop": 56,
-        "heading_font_size_mobile": 36,
-        "heading_margin_bottom": 24,
-        "subheading": "A NEW CHAPTER",
-        "sub_font_size_desktop": 12,
-        "sub_font_size_mobile": 11,
-        "sub_letter_spacing": 2,
-        "sub_font_weight": "500",
-        "sub_text_transform": "uppercase",
-        "sub_margin_bottom": 12,
-        "description": "<p>Rebirth represents the next chapter of TULIA and a renewed commitment to how we formulate, create and care. Our evolution goes beyond a new look, bringing together more thoughtful choices, considered formulations and a deeper understanding of what we put on our skin. As TULIA moves forward, one belief remains at the heart of everything we do: be conscious of what touches your skin.</p>",
-        "desc_font_size_desktop": 16,
-        "desc_font_size_mobile": 14,
-        "desc_max_width": 700,
-        "desc_margin_bottom": 0,
-        "cta_label": "Explore our products",
-        "cta_link": "shopify://collections/all",
-        "cta_font_size": 15,
-        "cta_margin_top": 8,
-        "padding_top_desktop": 160,
-        "padding_bottom_desktop": 160,
-        "padding_top_mobile": 92,
-        "padding_bottom_mobile": 92
+        "max_width": 800,
+        "eyebrow": "THE REBIRTH",
+        "heading": "A new chapter, a clearer purpose.",
+        "body": "<p>Rebirth represents the next chapter of TULIA and a renewed commitment to how we formulate, create and care. Our evolution goes beyond a new look, bringing together more thoughtful choices, considered formulations and a deeper understanding of what we put on our skin. As TULIA moves forward, one belief remains at the heart of everything we do: be conscious of what touches your skin.</p>",
+        "button_label": "EXPLORE THE COLLECTION",
+        "button_link": "shopify://collections/all"
       }
     }
   },

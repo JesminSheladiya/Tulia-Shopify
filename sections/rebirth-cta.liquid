@@ -1,0 +1,67 @@
+{%- comment -%}
+  Rebirth closing CTA: cream band, small caps eyebrow, big italic
+  serif maroon heading, short divider, centered body, solid button.
+{%- endcomment -%}
+
+<section class="rebirth-cta" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container" style="max-width: {{ section.settings.max_width }}px;">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="rebirth-cta__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="rebirth-cta__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    <div class="rebirth-cta__divider" aria-hidden="true"></div>
+    {%- if section.settings.body != blank -%}
+      <div class="rebirth-cta__body">{{ section.settings.body }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <a href="{{ section.settings.button_link }}" class="rebirth-cta__btn">{{ section.settings.button_label | escape }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .rebirth-cta { text-align: center; padding: 6rem 0; }
+  .rebirth-cta .container { margin: 0 auto; padding: 0 20px; }
+  .rebirth-cta__eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #8a6f63; margin: 0 0 1.25rem 0;
+  }
+  .rebirth-cta__heading {
+    font-family: var(--font-serif); font-style: italic; font-weight: 600;
+    font-size: 3rem; line-height: 1.15; color: #420007; margin: 0 auto 1.5rem auto;
+    max-width: 700px;
+  }
+  .rebirth-cta__divider {
+    width: 120px; height: 1px; background-color: #c9a96a; margin: 0 auto 2rem auto;
+  }
+  .rebirth-cta__body { font-size: 1rem; line-height: 1.8; color: #4a3a3d; margin-bottom: 2.5rem; }
+  .rebirth-cta__body p { margin: 0; }
+  .rebirth-cta__btn {
+    display: inline-block; background-color: #420007; color: #ffffff;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 1rem 2.5rem; border-radius: 4px; text-decoration: none;
+  }
+  .rebirth-cta__btn:hover { opacity: 0.9; }
+  @media screen and (max-width: 768px) {
+    .rebirth-cta { padding: 4rem 0; }
+    .rebirth-cta__heading { font-size: 2rem; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Rebirth CTA",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#faf6f0" },
+    { "type": "range", "id": "max_width", "min": 480, "max": 1100, "step": 20, "unit": "px", "label": "Content max width", "default": 800 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE REBIRTH" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "A new chapter, a clearer purpose." },
+    { "type": "richtext", "id": "body", "label": "Body" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "EXPLORE THE COLLECTION" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Rebirth CTA" }]
+}
+{% endschema %}
