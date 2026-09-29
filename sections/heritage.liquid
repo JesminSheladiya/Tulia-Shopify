@@ -31,10 +31,11 @@
 </section>
 
 <style>
-  /* 2-col (no image) mode: 50-50 desktop, stacked centered below */
-  #heritage .grid-2 { align-items: center; }
+  /* 2-col (no image) mode: 50-50 desktop, stacked centered on tablet/mobile.
+     !important beats the theme's tablet 3-col force rule. */
+  #heritage .container.grid-2 { grid-template-columns: repeat(2, 1fr) !important; align-items: center; }
   @media screen and (max-width: 1024px) {
-    #heritage .grid-2 { grid-template-columns: 1fr; text-align: center; }
+    #heritage .container.grid-2 { grid-template-columns: 1fr !important; text-align: center; }
   }
 </style>
 
