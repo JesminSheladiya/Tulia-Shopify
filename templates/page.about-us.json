@@ -87,35 +87,6 @@
         "bg": ""
       }
     },
-    "icons_strip": {
-      "type": "feature-icons",
-      "blocks": {
-        "feat_one": {
-          "type": "feature",
-          "settings": { "icon": "spa", "label": "CONSIDERED FORMULATIONS" }
-        },
-        "feat_two": {
-          "type": "feature",
-          "settings": { "icon": "science", "label": "PURPOSEFUL INGREDIENTS" }
-        },
-        "feat_three": {
-          "type": "feature",
-          "settings": { "icon": "public", "label": "MADE FOR THE WORLD" }
-        },
-        "feat_four": {
-          "type": "feature",
-          "settings": { "icon": "favorite", "label": "SKIN-FIRST CARE" }
-        }
-      },
-      "block_order": [
-        "feat_one",
-        "feat_two",
-        "feat_three",
-        "feat_four"
-      ],
-      "name": "Feature icons strip",
-      "settings": {}
-    },
     "text_roots": {
       "type": "text-block",
       "name": "Generic - Text",
@@ -174,7 +145,6 @@
     "generic_banner_about",
     "heritage_belief",
     "cards_drive",
-    "icons_strip",
     "text_roots",
     "premium_rebirth"
   ]
