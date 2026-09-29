@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * About Us page - built with the same sections as Our Story
+ * so fonts, colors and design match the theme automatically.
+ * Admin me page ka Template "page.about-us" hi rehna chahiye.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "generic_banner_about": {
+      "type": "generic-banner",
+      "custom_css": [
+        ".container.gb__content {max-width: 768px; width: 100%;}"
+      ],
+      "name": "Generic - Banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/our-science-banner-2_1.webp",
+        "mobile_theme_asset": "our-science-banner-verical.webp",
+        "bg_color": "#420007",
+        "overlay": 0,
+        "height": "large",
+        "content_align": "left",
+        "content_valign": "center",
+        "text_color": "light",
+        "eyebrow": "ABOUT TULIA",
+        "heading": "The flow of rebirth",
+        "subtext": "Skincare should work with the natural rhythm of your skin, not against it. Born in India and created with a global perspective - because what touches your skin matters.",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_1_style": "btn-primary-light",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
+      }
+    },
+    "text_belief": {
+      "type": "text-block",
+      "name": "Generic - Text",
+      "settings": {
+        "eyebrow": "Our Belief",
+        "heading": "We wanted to make skincare more considered",
+        "show_divider": true,
+        "body": "<p>Beauty often asks us to add more: more products, more steps and more promises. We chose to look closer instead. Every TULIA formulation begins with purpose, considering what belongs in the formula, why it belongs there and how it can meaningfully support the skin. Because skincare should not be about fixing who you are, but caring for the skin you have.</p>",
+        "align": "center",
+        "max_width": 820,
+        "bg": "",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "text_vision": {
+      "type": "text-block",
+      "name": "Generic - Text",
+      "settings": {
+        "eyebrow": "Our Vision",
+        "heading": "To make conscious skincare the new luxury",
+        "show_divider": true,
+        "body": "<p>We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life. For us, conscious skincare means better ingredients, better understanding and better choices.</p>",
+        "align": "center",
+        "max_width": 820,
+        "bg": "bg-surface-alt",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "text_mission": {
+      "type": "text-block",
+      "name": "Generic - Text",
+      "settings": {
+        "eyebrow": "Our Mission",
+        "heading": "To create skincare with purpose",
+        "show_divider": true,
+        "body": "<p>We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care, creating products that feel considered from the inside out.</p>",
+        "align": "center",
+        "max_width": 820,
+        "bg": "",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "text_roots": {
+      "type": "text-block",
+      "name": "Generic - Text",
+      "settings": {
+        "eyebrow": "Our Roots",
+        "heading": "Born in India, made for the world",
+        "show_divider": true,
+        "body": "<p>TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.</p>",
+        "align": "center",
+        "max_width": 820,
+        "bg": "bg-surface-alt",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "premium_rebirth": {
+      "type": "tulia-premium-banner",
+      "name": "Tulia Premium Banner",
+      "settings": {
+        "text_alignment": "center",
+        "container_max_width": 1400,
+        "bg_color": "#faf6f0",
+        "heading_color_primary": "#2d161a",
+        "heading_color_accent": "#420007",
+        "sub_color": "#705b5e",
+        "desc_color": "#705b5e",
+        "cta_color": "#4a0e17",
+        "heading": "The Rebirth, <em>a clearer purpose</em>",
+        "heading_font_size_desktop": 56,
+        "heading_font_size_mobile": 36,
+        "heading_margin_bottom": 24,
+        "subheading": "A NEW CHAPTER",
+        "sub_font_size_desktop": 12,
+        "sub_font_size_mobile": 11,
+        "sub_letter_spacing": 2,
+        "sub_font_weight": "500",
+        "sub_text_transform": "uppercase",
+        "sub_margin_bottom": 12,
+        "description": "<p>Rebirth represents the next chapter of TULIA and a renewed commitment to how we formulate, create and care. Our evolution goes beyond a new look, bringing together more thoughtful choices, considered formulations and a deeper understanding of what we put on our skin. As TULIA moves forward, one belief remains at the heart of everything we do: be conscious of what touches your skin.</p>",
+        "desc_font_size_desktop": 16,
+        "desc_font_size_mobile": 14,
+        "desc_max_width": 700,
+        "desc_margin_bottom": 0,
+        "cta_label": "Explore our products",
+        "cta_link": "shopify://collections/all",
+        "cta_font_size": 15,
+        "cta_margin_top": 8,
+        "padding_top_desktop": 160,
+        "padding_bottom_desktop": 160,
+        "padding_top_mobile": 92,
+        "padding_bottom_mobile": 92
+      }
+    }
+  },
+  "order": [
+    "generic_banner_about",
+    "text_belief",
+    "text_vision",
+    "text_mission",
+    "text_roots",
+    "premium_rebirth"
+  ]
+}
