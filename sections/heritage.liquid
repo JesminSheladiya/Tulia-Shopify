@@ -35,7 +35,10 @@
      !important beats the theme's tablet 3-col force rule. */
   #heritage .container.grid-2 { grid-template-columns: repeat(2, 1fr) !important; align-items: center; }
   @media screen and (max-width: 1024px) {
-    #heritage .container.grid-2 { grid-template-columns: 1fr !important; text-align: center; }
+    #heritage .container.grid-2 { grid-template-columns: 1fr !important; text-align: center; row-gap: 0 !important; }
+    #heritage .container.grid-2 .heritage-col-1 { padding-top: 0 !important; padding-bottom: 0 !important; margin-bottom: 0 !important; }
+    #heritage .container.grid-2 .heritage-col-3 { padding-top: 1.25rem !important; }
+    #heritage .container.grid-2 .section-title { margin-bottom: 0 !important; }
   }
 </style>
 
