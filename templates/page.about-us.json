@@ -114,59 +114,6 @@
       "name": "Feature icons strip",
       "settings": {}
     },
-    "dark_slider": {
-      "type": "usp-slider-section",
-      "blocks": {
-        "slide_one": {
-          "type": "usp_slide",
-          "settings": {
-            "anchor_name": "About",
-            "tag_text": "Tulia - Belief",
-            "title": "Caring for the skin you have",
-            "subtitle": ""
-          }
-        },
-        "slide_two": {
-          "type": "usp_slide",
-          "settings": {
-            "anchor_name": "About",
-            "tag_text": "Tulia - Roots",
-            "title": "Born in India, made for the world",
-            "subtitle": ""
-          }
-        },
-        "slide_three": {
-          "type": "usp_slide",
-          "settings": {
-            "anchor_name": "About",
-            "tag_text": "Tulia - Promise",
-            "title": "be conscious of what touches your skin",
-            "subtitle": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_one",
-        "slide_two",
-        "slide_three"
-      ],
-      "name": "Scroll USP Story Slider",
-      "settings": {
-        "bg_color": "#420007",
-        "gold_color": "#d89e2b",
-        "text_color_main": "#fcf9f8",
-        "img_opacity": 20,
-        "section_display_height": 70,
-        "autoplay_enable": true,
-        "autoplay_speed": 3,
-        "title_size_desktop": 56,
-        "tag_size_desktop": 11,
-        "sub_size_desktop": 28,
-        "title_size_mobile": 32,
-        "tag_size_mobile": 10,
-        "sub_size_mobile": 20
-      }
-    },
     "text_roots": {
       "type": "text-block",
       "name": "Generic - Text",
@@ -226,7 +173,6 @@
     "heritage_belief",
     "cards_drive",
     "icons_strip",
-    "dark_slider",
     "text_roots",
     "premium_rebirth"
   ]
