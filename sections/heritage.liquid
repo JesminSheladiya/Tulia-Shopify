@@ -1,10 +1,11 @@
 <section id="heritage" class="extracted-style-18">
-  <div class="container grid grid-3 gap-large extracted-style-19">
+  <div class="container grid {% if section.settings.hide_image %}grid-2{% else %}grid-3{% endif %} gap-large extracted-style-19">
     <div class="col-1 reveal-pan-left heritage-col-1 extracted-style-20">
       {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
       <h2 class="section-title mb-medium text-primary">{{ section.settings.title | escape | newline_to_br }}</h2>
     </div>
 
+    {%- unless section.settings.hide_image -%}
     <div class="col-1 text-center heritage-col-2 heritage-mobile-bottom extracted-style-21">
       <div class="heritage-image-wrapper extracted-style-22">
         {%- if section.settings.image != blank -%}
@@ -14,6 +15,7 @@
         {%- endif -%}
       </div>
     </div>
+    {%- endunless -%}
 
     <div class="col-1 reveal-pan-right heritage-col-3 extracted-style-20">
       {%- if section.settings.paragraph_1 != blank -%}<p class="text-content mb-medium text-on-surface">{{ section.settings.paragraph_1 | escape }}</p>{%- endif -%}
@@ -28,6 +30,14 @@
   </div>
 </section>
 
+<style>
+  /* 2-col (no image) mode: 50-50 desktop, stacked centered below */
+  #heritage .grid-2 { align-items: center; }
+  @media screen and (max-width: 1024px) {
+    #heritage .grid-2 { grid-template-columns: 1fr; text-align: center; }
+  }
+</style>
+
 {% schema %}
 {
   "name": "Heritage",
@@ -35,6 +45,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Heritage" },
     { "type": "textarea", "id": "title", "label": "Title", "default": "For every bronze and honey, for\nevery wavy and straight" },
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "hide_image", "label": "Hide image (50-50 two column layout)", "default": false },
     { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Indian beauty has always been rich in nuance." },
     { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "And Tulia is thoughtfully formulated around the realities of these nuances; our climate, our textures, our routines, and the features we've been far too long told to change. Tulia is made for every hue and texture." },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore Our Science" },
