@@ -86,7 +86,8 @@
         "card_align": "left",
         "columns": "2",
         "bg": "",
-        "tight_gap": true
+        "tight_gap": true,
+        "card_style": "editorial"
       }
     },
     "roots_banner": {
