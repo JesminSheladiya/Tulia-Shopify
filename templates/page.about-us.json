@@ -24,7 +24,7 @@
         "text_color": "light",
         "eyebrow": "ABOUT TULIA",
         "heading": "The flow of rebirth",
-        "subtext": "Skincare should work with the natural rhythm of your skin, not against it. Born in India and created with a global perspective - because what touches your skin matters.",
+        "subtext": "TULIA was born from a simple belief: skincare should work with the natural rhythm of your skin, not against it. Born in India and created with a global perspective, TULIA brings together considered formulations, purposeful ingredients and modern skincare rituals designed around what your skin actually needs. Because what touches your skin matters.",
         "button_1_label": "",
         "button_1_link": "",
         "button_1_style": "btn-primary-light",
@@ -54,7 +54,7 @@
           "settings": {
             "eyebrow": "Our Vision",
             "title": "To make conscious skincare the new luxury",
-            "text": "We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life.",
+            "text": "We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life. For us, conscious skincare means better ingredients, better understanding and better choices.",
             "button_label": "",
             "link": ""
           }
@@ -64,7 +64,7 @@
           "settings": {
             "eyebrow": "Our Mission",
             "title": "To create skincare with purpose",
-            "text": "We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care.",
+            "text": "We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care, creating products that feel considered from the inside out.",
             "button_label": "",
             "link": ""
           }
@@ -123,7 +123,7 @@
             "anchor_name": "About",
             "tag_text": "Tulia - Belief",
             "title": "Caring for the skin you have",
-            "subtitle": "not fixing who you are"
+            "subtitle": ""
           }
         },
         "slide_two": {
@@ -132,7 +132,7 @@
             "anchor_name": "About",
             "tag_text": "Tulia - Roots",
             "title": "Born in India, made for the world",
-            "subtitle": "evolving with the needs of people everywhere"
+            "subtitle": ""
           }
         },
         "slide_three": {
