@@ -23,6 +23,7 @@
             </div>
           {%- endif -%}
           <div class="generic-card__body">
+            {%- if block.settings.icon != blank -%}<span class="material-symbols-outlined generic-card__icon" aria-hidden="true">{{ block.settings.icon | escape }}</span>{%- endif -%}
             {%- if block.settings.eyebrow != blank -%}<span class="eyebrow text-muted">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
             {%- if block.settings.title != blank -%}<h3 class="generic-card__title">{{ block.settings.title | escape }}</h3>{%- endif -%}
             {%- if block.settings.text != blank -%}<p class="generic-card__text">{{ block.settings.text | escape }}</p>{%- endif -%}
@@ -35,6 +36,21 @@
     </div>
   </div>
 </section>
+
+<style>
+  .generic-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(66, 0, 7, 0.08);
+    color: #420007;
+    font-size: 26px;
+    margin-bottom: 1rem;
+  }
+</style>
 
 {% schema %}
 {
@@ -63,6 +79,7 @@
       "name": "Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "icon", "label": "Material icon name (optional)", "info": "e.g. visibility, target, spa. Empty rakho to icon hide rahega." },
         { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
         { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
         { "type": "textarea", "id": "text", "label": "Text", "default": "A short supporting description for this card." },

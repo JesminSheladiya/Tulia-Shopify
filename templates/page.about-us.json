@@ -52,6 +52,7 @@
         "card_vision": {
           "type": "card",
           "settings": {
+            "icon": "visibility",
             "eyebrow": "Our Vision",
             "title": "To make conscious skincare the new luxury",
             "text": "We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life. For us, conscious skincare means better ingredients, better understanding and better choices.",
@@ -62,6 +63,7 @@
         "card_mission": {
           "type": "card",
           "settings": {
+            "icon": "target",
             "eyebrow": "Our Mission",
             "title": "To create skincare with purpose",
             "text": "We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care, creating products that feel considered from the inside out.",
