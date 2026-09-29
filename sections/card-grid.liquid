@@ -1,4 +1,4 @@
-<section class="section {{ section.settings.bg }}">
+<section class="section {{ section.settings.bg }}{% if section.settings.tight_gap %} section--tight{% endif %}">
   <div class="container">
     {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
       <div class="section-header text-{{ section.settings.header_align }} mb-large">
@@ -39,6 +39,7 @@
 
 <style>
   .grid.gap-tight { gap: 1.5rem; }
+  .section--tight { padding-top: 2rem; }
   @media screen and (max-width: 768px) {
     .grid.gap-tight { gap: 1rem; }
   }

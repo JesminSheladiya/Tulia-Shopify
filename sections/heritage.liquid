@@ -34,12 +34,14 @@
   /* 2-col (no image) mode: 50-50 desktop, stacked centered on tablet/mobile.
      !important beats the theme's tablet 3-col force rule. */
   #heritage .container.grid-2 { grid-template-columns: repeat(2, 1fr) !important; align-items: center; }
+  #heritage .container.grid-2 .heritage-col-1,
+  #heritage .container.grid-2 .heritage-col-3 { padding-bottom: 2rem !important; }
   @media screen and (max-width: 1024px) {
     /* breathing space: section was sticking edge-to-edge with the banner */
     #heritage:has(.container.grid-2) { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
     #heritage .container.grid-2 { grid-template-columns: 1fr !important; text-align: center; row-gap: 0 !important; }
     #heritage .container.grid-2 .heritage-col-1 { padding-top: 0 !important; padding-bottom: 0 !important; margin-bottom: 0 !important; }
-    #heritage .container.grid-2 .heritage-col-3 { padding-top: 1.25rem !important; text-align: center !important; }
+    #heritage .container.grid-2 .heritage-col-3 { padding-top: 1.25rem !important; padding-bottom: 0 !important; text-align: center !important; }
     #heritage .container.grid-2 .heritage-col-3 .link-with-icon { display: flex; justify-content: center; margin-top: 0.5rem; }
     #heritage .container.grid-2 .section-title { margin-bottom: 0 !important; }
   }
