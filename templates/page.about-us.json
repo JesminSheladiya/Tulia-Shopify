@@ -1,8 +1,8 @@
 /*
  * ------------------------------------------------------------
- * About Us page - built with the same sections as Our Story
- * so fonts, colors and design match the theme automatically.
- * Admin me page ka Template "page.about-us" hi rehna chahiye.
+ * About Us page - har section alag design me:
+ * banner, heritage editorial, cards, icon strip, dark slider,
+ * text, premium closing. Content same.
  * ------------------------------------------------------------
  */
 {
@@ -33,60 +33,153 @@
         "button_2_style": "btn-outline-light"
       }
     },
-    "text_belief": {
-      "type": "text-block",
-      "name": "Generic - Text",
+    "heritage_belief": {
+      "type": "heritage",
+      "name": "Heritage",
       "settings": {
         "eyebrow": "Our Belief",
-        "heading": "We wanted to make skincare more considered",
-        "show_divider": true,
-        "body": "<p>Beauty often asks us to add more: more products, more steps and more promises. We chose to look closer instead. Every TULIA formulation begins with purpose, considering what belongs in the formula, why it belongs there and how it can meaningfully support the skin. Because skincare should not be about fixing who you are, but caring for the skin you have.</p>",
-        "align": "center",
-        "max_width": 820,
-        "bg": "",
-        "button_label": "",
-        "button_link": ""
+        "title": "We wanted to make skincare more considered",
+        "image": "",
+        "paragraph_1": "Beauty often asks us to add more: more products, more steps and more promises. We chose to look closer instead.",
+        "paragraph_2": "Every TULIA formulation begins with purpose, considering what belongs in the formula, why it belongs there and how it can meaningfully support the skin. Because skincare should not be about fixing who you are, but caring for the skin you have.",
+        "link_label": "Explore Our Science",
+        "link_url": "/pages/our-story"
       }
     },
-    "statements_drive": {
-      "type": "statements",
+    "cards_drive": {
+      "type": "card-grid",
       "blocks": {
-        "stmt_vision": {
-          "type": "statement",
+        "card_vision": {
+          "type": "card",
           "settings": {
-            "text": "Our vision - to make conscious skincare the new luxury. A world where people understand what they put on their skin and choose skincare with intention."
+            "eyebrow": "Our Vision",
+            "title": "To make conscious skincare the new luxury",
+            "text": "We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life.",
+            "button_label": "",
+            "link": ""
           }
         },
-        "stmt_mission": {
-          "type": "statement",
+        "card_mission": {
+          "type": "card",
           "settings": {
-            "text": "Our mission - to create skincare with purpose. Thoughtful, ingredient-led formulations designed to address real skin needs."
+            "eyebrow": "Our Mission",
+            "title": "To create skincare with purpose",
+            "text": "We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care.",
+            "button_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "stmt_vision",
-        "stmt_mission"
+        "card_vision",
+        "card_mission"
       ],
-      "name": "Generic - Statements",
+      "name": "Generic - Cards",
       "settings": {
-        "eyebrow": "What drives us",
+        "eyebrow": "What Drives Us",
         "heading": "Purpose in every formulation",
-        "align": "center",
-        "bg": "bg-surface-alt"
+        "subheading": "",
+        "header_align": "center",
+        "card_align": "left",
+        "columns": "2",
+        "bg": ""
       }
     },
-    "heritage_roots": {
-      "type": "heritage",
-      "name": "Heritage",
+    "icons_strip": {
+      "type": "feature-icons",
+      "blocks": {
+        "feat_one": {
+          "type": "feature",
+          "settings": { "icon": "spa", "label": "CONSIDERED FORMULATIONS" }
+        },
+        "feat_two": {
+          "type": "feature",
+          "settings": { "icon": "science", "label": "PURPOSEFUL INGREDIENTS" }
+        },
+        "feat_three": {
+          "type": "feature",
+          "settings": { "icon": "public", "label": "MADE FOR THE WORLD" }
+        },
+        "feat_four": {
+          "type": "feature",
+          "settings": { "icon": "favorite", "label": "SKIN-FIRST CARE" }
+        }
+      },
+      "block_order": [
+        "feat_one",
+        "feat_two",
+        "feat_three",
+        "feat_four"
+      ],
+      "name": "Feature icons strip",
+      "settings": {}
+    },
+    "dark_slider": {
+      "type": "usp-slider-section",
+      "blocks": {
+        "slide_one": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "About",
+            "tag_text": "Tulia - Belief",
+            "title": "Caring for the skin you have",
+            "subtitle": "not fixing who you are"
+          }
+        },
+        "slide_two": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "About",
+            "tag_text": "Tulia - Roots",
+            "title": "Born in India, made for the world",
+            "subtitle": "evolving with the needs of people everywhere"
+          }
+        },
+        "slide_three": {
+          "type": "usp_slide",
+          "settings": {
+            "anchor_name": "About",
+            "tag_text": "Tulia - Promise",
+            "title": "be conscious of what touches your skin",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_one",
+        "slide_two",
+        "slide_three"
+      ],
+      "name": "Scroll USP Story Slider",
+      "settings": {
+        "bg_color": "#420007",
+        "gold_color": "#d89e2b",
+        "text_color_main": "#fcf9f8",
+        "img_opacity": 20,
+        "section_display_height": 70,
+        "autoplay_enable": true,
+        "autoplay_speed": 3,
+        "title_size_desktop": 56,
+        "tag_size_desktop": 11,
+        "sub_size_desktop": 28,
+        "title_size_mobile": 32,
+        "tag_size_mobile": 10,
+        "sub_size_mobile": 20
+      }
+    },
+    "text_roots": {
+      "type": "text-block",
+      "name": "Generic - Text",
       "settings": {
         "eyebrow": "Our Roots",
-        "title": "Born in India,\nmade for the world",
-        "image": "",
-        "paragraph_1": "TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences.",
-        "paragraph_2": "While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.",
-        "link_label": "Read Our Story",
-        "link_url": "shopify://pages/our-story"
+        "heading": "Born in India, made for the world",
+        "show_divider": true,
+        "body": "<p>TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.</p>",
+        "align": "center",
+        "max_width": 820,
+        "bg": "bg-surface-alt",
+        "button_label": "",
+        "button_link": ""
       }
     },
     "premium_rebirth": {
@@ -130,9 +223,11 @@
   },
   "order": [
     "generic_banner_about",
-    "text_belief",
-    "statements_drive",
-    "heritage_roots",
+    "heritage_belief",
+    "cards_drive",
+    "icons_strip",
+    "dark_slider",
+    "text_roots",
     "premium_rebirth"
   ]
 }
