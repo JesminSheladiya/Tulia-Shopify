@@ -76,25 +76,17 @@
         "bg": "bg-surface-alt"
       }
     },
-    "banner_roots": {
-      "type": "generic-banner",
-      "name": "Generic - Banner",
+    "heritage_roots": {
+      "type": "heritage",
+      "name": "Heritage",
       "settings": {
-        "bg_color": "#f6f6f6",
-        "overlay": 0,
-        "height": "small",
-        "content_align": "center",
-        "content_valign": "center",
-        "text_color": "dark",
-        "eyebrow": "OUR ROOTS",
-        "heading": "Born in India, made for the world",
-        "subtext": "TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences.",
-        "button_1_label": "",
-        "button_1_link": "",
-        "button_1_style": "btn-primary",
-        "button_2_label": "",
-        "button_2_link": "",
-        "button_2_style": "btn-outline-light"
+        "eyebrow": "Our Roots",
+        "title": "Born in India,\nmade for the world",
+        "image": "",
+        "paragraph_1": "TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences.",
+        "paragraph_2": "While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.",
+        "link_label": "Read Our Story",
+        "link_url": "shopify://pages/our-story"
       }
     },
     "premium_rebirth": {
@@ -140,7 +132,7 @@
     "generic_banner_about",
     "text_belief",
     "statements_drive",
-    "banner_roots",
+    "heritage_roots",
     "premium_rebirth"
   ]
 }
