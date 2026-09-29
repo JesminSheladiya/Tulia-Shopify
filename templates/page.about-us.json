@@ -48,49 +48,53 @@
         "button_link": ""
       }
     },
-    "text_vision": {
-      "type": "text-block",
-      "name": "Generic - Text",
+    "statements_drive": {
+      "type": "statements",
+      "blocks": {
+        "stmt_vision": {
+          "type": "statement",
+          "settings": {
+            "text": "Our vision - to make conscious skincare the new luxury. A world where people understand what they put on their skin and choose skincare with intention."
+          }
+        },
+        "stmt_mission": {
+          "type": "statement",
+          "settings": {
+            "text": "Our mission - to create skincare with purpose. Thoughtful, ingredient-led formulations designed to address real skin needs."
+          }
+        }
+      },
+      "block_order": [
+        "stmt_vision",
+        "stmt_mission"
+      ],
+      "name": "Generic - Statements",
       "settings": {
-        "eyebrow": "Our Vision",
-        "heading": "To make conscious skincare the new luxury",
-        "show_divider": true,
-        "body": "<p>We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life. For us, conscious skincare means better ingredients, better understanding and better choices.</p>",
+        "eyebrow": "What drives us",
+        "heading": "Purpose in every formulation",
         "align": "center",
-        "max_width": 820,
-        "bg": "bg-surface-alt",
-        "button_label": "",
-        "button_link": ""
+        "bg": "bg-surface-alt"
       }
     },
-    "text_mission": {
-      "type": "text-block",
-      "name": "Generic - Text",
+    "banner_roots": {
+      "type": "generic-banner",
+      "name": "Generic - Banner",
       "settings": {
-        "eyebrow": "Our Mission",
-        "heading": "To create skincare with purpose",
-        "show_divider": true,
-        "body": "<p>We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care, creating products that feel considered from the inside out.</p>",
-        "align": "center",
-        "max_width": 820,
-        "bg": "",
-        "button_label": "",
-        "button_link": ""
-      }
-    },
-    "text_roots": {
-      "type": "text-block",
-      "name": "Generic - Text",
-      "settings": {
-        "eyebrow": "Our Roots",
+        "bg_color": "#f6f6f6",
+        "overlay": 0,
+        "height": "small",
+        "content_align": "center",
+        "content_valign": "center",
+        "text_color": "dark",
+        "eyebrow": "OUR ROOTS",
         "heading": "Born in India, made for the world",
-        "show_divider": true,
-        "body": "<p>TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.</p>",
-        "align": "center",
-        "max_width": 820,
-        "bg": "bg-surface-alt",
-        "button_label": "",
-        "button_link": ""
+        "subtext": "TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences.",
+        "button_1_label": "",
+        "button_1_link": "",
+        "button_1_style": "btn-primary",
+        "button_2_label": "",
+        "button_2_link": "",
+        "button_2_style": "btn-outline-light"
       }
     },
     "premium_rebirth": {
@@ -135,9 +139,8 @@
   "order": [
     "generic_banner_about",
     "text_belief",
-    "text_vision",
-    "text_mission",
-    "text_roots",
+    "statements_drive",
+    "banner_roots",
     "premium_rebirth"
   ]
 }
