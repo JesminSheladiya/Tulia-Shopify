@@ -14,19 +14,7 @@
     </header>
 
     {%- if cart.item_count > 0 -%}
-      {%- if settings.cart_show_free_shipping and threshold_amount > 0 -%}
-        {%- assign remaining = threshold_amount | minus: cart.total_price -%}
-        <div class="cart-drawer__shipping">
-          {%- if remaining > 0 -%}
-            <p>You're <strong>{{ remaining | money }}</strong> away from free shipping</p>
-          {%- else -%}
-            <p>🎉 You've unlocked <strong>free shipping</strong></p>
-          {%- endif -%}
-          {%- assign pct = cart.total_price | times: 100.0 | divided_by: threshold_amount -%}
-          {%- if pct > 100 -%}{%- assign pct = 100 -%}{%- endif -%}
-          <div class="cart-drawer__shipping-track"><span style="width: {{ pct }}%;"></span></div>
-        </div>
-      {%- endif -%}
+      
 
       <div class="cart-drawer__items" data-cart-items>
         {%- for item in cart.items -%}
