@@ -8,11 +8,38 @@
         </summary>
         <div class="extracted-style-166">
           <div class="extracted-style-167">
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'ingredient' -%}
-                <p class="extracted-style-168" {{ block.shopify_attributes }}><strong class="extracted-style-120">{{ block.settings.name | escape }}</strong><br>{{ block.settings.description | escape }}</p>
-              {%- endif -%}
-            {%- endfor -%}
+            {% assign is_hardcoded_ingredients = false %}
+            {% if product.handle == 'lip-balm' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Microcrystalline Wax, Caprylic/Capric Triglyceride, Kokum Butter, Bees Wax, Shea Butter, Emulsifying Wax, Hydrogenated Olive Oil (and) Olea Europaea (and) Olive Oil Unsaponifiables, Avocado Oil, Butylated Hydroxy Toluene, Squalane, Silicon Oil, Salicylic Acid, Octyl Methoxycinnamate, Petrolatum Jelly, Perfume, Light Liquid Paraffin" %}
+            {% elsif product.handle == 'all-in-one-conditioner' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Aqua, Cetostearyl Alcohol, Cyclopentasiloxane, Glycerin, Polyquaternium-7, Behentrimonium Chloride, Cetyl Alcohol, Dimethicone, Cetrimonium Chloride, Dimethicone (and) Amodimethicone (and) Laureth-23 (and) Polyquaternium-10 (and) Laureth-4, Panthenyl Dibehenate/Oleate, PEG-7 Glyceryl Cocoate, Dimethiconol (and) TEA-Dodecylbenzenesulfonate, Phenoxyethanol (and) Ethylhexylglycerin, Argania Spinosa (Argan) Oil, Carboxysteine (and) Polyquaternium-10 (and) Aqua/Water (and) Hydrolyzed Wheat Protein (and) Methicone (and) Methylchloroisothiazolinone (and) Methylisothiazolinone, Glycerin (and) Aqua (and) Sarcosine, Perfume" %}
+            {% elsif product.handle == 'skin-lightening-brightening-facewash' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Aqua, Stearic Acid, Lauric Acid, Glycerine, Sorbitol, Myristic Acid, Coco Glucoside, Kojic Acid Globules, Liquorice Extract, Phenoxyethanol (and) Ethylhexylglycerin, Propylene Glycol, Niacinamide, Sodium PEG-7 Olive Oil Carboxylate, Salicylic Acid, Allantoin, D Panthenol, Disodium EDTA, Glycolic Acid, Lactic Acid, Triclosan, Vitamin E, Vitamin C, Sodium Hydroxide, Potassium Hydroxide, Perfume" %}
+            {% elsif product.handle == 'lipz-lightening-cream' or product.handle == 'tulia-face-wash' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Aqua, Stearic Acid, Emulsifying Wax, Kojic Acid Dipalmitate, Glycerol Monostearate, Light Liquid Paraffin, Glycerine, Glycolic Acid, Liquorice Extract, Niacinamide, Petroleum Jelly, Propylene Glycol, Arbutin, Cetyl Alcohol, Microcrystalline Wax, Phenoxyethanol (and) Ethylhexylglycerin, Titanium Dioxide, Bearberry Extract, Mulberry Extract, PEG 150 Distearate, Xanthan Gum, Sodium Metabisulfite, Sodium Sulphite, Ascorbic Acid, Tetradibutyl Pentaerithrityl Hydroxyhydrocinnama te, Vitamin A Palmitate, Disodium EDTA, Tocopheryl Acetate, Allantoin, Citric Acid, Perfume" %}
+            {% endif %}
+
+            {% if is_hardcoded_ingredients %}
+              <div style="display: flex; flex-wrap: wrap; column-gap: 1.8rem; row-gap: 0.8rem; padding-top: 10px;">
+                {% assign ingredients_array = ingredients_string | split: ", " %}
+                {% for item in ingredients_array %}
+                  <div class="extracted-style-168" style="display: flex; align-items: flex-start; font-size: 0.9em; line-height: 1.4;">
+                    <span style="margin-right: 6px;">&bull;</span>
+                    <span>{{ item | capitalize | remove: "." }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'ingredient' -%}
+                  <p class="extracted-style-168" {{ block.shopify_attributes }}><strong class="extracted-style-120">{{ block.settings.name | escape }}</strong><br>{{ block.settings.description | escape }}</p>
+                {%- endif -%}
+              {%- endfor -%}
+            {% endif %}
           </div>
         </div>
       </details>
