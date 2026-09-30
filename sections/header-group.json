@@ -83,6 +83,14 @@
             "position": "left"
           }
         },
+        "nav_about": {
+          "type": "nav_link",
+          "settings": {
+            "label": "About Us",
+            "link": "shopify://pages/about-us",
+            "position": "right"
+          }
+        },
         "nav_science": {
           "type": "nav_link",
           "settings": {
@@ -110,6 +118,7 @@
         "tab_hair",
         "nav_concern",
         "nav_edits",
+        "nav_about",
         "nav_science",
         "nav_journal"
       ],
