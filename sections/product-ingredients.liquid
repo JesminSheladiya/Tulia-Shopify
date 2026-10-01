@@ -24,15 +24,7 @@
             {% endif %}
 
             {% if is_hardcoded_ingredients %}
-              <div style="display: flex; flex-wrap: wrap; column-gap: 1.8rem; row-gap: 0.8rem; padding-top: 10px;">
-                {% assign ingredients_array = ingredients_string | split: ", " %}
-                {% for item in ingredients_array %}
-                  <div class="extracted-style-168" style="display: flex; align-items: flex-start; font-size: 0.9em; line-height: 1.4;">
-                    <span style="margin-right: 6px;">&bull;</span>
-                    <span>{{ item | capitalize | remove: "." }}</span>
-                  </div>
-                {% endfor %}
-              </div>
+              <p class="ingredients-plain">{{ ingredients_string }}</p>
             {% else %}
               {%- for block in section.blocks -%}
                 {%- if block.type == 'ingredient' -%}
@@ -66,6 +58,10 @@
     </div>
   </div>
 </section>
+
+<style>
+  .ingredients-plain { font-size: 0.9em; line-height: 1.7; padding-top: 10px; margin: 0; }
+</style>
 
 {% schema %}
 {

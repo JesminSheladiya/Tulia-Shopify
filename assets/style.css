@@ -1643,7 +1643,6 @@ ul {
     display: inline-block;
     width: 140%;
     line-height: 0;
-    margin-left: -20%;
 }
 
 @media (max-width: 768px) {
@@ -2145,8 +2144,6 @@ ul {
     transition: transform 0.3s ease;
 }
 
-
-}
 
 .hero-overlay {
     position: absolute;
@@ -4825,8 +4822,7 @@ ul {
     margin-bottom: 1.5rem;
 }
 
-.extracted-style-168 {
-}
+.extracted-style-168 {}
 
 .extracted-style-169 {
     font-size: 2.5rem;

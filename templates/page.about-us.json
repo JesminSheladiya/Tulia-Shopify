@@ -85,7 +85,7 @@
         "header_align": "center",
         "card_align": "left",
         "columns": "2",
-        "bg": "",
+        "bg": "bg-surface-alt",
         "tight_gap": true,
         "card_style": "editorial"
       }
