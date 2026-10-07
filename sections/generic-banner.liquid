@@ -26,6 +26,7 @@
     /* Generic banner responsive polish - all screens */
     .generic-banner { background-repeat: no-repeat; }
     .generic-banner .gb__content { max-width: 100%; }
+    h1.gb__title, h1.gb__eyebrow { margin-top: 0; }
     @media screen and (max-width: 1024px) {
       .generic-banner {
         background-position: 75% 0px;
@@ -46,8 +47,12 @@
     }
   </style>
   <div class="container gb__content">
-    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow gb__eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
-    {%- if section.settings.heading != blank -%}<h2 class="gb__title">{{ section.settings.heading | escape | newline_to_br }}</h2>{%- endif -%}
+    {%- if section.settings.eyebrow != blank -%}
+      {%- if section.settings.h1_mode == 'eyebrow' -%}<h1 class="eyebrow gb__eyebrow">{{ section.settings.eyebrow | escape }}</h1>{%- else -%}<span class="eyebrow gb__eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      {%- if section.settings.h1_mode == 'heading' -%}<h1 class="gb__title">{{ section.settings.heading | escape | newline_to_br }}</h1>{%- else -%}<h2 class="gb__title">{{ section.settings.heading | escape | newline_to_br }}</h2>{%- endif -%}
+    {%- endif -%}
     {%- if section.settings.subtext != blank -%}<p class="gb__subtext">{{ section.settings.subtext | escape }}</p>{%- endif -%}
     {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
       <div class="gb__cta">
@@ -88,6 +93,11 @@
     ], "default": "light" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "A deeper understanding of melanin-rich skin." },
+    { "type": "select", "id": "h1_mode", "label": "H1 for SEO", "info": "Render one text as the page H1. Enable on only one banner per page.", "options": [
+      { "value": "none", "label": "None (heading stays H2)" },
+      { "value": "heading", "label": "Heading as H1" },
+      { "value": "eyebrow", "label": "Eyebrow as H1" }
+    ], "default": "none" },
     { "type": "textarea", "id": "subtext", "label": "Subtext" },
     { "type": "header", "content": "Buttons" },
     { "type": "text", "id": "button_1_label", "label": "Button 1 label" },

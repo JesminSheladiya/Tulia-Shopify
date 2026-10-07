@@ -169,7 +169,11 @@
 
 <section class="soma-retail-section">
   <span class="soma-retail-subtitle">{{ section.settings.subtitle }}</span>
-  <h2 class="soma-retail-title">{{ section.settings.title }}</h2>
+  {%- if section.settings.use_h1 -%}
+    <h1 class="soma-retail-title">{{ section.settings.title }}</h1>
+  {%- else -%}
+    <h2 class="soma-retail-title">{{ section.settings.title }}</h2>
+  {%- endif -%}
   <p class="soma-retail-desc">{{ section.settings.description }}</p>
   <button class="soma-retail-btn" id="openRetailPopup">{{ section.settings.btn_text }}</button>
 </section>
@@ -246,6 +250,7 @@
     { "type": "header", "content": "Content Settings" },
     { "type": "text", "id": "subtitle", "label": "Top Subtitle", "default": "RETAIL PARTNER" },
     { "type": "text", "id": "title", "label": "Main Title", "default": "Give Clients More to Return To" },
+    { "type": "checkbox", "id": "use_h1", "label": "Render title as H1", "info": "Enable when this is the page hero. Only one H1 per page.", "default": false },
     { "type": "textarea", "id": "description", "label": "Description", "default": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension." },
     { "type": "text", "id": "btn_text", "label": "Button Label", "default": "BECOME A RETAIL PARTNER" },
     

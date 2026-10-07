@@ -129,7 +129,8 @@
       "name": "SOMA Retail Partner",
       "settings": {
         "subtitle": "RETAIL PARTNER",
-        "title": "Give Clients More to Return To",
+        "title": "Become a Retail Partner",
+        "use_h1": true,
         "description": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
         "btn_text": "BECOME A RETAIL PARTNER",
         "popup_title": "Partner With TULIA",

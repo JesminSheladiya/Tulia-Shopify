@@ -31,7 +31,47 @@
     {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
   </title>
 
-  {% if page_description %}
+  {% comment %} Custom meta descriptions per URL {% endcomment %}
+  {%- liquid
+    assign custom_meta_description = blank
+    if request.page_type == 'index'
+      assign custom_meta_description = 'Discover Tulia Cosmetics for clean, high-performance skincare, hair, and lip care essentials. Nourish your skin naturally with our premium beauty formulas.'
+    elsif collection.handle == 'all-products'
+      assign custom_meta_description = 'Explore our full range of clean skincare, hair care, and lip care products at Tulia Cosmetics. Shop natural formulas crafted for healthy, glowing skin.'
+    elsif collection.handle == 'all'
+      assign custom_meta_description = 'Browse the complete Tulia Cosmetics collection. Discover top-rated skincare essentials, nourishing hair formulas, and hydrating lip care products.'
+    elsif collection.handle == 'hair-scalp'
+      assign custom_meta_description = 'Revitalize your hair and scalp with Tulia Cosmetics. Shop nourishing hair care treatments formulated to promote healthy growth, strength, and shine.'
+    elsif collection.handle == 'lipcare' or collection.handle == 'lip-care' or collection.handle == 'lip-care-collection'
+      assign custom_meta_description = 'Treat your lips to deep hydration with Tulia Cosmetics lip care collection. Nourishing lip balms and treatments for soft, smooth, and healthy lips.'
+    elsif collection.handle == 'skincare-with-products'
+      assign custom_meta_description = 'Transform your skincare routine with Tulia Cosmetics. Explore our gentle, effective cleansers, serums, and moisturizers for radiant, healthy skin.'
+    elsif page.handle == 'about-us'
+      assign custom_meta_description = "Learn about Tulia Cosmetics' commitment to natural beauty, high-quality ingredients, and sustainable skincare solutions designed to empower your skin."
+    elsif page.handle == 'contact'
+      assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
+    elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
+      assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
+    elsif page.handle == 'our-story'
+      assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
+    endif
+
+    if custom_meta_description == blank
+      if request.path == '/pages/about-us'
+        assign custom_meta_description = "Learn about Tulia Cosmetics' commitment to natural beauty, high-quality ingredients, and sustainable skincare solutions designed to empower your skin."
+      elsif request.path == '/pages/contact'
+        assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
+      elsif request.path contains 'become'
+        assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
+      elsif request.path == '/pages/our-story'
+        assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
+      endif
+    endif
+  -%}
+
+  {% if custom_meta_description != blank %}
+    <meta name="description" content="{{ custom_meta_description | escape }}">
+  {% elsif page_description %}
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 

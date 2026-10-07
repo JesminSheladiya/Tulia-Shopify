@@ -27,6 +27,7 @@
         "text_color": "light",
         "eyebrow": "",
         "heading": "Contact Us",
+        "h1_mode": "heading",
         "subtext": "",
         "button_1_label": "",
         "button_1_link": "",
