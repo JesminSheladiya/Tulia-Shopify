@@ -83,7 +83,7 @@
         {%- if product.available -%}
 
           <!-- Connecting the new external JS asset file -->
-          {{ 'pincode-checker.js' | asset_url | script_tag }}
+          <script src="{{ 'pincode-checker.js' | asset_url }}" defer></script>
 
           <!-- Fully Customizable Pincode Checker Widget -->
           <div class="tulia-pincode-checker" style="margin: 25px 0 15px 0; padding: 18px; border: 1px solid #dcd1c4; border-radius: 4px; background-color: #faf8f5; max-width: 100%; box-sizing: border-box;">
