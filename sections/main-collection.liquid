@@ -1,5 +1,18 @@
 {%- liquid
   assign banner_img = section.settings.banner_image | default: collection.image
+
+  assign coll_h1 = collection.title
+  if collection.handle == 'all'
+    assign coll_h1 = 'Browse the Complete Tulia Collection'
+  elsif collection.handle == 'all-products'
+    assign coll_h1 = 'Explore Our Full Product Range'
+  elsif collection.handle == 'hair-scalp'
+    assign coll_h1 = 'Revitalize Your Hair & Scalp Care Routine'
+  elsif collection.handle == 'lipcare' or collection.handle == 'lip-care' or collection.handle == 'lip-care-collection'
+    assign coll_h1 = 'Treat Your Lips to Ultimate Care'
+  elsif collection.handle == 'skincare-with-products'
+    assign coll_h1 = 'Transform Your Skin with Advanced Skincare'
+  endif
   
   assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'
   assign coming_soon_list = ''
@@ -23,7 +36,7 @@
           <span class="breadcrumb__current">{{ collection.title }}</span>
         </nav>
       {%- endif -%}
-      <h1 class="collection-hero__title">{{ collection.title }}</h1>
+      <h1 class="collection-hero__title">{{ coll_h1 }}</h1>
       {%- if collection.description != blank -%}
         <div class="collection-hero__desc">{{ collection.description | strip_html | truncatewords: 30 }}</div>
       {%- endif -%}
@@ -42,7 +55,7 @@
       {%- endif -%}
       <div class="section-header text-center mb-large">
         <h6 class="eyebrow text-muted">{{ collection.products_count }} product{% if collection.products_count != 1 %}s{% endif %}</h6>
-        <h1 class="section-title text-primary">{{ collection.title }}</h1>
+        <h1 class="section-title text-primary">{{ coll_h1 }}</h1>
         <div class="divider mx-auto"></div>
         {%- if collection.description != blank -%}
           <div class="section-subtitle">{{ collection.description }}</div>

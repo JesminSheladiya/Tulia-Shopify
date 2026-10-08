@@ -42,7 +42,19 @@
     <!-- Right: Product Information -->
     <div class="col-5">
       {%- if eyebrow != blank -%}<p class="extracted-style-138">{{ eyebrow | escape }}</p>{%- endif -%}
-      <h1 class="italic-serif text-primary extracted-style-139">{{ product.title }}</h1>
+      {%- liquid
+        assign pdp_h1 = product.title
+        if product.handle == 'lip-balm'
+          assign pdp_h1 = 'Deeply Hydrating & Nourishing Lip Balm'
+        elsif product.handle == 'all-in-one-conditioner'
+          assign pdp_h1 = 'Advanced All-in-One Hair Conditioner'
+        elsif product.handle == 'skin-lightening-brightening-facewash'
+          assign pdp_h1 = 'Active-Powered Skin Lightening & Brightening Facewash'
+        elsif product.handle == 'lipz-lightening-cream'
+          assign pdp_h1 = 'Restorative Lipz Lightening Cream'
+        endif
+      -%}
+      <h1 class="italic-serif text-primary extracted-style-139">{{ pdp_h1 }}</h1>
 
       {%- if product.description != blank -%}
         <p class="text-on-surface-variant mb-medium extracted-style-140">{{ product.description | strip_html | truncatewords: 60 }}</p>

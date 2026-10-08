@@ -24,11 +24,69 @@
     <link rel="icon" href="{{ 'fav-icon.png' | asset_url }}">
   {%- endif -%}
 
+  {% comment %} Custom page titles per URL {% endcomment %}
+  {%- liquid
+    assign custom_page_title = blank
+    if request.page_type == 'index'
+      assign custom_page_title = 'Premium Skincare, Haircare & Lip Care | Tulia Cosmetics'
+    elsif collection.handle == 'all-products'
+      assign custom_page_title = 'Shop All Cosmetics, Skincare & Haircare | Tulia Cosmetics'
+    elsif collection.handle == 'all'
+      assign custom_page_title = 'Explore Our Full Range of Beauty Products | Tulia Cosmetics'
+    elsif collection.handle == 'hair-scalp'
+      assign custom_page_title = 'Nourishing Hair & Scalp Care Products | Tulia Cosmetics'
+    elsif collection.handle == 'lipcare' or collection.handle == 'lip-care' or collection.handle == 'lip-care-collection'
+      assign custom_page_title = 'Hydrating Lip Care & Lip Balm Products | Tulia Cosmetics'
+    elsif collection.handle == 'skincare-with-products'
+      assign custom_page_title = 'Natural Skincare Products & Facewashes | Tulia Cosmetics'
+    elsif page.handle == 'about-us'
+      assign custom_page_title = 'About Us | Pure, Safe & Effective Beauty | Tulia Cosmetics'
+    elsif page.handle == 'contact'
+      assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
+    elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
+      assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
+    elsif page.handle == 'our-story'
+      assign custom_page_title = 'Our Story | The Passion Behind Tulia Cosmetics'
+    elsif product.handle == 'lip-balm'
+      assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
+    elsif product.handle == 'all-in-one-conditioner'
+      assign custom_page_title = 'All-in-One Hair Conditioner for Smooth Hair | Tulia Cosmetics'
+    elsif product.handle == 'skin-lightening-brightening-facewash'
+      assign custom_page_title = 'Skin Lightening & Brightening Facewash | Tulia Cosmetics'
+    elsif product.handle == 'lipz-lightening-cream'
+      assign custom_page_title = 'Lipz Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
+    endif
+
+    if custom_page_title == blank
+      if request.path == '/pages/about-us'
+        assign custom_page_title = 'About Us | Pure, Safe & Effective Beauty | Tulia Cosmetics'
+      elsif request.path == '/pages/contact'
+        assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
+      elsif request.path contains 'become'
+        assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
+      elsif request.path == '/pages/our-story'
+        assign custom_page_title = 'Our Story | The Passion Behind Tulia Cosmetics'
+      elsif request.path contains '/products/lip-balm'
+        assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
+      elsif request.path contains '/products/all-in-one-conditioner'
+        assign custom_page_title = 'All-in-One Hair Conditioner for Smooth Hair | Tulia Cosmetics'
+      elsif request.path contains '/products/skin-lightening-brightening-facewash'
+        assign custom_page_title = 'Skin Lightening & Brightening Facewash | Tulia Cosmetics'
+      elsif request.path contains '/products/lipz-lightening-cream'
+        assign custom_page_title = 'Lipz Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
+      endif
+    endif
+  -%}
+
   <title>
-    {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- if custom_page_title != blank -%}
+      {{ custom_page_title | escape }}
+    {%- else -%}
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- endif -%}
   </title>
 
   {% comment %} Custom meta descriptions per URL {% endcomment %}
@@ -54,6 +112,14 @@
       assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
     elsif page.handle == 'our-story'
       assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
+    elsif product.handle == 'lip-balm'
+      assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
+    elsif product.handle == 'all-in-one-conditioner'
+      assign custom_meta_description = 'An advanced all-in-one hair conditioner by Tulia Cosmetics that detangles, smooths, and deeply nourishes your hair for a healthy, radiant shine.'
+    elsif product.handle == 'skin-lightening-brightening-facewash'
+      assign custom_meta_description = 'An active-powered skin brightening facewash by Tulia Cosmetics that gently cleanses, removes impurities, and promotes an even, glowing complexion.'
+    elsif product.handle == 'lipz-lightening-cream'
+      assign custom_meta_description = "A restorative lip lightening cream by Tulia Cosmetics that helps reduce dark pigmentation and restores your lips' natural, healthy pink tone."
     endif
 
     if custom_meta_description == blank
@@ -65,6 +131,14 @@
         assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
       elsif request.path == '/pages/our-story'
         assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
+      elsif request.path contains '/products/lip-balm'
+        assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
+      elsif request.path contains '/products/all-in-one-conditioner'
+        assign custom_meta_description = 'An advanced all-in-one hair conditioner by Tulia Cosmetics that detangles, smooths, and deeply nourishes your hair for a healthy, radiant shine.'
+      elsif request.path contains '/products/skin-lightening-brightening-facewash'
+        assign custom_meta_description = 'An active-powered skin brightening facewash by Tulia Cosmetics that gently cleanses, removes impurities, and promotes an even, glowing complexion.'
+      elsif request.path contains '/products/lipz-lightening-cream'
+        assign custom_meta_description = "A restorative lip lightening cream by Tulia Cosmetics that helps reduce dark pigmentation and restores your lips' natural, healthy pink tone."
       endif
     endif
   -%}

@@ -46,7 +46,13 @@
           {%- if section.settings.eyebrow != blank -%}
             <span class="hero-eyebrow text-white extracted-style-7" id="hero-eyebrow">{{ section.settings.eyebrow | escape }}</span>
           {%- endif -%}
-          <h1 class="hero-title hero-text-shadow text-white font-bold extracted-style-8" id="hero-title">{{ section.settings.title | escape | newline_to_br }}</h1>
+          {%- liquid
+            assign hero_h1 = section.settings.title
+            if request.page_type == 'index'
+              assign hero_h1 = 'Discover Natural Beauty with Tulia Cosmetics'
+            endif
+          -%}
+          <h1 class="hero-title hero-text-shadow text-white font-bold extracted-style-8" id="hero-title">{{ hero_h1 | escape | newline_to_br }}</h1>
           {%- if section.settings.description != blank -%}
             <p class="hero-desc hero-text-shadow text-white extracted-style-9" id="hero-desc">{{ section.settings.description | escape }}</p>
           {%- endif -%}
