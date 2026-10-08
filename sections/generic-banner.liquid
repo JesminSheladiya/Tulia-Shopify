@@ -1,5 +1,11 @@
 {%- liquid
   assign bg = section.settings.bg_image
+  assign bg_url = ''
+  if bg != blank
+    assign bg_url = bg | image_url: width: 2400
+  elsif section.settings.desktop_theme_asset != blank
+    assign bg_url = section.settings.desktop_theme_asset | asset_url
+  endif
   assign bg_mobile_url = ''
   if section.settings.bg_image_mobile != blank
     assign bg_mobile_url = section.settings.bg_image_mobile | image_url: width: 1200
@@ -8,7 +14,7 @@
   endif
 -%}
 <section class="generic-banner gb--{{ section.settings.height }} text-{{ section.settings.content_align }} valign-{{ section.settings.content_valign }} gb--{{ section.settings.text_color }}{% if bg == blank %} gb--solid{% endif %}"
-  {% if bg != blank %}style="background-image: url('{{ bg | image_url: width: 2400 }}');"{% else %}style="background: {{ section.settings.bg_color }};"{% endif %}>
+  {% if bg_url != blank %}style="background-image: url('{{ bg_url }}');"{% else %}style="background: {{ section.settings.bg_color }};"{% endif %}>
 {%- if bg_mobile_url != blank -%}
 <style>
   @media screen and (max-width: 749px) {
@@ -21,7 +27,7 @@
   }
 </style>
 {%- endif -%}
-  {% if bg != blank %}<div class="gb__overlay" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }};"></div>{% endif %}
+  {% if bg_url != blank %}<div class="gb__overlay" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }};"></div>{% endif %}
   <style>
     /* Generic banner responsive polish - all screens */
     .generic-banner { background-repeat: no-repeat; }
@@ -74,6 +80,7 @@
     { "type": "header", "content": "Background" },
     { "type": "image_picker", "id": "bg_image", "label": "Background image" },
     { "type": "image_picker", "id": "bg_image_mobile", "label": "Background image (mobile)", "info": "Optional. Overrides the desktop image on mobile." },
+    { "type": "text", "id": "desktop_theme_asset", "label": "Desktop theme asset (optional)", "info": "Theme Assets file name, e.g. tulia-website-about-banner.jpg. Used only when no image is selected above." },
     { "type": "text", "id": "mobile_theme_asset", "label": "Mobile theme asset (optional)", "info": "Theme Assets file name, e.g. our-science-banner-verical.webp. Used only when mobile image above is empty." },
     { "type": "color", "id": "bg_color", "label": "Background colour (no image)", "default": "#420007" },
     { "type": "range", "id": "overlay", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Image overlay", "default": 40 },
