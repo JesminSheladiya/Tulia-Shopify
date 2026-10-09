@@ -60,7 +60,9 @@
           <span>{{ cart.total_price | money }}</span>
         </div>
         <p class="cart-drawer__taxes">{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
+        <p class="cart-drawer__shipping" style="margin:0 0 12px;">Shipping: <s style="opacity:.6;">₹60</s> <strong style="color:var(--primary);letter-spacing:.08em;">FREE</strong></p>
         <a href="{{ routes.cart_url }}/checkout" class="btn btn-primary cart-drawer__checkout">{{ 'cart.general.checkout' | t }}</a>
+        <div class="cart-drawer__dynamic-checkout" style="margin-top:12px;">{{ content_for_additional_checkout_buttons }}</div>
         <a href="{{ routes.cart_url }}" class="cart-drawer__viewcart">{{ 'cart.general.title' | t }} →</a>
       </footer>
     {%- else -%}

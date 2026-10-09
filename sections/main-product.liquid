@@ -132,6 +132,9 @@
           <button type="submit" id="pdp-submit" class="btn btn-primary extracted-style-154"
             data-add-label="{{ section.settings.add_label | default: 'Add to bag' | escape }}"
             data-soldout-label="{{ 'products.product.sold_out' | t }}">{{ section.settings.add_label | default: 'Add to bag' }}</button>
+          {%- if section.settings.show_dynamic_checkout -%}
+            <div class="pdp-dynamic-checkout" style="margin-top:12px;">{{ form | payment_button }}</div>
+          {%- endif -%}
         {%- else -%}
           <button type="button" class="btn btn-primary extracted-style-154 waitlist-trigger">{{ section.settings.notify_label | default: 'Notify' }}</button>
         {%- endif -%}
@@ -260,6 +263,7 @@
   "settings": [
     { "type": "text", "id": "add_label", "label": "Add to cart label", "default": "Add to bag" },
     { "type": "text", "id": "notify_label", "label": "Sold-out label", "default": "Notify" },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show express checkout buttons (Shop Pay etc.)", "default": true },
     { "type": "header", "content": "Coupon row" },
     { "type": "checkbox", "id": "show_coupon", "label": "Show coupon row", "default": true },
     { "type": "text", "id": "coupon_text", "label": "Coupon text", "default": "Enter coupon code to unlock available offers." }

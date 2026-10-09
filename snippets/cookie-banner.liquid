@@ -1,0 +1,79 @@
+{% comment %} Cookie consent banner: shows once, stores choice in localStorage + cookie {% endcomment %}
+<div id="tulia-cookie-banner" hidden>
+  <p class="tulia-cookie-text">
+    We use cookies to improve your shopping experience and analyse traffic. Read our
+    <a href="{{ routes.root_url }}policies/privacy-policy">Privacy Policy</a>.
+  </p>
+  <div class="tulia-cookie-actions">
+    <button type="button" id="tulia-cookie-decline" class="btn btn-outline-light">Decline</button>
+    <button type="button" id="tulia-cookie-accept" class="btn btn-primary">Accept</button>
+  </div>
+</div>
+
+<style>
+  #tulia-cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    justify-content: space-between;
+    background: var(--surface, #fcf9f8);
+    color: var(--on-surface, #1b1c1c);
+    border: 1px solid var(--outline-variant, #dcc0bf);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(66, 0, 7, 0.18);
+    padding: 16px 20px;
+    font-family: var(--font-sans);
+  }
+  #tulia-cookie-banner[hidden] { display: none; }
+  .tulia-cookie-text { margin: 0; font-size: 14px; line-height: 1.5; flex: 1 1 240px; }
+  .tulia-cookie-text a { text-decoration: underline; color: var(--primary, #420007); }
+  .tulia-cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+  .tulia-cookie-actions .btn { min-height: 44px; padding: 10px 22px; font-size: 14px; cursor: pointer; }
+  @media (max-width: 400px) {
+    #tulia-cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; }
+    .tulia-cookie-actions { width: 100%; }
+    .tulia-cookie-actions .btn { flex: 1; }
+  }
+</style>
+
+<script>
+  (function () {
+    var KEY = 'tulia_cookie_consent';
+    var banner = document.getElementById('tulia-cookie-banner');
+    if (!banner) return;
+    function setCookie(name, value, days) {
+      var d = new Date();
+      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
+    function pushShopifyConsent(accepted) {
+      try {
+        if (window.Shopify && Shopify.customerPrivacy && typeof Shopify.customerPrivacy.setTrackingConsent === 'function') {
+          Shopify.customerPrivacy.setTrackingConsent(accepted, function () {});
+        }
+      } catch (e) {}
+    }
+    function save(choice) {
+      try { localStorage.setItem(KEY, choice); } catch (e) {}
+      setCookie('tulia_consent', choice, 365);
+      pushShopifyConsent(choice === 'accepted');
+      if (choice === 'accepted' && typeof window.tuliaLoadGTM === 'function') window.tuliaLoadGTM();
+      banner.hidden = true;
+    }
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (!stored) {
+      banner.hidden = false;
+    } else if (stored === 'accepted' && typeof window.tuliaLoadGTM === 'function') {
+      window.tuliaLoadGTM();
+    }
+    document.getElementById('tulia-cookie-accept').addEventListener('click', function () { save('accepted'); });
+    document.getElementById('tulia-cookie-decline').addEventListener('click', function () { save('declined'); });
+  })();
+</script>

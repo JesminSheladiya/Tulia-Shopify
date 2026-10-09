@@ -7606,3 +7606,9 @@ iframe {
         width: 100%;
     }
 }
+
+/* Express checkout buttons render only when an eligible method exists (India: Shop Pay
+   is unsupported, so these stay hidden until e.g. Razorpay Magic Checkout is enabled) */
+.pdp-dynamic-checkout:empty,
+.cart-additional-checkout:empty,
+.cart-drawer__dynamic-checkout:empty { display: none; }

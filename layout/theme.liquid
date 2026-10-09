@@ -6,13 +6,32 @@
 
 
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W7766LPC');</script>
-  <!-- End Google Tag Manager -->
+  <!-- Google Tag Manager: loads ONLY after cookie consent (cookie-banner snippet calls tuliaLoadGTM on Accept) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.tuliaGTMLoaded = false;
+    window.tuliaLoadGTM = function () {
+      if (window.tuliaGTMLoaded) return;
+      window.tuliaGTMLoaded = true;
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W7766LPC');
+    };
+    (function () {
+      var consent = null;
+      try { consent = localStorage.getItem('tulia_cookie_consent'); } catch (e) {}
+      var apiAllowed = false;
+      try {
+        if (window.Shopify && Shopify.customerPrivacy && typeof Shopify.customerPrivacy.marketingAllowed === 'function') {
+          apiAllowed = Shopify.customerPrivacy.marketingAllowed() === true;
+        }
+      } catch (e) {}
+      if (consent === 'accepted' || apiAllowed) window.tuliaLoadGTM();
+    })();
+  </script>
+  <!-- End Google Tag Manager (consent-gated) -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,6 +168,54 @@
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
+  {% comment %} Open Graph + Twitter share tags {% endcomment %}
+  {%- liquid
+    assign og_title = custom_page_title
+    if og_title == blank
+      assign og_title = page_title
+    endif
+    assign og_description = custom_meta_description
+    if og_description == blank
+      assign og_description = page_description
+    endif
+    if og_description == blank
+      assign og_description = shop.description
+    endif
+    assign og_type = 'website'
+    if request.page_type == 'product'
+      assign og_type = 'product'
+    elsif request.page_type == 'article'
+      assign og_type = 'article'
+    endif
+    assign og_image = blank
+    if request.page_type == 'product' and product.featured_image
+      assign og_image = product.featured_image | image_url: width: 1200
+    elsif request.page_type == 'article' and article.image
+      assign og_image = article.image | image_url: width: 1200
+    elsif settings.logo_color != blank
+      assign og_image = settings.logo_color | image_url: width: 1200
+    endif
+  -%}
+  <meta property="og:site_name" content="{{ shop.name | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ og_title | escape }}">
+  <meta property="og:type" content="{{ og_type }}">
+  {%- if og_description != blank -%}
+    <meta property="og:description" content="{{ og_description | escape }}">
+  {%- endif -%}
+  {%- if og_image != blank -%}
+    <meta property="og:image" content="https:{{ og_image }}">
+    <meta property="og:image:width" content="1200">
+  {%- endif -%}
+  <meta name="twitter:card" content="{% if og_image != blank %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ og_title | escape }}">
+  {%- if og_description != blank -%}
+    <meta name="twitter:description" content="{{ og_description | escape }}">
+  {%- endif -%}
+  {%- if og_image != blank -%}
+    <meta name="twitter:image" content="https:{{ og_image }}">
+  {%- endif -%}
+
   {% comment %} Brand tokens: Musky (display) + Montserrat (body, locally hosted in assets). {% endcomment %}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -228,10 +295,7 @@
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7766LPC"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  {% comment %} GTM noscript removed: tracking (incl. noscript) loads only after cookie consent {% endcomment %}
 
   {% sections 'header-group' %}
 
@@ -304,6 +368,7 @@
 
   {% render 'sticky-bottom-bar' %}
   {% render 'waitlist-modal' %}
+  {% render 'cookie-banner' %}
 
   {%- if settings.cart_type == 'drawer' -%}
     {% section 'cart-drawer' %}
