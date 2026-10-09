@@ -19,7 +19,7 @@
         <{{ tag }} {% if tag == 'a' %}href="{{ block.settings.link }}"{% endif %} class="generic-card card-align-{{ section.settings.card_align }}{% if section.settings.card_style == 'editorial' %} generic-card--editorial{% endif %}" {{ block.shopify_attributes }}>
           {%- if img != blank -%}
             <div class="generic-card__media">
-              <img src="{{ img | image_url: width: 800 }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+              <img src="{{ img | image_url: width: 800 }}" srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 800 }} 800w, {{ img | image_url: width: 1200 }} 1200w" sizes="(max-width: 768px) calc(100vw - 32px), 800px" width="{{ img.width }}" height="{{ img.height }}" alt="{{ block.settings.title | escape }}" loading="lazy" decoding="async">
             </div>
           {%- endif -%}
           <div class="generic-card__body">

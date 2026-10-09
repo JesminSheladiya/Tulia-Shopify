@@ -25,7 +25,7 @@
           <div class="ingredient-card-hover extracted-style-175">
             <div class="extracted-style-176">
               {%- if img -%}
-                <img src="{{ img | image_url: width: 600 }}" width="600" height="600" alt="{{ t | escape }}" class="extracted-style-64" loading="lazy">
+                <img src="{{ img | image_url: width: 600 }}" srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 600 }} 600w, {{ img | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ t | escape }}" class="extracted-style-64" loading="lazy" decoding="async">
               {%- else -%}
                 <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ t | escape }}" class="extracted-style-64" loading="lazy">
               {%- endif -%}
@@ -40,7 +40,7 @@
           <div class="ingredient-card-hover extracted-style-175" {{ block.shopify_attributes }}>
             <div class="extracted-style-176">
               {%- if block.settings.image != blank -%}
-                <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+                <img src="{{ block.settings.image | image_url: width: 600 }}" srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async">
               {%- else -%}
                 <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
               {%- endif -%}

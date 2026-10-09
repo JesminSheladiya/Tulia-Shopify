@@ -11,7 +11,8 @@
     <div>
       <h3 class="ritual-name italic-serif mb-medium">Order history</h3>
       {%- if customer.orders.size > 0 -%}
-        <table style="width:100%;border-collapse:collapse;">
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;min-width:520px;">
           <thead>
             <tr style="text-align:left;border-bottom:1px solid var(--outline-variant);">
               <th style="padding:.6rem 0;">Order</th><th>Date</th><th>Total</th><th>Status</th>
@@ -28,6 +29,7 @@
             {%- endfor -%}
           </tbody>
         </table>
+      </div>
       {%- else -%}
         <p class="text-muted">You haven't placed any orders yet.</p>
       {%- endif -%}

@@ -44,9 +44,9 @@
               {%- if badge != blank -%}<span class="cc-badge">{{ badge | escape }}</span>{%- endif -%}
               {%- if linked != blank and linked.featured_image -%}
                 {%- if is_coming_soon -%}
-                  <img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy">
+                  <img src="{{ linked.featured_image | image_url: width: 600 }}" srcset="{{ linked.featured_image | image_url: width: 400 }} 400w, {{ linked.featured_image | image_url: width: 600 }} 600w, {{ linked.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async">
                 {%- else -%}
-                  <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+                  <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" srcset="{{ linked.featured_image | image_url: width: 400 }} 400w, {{ linked.featured_image | image_url: width: 600 }} 600w, {{ linked.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async"></a>
                 {%- endif -%}
               {%- endif -%}
               {%- unless is_coming_soon -%}
@@ -105,12 +105,12 @@
             {%- if block.settings.badge != blank -%}<span class="cc-badge">{{ block.settings.badge | escape }}</span>{%- endif -%}
             {%- if linked != blank and linked.featured_image -%}
               {%- if is_coming_soon -%}
-                <img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy">
+                <img src="{{ linked.featured_image | image_url: width: 600 }}" srcset="{{ linked.featured_image | image_url: width: 400 }} 400w, {{ linked.featured_image | image_url: width: 600 }} 600w, {{ linked.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async">
               {%- else -%}
-                <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy"></a>
+                <a href="{{ linked.url }}"><img src="{{ linked.featured_image | image_url: width: 600 }}" srcset="{{ linked.featured_image | image_url: width: 400 }} 400w, {{ linked.featured_image | image_url: width: 600 }} 600w, {{ linked.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ linked.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async"></a>
               {%- endif -%}
             {%- elsif block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 600 }}" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
+              <img src="{{ block.settings.image | image_url: width: 600 }}" srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w, {{ block.settings.image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), 600px" width="600" height="600" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy" decoding="async">
             {%- else -%}
               <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.title | escape }}" class="extracted-style-64" loading="lazy">
             {%- endif -%}

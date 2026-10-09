@@ -20,7 +20,7 @@
         <a href="{{ article.url }}" class="blog-card group" style="color:inherit;">
           <div class="blog-img-wrapper">
             {%- if article.image -%}
-              <img src="{{ article.image | image_url: width: 700 }}" width="700" height="500" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
+              <img src="{{ article.image | image_url: width: 700 }}" srcset="{{ article.image | image_url: width: 400 }} 400w, {{ article.image | image_url: width: 700 }} 700w, {{ article.image | image_url: width: 1000 }} 1000w" sizes="(max-width: 768px) calc(100vw - 32px), 700px" width="700" height="500" alt="{{ article.title | escape }}" class="blog-img" loading="lazy" decoding="async">
             {%- else -%}
               <img src="{{ 'dusky-edit.jpg' | asset_url }}" width="1080" height="1350" alt="{{ article.title | escape }}" class="blog-img" loading="lazy">
             {%- endif -%}

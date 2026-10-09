@@ -1871,7 +1871,7 @@ ul {
     }
 
     .hero-cta .btn {
-        width: 50%;
+        width: 70%;
         text-align: center;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
@@ -3600,7 +3600,7 @@ ul {
     }
 
     .quote-author-card {
-        left: 50% !important;
+        left: 0% !important;
         transform: translateX(-50%);
         bottom: 1.5rem !important;
         text-align: center;
@@ -3750,7 +3750,6 @@ ul {
 }
 
 .extracted-style-12 {
-    white-space: nowrap;
     overflow-x: auto;
     font-size: clamp(1.5rem, 4vw, 3rem);
     line-height: 1.2;
@@ -7528,5 +7527,82 @@ p.policies-title {
         margin-left: -50vw !important;
         margin-right: -50vw !important;
         margin-top: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   Responsive QA patch: 360 / 390 / 414 + tablet (769-1024)
+   - fluid safety, tablet 2-col, small-phone tightening
+   ========================================================================== */
+html,
+body {
+    overflow-x: clip;
+}
+
+img,
+video,
+svg,
+iframe {
+    max-width: 100%;
+}
+
+.tulia-map iframe {
+    max-width: 100%;
+}
+
+/* Tablet portrait: multi-col grids go 2-col instead of 1-col or cramped 3/4-col */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trust-badges-section .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Mobile: reduce section rhythm + fluid hero type (overrides fixed 2.5rem) */
+@media (max-width: 768px) {
+    :root {
+        --section-gap: 64px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 2.5rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    .tulia-map iframe {
+        height: 300px;
+    }
+
+    /* PDP trust badges: admin forces 3-col via custom_css, relax to 1-col on phones */
+    .trust-badges-section .grid-4 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Tap targets */
+    .btn,
+    .btn-primary,
+    button[type="submit"] {
+        min-height: 44px;
+    }
+}
+
+/* Small phones 360/390: tighter container + pincode stacks */
+@media (max-width: 400px) {
+    :root {
+        --container-px-mobile: 16px;
+        --gutter: 16px;
+    }
+
+    .tulia-pincode-checker>div:nth-child(2) {
+        flex-direction: column;
+    }
+
+    .tulia-pincode-checker #tulia-check-btn {
+        width: 100%;
     }
 }

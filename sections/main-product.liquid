@@ -31,9 +31,9 @@
         </div>
         <div id="main-image-container" class="extracted-style-136">
           {%- if product.featured_image -%}
-            <img id="main-product-image" src="{{ product.featured_image | image_url: width: 1000 }}" width="1000" height="1250" alt="{{ product.title | escape }}" class="extracted-style-137">
+            <img id="main-product-image" src="{{ product.featured_image | image_url: width: 1000 }}" srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 1000 }} 1000w, {{ product.featured_image | image_url: width: 1500 }} 1500w" sizes="(max-width: 768px) calc(100vw - 32px), 800px" width="1000" height="1250" alt="{{ product.title | escape }}" class="extracted-style-137" fetchpriority="high" loading="eager" decoding="async">
           {%- else -%}
-            <img id="main-product-image" src="{{ 'supple.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="extracted-style-137">
+            <img id="main-product-image" src="{{ 'supple.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="extracted-style-137" fetchpriority="high" loading="eager" decoding="async">
           {%- endif -%}
         </div>
       </div>

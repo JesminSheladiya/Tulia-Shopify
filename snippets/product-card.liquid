@@ -27,9 +27,9 @@
       <div class="badge">NEW</div>
     {%- endif -%}
     {%- if product.featured_image -%}
-      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" width="600" height="600">
+      <img src="{{ product.featured_image | image_url: width: 600 }}" srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1024px) calc(50vw - 24px), 600px" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" decoding="async" width="600" height="600">
     {%- else -%}
-      <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy">
+      <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy" decoding="async">
     {%- endif -%}
   </div>
   <div class="ritual-info">
@@ -54,9 +54,9 @@
       {%- endif -%}
       <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
         {%- if product.featured_image -%}
-          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" width="600" height="600">
+          <img src="{{ product.featured_image | image_url: width: 600 }}" srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w" sizes="(max-width: 768px) calc(100vw - 32px), (max-width: 1024px) calc(50vw - 24px), 600px" alt="{{ product.featured_image.alt | escape | default: product.title }}" class="ritual-img" loading="lazy" decoding="async" width="600" height="600">
         {%- else -%}
-          <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy">
+          <img src="{{ 'gleam.jpg' | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="ritual-img" loading="lazy" decoding="async">
         {%- endif -%}
       </a>
       <button type="submit" class="btn-add-to-bag-img" {% unless product.available %}disabled{% endunless %}>

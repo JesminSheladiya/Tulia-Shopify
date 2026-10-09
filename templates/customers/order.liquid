@@ -4,7 +4,8 @@
     <p class="section-subtitle">Placed on {{ order.created_at | date: '%B %e, %Y' }}</p>
   </div>
 
-  <table style="width:100%;border-collapse:collapse;margin-bottom:2rem;">
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;margin-bottom:2rem;min-width:520px;">
     <thead>
       <tr style="text-align:left;border-bottom:1px solid var(--outline-variant);">
         <th style="padding:.6rem 0;">Product</th><th>Qty</th><th>Price</th><th>Total</th>
@@ -21,6 +22,7 @@
       {%- endfor -%}
     </tbody>
   </table>
+  </div>
 
   <div style="text-align:right;">
     <p>Subtotal: {{ order.subtotal_price | money }}</p>
