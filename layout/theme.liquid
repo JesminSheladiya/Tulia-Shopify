@@ -149,10 +149,8 @@
     <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
-  {% comment %} Google Fonts used by the original Tulia design {% endcomment %}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  {% comment %} Brand tokens: Musky (display) + Montserrat (body, locally hosted in assets). {% endcomment %}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
@@ -161,22 +159,78 @@
 
   <style>
     @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ "Montserrat-300.woff2" | asset_url }}') format('woff2');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ "Montserrat-400.woff2" | asset_url }}') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ "Montserrat-500.woff2" | asset_url }}') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ "Montserrat-600.woff2" | asset_url }}') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ "Montserrat-700.woff2" | asset_url }}') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
       font-family: 'Mattone';
       src: url('{{ "Mattone-Regular.otf" | asset_url }}') format('opentype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
+    /* TODO: upload Musky font files to assets (Musky-Regular.woff2 / Musky-Bold.woff2) then uncomment:
+    @font-face {
+      font-family: 'Musky';
+      src: url('{{ "Musky-Regular.woff2" | asset_url }}') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    */
 
     :root {
-      --primary: {{ settings.color_primary }};
-      --primary-container: {{ settings.color_primary_container }};
-      --secondary: {{ settings.color_secondary }};
-      --surface: {{ settings.color_surface }};
-      --on-surface: {{ settings.color_on_surface }};
+      --primary: {{ settings.color_primary | default: '#420007' }};
+      --primary-container: {{ settings.color_primary_container | default: '#630f17' }};
+      --on-primary: #ffffff;
+      --secondary: {{ settings.color_secondary | default: '#735c00' }};
+      --secondary-fixed: #ffe088;
+      --tertiary: #1b1c19;
+      --on-tertiary: #ffffff;
+      --surface: {{ settings.color_surface | default: '#fcf9f8' }};
+      --surface-alt: #f0eded;
+      --surface-low: #f6f3f2;
+      --surface-variant: #e4e2e1;
+      --on-surface: {{ settings.color_on_surface | default: '#1b1c1c' }};
+      --on-surface-variant: #564241;
+      --outline: #897171;
+      --outline-variant: #dcc0bf;
+      --font-sans: 'Montserrat', sans-serif;
+      --font-serif: 'Musky', 'Mattone', serif;
     }
 
-    body { background-color: {{ settings.color_surface }}; }
+    body { background-color: {{ settings.color_surface | default: '#fcf9f8' }}; font-family: var(--font-sans); }
   </style>
 
 </head>
@@ -292,9 +346,9 @@
     cartTitles.forEach(function(title) {
       if (title.querySelector('.fixed-amp')) return;
       if (title.innerHTML.includes('&amp;') || title.innerHTML.includes('&amp;amp;')) {
-        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: Arial, sans-serif !important; font-style: normal !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: inherit !important; font-style: normal !important; display: inline-block !important;">&</span>');
       } else if (title.innerText.includes('&') || title.textContent.includes('&')) {
-        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: Arial, sans-serif !important; font-style: normal !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: inherit !important; font-style: normal !important; display: inline-block !important;">&</span>');
       }
     });
   }

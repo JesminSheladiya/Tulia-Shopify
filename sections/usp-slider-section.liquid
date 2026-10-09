@@ -103,10 +103,10 @@
   }
 
   .soma-tracker-node { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-  .soma-node-num { font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(252, 249, 248, 0.25); }
+  .soma-node-num { font-family: var(--font-sans); font-size: 11px; color: rgba(252, 249, 248, 0.25); }
   .soma-node-line { width: 32px; height: 1px; background-color: rgba(252, 249, 248, 0.15); position: relative; }
   .soma-node-progress-fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background-color: var(--slider-gold-accent); transition: width 0.3s ease; }
-  .soma-node-label { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(252, 249, 248, 0.3); }
+  .soma-node-label { font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(252, 249, 248, 0.3); }
 
   .soma-tracker-node.node-active .soma-node-num { color: var(--slider-gold-accent); }
   .soma-tracker-node.node-active .soma-node-label { color: var(--slider-text-pure); }
@@ -132,9 +132,9 @@
     padding: 0 20px;
   }
 
-  .soma-luxury-tag { font-family: 'Inter', sans-serif; font-size: var(--tag-size-mobile); color: var(--slider-gold-accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
-  .soma-luxury-title { font-family: 'Mattone', sans-serif; font-size: var(--title-size-mobile); color: var(--slider-text-pure); line-height: 1.2; margin-bottom: 10px; }
-  .soma-luxury-subtitle { font-family: 'Kanit', sans-serif; font-size: var(--sub-size-mobile); color: var(--slider-gold-accent); font-style: italic; }
+  .soma-luxury-tag { font-family: var(--font-sans); font-size: var(--tag-size-mobile); color: var(--slider-gold-accent); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 15px; }
+  .soma-luxury-title { font-family: var(--font-serif); font-size: var(--title-size-mobile); color: var(--slider-text-pure); line-height: 1.2; margin-bottom: 10px; }
+  .soma-luxury-subtitle { font-family: var(--font-sans); font-size: var(--sub-size-mobile); color: var(--slider-gold-accent); font-style: italic; }
 
   @media (min-width: 768px) {
     .soma-luxury-tag { font-size: var(--tag-size-desktop); }
