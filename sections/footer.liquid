@@ -78,7 +78,7 @@
           {%- if form.posted_successfully? -%}
             <p class="text-white">Thanks for subscribing.</p>
           {%- else -%}
-            <input type="email" name="contact[email]" placeholder="your-email@example.com" required class="input-line">
+            <input type="email" name="contact[email]" placeholder="your-email@example.com" aria-label="Email address for newsletter" required class="input-line">
             <button type="submit" class="btn-arrow" aria-label="Subscribe">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </button>

@@ -52,7 +52,7 @@
         {%- if settings.cart_show_note -%}
           <details class="cart-drawer__note">
             <summary>Add order note</summary>
-            <textarea name="note" data-cart-note placeholder="Special instructions for your order">{{ cart.note }}</textarea>
+            <textarea name="note" data-cart-note placeholder="Special instructions for your order" aria-label="Order note">{{ cart.note }}</textarea>
           </details>
         {%- endif -%}
         <div class="cart-drawer__subtotal">

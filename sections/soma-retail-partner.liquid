@@ -181,7 +181,7 @@
 <!-- POPUP MODAL -->
 <div class="soma-popup-overlay" id="retailPopupOverlay">
   <div class="soma-popup-box">
-    <button class="soma-popup-close" id="closeRetailPopup">&times;</button>
+    <button class="soma-popup-close" id="closeRetailPopup" aria-label="Close">&times;</button>
     
     <h3>{{ section.settings.popup_title }}</h3>
     <p>{{ section.settings.popup_desc }}</p>
@@ -200,22 +200,22 @@
 
       <div class="soma-form-group">
         <label for="Form-Name">Full Name</label>
-        <input type="text" id="Form-Name" name="contact[Name]" placeholder="Your name" required>
+        <input type="text" id="Form-Name" name="contact[Name]" placeholder="Your name" aria-label="Your name" required>
       </div>
 
       <div class="soma-form-group">
         <label for="Form-Email">Email Address</label>
-        <input type="email" id="Form-Email" name="contact[email]" placeholder="name@example.com" required>
+        <input type="email" id="Form-Email" name="contact[email]" placeholder="name@example.com" aria-label="Email address" required>
       </div>
 
       <div class="soma-form-group">
         <label for="Form-Phone">Business Phone</label>
-        <input type="tel" id="Form-Phone" name="contact[Phone]" placeholder="+91 XXXXX XXXXX">
+        <input type="tel" id="Form-Phone" name="contact[Phone]" placeholder="+91 XXXXX XXXXX" aria-label="Phone number">
       </div>
 
       <div class="soma-form-group">
         <label for="Form-Message">Business Details / Message</label>
-        <textarea id="Form-Message" name="contact[body]" rows="4" placeholder="Tell us about your salon, spa or retail store..." required></textarea>
+        <textarea id="Form-Message" name="contact[body]" rows="4" placeholder="Tell us about your salon, spa or retail store..." aria-label="Tell us about your store" required></textarea>
       </div>
 
       <button type="submit" class="soma-retail-btn soma-form-submit">Submit Application</button>

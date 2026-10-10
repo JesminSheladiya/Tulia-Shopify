@@ -201,7 +201,7 @@
 
   <div class="soma-bottom-dots">
     {%- for block in section.blocks -%}
-      <button class="soma-dot {% if forloop.first %}dot-active{% endif %}" id="snap-dot-{{ forloop.index0 }}" onclick="scrollToSnapSlide({{ forloop.index0 }})"></button>
+      <button class="soma-dot {% if forloop.first %}dot-active{% endif %}" id="snap-dot-{{ forloop.index0 }}" aria-label="Go to slide {{ forloop.index }}" onclick="scrollToSnapSlide({{ forloop.index0 }})"></button>
     {%- endfor -%}
   </div>
 

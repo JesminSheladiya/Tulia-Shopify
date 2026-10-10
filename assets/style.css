@@ -7612,3 +7612,22 @@ iframe {
 .pdp-dynamic-checkout:empty,
 .cart-additional-checkout:empty,
 .cart-drawer__dynamic-checkout:empty { display: none; }
+
+/* Accessibility: skip link + visible keyboard focus */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 0;
+  font-family: var(--font-sans);
+}
+.skip-to-content:focus { left: 0; }
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

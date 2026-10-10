@@ -109,7 +109,7 @@
             </div>
 
             <div style="display: flex; gap: 8px; width: 100%; box-sizing: border-box;">
-              <input type="text" id="tulia-pin-input" placeholder="Enter 6-digit Pincode" maxlength="6" pattern="\d*" inputmode="numeric" oninput="handlePinInput(this)" style="flex: 1; padding: 11px 14px; border: 1px solid #b5a89e; border-radius: 2px; font-size: 14px; outline: none; background: #fff; color: #000; box-sizing: border-box;">
+              <input type="text" id="tulia-pin-input" placeholder="Enter 6-digit Pincode" aria-label="Enter 6-digit delivery pincode" maxlength="6" pattern="\d*" inputmode="numeric" oninput="handlePinInput(this)" style="flex: 1; padding: 11px 14px; border: 1px solid #b5a89e; border-radius: 2px; font-size: 14px; outline: none; background: #fff; color: #000; box-sizing: border-box;">
               <button type="button" id="tulia-check-btn" onclick="tuliaCheckPincode()" disabled style="background: #b5a89e; color: #ffffff; border: none; padding: 11px 22px; border-radius: 2px; cursor: not-allowed; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s, opacity 0.2s; opacity: 0.7;">Check</button>
             </div>
             
