@@ -16,7 +16,7 @@
     document.body.classList.remove('no-scroll');
   }
 
-  var CS_NAMES = ['hair care serum', 'buttermax cream', 'the physical sunscreen gel', 'daily care shampoo'];
+  var CS_NAMES = ['hair care serum', 'buttermax cream', 'the physical sunscreen gel'];
 
   function isComingSoon(title) {
     var t = (title || '').toLowerCase().replace(/^\s+|\s+$/g, '');

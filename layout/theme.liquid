@@ -304,7 +304,7 @@
     assign is_cs_product = false
     if request.page_type == 'product' and product != blank
       assign cs_p_down = product.title | strip | downcase
-      assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,daily care shampoo,' | split: ','
+      assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,' | split: ','
       for cs_item in cs_names
         assign cs_clean = cs_item | strip
         if cs_clean != blank

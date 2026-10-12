@@ -28,7 +28,7 @@
   assign is_coming_soon = false
   if r_type == 'product'
     assign t_down = item.title | strip | downcase
-    assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,daily care shampoo,'
+    assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,'
     if cs_names contains t_down
       assign is_coming_soon = true
     endif

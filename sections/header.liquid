@@ -37,6 +37,27 @@
                 onclick="document.querySelector('.mega-carousel').scrollBy({left: -280, behavior: 'smooth'})"><span class="material-symbols-outlined">chevron_left</span></button>
               <div class="mega-carousel drag-scroll">
                 {%- if mega_collection != blank and mega_collection.products_count > 0 -%}
+                  <!-- 1. Active products first -->
+                  {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
+                    {%- liquid
+                      assign p_title_down = product.title | strip | downcase
+                      assign is_coming_soon = false
+                      if coming_soon_list contains p_title_down
+                        assign is_coming_soon = true
+                      endif
+                    -%}
+                    {%- unless is_coming_soon -%}
+                      <a href="{{ product.url }}" class="mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
+                        {%- if product.tags contains 'new' -%}<span class="mega-badge">NEW</span>{%- endif -%}
+                        <img src="{{ product.featured_image | image_url: width: 320 }}" width="320" height="400" alt="{{ product.title | escape }}" loading="lazy">
+                        <div>
+                          <h4>{{ product.title }}</h4>
+                          <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
+                        </div>
+                      </a>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                  <!-- 2. Coming Soon products last -->
                   {%- for product in mega_collection.products limit: section.settings.mega_limit -%}
                     {%- liquid
                       assign p_title_down = product.title | strip | downcase
@@ -57,15 +78,6 @@
                           <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
                         </div>
                       </div>
-                    {%- else -%}
-                      <a href="{{ product.url }}" class="mega-card" data-category="{{ product.tags | join: ' ' | downcase }}">
-                        {%- if product.tags contains 'new' -%}<span class="mega-badge">NEW</span>{%- endif -%}
-                        <img src="{{ product.featured_image | image_url: width: 320 }}" width="320" height="400" alt="{{ product.title | escape }}" loading="lazy">
-                        <div>
-                          <h4>{{ product.title }}</h4>
-                          <p>{{ product.metafields.custom.subtitle | default: product.type }}</p>
-                        </div>
-                      </a>
                     {%- endif -%}
                   {%- endfor -%}
                 {%- else -%}
@@ -329,7 +341,7 @@
     { "type": "range", "id": "mega_limit", "min": 4, "max": 16, "step": 1, "label": "Number of products", "default": 8 },
     { "type": "text", "id": "shop_all_label", "label": "Footer button label", "default": "SHOP THE COLLECTION" },
     { "type": "url", "id": "shop_all_link", "label": "Footer button link" },
-    { "type": "textarea", "id": "coming_soon_products", "label": "Coming Soon Products (Exact Names)", "info": "Ek line mein ek product ka exact naam likhein. Same list as collection page.", "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel\nDaily Care Shampoo" },
+    { "type": "textarea", "id": "coming_soon_products", "label": "Coming Soon Products (Exact Names)", "info": "Ek line mein ek product ka exact naam likhein. Same list as collection page.", "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel" },
     { "type": "header", "content": "Icons" },
     { "type": "checkbox", "id": "show_search", "label": "Show search icon", "default": true },
     { "type": "checkbox", "id": "show_cart", "label": "Show cart icon", "default": true },
