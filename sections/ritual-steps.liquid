@@ -1,12 +1,22 @@
 {%- liquid
   assign mf = product.metafields.custom[section.settings.metafield_key]
   assign entries = mf.value
+  assign is_shampoo = false
+  if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo'
+    assign is_shampoo = true
+  endif
 -%}
 <section class="section extracted-style-185">
   <div class="container">
     <div class="grid grid-2 gap-large align-center extracted-style-186">
       <div class="extracted-style-105">
-        <h2 class="section-title italic-serif text-primary extracted-style-187">{{ section.settings.title | escape | newline_to_br }}</h2>
+        {%- liquid
+          assign ritual_title = section.settings.title
+          if is_shampoo
+            assign ritual_title = 'Your Hair-Care Ritual'
+          endif
+        -%}
+        <h2 class="section-title italic-serif text-primary extracted-style-187">{{ ritual_title | escape | newline_to_br }}</h2>
         <div class="extracted-style-188">
           {%- if entries != blank and entries.size > 0 -%}
             {%- for entry in entries -%}
@@ -25,6 +35,28 @@
                 </div>
               </div>
             {%- endfor -%}
+          {%- elsif is_shampoo -%}
+            <div class="extracted-style-189">
+              <span class="extracted-style-190">01</span>
+              <div>
+                <h5 class="extracted-style-191">When to Use</h5>
+                <p class="extracted-style-192">Use as part of your regular hair-washing routine, according to your scalp and hair-care needs.</p>
+              </div>
+            </div>
+            <div class="extracted-style-189">
+              <span class="extracted-style-190">02</span>
+              <div>
+                <h5 class="extracted-style-191">How to Use</h5>
+                <p class="extracted-style-192">Apply to wet hair and gently massage into the scalp. Work into a lather, then rinse thoroughly. Repeat if needed.</p>
+              </div>
+            </div>
+            <div class="extracted-style-189">
+              <span class="extracted-style-190">03</span>
+              <div>
+                <h5 class="extracted-style-191">Pro Tips</h5>
+                <p class="extracted-style-192">Concentrate on cleansing the scalp and allow the lather to rinse through the lengths. Follow with Tulia's All-in-one Conditioner to help soften and smooth the hair.</p>
+              </div>
+            </div>
           {%- else -%}
             {%- for block in section.blocks -%}
               <div class="extracted-style-189" {{ block.shopify_attributes }}>

@@ -1,13 +1,23 @@
 {%- liquid
   assign mf = product.metafields.custom[section.settings.metafield_key]
   assign entries = mf.value
+  assign is_shampoo = false
+  if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo'
+    assign is_shampoo = true
+  endif
 -%}
 <section id="sacred-ingredients" class="section extracted-style-172">
   <div id="meet-science-grid" class="container">
     <div class="text-center mb-large">
       <h2 class="section-title italic-serif mb-small extracted-style-173">{{ section.settings.title | escape }}</h2>
-      {%- if section.settings.subtitle != blank -%}
-        <p class="extracted-style-174">{{ section.settings.subtitle | escape | newline_to_br }}</p>
+      {%- liquid
+        assign science_sub = section.settings.subtitle
+        if is_shampoo
+          assign science_sub = 'A carefully formulated cleansing system that combines mild cleansing agents, conditioning ingredients, and targeted hair-care components to cleanse the scalp while caring for colour-treated and damaged lengths.'
+        endif
+      -%}
+      {%- if science_sub != blank -%}
+        <p class="extracted-style-174">{{ science_sub | escape | newline_to_br }}</p>
       {%- endif -%}
     </div>
     <div class="meet-science-grid">
@@ -35,6 +45,37 @@
             {%- if good.value != blank -%}<div class="extracted-style-179"><div class="extracted-style-180">{% render 'mo-text', field: good, allow_newline: true %}</div></div>{%- endif -%}
           </div>
         {%- endfor -%}
+      {%- elsif is_shampoo -%}
+        <div class="ingredient-card-hover extracted-style-175">
+          <div class="extracted-style-176">
+            <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="Mild Cleansing Base" class="extracted-style-64" loading="lazy">
+          </div>
+          <h4 class="extracted-style-177">Mild Cleansing Base</h4>
+          <p class="extracted-style-178"><strong>The Science:</strong> A gentle, non-irritating base that effectively lifts away excess oil and daily environmental pollution without drying out the delicate skin of your scalp</p>
+          <div class="extracted-style-179">
+            <p class="extracted-style-180"><strong>Good For:</strong> Irritation-free cleansing, Maintaining scalp health</p>
+          </div>
+        </div>
+        <div class="ingredient-card-hover extracted-style-175">
+          <div class="extracted-style-176">
+            <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="Cuticle-Sealing Complex" class="extracted-style-64" loading="lazy">
+          </div>
+          <h4 class="extracted-style-177">Cuticle-Sealing Complex</h4>
+          <p class="extracted-style-178"><strong>The Science:</strong> An innovative molecular blend that locks vital moisture inside the hair shaft during the wash process, smoothing down the outer cuticle to prevent tangles</p>
+          <div class="extracted-style-179">
+            <p class="extracted-style-180"><strong>Good For:</strong> Managing frizzy hair, Effortless detangling</p>
+          </div>
+        </div>
+        <div class="ingredient-card-hover extracted-style-175">
+          <div class="extracted-style-176">
+            <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="Universal Fiber Matrix" class="extracted-style-64" loading="lazy">
+          </div>
+          <h4 class="extracted-style-177">Universal Fiber Matrix</h4>
+          <p class="extracted-style-178"><strong>The Science:</strong> A clean, multi-tasking formulation designed to safely integrate with any existing chemical or color treatments, protecting hair integrity from washing-induced fading</p>
+          <div class="extracted-style-179">
+            <p class="extracted-style-180"><strong>Good For:</strong> Daily product compatibility, Chemically processed hair</p>
+          </div>
+        </div>
       {%- else -%}
         {%- for block in section.blocks -%}
           <div class="ingredient-card-hover extracted-style-175" {{ block.shopify_attributes }}>

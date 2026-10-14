@@ -1,6 +1,10 @@
 {%- liquid
   assign mf = product.metafields.custom[section.settings.metafield_key]
   assign entries = mf.value
+  assign is_shampoo = false
+  if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo'
+    assign is_shampoo = true
+  endif
 -%}
 <section class="section bg-surface extracted-style-225">
   <div class="container text-center max-w-4xl mx-auto">
@@ -23,6 +27,35 @@
             <div class="extracted-style-228">{{ a | escape }}</div>
           </details>
         {%- endfor -%}
+      {%- elsif is_shampoo -%}
+        <details class="group extracted-style-226">
+          <summary class="extracted-style-227">
+            Is this shampoo safe to use every day?
+            <span class="material-symbols-outlined">add</span>
+          </summary>
+          <div class="extracted-style-228">Yes, the ultra-mild base is specially designed to cleanse daily without irritating your scalp.</div>
+        </details>
+        <details class="group extracted-style-226">
+          <summary class="extracted-style-227">
+            Will it weigh down fine, thin hair?
+            <span class="material-symbols-outlined">add</span>
+          </summary>
+          <div class="extracted-style-228">Not at all, it cleanses cleanly and rinses away fully, leaving natural, bouncy volume.</div>
+        </details>
+        <details class="group extracted-style-226">
+          <summary class="extracted-style-227">
+            Can I use it on color-treated hair?
+            <span class="material-symbols-outlined">add</span>
+          </summary>
+          <div class="extracted-style-228">Yes, the formula is fully compatible with all chemical and salon treatments.</div>
+        </details>
+        <details class="group extracted-style-226">
+          <summary class="extracted-style-227">
+            Does this shampoo help with damaged hair?
+            <span class="material-symbols-outlined">add</span>
+          </summary>
+          <div class="extracted-style-228">Its conditioning ingredients help improve the feel, smoothness, and manageability of hair. Results may vary depending on the extent of damage.</div>
+        </details>
       {%- else -%}
         {%- for block in section.blocks -%}
           <details class="group extracted-style-226" {{ block.shopify_attributes }}>

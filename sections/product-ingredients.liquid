@@ -21,6 +21,9 @@
             {% elsif product.handle == 'lipz-lightening-cream' or product.handle == 'tulia-face-wash' %}
               {% assign is_hardcoded_ingredients = true %}
               {% assign ingredients_string = "Aqua, Stearic Acid, Emulsifying Wax, Kojic Acid Dipalmitate, Glycerol Monostearate, Light Liquid Paraffin, Glycerine, Glycolic Acid, Liquorice Extract, Niacinamide, Petroleum Jelly, Propylene Glycol, Arbutin, Cetyl Alcohol, Microcrystalline Wax, Phenoxyethanol (and) Ethylhexylglycerin, Titanium Dioxide, Bearberry Extract, Mulberry Extract, PEG 150 Distearate, Xanthan Gum, Sodium Metabisulfite, Sodium Sulphite, Ascorbic Acid, Tetradibutyl Pentaerithrityl Hydroxyhydrocinnama te, Vitamin A Palmitate, Disodium EDTA, Tocopheryl Acetate, Allantoin, Citric Acid, Perfume" %}
+            {% elsif product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Aqua, Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, Sodium Lauroyl Sarcosinate, Acrylates Copolymer, Sodium Cocoyl Isethionate, Cocamide DEA, Glycerin, Dimethicone (and) Amodimethicone (and) Laureth-23 (and) Laureth-4, Polyquaternium-10 (and) Laureth-4, Panthenyl Dibehenate/Oleate, Glycol Stearate, Phenoxyethanol (and) Ethylhexylglycerin, Dimethiconol (and) TEA-Dodecylbenzenesulfonate, Lactic Acid, Carbocysteine (and) Polyquaternium-10 (and) Aqua/Water (and) Hydrolyzed Wheat Protein (and) Methicone (and) Methylisothiazolinone (and) Methylchloroisothiazolinone (and) Methylisothiazolinone, Guar Hydroxypropyltrimonium Chloride, Disodium EDTA, Perfume." %}
             {% endif %}
 
             {% if is_hardcoded_ingredients %}

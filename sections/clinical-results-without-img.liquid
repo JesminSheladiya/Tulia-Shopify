@@ -7,6 +7,20 @@
     {%- endif -%}
 
     <div class="clinical-results__grid">
+      {%- assign is_shampoo = false -%}
+      {%- if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo' -%}
+        {%- assign is_shampoo = true -%}
+      {%- endif -%}
+      {%- if is_shampoo -%}
+        <div class="clinical-results__item">
+          <div class="clinical-results__percentage">98%</div>
+          <div class="clinical-results__desc">demonstrated an immediate retention of natural hair strand moisture compared to standard sulfate-based cleansers.</div>
+        </div>
+        <div class="clinical-results__item">
+          <div class="clinical-results__percentage">95%</div>
+          <div class="clinical-results__desc">showed zero scalp irritation across a rigorous clinical testing pool, confirming its absolute daily safety profile.</div>
+        </div>
+      {%- else -%}
       {%- for block in section.blocks -%}
         {%- assign metaobject_list = product.metafields.custom[block.settings.metafield_key].value -%}
         
@@ -36,6 +50,7 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </section>
