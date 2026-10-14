@@ -3,10 +3,6 @@
   assign eyebrow = product.metafields.custom.collection_label | default: product.type
   assign rating = product.metafields.custom.rating | default: '4.8'
   assign review_count = product.metafields.custom.review_count | default: '124'
-  assign is_shampoo = false
-  if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo'
-    assign is_shampoo = true
-  endif
 -%}
 
 <div class="container breadcrumb-bar">{% render 'breadcrumb' %}</div>
@@ -60,8 +56,14 @@
       -%}
       <h1 class="italic-serif text-primary extracted-style-139">{{ pdp_h1 }}</h1>
 
-      {%- if product.description != blank -%}
-        <p class="text-on-surface-variant mb-medium extracted-style-140">{{ product.description | strip_html | truncatewords: 60 }}</p>
+      {%- liquid
+        assign pdp_desc = section.settings.description_override
+        if pdp_desc == blank
+          assign pdp_desc = product.description
+        endif
+      -%}
+      {%- if pdp_desc != blank -%}
+        <p class="text-on-surface-variant mb-medium extracted-style-140">{{ pdp_desc | strip_html | truncatewords: 60 }}</p>
       {%- endif -%}
 
       {% comment %} Reviews {% endcomment %}
@@ -155,28 +157,16 @@
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
-        {%- assign first_spec = section.blocks | where: 'type', 'spec' | first -%}
-        {%- if is_shampoo and first_spec.settings.text == blank -%}
-          <ul class="extracted-style-159">
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">spa</span>Scalp Microbiome Balance</li>
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">auto_awesome</span>Colour Brilliance Care</li>
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">healing</span>Damaged Hair Revitalisation</li>
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">water_drop</span>Gentle Cleansing</li>
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">today</span>Suitable for Regular Use</li>
-            <li class="extracted-style-160"><span class="material-symbols-outlined extracted-style-161">verified</span>For Colour-Treated Hair</li>
-          </ul>
-        {%- else -%}
-          <ul class="extracted-style-159">
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'spec' -%}
-                <li class="extracted-style-160" {{ block.shopify_attributes }}>
-                  <span class="material-symbols-outlined extracted-style-161">{{ block.settings.icon | escape }}</span>
-                  {{ block.settings.text | escape }}
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
+        <ul class="extracted-style-159">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'spec' -%}
+              <li class="extracted-style-160" {{ block.shopify_attributes }}>
+                <span class="material-symbols-outlined extracted-style-161">{{ block.settings.icon | escape }}</span>
+                {{ block.settings.text | escape }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
       {%- endif -%}
     </div>
   </div>
@@ -282,7 +272,8 @@
     { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show express checkout buttons (Shop Pay etc.)", "default": true },
     { "type": "header", "content": "Coupon row" },
     { "type": "checkbox", "id": "show_coupon", "label": "Show coupon row", "default": true },
-    { "type": "text", "id": "coupon_text", "label": "Coupon text", "default": "Enter coupon code to unlock available offers." }
+    { "type": "text", "id": "coupon_text", "label": "Coupon text", "default": "Enter coupon code to unlock available offers." },
+    { "type": "textarea", "id": "description_override", "label": "Short description override", "info": "Shown under the title. Blank = use the product admin description." }
   ],
   "blocks": [
     {

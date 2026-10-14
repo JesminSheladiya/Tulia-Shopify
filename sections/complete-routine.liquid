@@ -3,21 +3,10 @@
   assign linked_products = pmf.value
 
   assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'
-
-  assign is_shampoo = false
-  if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo'
-    assign is_shampoo = true
-  endif
 -%}
 <section id="complete-care-section" class="section bg-surface extracted-style-223">
   <div class="container text-center">
-    {%- liquid
-      assign complete_title = section.settings.title
-      if is_shampoo
-        assign complete_title = 'Give your hair the complete care'
-      endif
-    -%}
-    <h2 class="section-title italic-serif text-primary mb-large">{{ complete_title | escape }}</h2>
+    <h2 class="section-title italic-serif text-primary mb-large">{{ section.settings.title | escape }}</h2>
     <div class="grid grid-3 gap-large">
       {%- if section.settings.products_metafield_key != blank and linked_products != blank and linked_products.size > 0 -%}
         {%- for entry in linked_products -%}
@@ -79,38 +68,12 @@
             <div class="cc-desc">{% render 'mo-text', field: entry[section.settings.field_description], allow_newline: true %}</div>
           </div>
         {%- endfor -%}
-      {%- elsif is_shampoo -%}
-        <div class="complete-care-card group">
-          <div class="cc-img-wrapper">
-            <span class="cc-badge">SHINE</span>
-            <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="Tulia All-in-one Conditioner" class="extracted-style-64" loading="lazy">
-            <a href="#" class="btn-quick-add extracted-style-224">Quick Add</a>
-          </div>
-          <h3 class="cc-title">Tulia All-in-one Conditioner</h3>
-          <div class="cc-meta"><span>₹1,100</span></div>
-          <div class="cc-line"></div>
-          <div class="cc-desc">Follow with Tulia's All-in-one Conditioner to help soften and smooth the hair.</div>
-        </div>
-        <div class="complete-care-card group is-coming-soon-product" aria-disabled="true">
-          <div class="cc-img-wrapper">
-            <span class="cc-badge">HYDRATE</span>
-            <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="Tulia Hair Care Serum" class="extracted-style-64" loading="lazy">
-          </div>
-          <h3 class="cc-title">Tulia Hair Care Serum</h3>
-          <div class="cc-line"></div>
-          <div class="cc-desc"></div>
-        </div>
-        <div class="complete-care-card group is-coming-soon-product" aria-disabled="true">
-          <div class="cc-img-wrapper">
-            <img src="{{ 'tulia_face_wash.png' | asset_url }}" width="1024" height="1024" alt="Tulia ButterMax Cream" class="extracted-style-64" loading="lazy">
-          </div>
-          <h3 class="cc-title">Tulia ButterMax Cream</h3>
-          <div class="cc-line"></div>
-          <div class="cc-desc"></div>
-        </div>
       {%- else -%}
       {%- for block in section.blocks -%}
         {%- assign linked = block.settings.product -%}
+        {%- if linked == blank and block.settings.product_handle != blank -%}
+          {%- assign linked = all_products[block.settings.product_handle] -%}
+        {%- endif -%}
         {%- liquid
           assign display_title = linked.title | default: block.settings.title | strip | downcase
           assign is_coming_soon = block.settings.coming_soon
@@ -240,6 +203,7 @@
       "name": "Product",
       "settings": [
         { "type": "product", "id": "product", "label": "Product", "info": "Pulls live title, image, and price. Manual fields below are used as a fallback." },
+        { "type": "text", "id": "product_handle", "label": "Product handle (alternative)", "info": "e.g. all-in-one-conditioner. Used when no product is selected above." },
         { "type": "checkbox", "id": "coming_soon", "label": "Coming Soon (non-clickable)", "default": false },
         { "type": "text", "id": "badge", "label": "Badge", "default": "PREP" },
         { "type": "image_picker", "id": "image", "label": "Fallback image" },

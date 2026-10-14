@@ -2,36 +2,12 @@
   <div class="container text-center">
     <h2 class="section-title italic-serif text-primary mb-large">{{ section.settings.title | escape }}</h2>
     <div class="extracted-style-201">
-      {%- assign rec_first_title = section.blocks[0].settings.title -%}
-      {%- assign is_shampoo = false -%}
-      {%- if product.handle == 'daily-care-shampoo' or product.title | downcase contains 'daily care shampoo' -%}
-        {%- assign is_shampoo = true -%}
-      {%- endif -%}
-      {%- if is_shampoo and rec_first_title == blank -%}
-        <div class="recommended-card extracted-style-202">
-          <h4 class="extracted-style-203">Colour-Treated Hair</h4>
-          <p class="extracted-style-204">For maintaining a vibrant, glossy appearance.</p>
-        </div>
-        <div class="recommended-card extracted-style-202">
-          <h4 class="extracted-style-203">Damaged Hair</h4>
-          <p class="extracted-style-204">For improved softness, smoothness, and manageability.</p>
-        </div>
-        <div class="recommended-card extracted-style-202">
-          <h4 class="extracted-style-203">Dull Hair</h4>
-          <p class="extracted-style-204">For a cleaner feel and enhanced-looking shine.</p>
-        </div>
-        <div class="recommended-card extracted-style-202">
-          <h4 class="extracted-style-203">Chemically Treated Hair</h4>
-          <p class="extracted-style-204">Fully compatible with hair treatments.</p>
-        </div>
-      {%- else -%}
       {%- for block in section.blocks -%}
         <div class="recommended-card extracted-style-202" {{ block.shopify_attributes }}>
           <h4 class="extracted-style-203">{{ block.settings.title | escape }}</h4>
           <p class="extracted-style-204">{{ block.settings.subtitle | escape }}</p>
         </div>
       {%- endfor -%}
-      {%- endif -%}
     </div>
   </div>
 </section>

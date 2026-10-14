@@ -1,0 +1,753 @@
+/*
+ * ------------------------------------------------------------
+ * All-In-One Shampoo product page - dedicated template with
+ * shampoo-specific content (specs, science, ritual, clinical
+ * stats, recommended, cross-sell, FAQ). Assign to the All-In-One
+ * Shampoo product in Admin > Products > Theme template.
+ * Other products keep using product.json + metafields.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "icon": "spa",
+            "text": "Scalp Microbiome Balance"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "icon": "auto_awesome",
+            "text": "Colour Brilliance Care"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "icon": "healing",
+            "text": "Damaged Hair Revitalisation"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "icon": "water_drop",
+            "text": "Gentle Cleansing"
+          }
+        },
+        "spec_XEbDK7": {
+          "type": "spec",
+          "settings": {
+            "icon": "today",
+            "text": "Suitable for Regular Use"
+          }
+        },
+        "spec_PhTPHj": {
+          "type": "spec",
+          "settings": {
+            "icon": "verified",
+            "text": "For Colour-Treated Hair"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "spec_XEbDK7",
+        "spec_PhTPHj"
+      ],
+      "settings": {
+        "add_label": "Add to bag",
+        "notify_label": "Notify",
+        "show_coupon": true,
+        "coupon_text": "Enter coupon code to unlock available offers.",
+        "description_override": "A targeted cleansing formula designed to support scalp microbiome balance, prolong hair colour brilliance, and revitalise damaged hair for a healthier-looking, smoother finish."
+      }
+    },
+    "ingredients": {
+      "type": "product-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name1.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content1.value }}"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name2.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content2.value }}"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name3.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content3.value }}"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "{{ product.metafields.custom.ingredients_name4.value }}",
+            "description": "{{ product.metafields.custom.ingredients_content4.value }}"
+          }
+        },
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "spa",
+            "title": "Scalp Microbiome Balance",
+            "text": "Cleanses the scalp while helping support a balanced scalp environment for a fresh, comfortable feel."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "auto_awesome",
+            "title": "Prolonged Colour Brilliance",
+            "text": "Helps maintain the vibrancy and shine of colour-treated hair, keeping your colour looking radiant for longer."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "healing",
+            "title": "Damaged Hair Revitalisation",
+            "text": "Conditioning agents and hydrolysed wheat protein help improve the feel and manageability of damaged hair, leaving strands smoother and softer."
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "ingredients_label": "Ingredients",
+        "benefits_label": "Benefits"
+      }
+    },
+    "science": {
+      "type": "meet-the-science",
+      "blocks": {
+        "c1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Mild Cleansing Base",
+            "science": "A gentle, non-irritating base that effectively lifts away excess oil and daily environmental pollution without drying out the delicate skin of your scalp",
+            "good_for": "Irritation-free cleansing, Maintaining scalp health"
+          }
+        },
+        "c2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cuticle-Sealing Complex",
+            "science": "An innovative molecular blend that locks vital moisture inside the hair shaft during the wash process, smoothing down the outer cuticle to prevent tangles",
+            "good_for": "Managing frizzy hair, Effortless detangling"
+          }
+        },
+        "c3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Universal Fiber Matrix",
+            "science": "A clean, multi-tasking formulation designed to safely integrate with any existing chemical or color treatments, protecting hair integrity from washing-induced fading",
+            "good_for": "Daily product compatibility, Chemically processed hair"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "custom_css": [
+        ".extracted-style-176 {display: none;}"
+      ],
+      "settings": {
+        "title": "Meet the Science",
+        "subtitle": "A carefully formulated cleansing system that combines mild cleansing agents, conditioning ingredients, and targeted hair-care components to cleanse the scalp while caring for colour-treated and damaged lengths.",
+        "metafield_key": "",
+        "field_image": "image",
+        "field_title": "title",
+        "field_science": "description",
+        "field_good_for": "good_for"
+      }
+    },
+    "ritual": {
+      "type": "ritual-steps",
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "When to Use",
+            "text": "Use as part of your regular hair-washing routine, according to your scalp and hair-care needs."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "How to Use",
+            "text": "Apply to wet hair and gently massage into the scalp. Work into a lather, then rinse thoroughly. Repeat if needed."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Pro Tips",
+            "text": "Concentrate on cleansing the scalp and allow the lather to rinse through the lengths. Follow with Tulia's All-in-one Conditioner to help soften and smooth the hair."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3"
+      ],
+      "settings": {
+        "title": "Your Hair-Care Ritual",
+        "image": "{{ product.metafields.custom.product_retuals.value }}",
+        "metafield_key": "",
+        "field_title": "title",
+        "field_text": "description"
+      }
+    },
+    "clinical": {
+      "type": "clinical-results",
+      "blocks": {
+        "r1": {
+          "type": "result",
+          "disabled": true,
+          "settings": {
+            "label": "consumer study results",
+            "stats": "98% | DEMONSTRATED AN IMMEDIATE RETENTION OF NATURAL HAIR STRAND MOISTURE COMPARED TO STANDARD SULFATE-BASED CLEANSERS\n95% | SHOWED ZERO SCALP IRRITATION ACROSS A RIGOROUS CLINICAL TESTING POOL, CONFIRMING ITS ABSOLUTE DAILY SAFETY PROFILE",
+            "metafield_key": "consumer_perception_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        },
+        "r2": {
+          "type": "result",
+          "settings": {
+            "label": "clinical results",
+            "stats": "98% | DEMONSTRATED A MEASURED INCREASE IN DEEP CELLULAR HYDRATION AND MOISTURE RETENTION\n94% | SHOWED A CLINICALLY SIGNIFICANT REDUCTION IN SURFACE MELANIN CONCENTRATION AND HYPERPIGMENTATION",
+            "metafield_key": "clinical_efficacy_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Clinical results"
+      }
+    },
+    "clinical_results_without_img_UJRyPf": {
+      "type": "clinical-results-without-img",
+      "blocks": {
+        "result_item_qfnKQA": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "98%",
+            "description": "demonstrated an immediate retention of natural hair strand moisture compared to standard sulfate-based cleansers."
+          }
+        },
+        "result_item_RyM3Wx": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "95%",
+            "description": "showed zero scalp irritation across a rigorous clinical testing pool, confirming its absolute daily safety profile."
+          }
+        }
+      },
+      "block_order": [
+        "result_item_qfnKQA",
+        "result_item_RyM3Wx"
+      ],
+      "name": "Product Clinical Stats",
+      "settings": {
+        "heading": "Clinical results",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "recommended": {
+      "type": "recommended-for",
+      "blocks": {
+        "rc1": {
+          "type": "card",
+          "settings": {
+            "title": "Colour-Treated Hair",
+            "subtitle": "For maintaining a vibrant, glossy appearance."
+          }
+        },
+        "rc2": {
+          "type": "card",
+          "settings": {
+            "title": "Damaged Hair",
+            "subtitle": "For improved softness, smoothness, and manageability."
+          }
+        },
+        "rc3": {
+          "type": "card",
+          "settings": {
+            "title": "Dull Hair",
+            "subtitle": "For a cleaner feel and enhanced-looking shine."
+          }
+        },
+        "rc4": {
+          "type": "card",
+          "settings": {
+            "title": "Chemically Treated Hair",
+            "subtitle": "Fully compatible with hair treatments."
+          }
+        }
+      },
+      "block_order": [
+        "rc1",
+        "rc2",
+        "rc3",
+        "rc4"
+      ],
+      "custom_css": [
+        ".extracted-style-200 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Recommended For"
+      }
+    },
+    "reels": {
+      "type": "product-reels",
+      "blocks": {
+        "rl1": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My honest hair wash routine”"
+          }
+        },
+        "rl2": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Wash day with Tulia Cosmetics”"
+          }
+        },
+        "rl3": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Care for dull, damaged hair”"
+          }
+        },
+        "rl4": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Hair care mistakes to avoid”"
+          }
+        },
+        "rl5": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My weekly hair ritual”"
+          }
+        }
+      },
+      "block_order": [
+        "rl1",
+        "rl2",
+        "rl3",
+        "rl4",
+        "rl5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Real Hair Care, Real Routine",
+        "subtitle": "Watch how Tulia Cosmetics fits easily into a regular hair-care routine."
+      }
+    },
+    "1782987714e446332e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LQRXxQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "judge_me_reviews_cards_carousel_Yme3D8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LQRXxQ",
+        "judge_me_reviews_cards_carousel_Yme3D8"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "All",
+            "filter": "all"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Soft lips",
+            "filter": "soft"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Dark lips",
+            "filter": "dark"
+          }
+        },
+        "f4": {
+          "type": "filter",
+          "settings": {
+            "label": "Moisturizing",
+            "filter": "moisturizing"
+          }
+        },
+        "f5": {
+          "type": "filter",
+          "settings": {
+            "label": "Non-sticky",
+            "filter": "non-sticky"
+          }
+        },
+        "f6": {
+          "type": "filter",
+          "settings": {
+            "label": "Daily use",
+            "filter": "daily"
+          }
+        },
+        "f7": {
+          "type": "filter",
+          "settings": {
+            "label": "Smooth texture",
+            "filter": "smooth"
+          }
+        },
+        "f8": {
+          "type": "filter",
+          "settings": {
+            "label": "Visible care",
+            "filter": "visible"
+          }
+        },
+        "f9": {
+          "type": "filter",
+          "settings": {
+            "label": "Easy routine",
+            "filter": "easy"
+          }
+        },
+        "rv1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Soft and comfortable",
+            "text": "I liked how lightweight this cream feels. It does not feel sticky and keeps my lips soft for a long time.",
+            "author": "Anonymous",
+            "date": "2 days ago",
+            "categories": "soft non-sticky"
+          }
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Good for daily lip care",
+            "text": "I started using it at night and my lips feel smoother now. The texture is very easy to apply.",
+            "author": "Anonymous",
+            "date": "1 week ago",
+            "categories": "smooth easy daily"
+          }
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Works well with routine use",
+            "text": "The cream feels gentle and nourishing. I use it twice a day and my lips look more cared for.",
+            "author": "Anonymous",
+            "date": "2 weeks ago",
+            "categories": "visible daily moisturizing"
+          }
+        },
+        "rv4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Nice texture",
+            "text": "It spreads easily and does not feel heavy. Good product for everyday lip care.",
+            "author": "Anonymous",
+            "date": "1 month ago",
+            "categories": "smooth daily"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "rv1",
+        "rv2",
+        "rv3",
+        "rv4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Loved by Tulia Cosmetics Users",
+        "rating": "4.8",
+        "review_count": "124"
+      }
+    },
+    "complete": {
+      "type": "complete-routine",
+      "blocks": {
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "all-in-one-conditioner",
+            "badge": "SHINE",
+            "title": "Tulia All-in-one Conditioner",
+            "size": "",
+            "price": "₹1,100",
+            "description": "Follow with Tulia's All-in-one Conditioner to help soften and smooth the hair."
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "hair-care-serum",
+            "badge": "HYDRATE",
+            "title": "Tulia Hair Care Serum",
+            "size": "",
+            "price": "",
+            "description": "",
+            "coming_soon": true
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "buttermax-cream",
+            "badge": "",
+            "title": "Tulia ButterMax Cream",
+            "size": "",
+            "price": "",
+            "description": "",
+            "coming_soon": true
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "custom_css": [
+        ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Give your hair the complete care",
+        "products_metafield_key": "",
+        "field_product": "image",
+        "field_description": "description",
+        "coming_soon_products": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "Is this shampoo safe to use every day?",
+            "answer": "Yes, the ultra-mild base is specially designed to cleanse daily without irritating your scalp."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Will it weigh down fine, thin hair?",
+            "answer": "Not at all, it cleanses cleanly and rinses away fully, leaving natural, bouncy volume."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I use it on color-treated hair?",
+            "answer": "Yes, the formula is fully compatible with all chemical and salon treatments."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Does this shampoo help with damaged hair?",
+            "answer": "Its conditioning ingredients help improve the feel, smoothness, and manageability of hair. Results may vary depending on the extent of damage."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "title": "Common Inquiries",
+        "metafield_key": "",
+        "field_question": "question",
+        "field_answer": "answer"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "tb1": {
+          "type": "badge",
+          "settings": {
+            "icon": "local_shipping",
+            "title": "FREE SHIPPING",
+            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+          }
+        },
+        "tb2": {
+          "type": "badge",
+          "disabled": true,
+          "settings": {
+            "icon": "health_and_safety",
+            "title": "DERMATOLOGICALLY TESTED",
+            "description": "Safe for all lips,\nclinically proven formula"
+          }
+        },
+        "tb3": {
+          "type": "badge",
+          "settings": {
+            "icon": "spa",
+            "title": "GENTLE FORMULATION",
+            "description": "Gentle for daily use,\nsuitable for all hair types"
+          }
+        },
+        "tb4": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "SECURE CHECKOUT",
+            "description": "100% secure payments\nwith COD & UPI options"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3",
+        "tb4"
+      ],
+      "custom_css": [
+        ".trust-badges-section .grid-4 {grid-template-columns: repeat(3, 1fr);}"
+      ],
+      "settings": {
+        "show_payments": false,
+        "payments_heading": "Accepted Payment Methods",
+        "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
+      }
+    },
+    "178351271991294ecc": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    },
+    "17835875473b0e0ca5": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ingredients",
+    "science",
+    "ritual",
+    "clinical",
+    "clinical_results_without_img_UJRyPf",
+    "recommended",
+    "reels",
+    "1782987714e446332e",
+    "reviews",
+    "complete",
+    "faq",
+    "trust",
+    "178351271991294ecc",
+    "17835875473b0e0ca5"
+  ]
+}
