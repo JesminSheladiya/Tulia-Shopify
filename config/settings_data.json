@@ -61,8 +61,8 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "/* Homepage ko chhodkar baaki saare pages ke upar space dene ke liye */body:not(.template-index) #MainContent,body:not(.template-index) .main-content {padding-top: 80px !important;}",
-      " /* Agar sirf Policy pages par hi dikkat hai toh yeh use karein */.shopify-policy__container {padding-top: 80px !important; padding-bottom: 60px !important;}"
+      "/* Top spacing for all pages except the homepage */body:not(.template-index) #MainContent,body:not(.template-index) .main-content {padding-top: 80px !important;}",
+      " /* Use this if only policy pages need the spacing */.shopify-policy__container {padding-top: 80px !important; padding-bottom: 60px !important;}"
     ]
   }
 }

@@ -325,7 +325,7 @@
   });
 
   // Client-side Concern filter (single page, no reload, multiple select)
-  // Kuch select na ho to sab products dikhte hain (default all)
+  // When nothing is selected, all products are shown (default all)
   document.addEventListener("DOMContentLoaded", function() {
     const concernCheckboxes = document.querySelectorAll('.concern-checkbox');
     const productWrappers = document.querySelectorAll('#collection-product-grid .ritual-product-card-wrapper');
@@ -375,7 +375,7 @@
       "type": "textarea", 
       "id": "coming_soon_products", 
       "label": "Coming Soon Products (Exact Names)", 
-      "info": "Ek line mein ek product ka exact naam likhein",
+      "info": "Enter the exact product name, one per line",
       "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel"
     }
   ]

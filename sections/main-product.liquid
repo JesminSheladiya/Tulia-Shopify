@@ -12,22 +12,25 @@
     <!-- Left: Hero Image Gallery -->
     <div class="col-7">
       <div class="hero-gallery extracted-style-131">
-        <div class="hero-thumbnails extracted-style-132">
+        <div class="hero-thumbnails-slider">
+          <button type="button" class="thumb-nav thumb-prev" aria-label="Previous images" disabled><span aria-hidden="true">‹</span></button>
+          <div class="hero-thumbnails extracted-style-132" role="tablist" aria-label="Product images">
           {%- if product.images.size > 0 -%}
             {%- for image in product.images -%}
-              <div class="product-thumbnail extracted-style-133" data-image="{{ image | image_url: width: 1000 }}">
+              <div class="product-thumbnail extracted-style-133{% if forloop.first %} is-active{% endif %}" role="tab" tabindex="0" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-image="{{ image | image_url: width: 1000 }}" data-srcset="{{ image | image_url: width: 600 }} 600w, {{ image | image_url: width: 1000 }} 1000w, {{ image | image_url: width: 1500 }} 1500w" data-alt="{{ image.alt | escape | default: product.title }}">
                 <img src="{{ image | image_url: width: 160 }}" width="160" height="200" alt="{{ image.alt | escape | default: product.title }}" class="extracted-style-134" loading="lazy">
               </div>
             {%- endfor -%}
           {%- else -%}
             {%- assign demo_imgs = 'supple.jpg,1.jpeg,2.jpeg,3.jpeg,dusky-edit.jpg' | split: ',' -%}
             {%- for img in demo_imgs -%}
-              <div class="product-thumbnail extracted-style-133" data-image="{{ img | asset_url }}">
+              <div class="product-thumbnail extracted-style-133{% if forloop.first %} is-active{% endif %}" role="tab" tabindex="0" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-image="{{ img | asset_url }}">
                 <img src="{{ img | asset_url }}" width="1080" height="1350" alt="{{ product.title | escape }}" class="extracted-style-134" loading="lazy">
               </div>
             {%- endfor -%}
           {%- endif -%}
-          <div class="mobile-spacer extracted-style-135"></div>
+          </div>
+          <button type="button" class="thumb-nav thumb-next" aria-label="Next images"><span aria-hidden="true">›</span></button>
         </div>
         <div id="main-image-container" class="extracted-style-136">
           {%- if product.featured_image -%}

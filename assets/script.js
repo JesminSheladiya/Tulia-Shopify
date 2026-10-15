@@ -564,18 +564,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Universal Shopify Mobile Menu Anchor Close Fix
 document.addEventListener('DOMContentLoaded', function() {
-  // Website ke saare links par najar rakhein
+  // Watch all links on the website
   document.body.addEventListener('click', function(e) {
     const link = e.target.closest('a');
     if (!link) return;
 
     const href = link.getAttribute('href');
 
-    // Agar click kiye gaye link mein /# ya # maujood hai
+    // If the clicked link contains /# or starts with #
     if (href && (href.includes('/#') || href.startsWith('#'))) {
       
-      // 1. Image_de7766.png mein jo Cut (X) icon hai, use pure page par dhoondo
-      // Yeh sabhi standard Shopify themes (Dawn, Impulse, Prestige, etc.) ke close buttons ko target karega
+      // 1. Find the close (X) icon anywhere on the page.
+      // This targets close buttons of all standard Shopify themes (Dawn, Impulse, Prestige, etc.)
       const closeButton = document.querySelector(
         'button[aria-label*="Close" i], ' +
         'button[class*="close" i], ' +
@@ -586,20 +586,20 @@ document.addEventListener('DOMContentLoaded', function() {
         '.header__icon--close'
       );
 
-      // 2. Agar close button mil jata hai, toh use automatic click kar do
+      // 2. If a close button is found, click it automatically
       if (closeButton) {
         setTimeout(() => {
           closeButton.click();
-        }, 50); // Ek chhota sa delay taaki smooth scroll chal sake
+        }, 50); // Small delay so the smooth scroll can run
       }
 
-      // 3. Backup: Agar theme custom hai aur button click se band nahi hua, toh screen ki settings reset karo
+      // 3. Backup: if the theme is custom and did not close via button click, reset the page state
       document.documentElement.classList.remove('menu-open', 'overflow-hidden', 'nav-open');
       document.body.classList.remove('menu-open', 'overflow-hidden', 'nav-open');
       
       const activeDrawers = document.querySelectorAll('[class*="active" i], [class*="open" i]');
       activeDrawers.forEach(drawer => {
-        // Sirf menu drawers ko band karne ke liye (main page header ko chhod kar)
+        // Only target menu drawers (leave the main page header alone)
         if(drawer.tagName === 'DIV' || drawer.tagName === 'ASIDE') {
            drawer.classList.remove('is-open', 'active', 'open', 'menu-open');
         }

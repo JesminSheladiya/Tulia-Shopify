@@ -93,7 +93,7 @@
     }
   }
 
-  /* Jab koi product filter hone par hide ho, toh grid se bilkul remove ho jaye taaki space na bache */
+  /* When a filtered-out product is hidden, remove it from the grid entirely so no gap remains */
   #ritual-product-grid.ritual-grid .ritual-product-card-wrapper:has(.ritual-card[style*="display: none"]),
   #ritual-product-grid.ritual-grid .ritual-product-card-wrapper .ritual-card[style*="display: none"] {
     display: none !important;
@@ -105,7 +105,7 @@
     flex-direction: column;
   }
 
-  /* Equal height alignment ke liye inner structure */
+  /* Inner structure for equal-height alignment */
   .ritual-card {
     display: flex !important;
     flex-direction: column !important;
@@ -140,7 +140,7 @@
     cursor: not-allowed !important;
   }
 
-  /* Coming Soon products ke price aur buttons hide karne ke liye */
+  /* Hide prices and buttons for Coming Soon products */
   .ritual-product-card-wrapper.is-coming-soon-product .price-row,
   .ritual-product-card-wrapper.is-coming-soon-product .ritual-price,
   .ritual-product-card-wrapper.is-coming-soon-product .btn-round-add,
@@ -148,7 +148,7 @@
     display: none !important;
   }
 
-  /* Mobile screen par 1 column */
+  /* Single column on mobile screens */
   @media screen and (max-width: 768px) {
     #ritual-product-grid.ritual-grid {
       grid-template-columns: 1fr !important;
@@ -223,7 +223,7 @@
       "type": "textarea", 
       "id": "coming_soon_products", 
       "label": "Coming Soon Products (Exact Names)", 
-      "info": "Ek line me ek product ka exact naam likhein",
+      "info": "Enter the exact product name, one per line",
       "default": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel"
     }
   ],

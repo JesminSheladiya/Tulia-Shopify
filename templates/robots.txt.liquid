@@ -1,9 +1,9 @@
 {% comment %}
   Custom robots.txt: Shopify defaults preserved + custom sitemap reference.
-  NOTE: Shopify ka default /sitemap.xml override NAHI ho sakta - wo platform
-  level par auto-generate hota hai. Isliye custom sitemap /pages/custom-sitemap
-  par serve hota hai aur yahan reference kiya gaya hai. Usko Google Search
-  Console me alag se submit karna hoga.
+  NOTE: Shopify's default /sitemap.xml cannot be overridden - it is
+  auto-generated at the platform level. So the custom sitemap is served
+  at /pages/custom-sitemap and referenced here. Submit it separately
+  in Google Search Console.
 {% endcomment %}
 {% for group in robots.default_groups %}
   {{- group.user_agent -}}

@@ -1,24 +1,24 @@
 
   function handlePinInput(input) {
-    // Sirf numbers allow karega aur max length 6 restrict karega
+    // Allow only numbers and restrict max length to 6
     input.value = input.value.replace(/\D/g, '').slice(0, 6);
     
     const btn = document.getElementById('tulia-check-btn');
     const responseDiv = document.getElementById('tulia-pin-response');
     
-    // Agar input clear ya 6 digit se kam ho toh response bhi hide kar sakte hain
+    // Hide the response as well when the input is cleared or below 6 digits
     if (input.value.length < 6) {
       responseDiv.style.display = 'none';
     }
 
-    // Jab exact 6 digits honge tab button enable aur color #420007 ho jayega
+    // Once exactly 6 digits are entered, enable the button with the brand color #420007
     if (input.value.length === 6) {
       btn.removeAttribute('disabled');
       btn.style.background = '#420007';
       btn.style.cursor = 'pointer';
       btn.style.opacity = '1';
     } else {
-      // 6 digit se kam par button disable rahega
+      // Keep the button disabled below 6 digits
       btn.setAttribute('disabled', 'true');
       btn.style.background = '#b5a89e';
       btn.style.cursor = 'not-allowed';

@@ -4586,6 +4586,28 @@ ul {
     cursor: pointer;
 }
 
+.product-thumbnail.is-active {
+    border-color: var(--primary);
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.hero-thumbnails-slider {
+    width: 80px;
+    flex: 0 0 80px;
+    display: flex;
+    align-items: stretch;
+}
+
+.hero-thumbnails-slider .hero-thumbnails {
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+.thumb-nav {
+    display: none;
+}
+
 .extracted-style-134 {
     width: 100%;
     height: 100%;
@@ -5387,22 +5409,71 @@ ul {
         align-items: stretch !important;
     }
 
+    .hero-thumbnails-slider {
+        width: 100% !important;
+        flex: 1 1 auto !important;
+        position: relative;
+        align-items: center;
+        gap: 0;
+    }
+
+    .thumb-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid var(--outline-variant);
+        background: #fff;
+        color: var(--primary);
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        z-index: 2;
+    }
+
+    .thumb-nav:disabled {
+        opacity: 0.35;
+        cursor: default;
+        box-shadow: none;
+    }
+
+    .thumb-nav span {
+        transform: translateY(-1px);
+    }
+
     .hero-thumbnails {
         flex-direction: row !important;
-        width: 100% !important;
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0;
         overflow-x: auto;
-        padding-bottom: 0.5rem;
-        padding-right: 1.5rem !important;
+        overflow-y: hidden;
+        gap: 12px !important;
+        padding: 2px 8px 8px !important;
         scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
     }
 
     .hero-thumbnails .product-thumbnail {
-        flex: 0 0 80px;
-        width: 80px;
-        height: 80px;
-        scroll-snap-align: start;
-        border: none !important;
+        flex: 0 0 72px;
+        width: 72px;
+        height: 72px;
+        min-width: 72px;
+        min-height: 72px;
+        scroll-snap-align: center;
+        border: 1px solid var(--outline-variant) !important;
         border-radius: var(--radius-md) !important;
+    }
+
+    .hero-thumbnails .product-thumbnail.is-active {
+        border-color: var(--primary) !important;
+        outline: 2px solid var(--primary);
+        outline-offset: -2px;
     }
 
     .grid-12,
@@ -5479,11 +5550,6 @@ ul {
         padding-left: calc(50vw - 140px) !important;
         padding-right: calc(50vw - 140px) !important;
     }
-
-    .hero-thumbnails::after {
-        content: "";
-        flex: 0 0 1.5rem;
-    }
 }
 
 /* Desktop & General Styles */
@@ -5520,10 +5586,6 @@ ul {
 @media (max-width: 768px) {
     .meet-science-grid {
         grid-template-columns: 1fr !important;
-    }
-
-    .hero-thumbnails .product-thumbnail:last-child {
-        margin-right: 2rem !important;
     }
 }
 
@@ -7265,10 +7327,10 @@ p.policies-title {
 @media (max-width:1024px) and (min-width:768px) {
     #ritual-finder .grid-3 {
         display: grid !important;
-        /* Force kiya taaki grid display active rahe */
+        /* Forced so the grid display stays active */
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 20px;
-        /* Agar columns ke beech ka gap kam ya zyada karna ho */
+        /* Adjust the gap between columns here if needed */
     }
 
     div#judgeme_product_reviews {
@@ -7479,7 +7541,7 @@ p.policies-title {
     }
 }
 
-/* Mobile screen ke liye adjustments */
+/* Mobile screen adjustments */
 @media screen and (max-width: 768px) {
 
     #MainContent .cart-form,

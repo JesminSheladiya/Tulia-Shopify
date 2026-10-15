@@ -15,7 +15,7 @@
     {% comment %} margin-top: 15px; {% endcomment %}
   }
   
-  /* Sirf laptop screen (1024px to 1440px) ke liye content ko thoda sa adjust kiya hai taaki heading/eyebrow header ke peeche cut na ho aur poora content saaf dikhe. Baaki devices par sab kuch bilkul pehle jaisa rahega. */
+  /* Laptop screens only (1024px to 1440px): slightly adjusted content so the heading/eyebrow is not cut off behind the header and stays fully visible. All other devices remain exactly as before. */
   @media screen and (min-width: 1024px) and (max-width: 1440px) {
     .hero-banner .hero-content {
       top: 10% !important;
