@@ -5431,7 +5431,7 @@ ul {
         font-size: 20px;
         line-height: 1;
         cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
         z-index: 2;
     }
 
@@ -7673,23 +7673,56 @@ iframe {
    is unsupported, so these stay hidden until e.g. Razorpay Magic Checkout is enabled) */
 .pdp-dynamic-checkout:empty,
 .cart-additional-checkout:empty,
-.cart-drawer__dynamic-checkout:empty { display: none; }
+.cart-drawer__dynamic-checkout:empty {
+    display: none;
+}
+
+/* Customise dynamic payment button label and match Add to Bag design */
+.shopify-payment-button__button--unbranded {
+    background-color: #420007 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+    width: 100% !important;
+    font-size: 0 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    transition: all 0.3s ease !important;
+}
+
+.shopify-payment-button__button--unbranded:hover {
+    background-color: #630f17 !important;
+}
+
+.shopify-payment-button__button--unbranded::before {
+    content: "Make it to Buy Now";
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+}
 
 /* Accessibility: skip link + visible keyboard focus */
 .skip-to-content {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 10000;
-  background: var(--primary);
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 0 0 8px 0;
-  font-family: var(--font-sans);
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10000;
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 0 0 8px 0;
+    font-family: var(--font-sans);
 }
-.skip-to-content:focus { left: 0; }
+
+.skip-to-content:focus {
+    left: 0;
+}
+
 :focus-visible {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 2px;
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
 }

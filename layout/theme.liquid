@@ -36,7 +36,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="canonical" href="{{ canonical_url }}">
-
   {%- if settings.favicon != blank -%}
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- else -%}
@@ -64,8 +63,6 @@
       assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
     elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
       assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
-    elsif page.handle == 'our-story'
-      assign custom_page_title = 'Our Story | The Passion Behind Tulia Cosmetics'
     elsif product.handle == 'lip-balm'
       assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
     elsif product.handle == 'all-in-one-conditioner'
@@ -83,8 +80,6 @@
         assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
       elsif request.path contains 'become'
         assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
-      elsif request.path == '/pages/our-story'
-        assign custom_page_title = 'Our Story | The Passion Behind Tulia Cosmetics'
       elsif request.path contains '/products/lip-balm'
         assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
       elsif request.path contains '/products/all-in-one-conditioner'
@@ -129,8 +124,6 @@
       assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
     elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
       assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
-    elsif page.handle == 'our-story'
-      assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
     elsif product.handle == 'lip-balm'
       assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
     elsif product.handle == 'all-in-one-conditioner'
@@ -148,8 +141,6 @@
         assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
       elsif request.path contains 'become'
         assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
-      elsif request.path == '/pages/our-story'
-        assign custom_meta_description = 'Discover the story behind Tulia Cosmetics. Learn about our passion, mission, and dedication to creating effective, clean beauty routines for everyone.'
       elsif request.path contains '/products/lip-balm'
         assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
       elsif request.path contains '/products/all-in-one-conditioner'
@@ -404,9 +395,9 @@
     cartTitles.forEach(function(title) {
       if (title.querySelector('.fixed-amp')) return;
       if (title.innerHTML.includes('&amp;') || title.innerHTML.includes('&amp;amp;')) {
-        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: inherit !important; font-style: normal !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: var(--font-sans) !important; font-weight: 600 !important; display: inline-block !important;">&</span>');
       } else if (title.innerText.includes('&') || title.textContent.includes('&')) {
-        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: inherit !important; font-style: normal !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: var(--font-sans) !important; font-weight: 600 !important; display: inline-block !important;">&</span>');
       }
     });
   }

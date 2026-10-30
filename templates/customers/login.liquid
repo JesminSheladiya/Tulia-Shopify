@@ -18,8 +18,8 @@
   <div id="CustomerLogin">
     {%- form 'customer_login' -%}
       {{ form.errors | default_errors }}
-      <label for="CustomerEmail">Email</label>
-      <input type="email" name="customer[email]" id="CustomerEmail" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);">
+      <label for="CustomerEmail">Email or Phone</label>
+      <input type="text" name="customer[email]" id="CustomerEmail" autocomplete="username" placeholder="Email or Phone" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 1rem;color:var(--on-surface);">
       {%- if form.password_needed -%}
         <label for="CustomerPassword">Password</label>
         <input type="password" name="customer[password]" id="CustomerPassword" class="input-line" style="width:100%;border:1px solid var(--outline);padding:.75rem;border-radius:var(--radius-sm);margin:.5rem 0 .5rem;color:var(--on-surface);">

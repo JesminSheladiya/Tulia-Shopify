@@ -91,14 +91,6 @@
             "position": "right"
           }
         },
-        "nav_science": {
-          "type": "nav_link",
-          "settings": {
-            "label": "Our Science",
-            "link": "shopify://pages/our-story",
-            "position": "right"
-          }
-        },
         "nav_journal": {
           "type": "nav_link",
           "disabled": true,
@@ -119,7 +111,6 @@
         "nav_concern",
         "nav_edits",
         "nav_about",
-        "nav_science",
         "nav_journal"
       ],
       "settings": {
