@@ -11,7 +11,9 @@
     <div class="ritual-info">
       <h3 class="ritual-name italic-serif">{{ p[1] }}</h3>
       <p class="ritual-desc">{{ p[2] }}</p>
+      {%- unless p[1] == 'shine' or p[1] == 'sun-kissed' or p[1] == 'supple' -%}
       <div class="rating text-muted extracted-style-13">★★★★★ 4.9</div>
+      {%- endunless -%}
       <div class="price-row extracted-style-14">
         <p class="ritual-price extracted-style-15">{{ p[4] }}</p>
         <a href="/collections/all-products" class="btn-round-add extracted-style-16"><span class="material-symbols-outlined extracted-style-17">add</span></a>

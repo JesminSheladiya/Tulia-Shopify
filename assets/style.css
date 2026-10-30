@@ -7279,15 +7279,17 @@ a.generic-card:hover .generic-card__media img {
 /* -------FOOTER LOGO------ */
 @media (min-width:768px) {
     #shopify-section-sections--22686229528812__footer>footer>div.footer-main>div.footer-left-col>div.footer-logo-wrapper.extracted-style-102>img {
-        width: 30% !important;
-        height: 80% !important;
+        width: 100% !important;
+        max-width: 400px;
+        height: auto !important;
     }
 }
 
 @media (max-width:767px) {
     #shopify-section-sections--22686229528812__footer>footer>div.footer-main>div.footer-left-col>div.footer-logo-wrapper.extracted-style-102>img {
-        width: 65% !important;
-        height: 70% !important;
+        width: 100% !important;
+        max-width: 400px;
+        height: auto !important;
     }
 }
 

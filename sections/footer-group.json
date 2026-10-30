@@ -19,7 +19,7 @@
           "settings": {
             "heading": "SHOP",
             "menu": "",
-            "fallback_links": "Skincare | /collections/pigmentation-amp-tan\nHaircare | /collections/hair-scalp\nLip Care | /collections/hydration-barrier\nAll Products | /collections/all-products\nBestsellers | /collections/all-products?sort_by=best-selling"
+            "fallback_links": "Skincare | /collections/skincare-with-products\nHaircare | /collections/hair-scalp\nLip Care | /collections/lipcare\nAll Products | /collections/all-products\nBestsellers | /collections/all-products?sort_by=best-selling"
           }
         },
         "col_brand": {
@@ -56,7 +56,7 @@
       ],
       "settings": {
         "waitlist_heading": "",
-        "newsletter_eyebrow": "OUR WEEKLY NEWSLETTER",
+        "newsletter_eyebrow": "OUR MONTHLY NEWSLETTER",
         "newsletter_title": "Outgrow the standards",
         "newsletter_desc": "Subscribe to our monthly newsletter to get the inside story",
         "show_localization": true,

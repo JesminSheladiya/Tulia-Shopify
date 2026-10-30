@@ -152,7 +152,7 @@
     { "type": "image_picker", "id": "branding_image", "label": "Branding banner image" },
     { "type": "text", "id": "waitlist_heading", "label": "Waitlist heading", "default": "Join Our Waitlist" },
     { "type": "header", "content": "Newsletter" },
-    { "type": "text", "id": "newsletter_eyebrow", "label": "Eyebrow", "default": "OUR WEEKLY NEWSLETTER" },
+    { "type": "text", "id": "newsletter_eyebrow", "label": "Eyebrow", "default": "OUR MONTHLY NEWSLETTER" },
     { "type": "text", "id": "newsletter_title", "label": "Title", "default": "Outgrow the standards" },
     { "type": "textarea", "id": "newsletter_desc", "label": "Description", "default": "Subscribe to our monthly newsletter to get the inside story" },
     { "type": "header", "content": "Bottom bar" },
@@ -169,7 +169,7 @@
       "settings": [
         { "type": "text", "id": "heading", "label": "Heading", "default": "SHOP" },
         { "type": "link_list", "id": "menu", "label": "Menu", "info": "Pick a navigation menu. If empty, the fallback links below are used." },
-        { "type": "textarea", "id": "fallback_links", "label": "Fallback links", "info": "One per line as: Label | /url", "default": "Skincare | #\nHaircare | #\nLip Care | #\nAll Products | /collections/all-products\nBestsellers | #" }
+        { "type": "textarea", "id": "fallback_links", "label": "Fallback links", "info": "One per line as: Label | /url", "default": "Skincare | /collections/skincare-with-products\nHaircare | #\nLip Care | /collections/lipcare\nAll Products | /collections/all-products\nBestsellers | #" }
       ]
     }
   ],
@@ -177,7 +177,7 @@
     {
       "name": "Footer",
       "blocks": [
-        { "type": "menu_column", "settings": { "heading": "SHOP", "fallback_links": "Skincare | #\nHaircare | #\nLip Care | #\nAll Products | /collections/all-products\nBestsellers | #" } },
+        { "type": "menu_column", "settings": { "heading": "SHOP", "fallback_links": "Skincare | /collections/skincare-with-products\nHaircare | #\nLip Care | /collections/lipcare\nAll Products | /collections/all-products\nBestsellers | #" } },
         { "type": "menu_column", "settings": { "heading": "BRAND", "fallback_links": "Our Story | /pages/our-story\nThe Flow of Rebirth | #\nContact Us | #\nStockists | #\nRetail Partner | #" } },
         { "type": "menu_column", "settings": { "heading": "LEARN", "fallback_links": "Skin, Decoded | /blogs/news\nOur Formulation | #\nMade for Indian Skin | #" } },
         { "type": "menu_column", "settings": { "heading": "HELP", "fallback_links": "FAQs | #\nShipping & Returns | #\nTrack Order | /pages/contact\nPrivacy Policy | #" } }
