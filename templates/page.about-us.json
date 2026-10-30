@@ -24,11 +24,11 @@
         "content_valign": "center",
         "text_color": "light",
         "eyebrow": "About Tulia Cosmetics",
-        "heading": "The flow of rebirth",
+        "heading": "The Flow Of Rebirth",
         "h1_mode": "eyebrow",
-        "subtext": "TULIA was born from a simple belief: skincare should work with the natural rhythm of your skin, not against it. Born in India and created with a global perspective, TULIA brings together considered formulations, purposeful ingredients and modern skincare rituals designed around what your skin actually needs. Because what touches your skin matters.",
-        "button_1_label": "",
-        "button_1_link": "",
+        "subtext": "Watching people compromise on their own skin instead of working with it, reaching for whatever promised the fastest fix, and seldom asking what was actually in the bottle doing the promising was a drag. It felt backwards. Our skin already knows how to renew itself. It doesn't need to be overridden, instead supported and given the time it actually takes to renew.",
+        "button_1_label": "Explore the collection",
+        "button_1_link": "shopify://collections/all-products",
         "button_1_style": "btn-primary-light",
         "button_2_label": "",
         "button_2_link": "",
@@ -40,53 +40,65 @@
       "name": "Heritage",
       "settings": {
         "eyebrow": "Our Belief",
-        "title": "We wanted to make skincare more considered",
+        "title": "Skin Remembers How To Renew Itself",
         "image": "",
         "hide_image": true,
-        "paragraph_1": "Beauty often asks us to add more: more products, more steps and more promises. We chose to look closer instead.",
-        "paragraph_2": "Every TULIA formulation begins with purpose, considering what belongs in the formula, why it belongs there and how it can meaningfully support the skin. Because skincare should not be about fixing who you are, but caring for the skin you have.",
-        "link_label": "",
-        "link_url": ""
+        "paragraph_1": "Skin renews itself through a natural cycle of regeneration, with the skin cell turnover process often taking around 28 days. At Tulia, we believe skincare should work with this process, supporting the skin’s natural renewal rather than overwhelming it with unnecessary steps or promises.",
+        "paragraph_2": "Every formulation begins with understanding what the skin needs, what each ingredient contributes and how it can support healthier-looking skin over time.",
+        "link_label": "Explore the collection",
+        "link_url": "shopify://collections/all-products"
       }
     },
     "cards_drive": {
       "type": "card-grid",
       "blocks": {
-        "card_vision": {
+        "truth_1": {
           "type": "card",
           "settings": {
-            "icon": "visibility",
-            "eyebrow": "Our Vision",
-            "title": "To make conscious skincare the new luxury",
-            "text": "We envision a world where people understand what they put on their skin and choose skincare with intention. Where beautiful formulations are valued not only for how they look, but for what they contain, how they perform and how naturally they fit into everyday life. For us, conscious skincare means better ingredients, better understanding and better choices.",
+            "icon": "touch_app",
+            "eyebrow": "Truth 1",
+            "title": "be conscious of what touches your skin",
+            "text": "",
             "button_label": "",
             "link": ""
           }
         },
-        "card_mission": {
+        "truth_2": {
           "type": "card",
           "settings": {
-            "icon": "target",
-            "eyebrow": "Our Mission",
-            "title": "To create skincare with purpose",
-            "text": "We create thoughtful, ingredient-led formulations designed to address real skin needs while making everyday skincare feel elevated. From formulation to experience, every decision is guided by purpose, performance and skin-first care, creating products that feel considered from the inside out.",
+            "icon": "autorenew",
+            "eyebrow": "Truth 2",
+            "title": "preserving skin longevity",
+            "text": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "truth_3": {
+          "type": "card",
+          "settings": {
+            "icon": "psychology",
+            "eyebrow": "Truth 3",
+            "title": "skincare is one part of a bigger picture",
+            "text": "",
             "button_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "card_vision",
-        "card_mission"
+        "truth_1",
+        "truth_2",
+        "truth_3"
       ],
       "name": "Generic - Cards",
       "settings": {
         "eyebrow": "What Drives Us",
-        "heading": "Purpose in every formulation",
+        "heading": "Three Truths We Formulate By",
         "subheading": "",
         "header_align": "center",
         "card_align": "left",
-        "columns": "2",
+        "columns": "3",
         "bg": "bg-surface-alt",
         "tight_gap": true,
         "card_style": "editorial"
@@ -108,27 +120,14 @@
         "content_valign": "center",
         "text_color": "light",
         "eyebrow": "OUR ROOTS",
-        "heading": "Born in India, made for the world",
-        "subtext": "TULIA began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.",
-        "button_1_label": "",
-        "button_1_link": "",
+        "heading": "Born In India, Made For The World",
+        "subtext": "Tulia began in India, but our vision has always extended beyond geography. Our approach recognises that skin and hair are shaped by different environments, lifestyles and everyday experiences. While our roots influence where we began, our commitment to thoughtful formulation allows us to evolve with the needs of people everywhere.",
+        "button_1_label": "Explore the collection",
+        "button_1_link": "shopify://collections/all-products",
         "button_1_style": "btn-primary-light",
         "button_2_label": "",
         "button_2_link": "",
         "button_2_style": "btn-outline-light"
-      }
-    },
-    "premium_rebirth": {
-      "type": "rebirth-cta",
-      "name": "Rebirth CTA",
-      "settings": {
-        "bg_color": "#faf6f0",
-        "max_width": 800,
-        "eyebrow": "THE REBIRTH",
-        "heading": "A new chapter, a clearer purpose.",
-        "body": "<p>Rebirth represents the next chapter of TULIA and a renewed commitment to how we formulate, create and care. Our evolution goes beyond a new look, bringing together more thoughtful choices, considered formulations and a deeper understanding of what we put on our skin. As TULIA moves forward, one belief remains at the heart of everything we do: be conscious of what touches your skin.</p>",
-        "button_label": "EXPLORE THE COLLECTION",
-        "button_link": "shopify://collections/all"
       }
     }
   },
@@ -136,7 +135,6 @@
     "generic_banner_about",
     "heritage_belief",
     "cards_drive",
-    "roots_banner",
-    "premium_rebirth"
+    "roots_banner"
   ]
 }

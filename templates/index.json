@@ -19,9 +19,9 @@
         "description": "Intentionally formulated for preserving skin longevity",
         "pointer": "Cruelty-free | Made in India",
         "cta1_label": "Shop Bestsellers",
-        "cta1_link": "",
+        "cta1_link": "/collections/all-products?sort_by=best-selling",
         "cta2_label": "Find your Ritual",
-        "cta2_link": "",
+        "cta2_link": "#ritual-finder",
         "scroll_link": "#ritual-finder"
       }
     },
@@ -144,7 +144,7 @@
             "title": "The Tint Edit",
             "description": "Lip balm, Lip lightening cream",
             "button_label": "Shop The Tint Edit",
-            "link": "https://tuliacosmetics.myshopify.com/collections/the-tint-edit"
+            "link": "https://tuliacosmetics.com/collections/the-tint-edit"
           }
         },
         "e1": {

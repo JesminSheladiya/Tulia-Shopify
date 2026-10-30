@@ -129,8 +129,10 @@
     </div>
   {%- endif -%}
 
-  {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
-    <a href="{{ section.settings.cta_link }}" class="tulia-banner-cta">
+  {%- assign tulia_cta_link = section.settings.cta_link -%}
+  {%- if tulia_cta_link == blank -%}{%- assign tulia_cta_link = '/collections/all-products' -%}{%- endif -%}
+  {%- if section.settings.cta_label != blank and tulia_cta_link != blank -%}
+    <a href="{{ tulia_cta_link }}" class="tulia-banner-cta">
       <span>{{ section.settings.cta_label }}</span>
       <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -224,7 +226,7 @@
       "content": "CTA"
     },
     { "type": "text", "id": "cta_label", "label": "Label", "default": "Shop All" },
-    { "type": "url", "id": "cta_link", "label": "Link", "default": "/collections/all" },
+    { "type": "url", "id": "cta_link", "label": "Link" },
     { "type": "range", "id": "cta_font_size", "min": 8, "max": 20, "step": 1, "unit": "px", "label": "Font Size", "default": 11 },
     { "type": "range", "id": "cta_margin_top", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Top Margin", "default": 24 },
     {

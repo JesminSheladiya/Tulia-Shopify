@@ -19,7 +19,7 @@
           "settings": {
             "heading": "SHOP",
             "menu": "",
-            "fallback_links": "Skincare | /collections/pigmentation-amp-tan\nHaircare | /collections/hair-scalp\nLip Care | /collections/hydration-barrier\nAll Products | /collections/all\nBestsellers | /collections/all-products?sort_by=best-selling"
+            "fallback_links": "Skincare | /collections/pigmentation-amp-tan\nHaircare | /collections/hair-scalp\nLip Care | /collections/hydration-barrier\nAll Products | /collections/all-products\nBestsellers | /collections/all-products?sort_by=best-selling"
           }
         },
         "col_brand": {
@@ -27,7 +27,7 @@
           "settings": {
             "heading": "BRAND",
             "menu": "",
-            "fallback_links": "Our Story | /pages/by-concern\nContact Us | /pages/contact\nRetail Partner | /pages/become-our-partner"
+            "fallback_links": "Our Story | /pages/our-story\nContact Us | /pages/contact\nRetail Partner | /pages/become-our-partner"
           }
         },
         "col_learn": {
@@ -44,7 +44,7 @@
           "settings": {
             "heading": "HELP",
             "menu": "",
-            "fallback_links": "Shipping & Returns |/policies/shipping-policy\nTrack Order | #\nPrivacy Policy |/policies/privacy-policy\nTerms & Conditions |/policies/terms-of-service\nRefund Policy |/policies/refund-policy"
+            "fallback_links": "Shipping & Returns |/policies/shipping-policy\nTrack Order | /pages/contact\nPrivacy Policy |/policies/privacy-policy\nTerms & Conditions |/policies/terms-of-service\nRefund Policy |/policies/refund-policy"
           }
         }
       },

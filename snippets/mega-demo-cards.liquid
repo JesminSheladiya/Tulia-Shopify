@@ -6,13 +6,13 @@
 {%- for row in demo -%}
   {%- assign p = row | split: '|' -%}
   {%- if mobile -%}
-    <a href="{{ routes.all_products_collection_url }}" class="mobile-mega-card" data-category="{{ p[3] }}">
+    <a href="/collections/all-products" class="mobile-mega-card" data-category="{{ p[3] }}">
       <img src="{{ p[0] | asset_url }}" width="1080" height="1350" alt="{{ p[1] }}">
       <div><h4>{{ p[1] }}</h4><p>{{ p[2] }}</p></div>
       {%- if p[4] == 'new' -%}<span class="mobile-mega-badge">new</span>{%- endif -%}
     </a>
   {%- else -%}
-    <a href="{{ routes.all_products_collection_url }}" class="mega-card" data-category="{{ p[3] }}">
+    <a href="/collections/all-products" class="mega-card" data-category="{{ p[3] }}">
       {%- if p[4] == 'new' -%}<span class="mega-badge">NEW</span>{%- endif -%}
       <img src="{{ p[0] | asset_url }}" width="1080" height="1350" alt="{{ p[1] }}">
       <div><h4>{{ p[1] }}</h4><p>{{ p[2] }}</p></div>

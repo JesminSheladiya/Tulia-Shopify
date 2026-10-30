@@ -23,7 +23,7 @@
       <button class="icon-btn mobile-menu" aria-label="Open menu"><span class="material-symbols-outlined">menu</span></button>
       <nav class="main-nav desktop-nav">
         <div class="mega-menu-trigger">
-          <a href="{{ section.settings.shop_link | default: shop_all_link | default: '/collections/all' }}" class="nav-link shop-link" id="shop-trigger">{{ section.settings.shop_label }}</a>
+          <a href="{{ section.settings.shop_link | default: shop_all_link | default: '/collections/all-products' }}" class="nav-link shop-link" id="shop-trigger">{{ section.settings.shop_label }}</a>
           <div class="mega-menu" id="mega-menu">
             <div class="mega-tabs">
               {%- for block in section.blocks -%}
@@ -88,7 +88,7 @@
                 onclick="document.querySelector('.mega-carousel').scrollBy({left: 280, behavior: 'smooth'})"><span class="material-symbols-outlined">chevron_right</span></button>
             </div>
             <div class="extracted-style-4">
-              <a href="{{ shop_all_link | default: '/collections/all' }}" class="btn extracted-style-5">{{ section.settings.shop_all_label }}</a>
+              <a href="{{ shop_all_link | default: '/collections/all-products' }}" class="btn extracted-style-5">{{ section.settings.shop_all_label }}</a>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@
       {%- endif -%}
     </div>
     <div class="extracted-style-117">
-      <a href="{{ shop_all_link | default: '/collections/all' }}" class="btn extracted-style-118">{{ section.settings.shop_all_label }}</a>
+      <a href="{{ shop_all_link | default: '/collections/all-products' }}" class="btn extracted-style-118">{{ section.settings.shop_all_label }}</a>
     </div>
     <nav class="extracted-style-119">
       {%- for block in section.blocks -%}

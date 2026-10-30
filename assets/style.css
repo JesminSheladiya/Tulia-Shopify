@@ -7696,7 +7696,7 @@ iframe {
 }
 
 .shopify-payment-button__button--unbranded::before {
-    content: "Make it to Buy Now";
+    content: "BUY NOW";
     font-size: 1rem !important;
     font-weight: 600 !important;
     color: #ffffff !important;

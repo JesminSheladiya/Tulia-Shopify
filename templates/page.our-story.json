@@ -200,7 +200,7 @@
         "desc_max_width": 700,
         "desc_margin_bottom": 0,
         "cta_label": "Explore our products",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/all-products",
         "cta_font_size": 15,
         "cta_margin_top": 8,
         "padding_top_desktop": 160,

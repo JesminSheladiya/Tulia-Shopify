@@ -36,7 +36,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="canonical" href="{{ canonical_url }}">
-  {%- if settings.favicon != blank -%}
+  {%- if request.path == '/collections/all' -%}    <meta http-equiv="refresh" content="0; url=/collections/all-products">
+    <script>window.location.replace('/collections/all-products' + window.location.search);</script>
+  {%- endif -%}  {%- if settings.favicon != blank -%}
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- else -%}
     <link rel="icon" href="{{ 'fav-icon.png' | asset_url }}">
