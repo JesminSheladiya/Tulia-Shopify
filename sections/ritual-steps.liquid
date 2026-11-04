@@ -2,7 +2,7 @@
   assign mf = product.metafields.custom[section.settings.metafield_key]
   assign entries = mf.value
 -%}
-<section class="section extracted-style-185">
+<section class="section bg-white extracted-style-185">
   <div class="container">
     <div class="grid grid-2 gap-large align-center extracted-style-186">
       <div class="extracted-style-105">
@@ -39,7 +39,14 @@
         </div>
       </div>
       <div class="extracted-style-193">
-        {%- if section.settings.image != blank -%}
+        {%- if product.handle == 'lip-balm' and section.settings.video_url != blank -%}
+          {%- if section.settings.video_url contains '://' -%}
+            {%- assign ritual_video_src = section.settings.video_url -%}
+          {%- else -%}
+            {%- assign ritual_video_src = section.settings.video_url | asset_url -%}
+          {%- endif -%}
+          <video src="{{ ritual_video_src }}" autoplay muted loop playsinline class="extracted-style-64" style="width:100%; height:auto; object-fit:cover;"></video>
+        {%- elsif section.settings.image != blank -%}
           <img src="{{ section.settings.image | image_url: width: 900 }}" width="900" height="900" alt="{{ section.settings.title | strip_newlines | escape }}" class="extracted-style-64" loading="lazy">
         {%- else -%}
           <img src="{{ 'cream.jpg' | asset_url }}" width="1080" height="1350" alt="{{ section.settings.title | strip_newlines | escape }}" class="extracted-style-64" loading="lazy">
@@ -55,6 +62,7 @@
   "settings": [
     { "type": "textarea", "id": "title", "label": "Title", "default": "Your\nNighttime Ritual" },
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "video_url", "label": "Video URL or asset file name (optional)" },
     { "type": "header", "content": "Dynamic data (metaobjects)" },
     { "type": "paragraph", "content": "When the product has the metafield below, steps are pulled from those metaobjects. Otherwise the manual blocks are used." },
     { "type": "text", "id": "metafield_key", "label": "Product metafield key (custom.___)", "default": "your_daily_ritual" },

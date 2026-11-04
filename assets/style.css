@@ -275,6 +275,10 @@ ul {
     background-color: var(--surface-low);
 }
 
+.bg-white {
+    background-color: #ffffff;
+}
+
 .bg-tertiary {
     background-color: var(--tertiary);
 }

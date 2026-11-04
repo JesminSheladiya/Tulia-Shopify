@@ -219,7 +219,7 @@
       "settings": {
         "title": "Your Nighttime Ritual",
         "image": "{{ product.metafields.custom.product_retuals.value }}",
-        "metafield_key": "your_daily_ritual",
+        "video_url": "lip-balm-video.mp4",        "metafield_key": "your_daily_ritual",
         "field_title": "title",
         "field_text": "description"
       }
