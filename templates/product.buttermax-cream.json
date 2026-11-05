@@ -1,0 +1,624 @@
+/*
+ * ------------------------------------------------------------
+ * ButterMax Cream product page - dedicated template with
+ * sunscreen-specific content mapped from the source document.
+ * Assign to the ButterMax Cream product in Admin >
+ * Products > Theme template.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "icon": "spa",
+            "text": "Nourishing Cashmere Cream"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "icon": "auto_awesome",
+            "text": "Hydrates and softens the skin"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "icon": "water_drop",
+            "text": "Enriched with Shea & Cocoa Butter"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "icon": "healing",
+            "text": "Helps improve the feel of dry skin"
+          }
+        },
+        "spec_rich": {
+          "type": "spec",
+          "settings": {
+            "icon": "verified",
+            "text": "Rich, creamy texture"
+          }
+        },
+        "spec_everyday": {
+          "type": "spec",
+          "settings": {
+            "icon": "verified",
+            "text": "Designed for everyday body care"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "spec_rich",
+        "spec_everyday"
+      ],
+      "settings": {
+        "add_label": "Add to bag",
+        "notify_label": "Notify",
+        "show_coupon": true,
+        "coupon_text": "Enter coupon code to unlock available offers.",
+        "description_override": "A nourishing cashmere body butter that deeply hydrates, firms and illuminates the skin, leaving it feeling soft, smooth and beautifully nourished."
+      }
+    },
+    "ingredients": {
+      "type": "product-ingredients",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "spa",
+            "title": "Deep Nourishment",
+            "text": "Enriched with Shea Butter, Cocoa Butter and Murumuru Seed Butter to help nourish the skin and improve its feel."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "auto_awesome",
+            "title": "Long-Lasting Hydration",
+            "text": "Glycerine and nourishing oils help attract and retain moisture, keeping skin feeling hydrated and comfortable."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "healing",
+            "title": "A Cashmere-Soft Feel",
+            "text": "Its creamy texture envelops the skin in a layer of nourishment, making everyday body care feel more indulgent."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "ingredients_label": "Ingredients",
+        "benefits_label": "Benefits"
+      }
+    },
+    "science": {
+      "type": "meet-the-science",
+      "blocks": {
+        "c1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Shea & Cocoa Butter",
+            "science": "Rich plant butters that help condition the skin and support its moisture barrier by reducing moisture loss.",
+            "good_for": "Nourishing dry skin and improving softness."
+          }
+        },
+        "c2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Murumuru Seed Butter",
+            "science": "A plant-derived butter that contributes emollient properties to the formulation.",
+            "good_for": "Conditioning the skin and supporting a smooth, supple feel."
+          }
+        },
+        "c3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Glycerine",
+            "science": "A humectant that attracts water and helps maintain skin hydration.",
+            "good_for": "Keeping skin moisturised and comfortable."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "custom_css": [
+        ".extracted-style-176 {display: none;}"
+      ],
+      "settings": {
+        "title": "Meet the Science",
+        "subtitle": "A nourishing blend of rich butters, botanical oils and moisturising ingredients, brought together to support softer, smoother and hydrated-looking skin.",
+        "metafield_key": "",
+        "field_image": "image",
+        "field_title": "title",
+        "field_science": "description",
+        "field_good_for": "good_for"
+      }
+    },
+    "ritual": {
+      "type": "ritual-steps",
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "When to Use",
+            "text": "Use daily, preferably after a shower or bath, when the skin is clean and slightly damp."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "How to Use",
+            "text": "Take an adequate amount of Body Butter Cream and massage gently over the body until evenly distributed. Pay extra attention to dry areas such as elbows, knees"
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Pro Tips",
+            "text": "For a more moisturised feel, apply immediately after bathing to help lock in moisture. Use regularly as part of your daily body care routine."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3"
+      ],
+      "settings": {
+        "title": "Your Daily Body Care Ritual",
+        "image": "",
+        "video_url": "",
+        "metafield_key": "",
+        "field_title": "title",
+        "field_text": "description"
+      }
+    },
+    "clinical": {
+      "type": "clinical-results",
+      "blocks": {
+        "r1": {
+          "type": "result",
+          "disabled": true,
+          "settings": {
+            "label": "consumer study results",
+            "stats": "98% | improved skin hydration following product application.\n95% | Showed an improvement in skin softness and smoothness with regular use.",
+            "metafield_key": "consumer_perception_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        },
+        "r2": {
+          "type": "result",
+          "settings": {
+            "label": "clinical results",
+            "stats": "98% | improved skin hydration following product application.\n95% | Showed an improvement in skin softness and smoothness with regular use.",
+            "metafield_key": "clinical_efficacy_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Clinical results"
+      }
+    },
+    "clinical_results_without_img_UJRyPf": {
+      "type": "clinical-results-without-img",
+      "blocks": {
+        "result_item_qfnKQA": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "98%",
+            "description": "improved skin hydration following product application."
+          }
+        },
+        "result_item_RyM3Wx": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "95%",
+            "description": "Showed an improvement in skin softness and smoothness with regular use."
+          }
+        }
+      },
+      "block_order": [
+        "result_item_qfnKQA",
+        "result_item_RyM3Wx"
+      ],
+      "name": "Product Clinical Stats",
+      "settings": {
+        "heading": "Clinical results",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "recommended": {
+      "type": "recommended-for",
+      "blocks": {
+        "rc1": {
+          "type": "card",
+          "settings": {
+            "title": "Dry Skin",
+            "subtitle": "For skin that needs added nourishment and hydration."
+          }
+        },
+        "rc2": {
+          "type": "card",
+          "settings": {
+            "title": "Rough & Uneven Texture",
+            "subtitle": "For a softer, smoother skin feel."
+          }
+        },
+        "rc3": {
+          "type": "card",
+          "settings": {
+            "title": "Everyday Body Care",
+            "subtitle": "For maintaining skin hydration as part of your daily routine."
+          }
+        },
+        "rc4": {
+          "type": "card",
+          "settings": {
+            "title": "Areas Prone to Dryness",
+            "subtitle": "For extra nourishment on elbows, knees, heels and other dry areas."
+          }
+        }
+      },
+      "block_order": [
+        "rc1",
+        "rc2",
+        "rc3",
+        "rc4"
+      ],
+      "custom_css": [
+        ".extracted-style-200 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Recommended For"
+      }
+    },
+    "reels": {
+      "type": "product-reels",
+      "blocks": {
+        "rl1": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My body butter routine”"
+          }
+        },
+        "rl2": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Daily body care with Tulia Cosmetics”"
+          }
+        },
+        "rl3": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Care for dry skin”"
+          }
+        },
+        "rl4": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Body care mistakes to avoid”"
+          }
+        },
+        "rl5": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My nightly body ritual”"
+          }
+        }
+      },
+      "block_order": [
+        "rl1",
+        "rl2",
+        "rl3",
+        "rl4",
+        "rl5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Real Body Care, Real Routine",
+        "subtitle": "Watch how Tulia Cosmetics fits easily into a daily body-care routine."
+      }
+    },
+    "1782987714e446332e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LQRXxQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "judge_me_reviews_cards_carousel_Yme3D8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LQRXxQ",
+        "judge_me_reviews_cards_carousel_Yme3D8"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "All",
+            "filter": "all"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Nourishing",
+            "filter": "nourishing"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Dry skin",
+            "filter": "dry"
+          }
+        },
+        "f4": {
+          "type": "filter",
+          "settings": {
+            "label": "Smooth texture",
+            "filter": "smooth"
+          }
+        },
+        "f5": {
+          "type": "filter",
+          "settings": {
+            "label": "Daily use",
+            "filter": "daily"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Loved by Tulia Cosmetics Users",
+        "rating": "4.8",
+        "review_count": "124"
+      }
+    },
+    "complete": {
+      "type": "complete-routine",
+      "blocks": {
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "lip-balm",
+            "badge": "PREP",
+            "title": "Tulia Lip Balm",
+            "size": "",
+            "price": "",
+            "description": "Pair with Tulia Lip Balm for complete daily care."
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "lipz-lightening-cream",
+            "badge": "REPAIR",
+            "title": "Tulia Lipz Lightening Cream",
+            "size": "",
+            "price": "",
+            "description": "Night-time repair for pigmented lips."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ],
+      "custom_css": [
+        ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Give your skin the complete care",
+        "products_metafield_key": "",
+        "field_product": "image",
+        "field_description": "description",
+        "coming_soon_products": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "Is this body butter suitable for daily use?",
+            "answer": "Yes. Our Body Butter Cream can be used daily as part of your regular body care routine to help keep your skin nourished and moisturised."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I use it on very dry skin?",
+            "answer": "Yes. Enriched with Shea Butter, Cocoa Butter and nourishing oils, its rich formula helps condition dry skin and improve its softness."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "When is the best time to apply body butter?",
+            "answer": "The ideal time is after a shower or bath, when your skin is slightly damp. This helps retain moisture and leaves your skin feeling soft and hydrated."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Will it leave my skin feeling greasy?",
+            "answer": "Body butter has a richer texture than regular body lotions. Massage a suitable amount evenly into your skin and allow it to absorb before dressing."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I use it on my elbows, knees and heels?",
+            "answer": "Absolutely. These areas are often prone to dryness. Apply a little extra product and massage gently for added nourishment."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Common Inquiries",
+        "metafield_key": "",
+        "field_question": "question",
+        "field_answer": "answer"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "tb1": {
+          "type": "badge",
+          "settings": {
+            "icon": "local_shipping",
+            "title": "FREE SHIPPING",
+            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+          }
+        },
+        "tb2": {
+          "type": "badge",
+          "settings": {
+            "icon": "spa",
+            "title": "GENTLE FORMULATION",
+            "description": "Made for dark, dull,\nand uneven-looking lips"
+          }
+        },
+        "tb3": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "SECURE CHECKOUT",
+            "description": "100% secure payments\nwith COD & UPI options"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3"
+      ],
+      "custom_css": [
+        ".trust-badges-section .grid-4 {grid-template-columns: repeat(3, 1fr);}"
+      ],
+      "settings": {
+        "show_payments": false,
+        "payments_heading": "Accepted Payment Methods",
+        "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
+      }
+    },
+    "178351271991294ecc": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    },
+    "17835875473b0e0ca5": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ingredients",
+    "science",
+    "ritual",
+    "clinical",
+    "clinical_results_without_img_UJRyPf",
+    "recommended",
+    "reels",
+    "1782987714e446332e",
+    "reviews",
+    "complete",
+    "faq",
+    "trust",
+    "178351271991294ecc",
+    "17835875473b0e0ca5"
+  ]
+}

@@ -213,20 +213,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterDisplay = document.getElementById('testi-counter');
     
     if (carouselTrack && carousel && prevBtn && nextBtn) {
+        const totalItems = carouselTrack.children.length || 1;
         let currentIndex = 0;
-        const totalItems = 3;
         let autoScrollInterval;
         
-        function updateCarousel() {
-            const scrollAmount = carousel.clientWidth;
-            carousel.scrollTo({ left: currentIndex * scrollAmount, behavior: 'smooth' });
-            counterDisplay.innerHTML = `0${currentIndex + 1} &mdash; 03`;
+        function visibleCards() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        }
+
+        function setCardWidth() {
+            const visible = visibleCards();
+            const gap = 32;
+            const width = Math.max(260, (carousel.clientWidth - gap * (visible - 1)) / visible);
+            Array.from(carouselTrack.children).forEach((card) => {
+                card.style.flex = '0 0 ' + width + 'px';
+            });
+        }
+
+        function cardStep() {
+            const firstCard = carouselTrack.children[0];
+            return firstCard ? (firstCard.offsetWidth + 32) : carousel.clientWidth;
+        }
+        
+        function updateCarousel(behavior = 'smooth') {
+            const scrollAmount = cardStep();
+            carousel.scrollTo({ left: currentIndex * scrollAmount, behavior: behavior });
+            counterDisplay.innerHTML = `${currentIndex + 1} / ${totalItems}`;
         }
 
         function startAutoScroll() {
             autoScrollInterval = setInterval(() => {
-                currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
+                if (currentIndex < totalItems - 1) {
+                    currentIndex += 1;
+                    updateCarousel('smooth');
+                } else {
+                    currentIndex = 0;
+                    updateCarousel('auto');
+                }
             }, 4000);
         }
 
@@ -236,17 +261,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
-            updateCarousel();
+            if (currentIndex > 0) {
+                currentIndex -= 1;
+                updateCarousel('smooth');
+            } else {
+                currentIndex = totalItems - 1;
+                updateCarousel('auto');
+            }
             resetAutoScroll();
         });
 
         nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
-            updateCarousel();
+            if (currentIndex < totalItems - 1) {
+                currentIndex += 1;
+                updateCarousel('smooth');
+            } else {
+                currentIndex = 0;
+                updateCarousel('auto');
+            }
             resetAutoScroll();
         });
 
+        // Keep the 1/26 counter in sync while dragging, swiping or auto-scrolling
+        carousel.addEventListener('scroll', () => {
+            const step = cardStep();
+            const idx = Math.max(0, Math.min(totalItems - 1, Math.round(carousel.scrollLeft / step)));
+            if (idx !== currentIndex) {
+                currentIndex = idx;
+                counterDisplay.innerHTML = `${currentIndex + 1} / ${totalItems}`;
+            }
+        });
+
+        // Desktop drag support for the testimonial track
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragScrollLeft = 0;
+        carousel.style.cursor = 'grab';
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            carousel.style.cursor = 'grabbing';
+            dragStartX = e.pageX - carousel.offsetLeft;
+            dragScrollLeft = carousel.scrollLeft;
+            clearInterval(autoScrollInterval);
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            carousel.style.cursor = 'grab';
+            resetAutoScroll();
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = x - dragStartX;
+            carousel.scrollLeft = dragScrollLeft - walk;
+        });
+
+        setCardWidth();
+        updateCarousel();
+        window.addEventListener('resize', () => { setCardWidth(); updateCarousel('auto'); });
         startAutoScroll();
     }
 

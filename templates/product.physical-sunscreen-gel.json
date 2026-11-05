@@ -1,0 +1,624 @@
+/*
+ * ------------------------------------------------------------
+ * Physical Sunscreen Gel product page - dedicated template with
+ * sunscreen-specific content mapped from the source document.
+ * Assign to the Physical Sunscreen Gel product in Admin >
+ * Products > Theme template.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "icon": "spa",
+            "text": "SPF 50+ PA+++ protection"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "icon": "auto_awesome",
+            "text": "Broad-spectrum"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "icon": "water_drop",
+            "text": "Very water resistant"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "icon": "healing",
+            "text": "Non-comedogenic"
+          }
+        },
+        "spec_25zno": {
+          "type": "spec",
+          "settings": {
+            "icon": "verified",
+            "text": "25% Zinc Oxide"
+          }
+        },
+        "spec_paraben": {
+          "type": "spec",
+          "settings": {
+            "icon": "verified",
+            "text": "Paraben-free formulation"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "spec_25zno",
+        "s2",
+        "s3",
+        "s4",
+        "spec_paraben"
+      ],
+      "settings": {
+        "add_label": "Add to bag",
+        "notify_label": "Notify",
+        "show_coupon": true,
+        "coupon_text": "Enter coupon code to unlock available offers.",
+        "description_override": "A non-comedogenic zinc oxide shield that leaves zero white patches while providing absolute broad-spectrum protection against UV damage."
+      }
+    },
+    "ingredients": {
+      "type": "product-ingredients",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "spa",
+            "title": "Broad-Spectrum Sun Protection",
+            "text": "Formulated with 25% Zinc Oxide to help protect the skin against UVA and UVB exposure."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "auto_awesome",
+            "title": "No White Patches",
+            "text": "Its non-opaque formulation is designed to blend into the skin without leaving visible white patches."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "healing",
+            "title": "Those Looking for Physical Sun Protection",
+            "text": "A very water-resistant formula that helps maintain sun protection during everyday activities and exposure to water. Reapplication is still important."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "settings": {
+        "ingredients_label": "Ingredients",
+        "benefits_label": "Benefits"
+      }
+    },
+    "science": {
+      "type": "meet-the-science",
+      "blocks": {
+        "c1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Zinc Oxide Protection",
+            "science": "Zinc Oxide is a mineral UV filter that helps protect the skin against UVA and UVB radiation. The formula contains 25% Zinc Oxide.",
+            "good_for": "Everyday sun protection and broad-spectrum UV defence."
+          }
+        },
+        "c2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Vitamin E Acetate",
+            "science": "A form of Vitamin E included in the formulation for its antioxidant properties.",
+            "good_for": "Supporting the skin against everyday environmental stress."
+          }
+        },
+        "c3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Silicone-Based Formula",
+            "science": "Ingredients such as Caprylyl Methicone and Dimethicone Crosspolymer contribute to the formula's application and skin feel.",
+            "good_for": "A smooth application and a comfortable sunscreen finish."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "custom_css": [
+        ".extracted-style-176 {display: none;}"
+      ],
+      "settings": {
+        "title": "Meet the Science",
+        "subtitle": "A physical sunscreen powered by Zinc Oxide and supported by a carefully selected blend of ingredients for broad-spectrum protection and a comfortable application experience.",
+        "metafield_key": "",
+        "field_image": "image",
+        "field_title": "title",
+        "field_science": "description",
+        "field_good_for": "good_for"
+      }
+    },
+    "ritual": {
+      "type": "ritual-steps",
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "When to Use",
+            "text": "Use every morning as the final step of your daytime skincare routine, before makeup."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "How to Use",
+            "text": "Apply generously and evenly over the face and all exposed areas of the body. Reapply after prolonged sun exposure, swimming or excessive sweating."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Pro Tips",
+            "text": "Apply an adequate amount before stepping outdoors. Reapply regularly, especially after swimming, sweating or towel drying. Avoid contact with the eyes and mouth."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3"
+      ],
+      "settings": {
+        "title": "Your Daily Sun Protection Ritual",
+        "image": "",
+        "video_url": "",
+        "metafield_key": "",
+        "field_title": "title",
+        "field_text": "description"
+      }
+    },
+    "clinical": {
+      "type": "clinical-results",
+      "blocks": {
+        "r1": {
+          "type": "result",
+          "disabled": true,
+          "settings": {
+            "label": "consumer study results",
+            "stats": "98% | Demonstrated effective protection against UVB-induced skin damage under controlled testing.\n95% | Showed effective UVA protection, helping minimise the effects of prolonged sun exposure.",
+            "metafield_key": "consumer_perception_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        },
+        "r2": {
+          "type": "result",
+          "settings": {
+            "label": "clinical results",
+            "stats": "98% | Demonstrated effective protection against UVB-induced skin damage under controlled testing.\n95% | Showed effective UVA protection, helping minimise the effects of prolonged sun exposure.",
+            "metafield_key": "clinical_efficacy_results",
+            "field_percent": "percentage",
+            "field_text": "text"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Clinical results"
+      }
+    },
+    "clinical_results_without_img_UJRyPf": {
+      "type": "clinical-results-without-img",
+      "blocks": {
+        "result_item_qfnKQA": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "98%",
+            "description": "Demonstrated effective protection against UVB-induced skin damage under controlled testing."
+          }
+        },
+        "result_item_RyM3Wx": {
+          "type": "result_item",
+          "settings": {
+            "metafield_key": "",
+            "metafield_percentage": "percentage",
+            "metafield_text": "text",
+            "percentage": "95%",
+            "description": "Showed effective UVA protection, helping minimise the effects of prolonged sun exposure."
+          }
+        }
+      },
+      "block_order": [
+        "result_item_qfnKQA",
+        "result_item_RyM3Wx"
+      ],
+      "name": "Product Clinical Stats",
+      "settings": {
+        "heading": "Clinical results",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "recommended": {
+      "type": "recommended-for",
+      "blocks": {
+        "rc1": {
+          "type": "card",
+          "settings": {
+            "title": "Everyday Sun Exposure",
+            "subtitle": "For daily protection against UVA and UVB rays."
+          }
+        },
+        "rc2": {
+          "type": "card",
+          "settings": {
+            "title": "Outdoor Activities",
+            "subtitle": "For sun protection during outdoor routines and activities."
+          }
+        },
+        "rc3": {
+          "type": "card",
+          "settings": {
+            "title": "Those Seeking a Non-Whitening Finish",
+            "subtitle": "For those who prefer a sunscreen designed to avoid visible white patches."
+          }
+        },
+        "rc4": {
+          "type": "card",
+          "settings": {
+            "title": "Those Looking for Physical Sun Protection",
+            "subtitle": "A Zinc Oxide-based sunscreen for broad-spectrum UV protection."
+          }
+        }
+      },
+      "block_order": [
+        "rc1",
+        "rc2",
+        "rc3",
+        "rc4"
+      ],
+      "custom_css": [
+        ".extracted-style-200 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Recommended For"
+      }
+    },
+    "reels": {
+      "type": "product-reels",
+      "blocks": {
+        "rl1": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My honest sunscreen routine”"
+          }
+        },
+        "rl2": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Sun protection with Tulia Cosmetics”"
+          }
+        },
+        "rl3": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Care for uneven-looking skin”"
+          }
+        },
+        "rl4": {
+          "type": "reel",
+          "settings": {
+            "caption": "“Sunscreen mistakes to avoid”"
+          }
+        },
+        "rl5": {
+          "type": "reel",
+          "settings": {
+            "caption": "“My daily sun ritual”"
+          }
+        }
+      },
+      "block_order": [
+        "rl1",
+        "rl2",
+        "rl3",
+        "rl4",
+        "rl5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Real Sun Care, Real Routine",
+        "subtitle": "Watch how Tulia Cosmetics fits easily into a daily skincare routine."
+      }
+    },
+    "1782987714e446332e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LQRXxQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "judge_me_reviews_cards_carousel_Yme3D8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LQRXxQ",
+        "judge_me_reviews_cards_carousel_Yme3D8"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "blocks": {
+        "f1": {
+          "type": "filter",
+          "settings": {
+            "label": "All",
+            "filter": "all"
+          }
+        },
+        "f2": {
+          "type": "filter",
+          "settings": {
+            "label": "Non-sticky",
+            "filter": "non-sticky"
+          }
+        },
+        "f3": {
+          "type": "filter",
+          "settings": {
+            "label": "Water resistant",
+            "filter": "water"
+          }
+        },
+        "f4": {
+          "type": "filter",
+          "settings": {
+            "label": "Smooth texture",
+            "filter": "smooth"
+          }
+        },
+        "f5": {
+          "type": "filter",
+          "settings": {
+            "label": "Daily use",
+            "filter": "daily"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Loved by Tulia Cosmetics Users",
+        "rating": "4.8",
+        "review_count": "124"
+      }
+    },
+    "complete": {
+      "type": "complete-routine",
+      "blocks": {
+        "p1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "lip-balm",
+            "badge": "PREP",
+            "title": "Tulia Lip Balm",
+            "size": "",
+            "price": "",
+            "description": "Pair with Tulia Lip Balm for complete daytime protection."
+          }
+        },
+        "p2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "lipz-lightening-cream",
+            "badge": "REPAIR",
+            "title": "Tulia Lipz Lightening Cream",
+            "size": "",
+            "price": "",
+            "description": "Night-time repair for pigmented lips."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ],
+      "custom_css": [
+        ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"
+      ],
+      "settings": {
+        "title": "Give your skin the complete care",
+        "products_metafield_key": "",
+        "field_product": "image",
+        "field_description": "description",
+        "coming_soon_products": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "Does this sunscreen leave a white cast?",
+            "answer": "Our Physical Sunscreen Gel is formulated with 25% Zinc Oxide and Index Match Technology to minimise visible white patches, offering a more seamless sunscreen application."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "Is this sunscreen suitable for daily use?",
+            "answer": "Yes. Its SPF 50+ PA+++ formulation provides broad-spectrum UVA and UVB protection, making it suitable for everyday sun protection."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "How often should I reapply it?",
+            "answer": "For effective sun protection, reapply every two hours when outdoors. Reapply after swimming, sweating or towel drying."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it water resistant?",
+            "answer": "Yes. The formula is designed to be very water resistant. However, reapplication is still necessary, especially after swimming or excessive sweating."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I apply makeup over this sunscreen?",
+            "answer": "The formula is non-comedogenic, which means it is designed not to clog pores. If you have acne-prone or sensitive skin, check with your dermatologist to ensure it suits your individual skin needs."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Common Inquiries",
+        "metafield_key": "",
+        "field_question": "question",
+        "field_answer": "answer"
+      }
+    },
+    "trust": {
+      "type": "trust-badges",
+      "blocks": {
+        "tb1": {
+          "type": "badge",
+          "settings": {
+            "icon": "local_shipping",
+            "title": "FREE SHIPPING",
+            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+          }
+        },
+        "tb2": {
+          "type": "badge",
+          "settings": {
+            "icon": "spa",
+            "title": "GENTLE FORMULATION",
+            "description": "Made for dark, dull,\nand uneven-looking lips"
+          }
+        },
+        "tb3": {
+          "type": "badge",
+          "settings": {
+            "icon": "lock",
+            "title": "SECURE CHECKOUT",
+            "description": "100% secure payments\nwith COD & UPI options"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3"
+      ],
+      "custom_css": [
+        ".trust-badges-section .grid-4 {grid-template-columns: repeat(3, 1fr);}"
+      ],
+      "settings": {
+        "show_payments": false,
+        "payments_heading": "Accepted Payment Methods",
+        "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
+      }
+    },
+    "178351271991294ecc": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    },
+    "17835875473b0e0ca5": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ingredients",
+    "science",
+    "ritual",
+    "clinical",
+    "clinical_results_without_img_UJRyPf",
+    "recommended",
+    "reels",
+    "1782987714e446332e",
+    "reviews",
+    "complete",
+    "faq",
+    "trust",
+    "178351271991294ecc",
+    "17835875473b0e0ca5"
+  ]
+}

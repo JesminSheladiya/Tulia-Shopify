@@ -1,36 +1,55 @@
+{%- assign has_product_testimonials = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.product == product.handle -%}
+    {%- assign has_product_testimonials = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if has_product_testimonials -%}
 <section class="bg-surface reveal extracted-style-67">
   <div class="container">
     <div class="extracted-style-68">
       <h2 class="section-title text-primary extracted-style-69">{{ section.settings.title | escape }}</h2>
     </div>
-    <div class="grid grid-3">
-      {%- for block in section.blocks -%}
-        <div class="minimal-testimonial extracted-style-70" {{ block.shopify_attributes }}>
-          <div>
-            <span class="material-symbols-outlined extracted-style-71">format_quote</span>
-            <p class="extracted-style-72">{{ block.settings.quote | escape }}</p>
-          </div>
-          <div class="extracted-style-73">
-            {%- if block.settings.customer_image != blank -%}
-              <img src="{{ block.settings.customer_image | image_url: width: 120 }}" width="120" height="120" alt="{{ block.settings.name | escape }}" class="extracted-style-74">
-            {%- else -%}
-              <img src="{{ 'testimonial_woman.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.name | escape }}" class="extracted-style-74">
-            {%- endif -%}
-            <div class="extracted-style-75">
-              <h4 class="extracted-style-76">{{ block.settings.name | escape }}</h4>
-              <p class="extracted-style-77">{{ block.settings.product | escape }}</p>
+    <div class="testimonial-carousel" id="testimonial-carousel">
+      <div class="carousel-track" id="testimonial-track">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product == product.handle -%}
+          <div class="minimal-testimonial extracted-style-70" style="flex: 0 0 360px; scroll-snap-align: start; height: auto;" {{ block.shopify_attributes }}>
+            <div>
+              {%- assign star_mod = forloop.index | modulo: 3 -%}
+              {%- if star_mod == 0 -%}
+                <p class="extracted-style-71">★★★★☆</p>
+              {%- else -%}
+                <p class="extracted-style-71">★★★★★</p>
+              {%- endif -%}
+              <p class="extracted-style-72">{{ block.settings.quote | escape }}</p>
             </div>
-            {%- if block.settings.product_image != blank -%}
-              <img src="{{ block.settings.product_image | image_url: width: 160 }}" width="160" height="160" alt="{{ block.settings.product | escape }}" class="extracted-style-78">
-            {%- else -%}
-              <img src="{{ 'moss_jar_main.png' | asset_url }}" width="1024" height="1024" alt="{{ block.settings.product | escape }}" class="extracted-style-78">
-            {%- endif -%}
+            <div class="extracted-style-73">
+              {%- assign name_words = block.settings.name | split: ' ' -%}
+              {%- assign initial1 = name_words[0] | slice: 0, 1 -%}
+              {%- assign initial2 = '' -%}
+              {%- if name_words[1] != blank -%}{%- assign initial2 = name_words[1] | slice: 0, 1 -%}{%- endif -%}
+              {%- assign initials = initial1 | append: initial2 | upcase -%}
+              <div class="extracted-style-74" style="display:flex; align-items:center; justify-content:center; background:var(--surface-alt); font-weight:600; color:var(--primary);">
+                {{ initials }}
+              </div>
+              <div class="extracted-style-75">
+                <h4 class="extracted-style-76">{{ block.settings.name | escape }}</h4>
+              </div>
+            </div>
           </div>
-        </div>
-      {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; margin-top:1.5rem;">
+      <button type="button" id="testi-prev" class="btn btn-primary-light" aria-label="Previous testimonial" style="font-size:1.5rem; line-height:1; padding:0.2rem 1rem;">‹</button>
+      <span id="testi-counter" class="text-muted"></span>
+      <button type="button" id="testi-next" class="btn btn-primary-light" aria-label="Next testimonial" style="font-size:1.5rem; line-height:1; padding:0.2rem 1rem;">›</button>
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {

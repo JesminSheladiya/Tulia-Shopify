@@ -297,7 +297,7 @@
     assign is_cs_product = false
     if request.page_type == 'product' and product != blank
       assign cs_p_down = product.title | strip | downcase
-      assign cs_names = 'hair care serum,buttermax cream,the physical sunscreen gel,' | split: ','
+      assign cs_names = 'hair care serum,' | split: ','
       for cs_item in cs_names
         assign cs_clean = cs_item | strip
         if cs_clean != blank
@@ -392,14 +392,14 @@
   {% comment %} -------Custom Script For '&'------- {% endcomment %}
 <script>
   function fixCartDrawerAmpersand() {
-    const cartTitles = document.querySelectorAll('.cart-drawer__item-title, .ritual-name, .product-single__title, .product-title, h1, h2, h3');
+    const cartTitles = document.querySelectorAll('.cart-drawer__item-title, .ritual-name, .product-single__title, .product-title, h1, h2, h3, h4');
     
     cartTitles.forEach(function(title) {
       if (title.querySelector('.fixed-amp')) return;
       if (title.innerHTML.includes('&amp;') || title.innerHTML.includes('&amp;amp;')) {
-        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-family: var(--font-sans) !important; font-weight: 600 !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&amp;/g, '<span class="fixed-amp" style="font-weight: 600 !important; color: var(--primary) !important; display: inline-block !important;">&</span>');
       } else if (title.innerText.includes('&') || title.textContent.includes('&')) {
-        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-family: var(--font-sans) !important; font-weight: 600 !important; display: inline-block !important;">&</span>');
+        title.innerHTML = title.innerHTML.replace(/&/g, '<span class="fixed-amp" style="font-weight: 600 !important; color: var(--primary) !important; display: inline-block !important;">&</span>');
       }
     });
   }

@@ -389,6 +389,15 @@ ul {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Ampersand color fix: match brand primary so it stays visible on all backgrounds.
+   Uses sans-serif font because the serif (Musky) font lacks an & glyph. */
+.fixed-amp {
+    color: var(--primary) !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+}
+
 .btn-outline-primary {
     border-color: var(--primary);
     color: var(--primary);
@@ -4177,23 +4186,24 @@ ul {
 
 .extracted-style-70 {
     border: 1px solid var(--outline-variant);
-    padding: 3rem 2rem;
+    padding: 1.5rem;
     border-radius: var(--radius-md);
     display: flex;
+    gap: 10px;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .extracted-style-71 {
     color: var(--primary);
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
 .extracted-style-72 {
     font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .extracted-style-73 {

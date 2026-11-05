@@ -39,11 +39,19 @@
         </div>
       </div>
       <div class="extracted-style-193">
-        {%- if product.handle == 'lip-balm' and section.settings.video_url != blank -%}
-          {%- if section.settings.video_url contains '://' -%}
-            {%- assign ritual_video_src = section.settings.video_url -%}
+        {%- assign ritual_video_file = section.settings.video_url -%}
+        {%- if ritual_video_file == blank -%}
+          {%- if product.handle == 'lip-balm' -%}
+            {%- assign ritual_video_file = 'lip-balm-video.mp4' -%}
+          {%- elsif product.handle == 'lipz-lightening-cream' -%}
+            {%- assign ritual_video_file = 'lipz-lightening-cream.mp4' -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if ritual_video_file != blank -%}
+          {%- if ritual_video_file contains '://' -%}
+            {%- assign ritual_video_src = ritual_video_file -%}
           {%- else -%}
-            {%- assign ritual_video_src = section.settings.video_url | asset_url -%}
+            {%- assign ritual_video_src = ritual_video_file | asset_url -%}
           {%- endif -%}
           <video src="{{ ritual_video_src }}" autoplay muted loop playsinline class="extracted-style-64" style="width:100%; height:auto; object-fit:cover;"></video>
         {%- elsif section.settings.image != blank -%}

@@ -25,6 +25,12 @@
             {% elsif product.handle == 'daily-care-shampoo' or product.handle == 'all-in-one-shampoo' or t_down contains 'daily care shampoo' or t_down contains 'all-in-one shampoo' %}
               {% assign is_hardcoded_ingredients = true %}
               {% assign ingredients_string = "Aqua, Disodium Laureth Sulfosuccinate, Cocamidopropyl Betaine, Sodium Lauroyl Sarcosinate, Acrylates Copolymer, Sodium Cocoyl Isethionate, Cocamide DEA, Glycerin, Dimethicone (and) Amodimethicone (and) Laureth-23 (and) Laureth-4, Polyquaternium-10 (and) Laureth-4, Panthenyl Dibehenate/Oleate, Glycol Stearate, Phenoxyethanol (and) Ethylhexylglycerin, Dimethiconol (and) TEA-Dodecylbenzenesulfonate, Lactic Acid, Carbocysteine (and) Polyquaternium-10 (and) Aqua/Water (and) Hydrolyzed Wheat Protein (and) Methicone (and) Methylisothiazolinone (and) Methylchloroisothiazolinone (and) Methylisothiazolinone, Guar Hydroxypropyltrimonium Chloride, Disodium EDTA, Perfume." %}
+            {% elsif product.handle == 'physical-sunscreen-gel' or t_down contains 'physical sunscreen gel' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Zinc Oxide 50% Dispersion, Caprylyl Methicone, PEG-12 Dimethicone/PEG-20 Crosspolymer, Vitamin E Acetate, Cyclopentasiloxane, Dimethicone Crosspolymer, Perfume." %}
+            {% elsif product.handle == 'buttermax-cream' or t_down contains 'buttermax cream' or t_down contains 'body butter cream' %}
+              {% assign is_hardcoded_ingredients = true %}
+              {% assign ingredients_string = "Aqua, Helianthus Annuus (Sunflower) Seed Oil, Isopropyl Myristate, Dimethicone, Cetearyl Alcohol, Butyrospermum Parkii (Shea) Butter, Microcrystalline Wax, Beeswax, Glycerine, Emulsifying Wax, Glyceryl Monostearate, Glyceryl Stearate, Cetearyl Alcohol, Sodium Lauroyl Lactylate, Decyl Glucoside, Caprylic/Capric Triglyceride, Phytosterols, Cetyl Alcohol, Cocoa Butter, Phenoxyethanol, Ethylhexylglycerin, Astrocaryum Murumuru Seed Butter, Butylated Hydroxy Toluene, Olea Europaea (Olive) Fruit Oil, Disodium EDTA, Borax Decahydrate, Perfume." %}
             {% endif %}
 
             {% if is_hardcoded_ingredients %}

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -219,7 +210,8 @@
       "settings": {
         "title": "Your Nighttime Ritual",
         "image": "{{ product.metafields.custom.product_retuals.value }}",
-        "video_url": "lip-balm-video.mp4",        "metafield_key": "your_daily_ritual",
+        "video_url": "",
+        "metafield_key": "your_daily_ritual",
         "field_title": "title",
         "field_text": "description"
       }
@@ -346,31 +338,31 @@
         "rl1": {
           "type": "reel",
           "settings": {
-            "caption": "“My honest lip care routine”"
+            "caption": "\u201cMy honest lip care routine\u201d"
           }
         },
         "rl2": {
           "type": "reel",
           "settings": {
-            "caption": "“Day and night with Tulia Cosmetics”"
+            "caption": "\u201cDay and night with Tulia Cosmetics\u201d"
           }
         },
         "rl3": {
           "type": "reel",
           "settings": {
-            "caption": "“Care for uneven-looking lips”"
+            "caption": "\u201cCare for uneven-looking lips\u201d"
           }
         },
         "rl4": {
           "type": "reel",
           "settings": {
-            "caption": "“Lip care mistakes to avoid”"
+            "caption": "\u201cLip care mistakes to avoid\u201d"
           }
         },
         "rl5": {
           "type": "reel",
           "settings": {
-            "caption": "“My nightly routine”"
+            "caption": "\u201cMy nightly routine\u201d"
           }
         }
       },
@@ -385,6 +377,862 @@
       "settings": {
         "title": "Real Lip Care, Real Routine",
         "subtitle": "Watch how Tulia Cosmetics fits easily into a daily skincare routine."
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "has to be one of the best lip balm in my vanity helps moisturize my lips and can be used on lipstick as well for a glowy touch",
+            "name": "Juili Mathew",
+            "product": "lip-balm"
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It really helped with reducuing my lip pigmentation i used to so insecure about my dual lip tone now it's a consistent pink tone throughout all thanks to the night lip cream",
+            "name": "Aanya Sharma",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the face wash has tiny beads in them helping with exfoliation and makes my face look brighter with each wash best one in the market",
+            "name": "Rhea Mehta",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "after using this conditioner on my hair it feels so shiny and soft and such a nice fresh feel on my hair",
+            "name": "Abin Thomas",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "sucha premium balm and looks really aesthetic",
+            "name": "Ananya Menon",
+            "product": "lip-balm"
+          }
+        },
+        "r6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "been using it for 2 weeks now and i can definitely notice reduction in my lip pigmentation",
+            "name": "Kavya Kapoor",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really love what tulia cosmetics is doinbg with their products have used both the face wash and lip balm and i absolutely love it",
+            "name": "Nithya Krishnan",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair feels super soft after using tulia's all in one conditioner and shampoo",
+            "name": "Arya Mehta",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "in love with the packaging also the lip balm is so moisturizing on my lips",
+            "name": "Rakhi Sharma",
+            "product": "lip-balm"
+          }
+        },
+        "r10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "have recommended this to all my friends and they'll also agree when i say its the best out in the market for lips",
+            "name": "Keerthana Reddy",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the ingredients in the face wash is thoughfully created and i have seen noticable reduction on my face tan",
+            "name": "Harini Subramanian",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair feels so soft after using this",
+            "name": "Arun Kumar",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this is permanently in my handbag now",
+            "name": "Kavitha Rajan",
+            "product": "lip-balm"
+          }
+        },
+        "r14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really loved how soft my lips feel after using this regularly",
+            "name": "Karan Malhotra",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my skin feels really clean and fresh after using this",
+            "name": "Aditya Shah",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r16": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really liked how easily it detangles my hair I usually struggle with my lengths after shampooing but this makes them much easier to manage",
+            "name": "Neha Menon",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r17": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really like how moisturising it feels without being sticky or heavy",
+            "name": "Meera Joshi",
+            "product": "lip-balm"
+          }
+        },
+        "r18": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have been using this every night and honestly the difference in the appearance of my lips is something I can notice. They look much more even now.",
+            "name": "Vivek Nair",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r19": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the texture is creamy and it lathers really nicely my face feels clean afterwards without that uncomfortable tight feeling",
+            "name": "Divya Narayanan",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r20": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair feels smoother, softer and looks much more polished after using this",
+            "name": "Rohan Kapoor",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r21": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the SPF is honestly what made me pick this up and I ended up loving how comfortable it feels on my lips too",
+            "name": "Joseph Varghese",
+            "product": "lip-balm"
+          }
+        },
+        "r22": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "started using this mainly for pigmentation and i'm really happy with how it has worked so far",
+            "name": "Priyanka Nair",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r23": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I\u2019ve been using this consistently and my skin looks much fresher and more even than before",
+            "name": "Kabir Anand",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r24": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I\u2019ve been using this after every wash and the difference in how manageable my hair feels is really noticeable",
+            "name": "Joel Mathew",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r25": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I keep applying this throughout the day because my lips feel so much softer after using it",
+            "name": "Abin Thomas",
+            "product": "lip-balm"
+          }
+        },
+        "r26": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the texture is so easy to use and it fits perfectly into my night routine",
+            "name": "Ishita Malhotra",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r27": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I bought this because of the pigmentation concern I had and after using it regularly I started noticing that my skin looked brighter",
+            "name": "Lakshmi Iyer",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r28": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the best part for me is that my hair doesn\u2019t feel weighed down after conditioning it feels soft but still has movement",
+            "name": "Dev Patel",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r29": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "such an easy everyday product it's moisturising, comfortable",
+            "name": "Ishaan Gupta",
+            "product": "lip-balm"
+          }
+        },
+        "r30": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "after a few weeks my lips started looking much more even and less dull definitely going to continue using it",
+            "name": "Nikhil Menon",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r31": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the little exfoliating beads make the whole face wash feel really nice my skin feels fresh and smooth after every wash",
+            "name": "Anika Verma",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r32": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair usually gets really dry and frizzy, especially after being outside for a long time this has made my hair feel much softer and easier to manage",
+            "name": "Sneha Pillai",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r33": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "love that it has SPF because I never really thought about protecting my lips from the sun before",
+            "name": "Aparna Menon",
+            "product": "lip-balm"
+          }
+        },
+        "r34": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I wasn\u2019t expecting to enjoy a lip treatment this much but this has become a regular part of my skincare",
+            "name": "Sana Khan",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r35": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my face feels properly clean after using this but not stripped",
+            "name": "Janani Balaji",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r36": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair feels noticeably softer after using this",
+            "name": "Shalini Kumar",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r37": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this has officially become my handbag essential",
+            "name": "Tanya Shah",
+            "product": "lip-balm"
+          }
+        },
+        "r38": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really happy with how my lips look now. they feel softer and the pigmentation looks much better",
+            "name": "Pavithra Suresh",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r39": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really happy with the way my skin has been looking lately it feels smoother and has a much fresher appearance",
+            "name": "Nisha Patel",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r40": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really liked how easy it made my hair to comb through after washing",
+            "name": "Priya Agarwal",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r41": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really smooth on the lips and keeps them moisturised for a good amount of time",
+            "name": "Aishwarya Menon",
+            "product": "lip-balm"
+          }
+        },
+        "r42": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "been using it consistently at night and I can actually see a difference in the overall appearance of my lips",
+            "name": "Swathi Mohan",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r43": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "it has become my regular face wash now I like how clean my skin feels without that dry feeling afterwards",
+            "name": "Vaishnavi Rao",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r44": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this has made such a difference to the way my hair feels after shampooing much softer and easier to handle",
+            "name": "Sanjana Shetty",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r45": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I bought it for the SPF and ended up loving the texture too",
+            "name": "Malavika Nambiar",
+            "product": "lip-balm"
+          }
+        },
+        "r46": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my lips look much more even now and I honestly did not expect to notice a difference this soon",
+            "name": "Diya Sethi",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r47": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "after using it for a while I noticed my complexion looked less dull that was a nice surprise",
+            "name": "Sreya Krishnan",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r48": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my ends usually feel dry but they feel much smoother after using this conditioner",
+            "name": "Simran Kaur",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r49": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "always carry this with me now. especially when I\u2019m going out during the day",
+            "name": "Kiara Khanna",
+            "product": "lip-balm"
+          }
+        },
+        "r50": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really like how simple this is to use at night it has become one of those products I don\u2019t skip anymore",
+            "name": "Amritha Nair",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r51": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have tried quite a few face washes but this one has a really nice balance of cleansing and comfort",
+            "name": "Pooja Rao",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r52": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "love how soft my hair feels without looking flat",
+            "name": "Meghana Reddy",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r53": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my lips feel soft without that thick layer that some lip balms leave behind",
+            "name": "Reshma Thomas",
+            "product": "lip-balm"
+          }
+        },
+        "r54": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the pigmentation around my lips has always bothered me and this has made a visible difference",
+            "name": "Ira Desai",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r55": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my skin looks clearer and feels softer after every wash very happy with this one",
+            "name": "Angela Joseph",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r56": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have been using this regularly and my hair feels much more manageable throughout the day",
+            "name": "Maria D'Souza",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r57": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "honestly one of the easiest products to use every day. swipe it on and you\u2019re done",
+            "name": "Mahi Gupta",
+            "product": "lip-balm"
+          }
+        },
+        "r58": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "very happy with how soft my lips feel after using this",
+            "name": "Ann Mathew",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r59": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really like how easily it lathers and how fresh my face feels once I rinse it off",
+            "name": "Sakshi Bhatia",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r60": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the conditioner spreads nicely through the lengths and rinses out easily my hair feels soft afterwards",
+            "name": "Anushka Jain",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r61": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "love that it has SPF because lip care with sun protection is something I had completely overlooked before",
+            "name": "Alina Fernandes",
+            "product": "lip-balm"
+          }
+        },
+        "r62": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I started using it because my lips looked quite dull and uneven after using it consistently they look healthier and more even",
+            "name": "Sharon George",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r63": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "bought this because my skin was looking dull and uneven it has definitely made my skin look brighter",
+            "name": "Joanna D'Costa",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r64": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair gets quite frizzy after washing and this has helped it look much more controlled",
+            "name": "Riya Varghese",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r65": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I keep this beside my bed and in my handbag. that\u2019s probably enough to explain how much I use it",
+            "name": "Catherine Paul",
+            "product": "lip-balm"
+          }
+        },
+        "r66": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the best thing is that it does not feel like an extra step in my routine I apply it before bed and forget about it",
+            "name": "Shreya Nair",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r67": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the little exfoliating beads give it a nice feel while washing my skin feels really smooth afterwards",
+            "name": "Rebecca John",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r68": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really happy with the finish my hair feels conditioned but still light",
+            "name": "Avni Kulkarni",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r69": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the texture is really comfortable and it gives my lips that nice moisturised look",
+            "name": "Tanvi Iyer",
+            "product": "lip-balm"
+          }
+        },
+        "r70": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "have actually started seeing a difference in the darker areas of my lips",
+            "name": "Theresa Antony",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r71": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have been using this regularly and my skin looks much more refreshed now",
+            "name": "Neha Arora",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r72": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this has become my favourite part of my hair wash routine the softness after rinsing is so good",
+            "name": "Christina Xavier",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r73": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "perfect for quick touch ups during the day my lips don\u2019t feel dry after using it",
+            "name": "Michelle Rosario",
+            "product": "lip-balm"
+          }
+        },
+        "r74": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my lips look brighter and feel softer really happy I decided to try this",
+            "name": "Myra Chawla",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r75": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this has been really nice for my everyday routine my skin feels clean without feeling dry",
+            "name": "Esther Samuel",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r76": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I noticed the biggest difference around my ends they feel much smoother and less rough now",
+            "name": "Jasmine Pereira",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r77": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I usually don\u2019t finish lip balms but this one is already becoming a regular in my routine",
+            "name": "Aditi Menon",
+            "product": "lip-balm"
+          }
+        },
+        "r78": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was mainly looking for something that could help with lip pigmentation and this has worked really well for me",
+            "name": "Leona Thomas",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r79": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my face feels soft after washing and I like that there is no uncomfortable tightness",
+            "name": "Ritika Bose",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r80": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that I can use it after every wash and my hair doesn\u2019t feel weighed down",
+            "name": "Alicia Fernandez",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r81": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really like how lightweight it feels. I can apply it whenever my lips need some moisture",
+            "name": "Grace Mathew",
+            "product": "lip-balm"
+          }
+        },
+        "r82": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "using this every night has become a habit now my lips definitely look less dull than they did before",
+            "name": "Melanie D'Silva",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r83": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the foamy lather was what I liked first but the way my skin feels afterwards is even better",
+            "name": "Fathima Rahman",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r84": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the softness lasts even after my hair dries definitely something I wanted from a conditioner",
+            "name": "Nandini Roy",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r85": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this is now the first thing I reach for before heading out",
+            "name": "Nimisha Menon",
+            "product": "lip-balm"
+          }
+        },
+        "r86": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "love how comfortable this feels on the lips no heavy feeling and the results have been really nice",
+            "name": "Sia Mukherjee",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r87": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really enjoying this as my morning face wash it leaves my skin feeling fresh and smooth",
+            "name": "Arjun Mehta",
+            "product": "skin-lightening-brightening-facewash"
+          }
+        },
+        "r88": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my hair normally needs a lot of effort after washing but this has made it much easier to manage it feels smoother and looks healthier too",
+            "name": "Devika Pillai",
+            "product": "all-in-one-conditioner"
+          }
+        },
+        "r89": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "the SPF is a really nice addition to an everyday lip balm and the formula feels comfortable too",
+            "name": "Isha Reddy",
+            "product": "lip-balm"
+          }
+        },
+        "r90": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "after using it regularly I noticed that my lip colour looked much more even that was exactly what I wanted",
+            "name": "Anjali Kurup",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r91": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "simple product but something I find myself using multiple times a day",
+            "name": "Gopika Krishnan",
+            "product": "lip-balm"
+          }
+        },
+        "r92": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "this is one of those products where consistency actually made a difference for me",
+            "name": "Roshni Dutta",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r93": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "my lips used to look quite pigmented around the edges and that has improved a lot",
+            "name": "Mariya Sebastian",
+            "product": "lipz-lightening-cream"
+          }
+        },
+        "r94": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "really pleased with the overall change my lips feel softer and the pigmentation looks much less noticeable",
+            "name": "Merin Joseph",
+            "product": "lipz-lightening-cream"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15",
+        "r16",
+        "r17",
+        "r18",
+        "r19",
+        "r20",
+        "r21",
+        "r22",
+        "r23",
+        "r24",
+        "r25",
+        "r26",
+        "r27",
+        "r28",
+        "r29",
+        "r30",
+        "r31",
+        "r32",
+        "r33",
+        "r34",
+        "r35",
+        "r36",
+        "r37",
+        "r38",
+        "r39",
+        "r40",
+        "r41",
+        "r42",
+        "r43",
+        "r44",
+        "r45",
+        "r46",
+        "r47",
+        "r48",
+        "r49",
+        "r50",
+        "r51",
+        "r52",
+        "r53",
+        "r54",
+        "r55",
+        "r56",
+        "r57",
+        "r58",
+        "r59",
+        "r60",
+        "r61",
+        "r62",
+        "r63",
+        "r64",
+        "r65",
+        "r66",
+        "r67",
+        "r68",
+        "r69",
+        "r70",
+        "r71",
+        "r72",
+        "r73",
+        "r74",
+        "r75",
+        "r76",
+        "r77",
+        "r78",
+        "r79",
+        "r80",
+        "r81",
+        "r82",
+        "r83",
+        "r84",
+        "r85",
+        "r86",
+        "r87",
+        "r88",
+        "r89",
+        "r90",
+        "r91",
+        "r92",
+        "r93",
+        "r94"
+      ],
+      "settings": {
+        "title": "Unfiltered Love"
       }
     },
     "1782987714e446332e": {
@@ -586,7 +1434,7 @@
             "badge": "PREP",
             "title": "Tulia Skin Lightening & Brightening Facewash",
             "size": "70gm",
-            "price": "₹850",
+            "price": "\u20b9850",
             "description": "A rich, creamy exfoliating cleanser formulated with vitamin C and micro-globules to deeply wash away daily impurities while actively preparing your skin tone for target treatments"
           }
         },
@@ -597,7 +1445,7 @@
             "badge": "HYDRATE",
             "title": "Tulia Lip Balm SPF 15",
             "size": "9gm",
-            "price": "₹330",
+            "price": "\u20b9330",
             "description": "A daily pocket essential packed with kokum and shea butters to lock in long-lasting moisture and guard your lips against the elements all day long"
           }
         },
@@ -608,7 +1456,7 @@
             "badge": "PROTECT",
             "title": "Tulia Physical Sunscreen Gel",
             "size": "50gm",
-            "price": "₹1750",
+            "price": "\u20b91750",
             "description": "An ultra-transparent, non-comedogenic zinc oxide shield that leaves zero white patches while providing absolute broad-spectrum protection against UV damage"
           }
         }
@@ -626,7 +1474,7 @@
         "products_metafield_key": "other_products",
         "field_product": "image",
         "field_description": "description",
-        "coming_soon_products": "Hair Care Serum\nButterMax Cream\nThe Physical Sunscreen Gel"
+        "coming_soon_products": "Hair Care Serum"
       }
     },
     "faq": {
@@ -690,7 +1538,7 @@
           "settings": {
             "icon": "local_shipping",
             "title": "FREE SHIPPING",
-            "description": "On all orders over ₹999, dispatched\nin 24-48 hrs"
+            "description": "On all orders over \u20b9999, dispatched\nin 24-48 hrs"
           }
         },
         "tb2": {
@@ -758,6 +1606,7 @@
     "reviews",
     "complete",
     "faq",
+    "testimonials",
     "trust",
     "178351271991294ecc",
     "17835875473b0e0ca5"
