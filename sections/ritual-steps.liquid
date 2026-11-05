@@ -42,12 +42,84 @@
         {%- assign ritual_video_file = section.settings.video_url -%}
         {%- if ritual_video_file == blank -%}
           {%- if product.handle == 'lip-balm' -%}
-            {%- assign ritual_video_file = 'lip-balm-video.mp4' -%}
+            {%- assign ritual_video_file = 'lip-balm-video- men.mp4' -%}
           {%- elsif product.handle == 'lipz-lightening-cream' -%}
             {%- assign ritual_video_file = 'lipz-lightening-cream.mp4' -%}
+          {%- elsif product.handle == 'all-in-one-conditioner' -%}
+            {%- assign ritual_video_file = 'conditioner-men.mp4' -%}
+          {%- elsif product.handle == 'skin-lightening-brightening-facewash' -%}
+            {%- assign ritual_video_file = 'facewash-men.mp4' -%}
+          {%- elsif product.handle == 'all-in-one-shampoo' -%}
+            {%- assign ritual_video_file = 'shampoo- women.mp4' -%}
           {%- endif -%}
         {%- endif -%}
-        {%- if ritual_video_file != blank -%}
+
+        {%- if product.handle == 'lip-balm' or product.handle == 'lipz-lightening-cream' or product.handle == 'all-in-one-conditioner' or product.handle == 'skin-lightening-brightening-facewash' -%}
+          {%- if ritual_video_file != blank -%}
+            {%- if product.handle == 'lip-balm' -%}
+              {%- assign men_video_src = 'lip-balm-video- women.mp4' | asset_url -%}
+              {%- assign women_video_src = 'lip-balm-video- men.mp4' | asset_url -%}
+            {%- elsif product.handle == 'lipz-lightening-cream' -%}
+              {%- assign men_video_src = 'lipz-lightening-cream-women.mp4' | asset_url -%}
+              {%- assign women_video_src = 'lipz-lightening-cream-men.mp4' | asset_url -%}
+            {%- elsif product.handle == 'all-in-one-conditioner' -%}
+              {%- assign men_video_src = 'conditioner-men.mp4' | asset_url -%}
+              {%- assign women_video_src = 'conditioner-women.mp4' | asset_url -%}
+            {%- elsif product.handle == 'skin-lightening-brightening-facewash' -%}
+              {%- assign men_video_src = 'facewash-women.mp4' | asset_url -%}
+              {%- assign women_video_src = 'facewash-men.mp4' | asset_url -%}
+            {%- endif -%}
+            <div class="ritual-video-carousel" id="ritual-video-carousel-{{ section.id }}">
+              <button type="button" class="ritual-nav ritual-prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+              <div class="ritual-track drag-scroll" data-ritual-track>
+                <video src="{{ men_video_src }}" muted playsinline class="ritual-slide-video"></video>
+                <video src="{{ women_video_src }}" muted playsinline class="ritual-slide-video"></video>
+              </div>
+              <button type="button" class="ritual-nav ritual-next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+            <script>
+              (function () {
+                var root = document.getElementById('ritual-video-carousel-{{ section.id }}');
+                if (!root) return;
+                var track = root.querySelector('[data-ritual-track]');
+                var videos = Array.from(track.querySelectorAll('video'));
+                var currentIndex = 0;
+
+                function playSlide(index) {
+                  videos.forEach(function (v, i) {
+                    v.pause();
+                    v.currentTime = 0;
+                    if (i === index) {
+                      v.play().catch(function () {});
+                    }
+                  });
+                }
+
+                // Start with first slide
+                playSlide(currentIndex);
+
+                // Auto slide when current video ends
+                videos.forEach(function (v) {
+                  v.addEventListener('ended', goNext);
+                });
+
+                function goNext() {
+                  currentIndex = (currentIndex + 1) % videos.length;
+                  track.scrollTo({ left: currentIndex * track.clientWidth, behavior: 'smooth' });
+                  playSlide(currentIndex);
+                }
+                function goPrev() {
+                  currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+                  track.scrollTo({ left: currentIndex * track.clientWidth, behavior: 'smooth' });
+                  playSlide(currentIndex);
+                }
+
+                root.querySelector('.ritual-prev').addEventListener('click', goPrev);
+                root.querySelector('.ritual-next').addEventListener('click', goNext);
+              })();
+            </script>
+          {%- endif -%}
+        {%- elsif ritual_video_file != blank -%}
           {%- if ritual_video_file contains '://' -%}
             {%- assign ritual_video_src = ritual_video_file -%}
           {%- else -%}
