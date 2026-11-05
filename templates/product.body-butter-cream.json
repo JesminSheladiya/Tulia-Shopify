@@ -481,11 +481,24 @@
             "price": "",
             "description": "Night-time repair for pigmented lips."
           }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_handle": "skin-lightening-brightening-facewash",
+            "badge": "PREP",
+            "title": "Tulia Skin Lightening & Brightening Facewash",
+            "size": "",
+            "price": "",
+            "description": "Active-powered cleansing to prep skin before body butter."
+          }
         }
       },
       "block_order": [
         "p1",
-        "p2"
+        "p2",
+        "p3"
       ],
       "custom_css": [
         ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"

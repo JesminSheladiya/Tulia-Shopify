@@ -581,38 +581,10 @@
             "price": "₹1,100",
             "description": "Follow with Tulia's All-in-one Conditioner to help soften and smooth the hair."
           }
-        },
-        "p2": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "product_handle": "hair-care-serum",
-            "badge": "HYDRATE",
-            "title": "Tulia Hair Care Serum",
-            "size": "",
-            "price": "",
-            "description": "",
-            "coming_soon": true
-          }
-        },
-        "p3": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "product_handle": "buttermax-cream",
-            "badge": "",
-            "title": "Tulia ButterMax Cream",
-            "size": "",
-            "price": "",
-            "description": "",
-            "coming_soon": true
-          }
         }
       },
       "block_order": [
-        "p1",
-        "p2",
-        "p3"
+        "p1"
       ],
       "custom_css": [
         ".extracted-style-223 {padding-top: 3rem; padding-bottom: 3rem;}"
@@ -622,7 +594,7 @@
         "products_metafield_key": "",
         "field_product": "image",
         "field_description": "description",
-        "coming_soon_products": "Hair Care Serum"
+        "coming_soon_products": ""
       }
     },
     "faq": {

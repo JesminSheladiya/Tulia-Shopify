@@ -28,7 +28,7 @@
             {% elsif product.handle == 'physical-sunscreen-gel' or t_down contains 'physical sunscreen gel' %}
               {% assign is_hardcoded_ingredients = true %}
               {% assign ingredients_string = "Zinc Oxide 50% Dispersion, Caprylyl Methicone, PEG-12 Dimethicone/PEG-20 Crosspolymer, Vitamin E Acetate, Cyclopentasiloxane, Dimethicone Crosspolymer, Perfume." %}
-            {% elsif product.handle == 'buttermax-cream' or t_down contains 'buttermax cream' or t_down contains 'body butter cream' %}
+            {% elsif product.handle == 'buttermax-cream' or product.handle == 'body-butter-cream' or t_down contains 'buttermax cream' or t_down contains 'body butter cream' or t_down contains 'body-butter-cream' %}
               {% assign is_hardcoded_ingredients = true %}
               {% assign ingredients_string = "Aqua, Helianthus Annuus (Sunflower) Seed Oil, Isopropyl Myristate, Dimethicone, Cetearyl Alcohol, Butyrospermum Parkii (Shea) Butter, Microcrystalline Wax, Beeswax, Glycerine, Emulsifying Wax, Glyceryl Monostearate, Glyceryl Stearate, Cetearyl Alcohol, Sodium Lauroyl Lactylate, Decyl Glucoside, Caprylic/Capric Triglyceride, Phytosterols, Cetyl Alcohol, Cocoa Butter, Phenoxyethanol, Ethylhexylglycerin, Astrocaryum Murumuru Seed Butter, Butylated Hydroxy Toluene, Olea Europaea (Olive) Fruit Oil, Disodium EDTA, Borax Decahydrate, Perfume." %}
             {% endif %}
