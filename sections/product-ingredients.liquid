@@ -52,7 +52,17 @@
           <span class="material-symbols-outlined">expand_more</span>
         </summary>
         <div class="extracted-style-166">
-          <div class="grid grid-3 gap-large extracted-style-124">
+          {%- assign benefit_count = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'benefit' -%}
+              {%- assign benefit_count = benefit_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign benefit_cols = 'grid-3' -%}
+          {%- if benefit_count == 2 -%}
+            {%- assign benefit_cols = 'grid-2' -%}
+          {%- endif -%}
+          <div class="grid {{ benefit_cols }} gap-large extracted-style-124">
             {%- for block in section.blocks -%}
               {%- if block.type == 'benefit' -%}
                 <div {{ block.shopify_attributes }}>

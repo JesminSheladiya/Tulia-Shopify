@@ -88,20 +88,11 @@
             "title": "No White Patches",
             "text": "Its non-opaque formulation is designed to blend into the skin without leaving visible white patches."
           }
-        },
-        "b3": {
-          "type": "benefit",
-          "settings": {
-            "icon": "healing",
-            "title": "Those Looking for Physical Sun Protection",
-            "text": "A very water-resistant formula that helps maintain sun protection during everyday activities and exposure to water. Reapplication is still important."
-          }
         }
       },
       "block_order": [
         "b1",
-        "b2",
-        "b3"
+        "b2"
       ],
       "settings": {
         "ingredients_label": "Ingredients",
@@ -286,12 +277,20 @@
             "title": "Those Seeking a Non-Whitening Finish",
             "subtitle": "For those who prefer a sunscreen designed to avoid visible white patches."
           }
+        },
+        "rc4": {
+          "type": "card",
+          "settings": {
+            "title": "Those Looking for Physical Sun Protection",
+            "subtitle": "A Zinc Oxide-based sunscreen for broad-spectrum UV protection."
+          }
         }
       },
       "block_order": [
         "rc1",
         "rc2",
-        "rc3"
+        "rc3",
+        "rc4"
       ],
       "custom_css": [
         ".extracted-style-200 {padding-top: 3rem; padding-bottom: 3rem;}"
