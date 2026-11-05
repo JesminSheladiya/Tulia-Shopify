@@ -597,6 +597,195 @@
         "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
       }
     },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was looking for a Zinc Oxide sunscreen and liked that this one is designed to avoid visible white patches. It feels comfortable to apply.",
+            "name": "Aparna Menon",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The texture spreads easily and doesn't leave an obvious white layer on my skin. It has become part of my morning routine.",
+            "name": "Nithya Menon",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that it offers SPF 50+ protection and feels comfortable for everyday use.",
+            "name": "Keerthana Reddy",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I usually find physical sunscreens difficult to blend, but this one applies more smoothly than I expected.",
+            "name": "Maria D'Souza",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The finish feels comfortable on my skin and I like using it before heading out in the morning.",
+            "name": "Divya Suresh",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I wanted a sunscreen with Zinc Oxide and this was a good option to try. The application feels quite smooth.",
+            "name": "Harini Nair",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that it doesn't leave a noticeable white cast. It fits easily into my daily skincare routine.",
+            "name": "Sharon Thomas",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The sunscreen spreads well and feels light enough for my regular daytime routine.",
+            "name": "Pooja Krishnan",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I appreciate that it is non-comedogenic. The texture is comfortable and it is easy to apply evenly.",
+            "name": "Fathima Rahman",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A little goes a long way when spreading it across my face. I like the smooth finish.",
+            "name": "Ananya Joseph",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I wanted a physical sunscreen for daily use. This one is easy to apply and doesn't feel overly heavy.",
+            "name": "Joel Mathew",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like the combination of SPF 50+ and Zinc Oxide. It has made sunscreen a more consistent part of my routine.",
+            "name": "Lakshmi Iyer",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The formula feels comfortable on my skin and works well as the last step before makeup.",
+            "name": "Esther Samuel",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was specifically looking for something that wouldn't leave visible white patches. I like how this one blends.",
+            "name": "Roshini Pillai",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It spreads evenly and doesn't leave my skin feeling sticky. A nice option for everyday sun protection.",
+            "name": "Aishwarya Menon",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t16": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I apply it before stepping out and like that it feels smooth on the skin. Reapplication is easy too.",
+            "name": "Rebecca John",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t17": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The texture is what I like most. It applies smoothly and doesn't leave a heavy feeling.",
+            "name": "Sreya Krishnan",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t18": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I prefer physical sunscreens and this has been easy to add to my morning routine. The finish feels comfortable.",
+            "name": "Arjun Kumar",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t19": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that it is water resistant and has broad-spectrum protection. It feels good to use for outdoor days.",
+            "name": "Michelle Rosario",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t20": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The sunscreen blends better than others I have tried. I don't notice an obvious white layer after applying.",
+            "name": "Pavithra Mohan",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t21": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like the smooth application and the fact that it doesn't feel too greasy on my skin.",
+            "name": "Angela Joseph",
+            "product": "the-physical-sunscreen-gel"
+          }
+        },
+        "t22": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A comfortable sunscreen for daily use. I like that it fits easily into my skincare routine.",
+            "name": "Sneha Nair",
+            "product": "the-physical-sunscreen-gel"
+          }
+        }
+      },
+      "block_order": [
+        "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10",
+        "t11", "t12", "t13", "t14", "t15", "t16", "t17", "t18", "t19",
+        "t20", "t21", "t22"
+      ],
+      "settings": {
+        "title": "Unfiltered Love"
+      }
+    },
     "178351271991294ecc": {
       "type": "apps",
       "disabled": true,
@@ -622,6 +811,7 @@
     "complete",
     "faq",
     "trust",
+    "testimonials",
     "178351271991294ecc",
     "17835875473b0e0ca5"
   ]

@@ -606,6 +606,195 @@
         "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
       }
     },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The texture is rich and creamy, and my skin feels soft after applying it. I enjoy using it after a shower.",
+            "name": "Aishwarya Menon",
+            "product": "body-butter-cream"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love how nourishing this feels on my skin. It has become a nice part of my evening body care routine.",
+            "name": "Keerthana Suresh",
+            "product": "body-butter-cream"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My elbows and knees tend to get dry, so I like using this on those areas. My skin feels smoother afterwards.",
+            "name": "Nithya Krishnan",
+            "product": "body-butter-cream"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The cashmere-like feel is what stood out to me. It makes moisturising feel like a little self-care moment.",
+            "name": "Maria Thomas",
+            "product": "body-butter-cream"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like the creamy consistency and how moisturised my skin feels after using it.",
+            "name": "Harini Subramanian",
+            "product": "body-butter-cream"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My skin gets dry after a shower, and applying this while it's still slightly damp works nicely for me.",
+            "name": "Pavithra Nair",
+            "product": "body-butter-cream"
+          }
+        },
+        "t7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The formula feels rich without needing too much product. My skin feels soft and comfortable afterwards.",
+            "name": "Divya Narayanan",
+            "product": "body-butter-cream"
+          }
+        },
+        "t8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have been using it on my arms and legs and really like the nourished feel it leaves behind.",
+            "name": "Sharon D'Souza",
+            "product": "body-butter-cream"
+          }
+        },
+        "t9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The shea and cocoa butter combination sounded lovely, and I enjoy the rich texture. It works well for my dry skin.",
+            "name": "Esther Paul",
+            "product": "body-butter-cream"
+          }
+        },
+        "t10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like using this before bed, especially on areas that tend to feel rough. My skin feels smoother in the morning.",
+            "name": "Lakshmi Priya",
+            "product": "body-butter-cream"
+          }
+        },
+        "t11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A lovely creamy body butter. It spreads well and leaves my skin feeling soft.",
+            "name": "Rebecca Thomas",
+            "product": "body-butter-cream"
+          }
+        },
+        "t12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I prefer richer moisturisers and this has the kind of texture I enjoy. A little is enough for each area.",
+            "name": "Fathima Rahman",
+            "product": "body-butter-cream"
+          }
+        },
+        "t13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My skin feels hydrated and smooth after applying it. I have been reaching for it regularly.",
+            "name": "Meera Iyer",
+            "product": "body-butter-cream"
+          }
+        },
+        "t14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I use it after my bath and like how soft my skin feels. It makes my body care routine feel more indulgent.",
+            "name": "Anjali Kurup",
+            "product": "body-butter-cream"
+          }
+        },
+        "t15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The texture is buttery and comforting, especially on my dry elbows and legs.",
+            "name": "Michelle Fernandes",
+            "product": "body-butter-cream"
+          }
+        },
+        "t16": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that it contains shea and cocoa butter. My skin feels nourished without having to layer multiple products.",
+            "name": "Sanjana Shetty",
+            "product": "body-butter-cream"
+          }
+        },
+        "t17": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I wanted a moisturiser with a richer texture and this has been a good addition to my routine.",
+            "name": "Joel Joseph",
+            "product": "body-butter-cream"
+          }
+        },
+        "t18": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It leaves my skin feeling smooth and moisturised. I especially like applying it after an evening shower.",
+            "name": "Roshini Mathew",
+            "product": "body-butter-cream"
+          }
+        },
+        "t19": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The creamy texture feels lovely on the skin. I have been using it daily and enjoying the experience.",
+            "name": "Kavya Raman",
+            "product": "body-butter-cream"
+          }
+        },
+        "t20": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My skin tends to feel dry around my knees and elbows. This is easy to apply and leaves those areas feeling softer.",
+            "name": "Angela D'Souza",
+            "product": "body-butter-cream"
+          }
+        },
+        "t21": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like how it makes my skin feel after application. It has a rich, pampering feel that I look forward to.",
+            "name": "Gopika Menon",
+            "product": "body-butter-cream"
+          }
+        },
+        "t22": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The texture is richer than a regular lotion, which is what I wanted. My skin feels moisturised after using it.",
+            "name": "Arjun Thomas",
+            "product": "body-butter-cream"
+          }
+        }
+      },
+      "block_order": [
+        "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10",
+        "t11", "t12", "t13", "t14", "t15", "t16", "t17", "t18", "t19",
+        "t20", "t21", "t22"
+      ],
+      "settings": {
+        "title": "Unfiltered Love"
+      }
+    },
     "178351271991294ecc": {
       "type": "apps",
       "disabled": true,
@@ -631,6 +820,7 @@
     "complete",
     "faq",
     "trust",
+    "testimonials",
     "178351271991294ecc",
     "17835875473b0e0ca5"
   ]

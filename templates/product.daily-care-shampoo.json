@@ -694,6 +694,195 @@
         "payment_methods": "UPI\nVisa\nMastercard\nRuPay\nCash on Delivery\nEMI"
       }
     },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair feels clean without that overly dry feeling after washing. I've been liking it for regular wash days.",
+            "name": "Ananya Menon",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like how it cleanses my scalp while leaving the lengths feeling softer. It works nicely with the conditioner.",
+            "name": "Keerthana Nair",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair tends to feel rough after shampooing, but this leaves it feeling smoother and easier to manage.",
+            "name": "Nithya Krishnan",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have colour-treated hair, so I look for products that help maintain its look. This has been a nice addition to my routine.",
+            "name": "Maria Joseph",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The lather is nice and it rinses off easily. My hair feels fresh after every wash.",
+            "name": "Harini Subramanian",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like that my hair doesn't feel weighed down after using it. It leaves a clean, light feel.",
+            "name": "Pavithra Suresh",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair has been feeling quite dry lately. This shampoo leaves it feeling softer when I follow with the conditioner.",
+            "name": "Aishwarya Raman",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A good everyday shampoo for my hair. It cleans my scalp and doesn't leave my lengths feeling too rough.",
+            "name": "Sharon D'Souza",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've been using this with the All-in-One Conditioner and like how manageable my hair feels afterwards.",
+            "name": "Divya Narayanan",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair looks smoother after washing and feels easier to comb through. Happy with the overall experience.",
+            "name": "Roshini Mathew",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I wanted something that would cleanse well without leaving my hair feeling stripped. This has worked well for me.",
+            "name": "Joel Thomas",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The shampoo feels gentle on my scalp and leaves my hair feeling fresh. I like the simple wash routine.",
+            "name": "Meera Iyer",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have chemically treated hair and wanted a shampoo that fits into my routine. This has been easy to use.",
+            "name": "Lakshmi Priya",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair feels softer after washing and I like that it doesn't feel coated or heavy.",
+            "name": "Esther Paul",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It leaves my scalp feeling clean and my hair has a nice smooth feel once it dries.",
+            "name": "Sanjana Shetty",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t16": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like the texture and how easily it spreads through wet hair. It rinses out without much effort.",
+            "name": "Fathima Rahman",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t17": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My hair gets frizzy after a wash, but this paired with the conditioner makes it easier to manage.",
+            "name": "Gopika Krishnan",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t18": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "A straightforward shampoo that cleans well. My hair feels fresh and not overly dry afterwards.",
+            "name": "Arjun Nair",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t19": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I use it on my regular wash days and like how soft my hair feels after conditioning.",
+            "name": "Rebecca Thomas",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t20": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My colour-treated hair looks fresh after washing and the formula feels comfortable to use.",
+            "name": "Kavya Balaji",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t21": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It gives my scalp a clean feel while my lengths still feel manageable. I have been enjoying it.",
+            "name": "Anjali Kurup",
+            "product": "all-in-one-shampoo"
+          }
+        },
+        "t22": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I like how my hair feels after the wash. It feels smoother and takes less effort to detangle.",
+            "name": "Michelle Fernandes",
+            "product": "all-in-one-shampoo"
+          }
+        }
+      },
+      "block_order": [
+        "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10",
+        "t11", "t12", "t13", "t14", "t15", "t16", "t17", "t18", "t19",
+        "t20", "t21", "t22"
+      ],
+      "settings": {
+        "title": "Unfiltered Love"
+      }
+    },
     "178351271991294ecc": {
       "type": "apps",
       "disabled": true,
@@ -719,6 +908,7 @@
     "complete",
     "faq",
     "trust",
+    "testimonials",
     "178351271991294ecc",
     "17835875473b0e0ca5"
   ]
