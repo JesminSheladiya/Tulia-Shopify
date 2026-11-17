@@ -7809,3 +7809,108 @@ iframe {
     outline-offset: 2px;
     border-radius: 2px;
 }
+
+/* ==========================================================================
+   Wholesale Page - Custom Design
+   ========================================================================== */
+
+/* Quantity cards: highlight the middle (75 units) card like the reference */
+[id^="shopify-section-wholesale_quantities"] .generic-card:nth-child(2) {
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--secondary);
+}
+[id^="shopify-section-wholesale_quantities"] .generic-card:nth-child(2) .eyebrow,
+[id^="shopify-section-wholesale_quantities"] .generic-card:nth-child(2) .generic-card__title,
+[id^="shopify-section-wholesale_quantities"] .generic-card:nth-child(2) .generic-card__text {
+    color: #fff;
+}
+[id^="shopify-section-wholesale_quantities"] .generic-card:nth-child(2) .generic-card__btn {
+    background: var(--secondary-fixed);
+    color: var(--primary);
+}
+
+/* Steps section: dark maroon background to match reference */
+[id^="shopify-section-wholesale_steps"] {
+    background: var(--primary);
+    color: #fff;
+}
+[id^="shopify-section-wholesale_steps"] .eyebrow,
+[id^="shopify-section-wholesale_steps"] .section-title,
+[id^="shopify-section-wholesale_steps"] .generic-card__title,
+[id^="shopify-section-wholesale_steps"] .generic-card__text {
+    color: #fff;
+}
+[id^="shopify-section-wholesale_steps"] .generic-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+}
+[id^="shopify-section-wholesale_steps"] .generic-card__btn {
+    background: #fff;
+    color: var(--primary);
+}
+
+/* Trust badges row: cleaner spacing */
+[id^="shopify-section-wholesale_trust_badges"] .trust-item {
+    text-align: center;
+    padding: 1rem 0.5rem;
+}
+[id^="shopify-section-wholesale_trust_badges"] .trust-icon {
+    font-size: 28px;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+[id^="shopify-section-wholesale_trust_badges"] .trust-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+/* Feature icons strip: even spacing, centered labels */
+[id^="shopify-section-wholesale_built_for"] .feature-icons-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+[id^="shopify-section-wholesale_built_for"] .feature-icon-item {
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+}
+
+/* Product cards: cleaner editorial look for essentials */
+[id^="shopify-section-wholesale_essentials"] .generic-card {
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+[id^="shopify-section-wholesale_essentials"] .generic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+[id^="shopify-section-wholesale_essentials"] .generic-card__btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Footer CTA button spacing */
+[id^="shopify-section-wholesale_footer_cta"] .gb__cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
