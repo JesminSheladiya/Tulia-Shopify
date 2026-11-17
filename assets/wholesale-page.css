@@ -1,6 +1,202 @@
 /* ==========================================================================
-   Base Styles & Resets
+   Wholesale Page - Responsive Layout & Spacing Polish
    ========================================================================== */
+
+/* Container & Section Gaps Across All Viewports */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+}
+
+section {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    :root {
+        --container-px: 40px;
+        --section-gap: 90px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --container-px: 20px;
+        --section-gap: 60px;
+    }
+    section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --container-px: 16px;
+        --section-gap: 48px;
+    }
+    section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+}
+
+/* Hero Banner Responsiveness */
+.hero-banner {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-banner {
+        min-height: 70vh;
+        min-height: 70svh;
+    }
+    .hero-title {
+        font-size: 2.25rem !important;
+        line-height: 1.15 !important;
+    }
+    .hero-desc {
+        font-size: 0.95rem !important;
+        max-width: 100% !important;
+    }
+    .hero-cta {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+    .hero-cta .btn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* Trade Enquiry Form Card Overlap & Padding */
+.trade-enquiry-section {
+    padding-top: 0 !important;
+    margin-top: -60px;
+    position: relative;
+    z-index: 20;
+}
+
+.trade-form-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    padding: 3.5rem 3rem;
+    border: 1px solid var(--outline-variant);
+}
+
+@media screen and (max-width: 990px) {
+    .trade-enquiry-section {
+        margin-top: -40px;
+    }
+    .trade-form-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .trade-form-card {
+        padding: 2rem 1.25rem;
+    }
+}
+
+/* Business Types & Feature Grids */
+.business-types-grid,
+.grid-4,
+.grid-3,
+.grid-2 {
+    display: grid;
+    gap: 2rem;
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-4,
+    .grid-3,
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Quantity Cards (Starter, Popular, Wholesale) */
+.quantity-card {
+    border-radius: var(--radius-md);
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .quantity-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Highlighted Quantity Card */
+.quantity-card.highlighted {
+    background: var(--primary);
+    color: #ffffff;
+    border: 1px solid var(--secondary);
+}
+.quantity-card.highlighted .eyebrow,
+.quantity-card.highlighted h3,
+.quantity-card.highlighted p,
+.quantity-card.highlighted li {
+    color: #ffffff;
+}
+
+/* Founder Quote Section Responsiveness */
+.founder-quote-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+@media screen and (max-width: 990px) {
+    .founder-quote-container {
+        flex-direction: column;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .quote-content {
+        padding-left: 0;
+    }
+    .quote-icon {
+        display: none;
+    }
+}
 :root {
     --primary: #420007;
     --primary-container: #630f17;
@@ -1581,23 +1777,96 @@ ul {
 
 .trade-form-grid-top {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
     margin-bottom: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.trade-form-grid-top .form-group:nth-child(4) {
+    grid-column: span 1;
+}
+
+.trade-form-grid-top .form-group:nth-child(5) {
+    grid-column: span 1;
+}
+
+.trade-form-grid-top .form-group:nth-child(6) {
+    grid-column: span 1;
 }
 
 .trade-form-grid-bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: end;
-    margin-bottom: 1.25rem;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-consent-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.form-consent-wrap .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.form-consent-wrap .checkbox-label input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    flex-shrink: 0;
+}
+
+.form-submit-wrap {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.trade-submit-btn {
+    width: auto !important;
+    min-width: 240px;
+    padding: 0 2.5rem;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    .trade-form-grid-bottom {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .form-submit-wrap {
+        justify-content: stretch;
+    }
+    .trade-submit-btn {
+        width: 100% !important;
+    }
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .form-group label {
@@ -1617,6 +1886,9 @@ ul {
     font-size: 0.9rem;
     color: var(--on-surface);
     transition: border-color 0.25s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -2842,32 +3114,193 @@ ul {
     }
 }
 
-@media (max-width: 480px) {
+/* ==========================================================================
+   Master Responsive Framework & Section Line-by-Line Audit Fixes
+   ========================================================================== */
+
+/* 1. Global Box-Sizing & Container Protection */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+    box-sizing: border-box;
+}
+
+/* 2. Section Spacing Harmonization */
+section, .section, .hero-banner, .trade-enquiry-section, .trust-badges-section, .who-its-for-section, .professional-range-section, .standards-ticker-section, .angelin-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.hero-banner {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 85vh;
+}
+
+.trade-enquiry-section {
+    padding-top: 0 !important;
+    margin-top: -60px;
+    position: relative;
+    z-index: 20;
+}
+
+/* 3. Grid Systems & Multi-Column Fixes Across All Devices */
+.grid-2, .grid-3, .grid-4, .order-tiers-grid, .business-types-grid, .steps-three-grid, .range-grid, .partner-logos-row {
+    display: grid;
+    gap: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3, .order-tiers-grid, .steps-three-grid, .range-grid { grid-template-columns: repeat(3, 1fr); }
+.grid-4, .business-types-grid { grid-template-columns: repeat(4, 1fr); }
+.partner-logos-row { grid-template-columns: repeat(6, 1fr); }
+
+/* 4. Product Cards, Quantity Tiers & Business Cards */
+.trade-product-card, .order-tier-card, .business-card, .partner-step-card, .trust-item, .partner-logo-box {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.trade-product-img-wrapper, .order-tier-card, .business-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 5. Typography & Text Wrapping */
+h1, h2, h3, h4, h5, h6, p, span, a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.section-title {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints Audit (1200px, 1024px, 768px, 480px)
+   ========================================================================== */
+
+@media screen and (max-width: 1200px) {
+    :root {
+        --container-px: 40px;
+    }
+    .section-title {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --container-px: 28px;
+    }
+    section, .section, .trust-badges-section, .who-its-for-section, .professional-range-section, .standards-ticker-section, .angelin-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .grid-4, .business-types-grid, .partner-logos-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    .grid-3, .order-tiers-grid, .steps-three-grid, .range-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    .trade-form-grid-top {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .trade-form-grid-top .form-group:last-child {
+        grid-column: span 2 !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --container-px: 16px;
+    }
+    section, .section, .trust-badges-section, .who-its-for-section, .professional-range-section, .standards-ticker-section, .angelin-section {
+        padding-top: 45px !important;
+        padding-bottom: 45px !important;
+    }
+    .section-title {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+    }
+    .grid-2, .grid-3, .grid-4, .order-tiers-grid, .business-types-grid, .steps-three-grid, .range-grid, .partner-logos-row {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+    }
+    .trade-form-grid-top,
+    .trade-form-grid-bottom {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .trade-form-grid-top .form-group:last-child {
+        grid-column: span 1 !important;
+    }
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.1rem !important;
+        line-height: 1.15 !important;
     }
-
+    .hero-desc {
+        font-size: 0.95rem !important;
+    }
     .hero-cta {
-        flex-direction: column;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
     }
-
     .hero-cta .btn {
-        width: 100%;
+        width: 100% !important;
+        text-align: center !important;
     }
-
-    .business-types-grid {
-        grid-template-columns: 1fr;
+    .trade-form-card {
+        padding: 1.75rem 1.25rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
-
-    .business-card {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1rem;
-        padding: 1.15rem 1.25rem;
+    .trade-enquiry-section {
+        margin-top: -24px !important;
     }
+    .angelin-section .grid-2 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+}
 
-    .business-icon {
-        margin-bottom: 0;
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem !important;
+    }
+    .section-title {
+        font-size: 1.6rem !important;
+    }
+    .trade-form-card {
+        padding: 1.25rem 1rem !important;
+    }
+    .form-group input,
+    .form-group select {
+        font-size: 16px !important; /* Prevents iOS auto-zoom */
     }
 }

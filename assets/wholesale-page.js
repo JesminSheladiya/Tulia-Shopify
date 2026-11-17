@@ -144,22 +144,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 8. Trade Enquiry Form Submission ---
-    const enquiryForm = document.getElementById('wholesale-enquiry-form');
-    if (enquiryForm) {
-        enquiryForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const submitBtn = enquiryForm.querySelector('.trade-submit-btn');
-            if (submitBtn) {
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'ENQUIRY RECEIVED · WE WILL CONTACT YOU WITHIN 24 HOURS';
-                submitBtn.disabled = true;
-                setTimeout(() => {
-                    enquiryForm.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 4000);
-            }
-        });
-    }
 });

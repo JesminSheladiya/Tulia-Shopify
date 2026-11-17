@@ -56,7 +56,7 @@
                     <a href="#signature" class="nav-link">Shop</a>
                 </nav>
                 <a href="/" class="logo-link">
-                    <img src="{{ 'logo-color.png' | asset_url }}" alt="Tulia Logo" class="header-logo">
+                    <img src="{{ 'logo-color.png' | asset_url }}" alt="Tulia Logo" class="header-logo" width="240" height="72">
                 </a>
                 <nav class="main-nav right-nav">
                     <a href="#about" class="nav-link">About</a>
@@ -88,7 +88,7 @@
                 <picture>
                     <source media="(max-width: 768px), (max-width: 1024px) and (orientation: portrait)"
                         srcset="{{ 'frame-v-026.png' | asset_url }}">
-                    <img id="sequence-img" src="{{ 'ezgif-frame-026.png' | asset_url }}" alt="Tulia Wholesale Range">
+                    <img id="sequence-img" src="{{ 'ezgif-frame-026.png' | asset_url }}" alt="Tulia Wholesale Range" width="1080" height="1350">
                 </picture>
                 <div class="hero-video-overlay"></div>
             </div>
@@ -119,6 +119,15 @@
                 </div>
 
                 {%- form 'contact', id: 'wholesale-enquiry-form' -%}
+                  {%- if form.posted_successfully? -%}
+                    <div class="form-message form-success">
+                      Your connection needs to be verified before you can proceed
+                    </div>
+                  {%- elsif form.errors -%}
+                    <div class="form-message form-error">
+                      Please check the errors below and try again.
+                    </div>
+                  {%- endif -%}
                 <input type="hidden" name="contact[body]" id="contact-body" value="">
                 <div class="trade-form">
                     <div class="trade-form-grid-top">
@@ -151,9 +160,6 @@
                             <label for="city">City</label>
                             <input type="text" id="city" name="contact[city]" required>
                         </div>
-                    </div>
-
-                    <div class="trade-form-grid-bottom">
                         <div class="form-group">
                             <label for="opening-order">Opening order</label>
                             <select id="opening-order" name="contact[opening_order]">
@@ -162,16 +168,18 @@
                                 <option value="100+ units">100+ units</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="trade-form-grid-bottom">
+                        <div class="form-consent-wrap">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required checked>
+                                <span>I agree to be contacted by Tulia Cosmetics by phone, WhatsApp or email about this trade enquiry. See our <a href="#">Privacy Policy</a>.</span>
+                            </label>
+                        </div>
                         <div class="form-submit-wrap">
                             <button type="submit" class="btn btn-primary w-full trade-submit-btn">GET TRADE PRICING</button>
                         </div>
-                    </div>
-
-                    <div class="form-consent">
-                        <label class="checkbox-label">
-                            <input type="checkbox" required checked>
-                            <span>I agree to be contacted by Tulia Cosmetics by phone, WhatsApp or email about this trade enquiry. See our <a href="#">Privacy Policy</a>.</span>
-                        </label>
                     </div>
                 </div>
                 {%- endform -%}
@@ -200,7 +208,7 @@
             <p class="eyebrow text-center text-muted mb-medium">TRUSTED BY SALONS, SPAS &amp; STOCKISTS ACROSS INDIA</p>
             <div class="partner-logos-row">
                 <div class="partner-logo-box featured-partner">
-                    <img src="{{ 'toni-and-guy.png' | asset_url }}" alt="TONI&amp;GUY" class="partner-logo-img">
+                    <img src="{{ 'toni-and-guy.png' | asset_url }}" alt="TONI&amp;GUY" class="partner-logo-img" width="200" height="100">
                 </div>
                 <div class="partner-logo-box placeholder-partner">
                     <span>[PARTNER LOGO]</span>
@@ -289,7 +297,7 @@
             <!-- Product 1: Physical Sunscreen Gel SPF 50+ -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-sunscreen.webp' | asset_url }}" alt="Physical Sunscreen Gel SPF 50+" class="product-img">
+                    <img src="{{ 'product-sunscreen.webp' | asset_url }}" alt="Physical Sunscreen Gel SPF 50+" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">SKINCARE · SUN CARE</span>
@@ -305,7 +313,7 @@
             <!-- Product 2: Active-Powered Brightening Facewash -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-facewash.webp' | asset_url }}" alt="Active-Powered Brightening Facewash" class="product-img">
+                    <img src="{{ 'product-facewash.webp' | asset_url }}" alt="Active-Powered Brightening Facewash" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">SKINCARE · CLEANSE</span>
@@ -321,7 +329,7 @@
             <!-- Product 3: Body Butter Cream -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-body-butter.webp' | asset_url }}" alt="Body Butter Cream" class="product-img">
+                    <img src="{{ 'product-body-butter.webp' | asset_url }}" alt="Body Butter Cream" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">SKINCARE · BODY</span>
@@ -337,7 +345,7 @@
             <!-- Product 4: Lipz Lightening Cream -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-lip-cream.webp' | asset_url }}" alt="Lipz Lightening Cream" class="product-img">
+                    <img src="{{ 'product-lip-cream.webp' | asset_url }}" alt="Lipz Lightening Cream" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">LIP CARE · THE TINT EDIT</span>
@@ -353,7 +361,7 @@
             <!-- Product 5: Lip Balm SPF 15 -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-lipbalm.webp' | asset_url }}" alt="Lip Balm SPF 15" class="product-img">
+                    <img src="{{ 'product-lipbalm.webp' | asset_url }}" alt="Lip Balm SPF 15" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">LIP CARE · THE TINT EDIT</span>
@@ -369,7 +377,7 @@
             <!-- Product 6: All-in-One Shampoo & Conditioner -->
             <div class="product-card trade-product-card group">
                 <div class="product-img-wrapper">
-                    <img src="{{ 'product-shampoo-conditioner.png' | asset_url }}" alt="All-in-One Shampoo & Conditioner" class="product-img">
+                    <img src="{{ 'product-shampoo-conditioner.png' | asset_url }}" alt="All-in-One Shampoo & Conditioner" class="product-img" width="800" height="1000">
                 </div>
                 <div class="trade-product-info">
                     <span class="trade-product-cat">HAIRCARE · SALON FAVOURITE</span>
@@ -394,7 +402,7 @@
             <div class="col-5">
                 <div class="quote-image-wrapper">
                     <img src="{{ 'angelin-wholesale.png' | asset_url }}" alt="Angelin - Co-Founder, Tulia Cosmetics"
-                        class="w-full object-cover radius-sm shadow-xl angelin-portrait-img">
+                        width="600" height="800" class="w-full object-cover radius-sm shadow-xl angelin-portrait-img">
                     <div class="quote-author-card">
                         <p class="author-name">Angelin</p>
                         <p class="author-title">Co-Founder, Tulia Cosmetics</p>
@@ -759,7 +767,7 @@
     <!-- 11) Become Our Partner CTA Banner -->
     <section class="become-partner-banner text-center text-white reveal">
         <div class="container">
-            <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia" class="partner-banner-logo mx-auto mb-medium">
+            <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia" class="partner-banner-logo mx-auto mb-medium" width="240" height="72">
             <h2 class="section-title text-white mb-large">Become our partner</h2>
             <div class="partner-banner-actions">
                 <a href="#trade-enquiry" class="btn btn-primary-light">GET TRADE PRICING</a>
@@ -775,7 +783,7 @@
             <!-- Left Column -->
             <div class="footer-left-col">
                 <div class="footer-logo-wrapper" style="margin-bottom: 3rem;">
-                    <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia Logo" style="height: 45px;">
+                    <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia Logo" width="160" height="45" style="height: 45px;">
                 </div>
                 <div class="footer-links-grid" style="grid-template-columns: repeat(4, 1fr);">
                     <div class="footer-col">
@@ -835,7 +843,7 @@
             <!-- Right Column -->
             <div class="footer-right-col">
                 <div class="footer-image-banner">
-                    <img src="{{ 'tulia-branding.png' | asset_url }}" alt="Tulia Branding">
+                    <img src="{{ 'tulia-branding.png' | asset_url }}" alt="Tulia Branding" width="260" height="80">
                 </div>
 
                 <div class="newsletter-wrapper">
@@ -889,7 +897,7 @@
     </button>
 
     <!-- Scripts -->
-    <script src="{{ 'wholesale-page.js' | asset_url }}"></script>
+    <script src="{{ 'wholesale-page.js' | asset_url }}" defer></script>
 </body>
 
 </html>
