@@ -3285,6 +3285,13 @@ ul {
         gap: 0.85rem;
     }
 
+    .partner-logos-row.single-partner-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
     .partner-logo-box {
         height: 76px;
         padding: 0.75rem;
@@ -3779,6 +3786,13 @@ a {
         gap: 1.5rem !important;
     }
 
+    .partner-logos-row.single-partner-row {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+
     .grid-3,
     .order-tiers-grid,
     .steps-three-grid,
@@ -3827,6 +3841,13 @@ a {
     .partner-logos-row {
         grid-template-columns: 1fr !important;
         gap: 1.25rem !important;
+    }
+
+    .partner-logos-row.single-partner-row {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+        max-width: 240px !important;
+        margin: 0 auto !important;
     }
 
     .trade-form-grid-top,
