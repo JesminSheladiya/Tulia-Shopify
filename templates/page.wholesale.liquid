@@ -1,0 +1,895 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulia | Wholesale &amp; Salon Partner Programme</title>
+    <meta name="description"
+        content="Earn 35-50% on each unit. Stock premium skincare products that let your clients continue their care beyond appointments.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ 'fav-icon.png' | asset_url }}">
+
+    {{ content_for_header }}
+
+    <!-- Custom font (defined here as fallback in case .css.liquid Liquid processing varies) -->
+    <style>
+        @font-face {
+            font-family: 'Mattone';
+            src: url('{{ 'Mattone-Regular.otf' | asset_url }}') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            unicode-range: U+0000-0025, U+0027-FFFF;
+        }
+    </style>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ 'wholesale-page.css' | asset_url }}">
+</head>
+
+<body>
+
+    <!-- TopAppBar (Same as existing) -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="mobile-menu-wrapper">
+                <button class="icon-btn mobile-menu" id="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+
+            <div class="header-center-nav">
+                <nav class="main-nav left-nav">
+                    <a href="#who-its-for" class="nav-link">Blogs</a>
+                    <a href="#signature" class="nav-link">Shop</a>
+                </nav>
+                <a href="/" class="logo-link">
+                    <img src="{{ 'logo-color.png' | asset_url }}" alt="Tulia Logo" class="header-logo">
+                </a>
+                <nav class="main-nav right-nav">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#signature" class="nav-link">Product</a>
+                </nav>
+            </div>
+
+            <div class="header-icons">
+                <!-- Search removed as requested -->
+                <button class="icon-btn" aria-label="Shopping bag"><span class="material-symbols-outlined">shopping_bag</span></button>
+            </div>
+        </div>
+
+        <!-- Mobile & Tablet Navigation Drawer -->
+        <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+            <a href="#who-its-for" class="mobile-nav-link">Who It’s For</a>
+            <a href="#signature" class="mobile-nav-link">The Range</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#order-sizes" class="mobile-nav-link">Order Sizes</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#trade-enquiry" class="btn btn-primary w-full mobile-nav-cta">Get Trade Pricing</a>
+        </nav>
+    </header>
+
+    <!-- 1) Home Banner (Static Last Frame - Desktop & Mobile) -->
+    <section class="hero-banner" id="hero">
+        <div class="scroll-container">
+            <div class="canvas-wrapper">
+                <picture>
+                    <source media="(max-width: 768px), (max-width: 1024px) and (orientation: portrait)"
+                        srcset="{{ 'frame-v-026.png' | asset_url }}">
+                    <img id="sequence-img" src="{{ 'ezgif-frame-026.png' | asset_url }}" alt="Tulia Wholesale Range">
+                </picture>
+                <div class="hero-video-overlay"></div>
+            </div>
+
+            <div class="hero-content container">
+                <div class="hero-text-block">
+                    <h1 class="hero-title hero-text-shadow" id="hero-title">Earn 35-50% on<br>each unit</h1>
+                    <p class="hero-desc hero-text-shadow" id="hero-desc">
+                        Stock premium skincare products that let your clients continue their care beyond appointments
+                    </p>
+                    <div class="hero-cta" id="hero-cta">
+                        <a href="#trade-enquiry" class="btn btn-primary-light">Get trade pricing</a>
+                        <a href="https://wa.me/918148148487" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-light">Chat on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2) Trade Enquiry Form Card (Overlapping Home Banner) + Feature Strip + Trusted By -->
+    <section id="trade-enquiry" class="trade-enquiry-section bg-surface">
+        <div class="container">
+            <div class="trade-form-card">
+                <div class="trade-form-header">
+                    <h2 class="trade-form-title">Get your trade price list in 24 hours</h2>
+                    <p class="trade-form-note">No commitment · For salons, spas, clinics, retailers &amp; distributors</p>
+                </div>
+
+                {%- form 'contact', id: 'wholesale-enquiry-form' -%}
+                <input type="hidden" name="contact[body]" id="contact-body" value="">
+                <div class="trade-form">
+                    <div class="trade-form-grid-top">
+                        <div class="form-group">
+                            <label for="your-name">Your name</label>
+                            <input type="text" id="your-name" name="contact[name]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business-name">Business name</label>
+                            <input type="text" id="business-name" name="contact[business_name]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business-type">Business type</label>
+                            <select id="business-type" name="contact[business_type]">
+                                <option value="Salon / parlour">Salon / parlour</option>
+                                <option value="Spa & wellness centre">Spa &amp; wellness centre</option>
+                                <option value="Skin & aesthetic clinic">Skin &amp; aesthetic clinic</option>
+                                <option value="Beautician, makeup & bridal artist">Beautician, makeup &amp; bridal artist</option>
+                                <option value="Retailer, pharmacy & beauty store">Retailer, pharmacy &amp; beauty store</option>
+                                <option value="Dealer & distributor">Dealer &amp; distributor</option>
+                                <option value="Hotel, resort & boutique stay">Hotel, resort &amp; boutique stay</option>
+                                <option value="Corporate gifting & bulk buyer">Corporate gifting &amp; bulk buyer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp-number">WhatsApp number</label>
+                            <input type="tel" id="whatsapp-number" name="contact[whatsapp]" placeholder="+91" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="contact[city]" required>
+                        </div>
+                    </div>
+
+                    <div class="trade-form-grid-bottom">
+                        <div class="form-group">
+                            <label for="opening-order">Opening order</label>
+                            <select id="opening-order" name="contact[opening_order]">
+                                <option value="50 units">50 units</option>
+                                <option value="75 units">75 units</option>
+                                <option value="100+ units">100+ units</option>
+                            </select>
+                        </div>
+                        <div class="form-submit-wrap">
+                            <button type="submit" class="btn btn-primary w-full trade-submit-btn">GET TRADE PRICING</button>
+                        </div>
+                    </div>
+
+                    <div class="form-consent">
+                        <label class="checkbox-label">
+                            <input type="checkbox" required checked>
+                            <span>I agree to be contacted by Tulia Cosmetics by phone, WhatsApp or email about this trade enquiry. See our <a href="#">Privacy Policy</a>.</span>
+                        </label>
+                    </div>
+                </div>
+                {%- endform -%}
+            </div>
+        </div>
+
+        <!-- Maroon Commitments Ribbon -->
+        <div class="commitments-ribbon">
+            <div class="container commitments-ribbon-inner">
+                <span>CLINICALLY PROVEN</span>
+                <span class="dot">•</span>
+                <span>VEGAN CERTIFIED</span>
+                <span class="dot">•</span>
+                <span>PALM OIL-FREE</span>
+                <span class="dot">•</span>
+                <span>PH-BALANCED FORMULA</span>
+                <span class="dot">•</span>
+                <span>ANTI-POLLUTION TESTED</span>
+                <span class="dot">•</span>
+                <span>SAFE FOR SENSITIVE SKIN</span>
+            </div>
+        </div>
+
+        <!-- Trusted By Partner Strip -->
+        <div class="trusted-by-strip container reveal">
+            <p class="eyebrow text-center text-muted mb-medium">TRUSTED BY SALONS, SPAS &amp; STOCKISTS ACROSS INDIA</p>
+            <div class="partner-logos-row">
+                <div class="partner-logo-box featured-partner">
+                    <img src="{{ 'toni-and-guy.png' | asset_url }}" alt="TONI&amp;GUY" class="partner-logo-img">
+                </div>
+                <div class="partner-logo-box placeholder-partner">
+                    <span>[PARTNER LOGO]</span>
+                </div>
+                <div class="partner-logo-box placeholder-partner">
+                    <span>[PARTNER LOGO]</span>
+                </div>
+                <div class="partner-logo-box placeholder-partner">
+                    <span>[PARTNER LOGO]</span>
+                </div>
+                <div class="partner-logo-box placeholder-partner">
+                    <span>[PARTNER LOGO]</span>
+                </div>
+                <div class="partner-logo-box placeholder-partner">
+                    <span>[PARTNER LOGO]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) Who It's For -->
+    <section id="who-its-for" class="section who-its-for-section container reveal">
+        <div class="section-header text-center">
+            <span class="eyebrow text-muted">WHO IT’S FOR</span>
+            <h2 class="section-title text-primary">Built for every business that <br> buys skincare in bulk</h2>
+            <div class="divider mx-auto"></div>
+            <p class="section-subtitle max-w-xl mx-auto mb-large">
+                Whether you retail at the styling chair or supply a whole region, there’s a Tulia partnership that fits
+                how you sell.
+            </p>
+        </div>
+
+        <div class="grid grid-4 business-types-grid">
+            <!-- 1 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">content_cut</span>
+                <h3 class="business-title">Salons <span class="amp">&amp;</span> hair studios</h3>
+            </div>
+            <!-- 2 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">water_drop</span>
+                <h3 class="business-title">Spas <span class="amp">&amp;</span> wellness centres</h3>
+            </div>
+            <!-- 3 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">local_hospital</span>
+                <h3 class="business-title">Skin <span class="amp">&amp;</span> aesthetic clinics</h3>
+            </div>
+            <!-- 4 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">brush</span>
+                <h3 class="business-title">Beauticians, makeup <span class="amp">&amp;</span> bridal artists</h3>
+            </div>
+            <!-- 5 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">storefront</span>
+                <h3 class="business-title">Retailers, pharmacies <span class="amp">&amp;</span> beauty stores</h3>
+            </div>
+            <!-- 6 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">local_shipping</span>
+                <h3 class="business-title">Dealers <span class="amp">&amp;</span> distributors</h3>
+            </div>
+            <!-- 7 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">apartment</span>
+                <h3 class="business-title">Hotels, resorts <span class="amp">&amp;</span> boutique stays</h3>
+            </div>
+            <!-- 8 -->
+            <div class="business-card">
+                <span class="material-symbols-outlined business-icon">redeem</span>
+                <h3 class="business-title">Corporate gifting <span class="amp">&amp;</span> bulk buyers</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) The Professional Range (Seven essentials. Skin, lips & hair.) -->
+    <section id="signature" class="section container reveal professional-range-section">
+        <div class="section-header text-center mb-large">
+            <span class="eyebrow text-muted">THE PROFESSIONAL RANGE</span>
+            <h2 class="section-title text-primary">Seven essentials. Skin, lips <span class="amp">&amp;</span> hair.</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="grid grid-3 range-grid">
+            <!-- Product 1: Physical Sunscreen Gel SPF 50+ -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-sunscreen.webp' | asset_url }}" alt="Physical Sunscreen Gel SPF 50+" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">SKINCARE · SUN CARE</span>
+                    <h3 class="trade-product-name italic-serif">Physical Sunscreen Gel SPF 50+</h3>
+                    <p class="trade-product-desc">Non-greasy, water-resistant physical sunscreen gel with 25% zinc oxide for everyday sun protection.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹1,750</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Active-Powered Brightening Facewash -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-facewash.webp' | asset_url }}" alt="Active-Powered Brightening Facewash" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">SKINCARE · CLEANSE</span>
+                    <h3 class="trade-product-name italic-serif">Active-Powered Brightening Facewash</h3>
+                    <p class="trade-product-desc">Kojic Acid, Niacinamide and Vitamin C in a creamy facewash for a visibly more even-looking tone.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹850</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Body Butter Cream -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-body-butter.webp' | asset_url }}" alt="Body Butter Cream" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">SKINCARE · BODY</span>
+                    <h3 class="trade-product-name italic-serif">Body Butter Cream</h3>
+                    <p class="trade-product-desc">A rich triple-butter cashmere cream with essential oils that hydrates and illuminates dry skin.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹1,300</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Lipz Lightening Cream -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-lip-cream.webp' | asset_url }}" alt="Lipz Lightening Cream" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">LIP CARE · THE TINT EDIT</span>
+                    <h3 class="trade-product-name italic-serif">Lipz Lightening Cream</h3>
+                    <p class="trade-product-desc">Arbutin, Kojic Acid, Niacinamide, Bearberry and Mulberry extracts for visibly even-toned lips with regular use.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹650</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Lip Balm SPF 15 -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-lipbalm.webp' | asset_url }}" alt="Lip Balm SPF 15" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">LIP CARE · THE TINT EDIT</span>
+                    <h3 class="trade-product-name italic-serif">Lip Balm SPF 15</h3>
+                    <p class="trade-product-desc">Shea and Kokum butter, Avocado oil and Squalane for soft, nourished lips — with SPF 15.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹330</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: All-in-One Shampoo & Conditioner -->
+            <div class="product-card trade-product-card group">
+                <div class="product-img-wrapper">
+                    <img src="{{ 'product-shampoo-conditioner.png' | asset_url }}" alt="All-in-One Shampoo & Conditioner" class="product-img">
+                </div>
+                <div class="trade-product-info">
+                    <span class="trade-product-cat">HAIRCARE · SALON FAVOURITE</span>
+                    <h3 class="trade-product-name italic-serif">All-in-One Shampoo <span class="amp">&amp;</span> Conditioner</h3>
+                    <p class="trade-product-desc">A wash-day pair: shampoo that supports a balanced scalp, and an Argan oil + wheat protein conditioner with anti-fade technology.</p>
+                    <div class="trade-product-footer">
+                        <span class="trade-mrp">MRP ₹1,100 each</span>
+                        <a href="#trade-enquiry" class="trade-price-link">Trade price on call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="range-footnote text-center text-muted mt-large">
+            Product illustrations shown. Results vary by individual skin and hair type; descriptions follow Tulia product labels.
+        </p>
+    </section>
+
+    <!-- 5) A Note From Our Co-Founder (Moved below THE PROFESSIONAL RANGE) -->
+    <section id="about" class="bg-surface-low angelin-section reveal">
+        <div class="container grid grid-12 align-center gap-large angelin-grid">
+            <div class="col-5">
+                <div class="quote-image-wrapper">
+                    <img src="{{ 'angelin-wholesale.png' | asset_url }}" alt="Angelin - Co-Founder, Tulia Cosmetics"
+                        class="w-full object-cover radius-sm shadow-xl angelin-portrait-img">
+                    <div class="quote-author-card">
+                        <p class="author-name">Angelin</p>
+                        <p class="author-title">Co-Founder, Tulia Cosmetics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="quote-content" style="padding-bottom: 1rem;">
+                    <span class="eyebrow text-muted">A NOTE FROM OUR CO-FOUNDER</span>
+                    <span class="material-symbols-outlined quote-icon">format_quote</span>
+                    <blockquote class="blockquote reveal-rise" style="color: var(--primary);">
+                        “I dealt with acne for years before I co-founded Tulia. That experience taught me skin already
+                        knows how to renew itself, and skincare should support that process honestly, not override it. I
+                        want the professionals who care for their clients to be able to recommend Tulia with complete
+                        confidence.”
+                    </blockquote>
+                    <div class="divider mb-medium" style="opacity: 0.5;"></div>
+                    <div class="cofounder-meta">
+                        <p class="cofounder-name">Angelin</p>
+                        <p class="cofounder-role">Co-Founder, Tulia Cosmetics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) Recommend With Confidence (Brown Background + Pointers as Ticker, Headline/Subheadline Removed) -->
+    <section id="standards" class="standards-ticker-section bg-primary text-white">
+        <div class="ticker-viewport">
+            <div class="ticker-track">
+                <!-- Group 1 -->
+                <div class="ticker-group">
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">science</span>
+                        <span>Clinically proven</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">eco</span>
+                        <span>Vegan certified</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">verified_user</span>
+                        <span>Cruelty-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">block</span>
+                        <span>Paraben &amp; sulfate-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">block</span>
+                        <span>No mineral oil · Palm oil-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">equalizer</span>
+                        <span>pH-balanced formulas</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">spa</span>
+                        <span>Patch-tested · Sensitive-skin safe</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">visibility</span>
+                        <span>Anti-pollution tested</span>
+                    </div>
+                </div>
+                <!-- Group 2 (Duplicate for seamless infinite loop) -->
+                <div class="ticker-group" aria-hidden="true">
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">science</span>
+                        <span>Clinically proven</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">eco</span>
+                        <span>Vegan certified</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">verified_user</span>
+                        <span>Cruelty-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">block</span>
+                        <span>Paraben &amp; sulfate-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">block</span>
+                        <span>No mineral oil · Palm oil-free</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">equalizer</span>
+                        <span>pH-balanced formulas</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">spa</span>
+                        <span>Patch-tested · Sensitive-skin safe</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="material-symbols-outlined standard-icon">visibility</span>
+                        <span>Anti-pollution tested</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7) Bulk & Wholesale Orders (Order Sizes) -->
+    <section id="order-sizes" class="section container reveal">
+        <div class="section-header text-center">
+            <span class="eyebrow text-muted">BULK &amp; WHOLESALE ORDERS</span>
+            <h2 class="section-title text-primary">Start with the quantity that suits you</h2>
+            <div class="divider mx-auto"></div>
+            <p class="section-subtitle max-w-lg mx-auto mb-large">
+                Choose an opening order that fits your business. The bigger the order, the better your margin.
+            </p>
+        </div>
+
+        <div class="grid grid-3 order-tiers-grid">
+            <!-- Tier 1: Starter -->
+            <div class="order-tier-card">
+                <span class="tier-eyebrow">STARTER</span>
+                <div class="tier-quantity">
+                    <span class="tier-num">50</span>
+                    <span class="tier-unit">units</span>
+                </div>
+                <p class="tier-desc">Ideal for a single salon, studio or freelancer trying the range with clients.</p>
+                <ul class="tier-features">
+                    <li><span>—</span> Entry trade margin</li>
+                    <li><span>—</span> Mix guidance from our team</li>
+                    <li><span>—</span> WhatsApp ordering &amp; support</li>
+                </ul>
+                <a href="#trade-enquiry" data-order-select="50 units" class="btn btn-outline-primary w-full tier-btn">GET TRADE PRICING</a>
+            </div>
+
+            <!-- Tier 2: Growth (Most Chosen) -->
+            <div class="order-tier-card featured-tier">
+                <div class="most-chosen-badge">MOST CHOSEN</div>
+                <span class="tier-eyebrow">GROWTH</span>
+                <div class="tier-quantity">
+                    <span class="tier-num">75</span>
+                    <span class="tier-unit">units</span>
+                </div>
+                <p class="tier-desc">For busy salons, spas and clinics ready to retail across skin, lips and hair.</p>
+                <ul class="tier-features">
+                    <li><span>—</span> Improved trade margin</li>
+                    <li><span>—</span> Full-range mix</li>
+                    <li><span>—</span> Dedicated trade contact</li>
+                </ul>
+                <a href="#trade-enquiry" data-order-select="75 units" class="btn btn-primary-light w-full tier-btn">GET TRADE PRICING</a>
+            </div>
+
+            <!-- Tier 3: Wholesale -->
+            <div class="order-tier-card">
+                <span class="tier-eyebrow">WHOLESALE</span>
+                <div class="tier-quantity">
+                    <span class="tier-num">100+</span>
+                    <span class="tier-unit">units</span>
+                </div>
+                <p class="tier-desc">For chains, retailers, dealers, distributors, hotels and corporate gifting.</p>
+                <ul class="tier-features">
+                    <li><span>—</span> Best trade margin, up to 50%</li>
+                    <li><span>—</span> Repeat &amp; multi-location orders</li>
+                    <li><span>—</span> Terms discussed one-to-one</li>
+                </ul>
+                <a href="#trade-enquiry" data-order-select="100+ units" class="btn btn-outline-primary w-full tier-btn">GET TRADE PRICING</a>
+            </div>
+        </div>
+
+        <p class="text-center text-on-surface-variant mt-large">
+            Not sure which fits? <a href="#trade-enquiry" class="link-underline">Tell us about your business</a> and we’ll suggest one.
+        </p>
+    </section>
+
+    <!-- 8) What Our Partners Say (Hidden as requested) -->
+    <!--
+    <section id="partner-reviews" class="section bg-surface-alt reveal" style="display: none;">
+        <div class="container">
+            <div class="partner-reviews-header mb-large">
+                <div>
+                    <span class="eyebrow text-muted">WHAT OUR PARTNERS SAY</span>
+                    <h2 class="section-title text-primary">Professionals who stock<br>Tulia, in their words</h2>
+                </div>
+                <div class="rating-summary-box">
+                    <span class="rating-big-num">4.9</span>
+                    <div class="rating-summary-meta">
+                        <span class="stars">★★★★★</span>
+                        <p>Average rating across the Tulia range</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="minimal-testimonial partner-testimonial-card">
+                    <div>
+                        <div class="partner-stars mb-medium">★★★★★</div>
+                        <p class="partner-quote italic-serif">
+                            “[Add a real quote from your TONI<span class="amp">&amp;</span>GUY contact — e.g. how clients respond to the haircare duo at the styling chair.]”
+                        </p>
+                    </div>
+                    <div class="partner-author-row">
+                        <div class="partner-avatar avatar-primary">TG</div>
+                        <div>
+                            <h4 class="partner-author-name">[Name, Role]</h4>
+                            <p class="partner-author-biz">TONI&amp;GUY · [City]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="minimal-testimonial partner-testimonial-card">
+                    <div>
+                        <div class="partner-stars mb-medium">★★★★★</div>
+                        <p class="partner-quote italic-serif">
+                            “[Add a real review from a spa or clinic partner — e.g. reorders, client feedback on the sunscreen gel.]”
+                        </p>
+                    </div>
+                    <div class="partner-author-row">
+                        <div class="partner-avatar avatar-gold">··</div>
+                        <div>
+                            <h4 class="partner-author-name">[Name, Role]</h4>
+                            <p class="partner-author-biz">[Business] · [City]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="minimal-testimonial partner-testimonial-card">
+                    <div>
+                        <div class="partner-stars mb-medium">★★★★★</div>
+                        <p class="partner-quote italic-serif">
+                            “[Add a real review from a retailer, beautician or distributor — e.g. margins, sell-through, ordering on WhatsApp.]”
+                        </p>
+                    </div>
+                    <div class="partner-author-row">
+                        <div class="partner-avatar avatar-dark">··</div>
+                        <div>
+                            <h4 class="partner-author-name">[Name, Role]</h4>
+                            <p class="partner-author-biz">[Business] · [City]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- 9) How Becoming A Partner Works -->
+    <section id="how-it-works" class="section bg-primary text-white reveal">
+        <div class="container">
+            <div class="section-header text-center mb-large">
+                <span class="eyebrow standards-eyebrow">HOW BECOMING A PARTNER WORKS</span>
+                <h2 class="section-title text-white">Three steps to your first order</h2>
+            </div>
+
+            <div class="grid grid-3 steps-three-grid">
+                <div class="partner-step-card">
+                    <div class="partner-step-num">01</div>
+                    <h3 class="partner-step-title">Fill in a short form</h3>
+                    <p class="partner-step-desc">Tell us about your business — what you do, where you are and what you’d like to stock.</p>
+                </div>
+                <div class="partner-step-card">
+                    <div class="partner-step-num">02</div>
+                    <h3 class="partner-step-title">We get in touch within 24 hours</h3>
+                    <p class="partner-step-desc">We call or WhatsApp you to understand your needs and share your trade price list.</p>
+                </div>
+                <div class="partner-step-card">
+                    <div class="partner-step-num">03</div>
+                    <h3 class="partner-step-title">Place your first order</h3>
+                    <p class="partner-step-desc">Choose your quantity and we’ll confirm pricing, payment and delivery with you.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-large">
+                <a href="#trade-enquiry" class="btn btn-primary-light">REQUEST TRADE PRICING</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10) Frequently Asked Questions -->
+    <section id="faq" class="section container reveal">
+        <div class="section-header text-center mb-large">
+            <span class="eyebrow text-muted">FAQ</span>
+            <h2 class="section-title text-primary">Frequently asked questions</h2>
+        </div>
+
+        <div class="faq-accordion max-w-4xl mx-auto">
+            <!-- FAQ 1 -->
+            <div class="faq-item active">
+                <button class="faq-question" aria-expanded="true">
+                    <span>Who can partner with Tulia?</span>
+                    <span class="faq-toggle">×</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Salons, spas, skin and aesthetic clinics, freelance beauticians and makeup artists, retail stockists and pharmacies, hotels, corporate gifting buyers, and dealers and distributors. Select your business type on the form.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What is the minimum order?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Opening orders start at 50 units. We’ll confirm how quantities are counted across products when we speak.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What margins do partners earn?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Tulia offers trade margins of 35% to 50%, confirmed by your order size. We’ll share your exact trade pricing when we speak.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Can I order more than 100 units or reorder regularly?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Larger, repeat and multi-location orders are welcome — share your expected volume on the form and we’ll discuss terms one-to-one.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How long does delivery take?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Delivery depends on your location and order size. Your Tulia contact will confirm dates when you place your order.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How do I pay?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We’ll confirm payment terms for your order when we speak.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Are the products suitable for sensitive skin?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Tulia formulas are patch-tested, pH-balanced and free from parabens, sulfates and mineral oil. As with any product, we recommend clients patch-test first and follow label directions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11) Become Our Partner CTA Banner -->
+    <section class="become-partner-banner text-center text-white reveal">
+        <div class="container">
+            <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia" class="partner-banner-logo mx-auto mb-medium">
+            <h2 class="section-title text-white mb-large">Become our partner</h2>
+            <div class="partner-banner-actions">
+                <a href="#trade-enquiry" class="btn btn-primary-light">GET TRADE PRICING</a>
+                <a href="https://wa.me/918148148487" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline-light">CHAT ON WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12) Footer Redesign (Same as existing) -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <!-- Left Column -->
+            <div class="footer-left-col">
+                <div class="footer-logo-wrapper" style="margin-bottom: 3rem;">
+                    <img src="{{ 'logo-white.png' | asset_url }}" alt="Tulia Logo" style="height: 45px;">
+                </div>
+                <div class="footer-links-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="footer-col">
+                        <h3 class="footer-heading">SHOP</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Skincare</a></li>
+                            <li><a href="#">Haircare</a></li>
+                            <li><a href="#">Lip Care</a></li>
+                            <li><a href="#">All Products</a></li>
+                            <li><a href="#">Bestsellers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-heading">BRAND</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">The Flow of Rebirth</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Stockists</a></li>
+                            <li><a href="#">Retail Partner</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-heading">LEARN</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Skin, Decoded</a></li>
+                            <li><a href="#">Our Formulation</a></li>
+                            <li><a href="#">Made for Indian Skin</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3 class="footer-heading">HELP</h3>
+                        <ul class="footer-links">
+                            <li><a href="#faq">FAQs</a></li>
+                            <li><a href="#">Shipping &amp; Returns</a></li>
+                            <li><a href="#">Track Order</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social-section" style="padding-right: 2rem;">
+                    <h3 class="stay-in-touch"
+                        style="font-family: var(--font-serif); font-size: 2.5rem; font-weight: 400;">Stay in touch.</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/tuliacosmetics" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="footer-right-col">
+                <div class="footer-image-banner">
+                    <img src="{{ 'tulia-branding.png' | asset_url }}" alt="Tulia Branding">
+                </div>
+
+                <div class="newsletter-wrapper">
+                    <h4 class="newsletter-eyebrow mb-small"
+                        style="font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase;">
+                        OUR WEEKLY NEWSLETTER</h4>
+                    <h3 class="newsletter-title mb-small"
+                        style="font-family: var(--font-serif); font-size: 2.5rem; font-weight: 400; line-height: 1.1; white-space: normal;">
+                        Outgrow the standards</h3>
+                    <p class="newsletter-desc mb-medium text-white">Subscribe to our monthly newsletter to get the
+                        inside story</p>
+                    <form class="newsletter-form-footer">
+                        <input type="email" placeholder="your-email@example.com" required class="input-line">
+                        <button type="submit" class="btn-arrow" aria-label="Subscribe">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <div class="container footer-bottom-content"
+                style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="copyright-text" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 400;">
+                    Copyright © 2026 Tulia Cosmetics. All rights reserved.
+                </div>
+                <div class="developed-by-text"
+                    style="font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 400;">
+                    Developed with &#10084; by Chimpzlab
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button (Upside of Back to Top) -->
+    <a href="https://wa.me/918148148487" target="_blank" rel="noopener noreferrer" id="whatsapp-float"
+        aria-label="Chat on WhatsApp">
+        <svg width="26" height="26" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+        </svg>
+    </a>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="Back to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="{{ 'wholesale-page.js' | asset_url }}"></script>
+</body>
+
+</html>
