@@ -179,6 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    function getErrorContainer(input) {
+        // For regular fields: append to form-group
+        // For phone input: append to form-group (parent of phone-input-wrapper)
+        // For checkbox: append to form-consent-wrap
+        return input.closest('.form-group')
+            || input.closest('.form-consent-wrap')
+            || input.closest('.checkbox-label')
+            || input.parentNode;
+    }
+
     function showFieldError(input, message) {
         clearFieldError(input);
         input.classList.add('error');
@@ -186,12 +196,14 @@ document.addEventListener('DOMContentLoaded', () => {
         errorEl.className = 'field-error';
         errorEl.textContent = message;
         errorEl.setAttribute('role', 'alert');
-        input.parentNode.appendChild(errorEl);
+        const container = getErrorContainer(input);
+        container.appendChild(errorEl);
     }
 
     function clearFieldError(input) {
         input.classList.remove('error');
-        const existingError = input.parentNode.querySelector('.field-error');
+        const container = getErrorContainer(input);
+        const existingError = container.querySelector('.field-error');
         if (existingError) existingError.remove();
     }
 
@@ -430,16 +442,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. FormSubmit AJAX Submit with Loading State ---
+    // --- 9. FormSubmit Reliable Standard Submit ---
     const wholesaleForm = document.getElementById('wholesale-enquiry-form');
     const submitBtn = wholesaleForm?.querySelector('.trade-submit-btn');
 
     if (wholesaleForm && submitBtn) {
-        wholesaleForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
+        wholesaleForm.addEventListener('submit', (e) => {
             // Client-side validation
             if (!validateForm(wholesaleForm)) {
+                e.preventDefault();
                 // Focus first invalid field
                 const firstInvalid = wholesaleForm.querySelector('.error');
                 if (firstInvalid) {
@@ -449,58 +460,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Prepend +91 to WhatsApp number before submitting
+            const whatsappInput = document.getElementById('whatsapp-number');
+            if (whatsappInput && whatsappInput.value && !whatsappInput.value.startsWith('+91')) {
+                whatsappInput.value = '+91' + whatsappInput.value.trim();
+            }
+
             // UI: Loading state
-            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             submitBtn.classList.add('loading');
 
-            try {
-                const formData = new FormData(wholesaleForm);
-                const response = await fetch(wholesaleForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                // FormSubmit returns 200 OK with JSON on success, but sometimes returns redirect
-                // Check multiple success conditions
-                const contentType = response.headers.get('content-type');
-                let isSuccess = response.ok;
-
-                if (contentType && contentType.includes('application/json')) {
-                    try {
-                        const data = await response.json();
-                        isSuccess = data.success === true || response.ok;
-                    } catch {
-                        // JSON parse failed, but response.ok might still be true
-                        isSuccess = response.ok;
-                    }
-                }
-
-                if (isSuccess) {
-                    showSuccessPopup();
-                    wholesaleForm.reset();
-                    // Reset timestamp for next submission
-                    const timestampInput = wholesaleForm.querySelector('#form-timestamp');
-                    if (timestampInput) timestampInput.value = Date.now().toString();
-                } else {
-                    throw new Error('Submission failed');
-                }
-            } catch (err) {
-                // Even if fetch throws (network/CORS), form might have submitted via redirect
-                // Show success anyway since FormSubmit usually works
-                console.warn('Fetch error (may be CORS/redirect):', err);
-                showSuccessPopup();
-                wholesaleForm.reset();
-                const timestampInput = wholesaleForm.querySelector('#form-timestamp');
-                if (timestampInput) timestampInput.value = Date.now().toString();
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                submitBtn.classList.remove('loading');
-            }
+            // Form proceeds to submit natively via POST to FormSubmit action URL
         });
+    }
+
+    // Check if redirected back with success=true
+    if (window.location.search.includes('success=true')) {
+        showSuccessPopup();
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     function showSuccessPopup() {

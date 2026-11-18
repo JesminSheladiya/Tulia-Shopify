@@ -125,8 +125,8 @@
 
                   <input type="hidden" name="_subject" value="🔔 New Tulia Wholesale Enquiry">
                   <input type="hidden" name="_template" value="table">
-                  <input type="hidden" name="_next" value="/pages/bulk-buy?success=true">
-                  <input type="hidden" name="_captcha" value="true">
+                  <input type="hidden" name="_next" value="https://tuliacosmetics.com/pages/bulk-buy?success=true">
+                  <input type="hidden" name="_captcha" value="false">
                   <input type="hidden" name="_autoresponse" value="Thanks for your enquiry! We'll WhatsApp you within 24 hrs with trade pricing. — Team Tulia">
                   <input type="hidden" name="_honey" value="">
                   <input type="hidden" name="_replyto" value="noreply@tuliacosmetics.com">
@@ -158,7 +158,10 @@
                       </div>
                       <div class="form-group">
                           <label for="whatsapp-number">WhatsApp number</label>
-                          <input type="tel" id="whatsapp-number" name="WhatsApp" placeholder="Enter 10-digit mobile number" required pattern="[6-9]\d{9}" title="Enter a valid 10-digit Indian mobile number starting with 6, 7, 8 or 9" inputmode="numeric" maxlength="10">
+                          <div class="phone-input-wrapper">
+                              <span class="phone-prefix">+91</span>
+                              <input type="tel" id="whatsapp-number" name="WhatsApp" placeholder="Enter 10-digit mobile number" required pattern="[6-9]\d{9}" title="Enter a valid 10-digit Indian mobile number starting with 6, 7, 8 or 9" inputmode="numeric" maxlength="10" autocomplete="tel">
+                          </div>
                       </div>
                       <div class="form-group">
                           <label for="city">City</label>
