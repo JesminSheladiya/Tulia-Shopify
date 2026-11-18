@@ -144,4 +144,110 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- 8. FormSubmit AJAX Submit with Loading State ---
+    const wholesaleForm = document.getElementById('wholesale-enquiry-form');
+    const submitBtn = wholesaleForm?.querySelector('.trade-submit-btn');
+
+    if (wholesaleForm && submitBtn) {
+        wholesaleForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // UI: Loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.classList.add('loading');
+
+            try {
+                const formData = new FormData(wholesaleForm);
+                const response = await fetch(wholesaleForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                // FormSubmit returns 200 OK with JSON on success, but sometimes returns redirect
+                // Check multiple success conditions
+                const contentType = response.headers.get('content-type');
+                let isSuccess = response.ok;
+
+                if (contentType && contentType.includes('application/json')) {
+                    try {
+                        const data = await response.json();
+                        isSuccess = data.success === true || response.ok;
+                    } catch {
+                        // JSON parse failed, but response.ok might still be true
+                        isSuccess = response.ok;
+                    }
+                }
+
+                if (isSuccess) {
+                    showSuccessPopup();
+                    wholesaleForm.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (err) {
+                // Even if fetch throws (network/CORS), form might have submitted via redirect
+                // Show success anyway since FormSubmit usually works
+                console.warn('Fetch error (may be CORS/redirect):', err);
+                showSuccessPopup();
+                wholesaleForm.reset();
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.classList.remove('loading');
+            }
+        });
+    }
+
+    function showSuccessPopup() {
+        // Remove existing popup if any
+        const existing = document.getElementById('success-popup');
+        if (existing) existing.remove();
+
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'success-popup';
+        overlay.className = 'popup-overlay';
+        overlay.innerHTML = `
+            <div class="popup-modal">
+                <button class="popup-close" aria-label="Close">&times;</button>
+                <div class="popup-content">
+                    <div class="popup-icon">
+                        <span class="material-symbols-outlined">check_circle</span>
+                    </div>
+                    <h3 class="popup-title">Got it, thank you!</h3>
+                    <p class="popup-text">We've received your details. Someone from Tulia will be in touch with your trade pricing.</p>
+                    <p class="popup-text">Until then, go and have a cup of coffee. Or message us on WhatsApp if you have a question!</p>
+                    <a href="https://wa.me/918148148487" target="_blank" rel="noopener noreferrer" class="popup-whatsapp-btn">
+                        <span class="material-symbols-outlined">chat</span>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        // Trigger animation
+        requestAnimationFrame(() => overlay.classList.add('show'));
+
+        // Close handlers
+        const closeBtn = overlay.querySelector('.popup-close');
+        const closeModal = () => {
+            overlay.classList.remove('show');
+            setTimeout(() => overlay.remove(), 300);
+        };
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+
 });

@@ -117,69 +117,75 @@
                     <h2 class="trade-form-title">Get your trade price list</h2>
                 </div>
 
-                {%- form 'contact', id: 'wholesale-enquiry-form', class: 'trade-form' -%}
-                  {%- if form.posted_successfully? -%}
-                    <div class="form-message form-success">
-                      Your connection needs to be verified before you can proceed
-                    </div>
-                  {%- elsif form.errors -%}
-                    <div class="form-message form-error">
-                      Please check the errors below and try again.
-                    </div>
-                  {%- endif -%}
-                <input type="hidden" name="contact[body]" id="contact-body" value="">
-                <div class="trade-form-grid-top">
-                    <div class="form-group">
-                        <label for="your-name">Your name</label>
-                        <input type="text" id="your-name" name="contact[name]" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="business-name">Business name</label>
-                        <input type="text" id="business-name" name="contact[business_name]" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="business-type">Business type</label>
-                        <select id="business-type" name="contact[business_type]">
-                            <option value="Salon / parlour">Salon / parlour</option>
-                            <option value="Spa & wellness centre">Spa & wellness centre</option>
-                            <option value="Skin & aesthetic clinic">Skin & aesthetic clinic</option>
-                            <option value="Beautician, makeup & bridal artist">Beautician, makeup & bridal artist</option>
-                            <option value="Retailer, pharmacy & beauty store">Retailer, pharmacy & beauty store</option>
-                            <option value="Dealer & distributor">Dealer & distributor</option>
-                            <option value="Hotel, resort & boutique stay">Hotel, resort & boutique stay</option>
-                            <option value="Corporate gifting & bulk buyer">Corporate gifting & bulk buyer</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="whatsapp-number">WhatsApp number</label>
-                        <input type="tel" id="whatsapp-number" name="contact[whatsapp]" placeholder="+91" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="contact[city]" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="opening-order">Opening order</label>
-                        <select id="opening-order" name="contact[opening_order]">
-                            <option value="50 units">50 units</option>
-                            <option value="75 units">75 units</option>
-                            <option value="100+ units">100+ units</option>
-                        </select>
-                    </div>
-                </div>
+                <form id="wholesale-enquiry-form"
+                      class="trade-form"
+                      action="https://formsubmit.co/fentest19@gmail.com"
+                      method="POST">
 
-                <div class="trade-form-grid-bottom">
-                    <div class="form-consent-wrap">
-                        <label class="checkbox-label">
-                            <input type="checkbox" required checked>
-                            <span>I agree to be contacted by Tulia Cosmetics by phone, WhatsApp or email about this trade enquiry. See our <a href="https://tuliacosmetics.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
-                        </label>
-                    </div>
-                    <div class="form-submit-wrap">
-                        <button type="submit" class="btn btn-primary w-full trade-submit-btn">GET TRADE PRICING</button>
-                    </div>
-                </div>
-                {%- endform -%}
+                  <input type="hidden" name="_subject" value="🔔 New Tulia Wholesale Enquiry">
+                  <input type="hidden" name="_template" value="table">
+                  <input type="hidden" name="_next" value="/pages/bulk-buy?success=true">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_autoresponse" value="Thanks for your enquiry! We'll WhatsApp you within 24 hrs with trade pricing. — Team Tulia">
+                  <input type="hidden" name="_honey" value="">
+                  <input type="hidden" name="_replyto" value="noreply@tuliacosmetics.com">
+
+                  <div class="trade-form-grid-top">
+                      <div class="form-group">
+                          <label for="your-name">Your name</label>
+                          <input type="text" id="your-name" name="Name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="business-name">Business name</label>
+                          <input type="text" id="business-name" name="Business Name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="business-type">Business type</label>
+                          <select id="business-type" name="Business Type" required>
+                              <option value="">Select business type</option>
+                              <option value="Salon / parlour">Salon / parlour</option>
+                              <option value="Spa & wellness centre">Spa & wellness centre</option>
+                              <option value="Skin & aesthetic clinic">Skin & aesthetic clinic</option>
+                              <option value="Beautician, makeup & bridal artist">Beautician, makeup & bridal artist</option>
+                              <option value="Retailer, pharmacy & beauty store">Retailer, pharmacy & beauty store</option>
+                              <option value="Dealer & distributor">Dealer & distributor</option>
+                              <option value="Hotel, resort & boutique stay">Hotel, resort & boutique stay</option>
+                              <option value="Corporate gifting & bulk buyer">Corporate gifting & bulk buyer</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="whatsapp-number">WhatsApp number</label>
+                          <input type="tel" id="whatsapp-number" name="WhatsApp" placeholder="+91" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="city">City</label>
+                          <input type="text" id="city" name="City" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="opening-order">Opening order</label>
+                          <select id="opening-order" name="Opening Order" required>
+                              <option value="">Select order size</option>
+                              <option value="50 units">50 units</option>
+                              <option value="75 units">75 units</option>
+                              <option value="100+ units">100+ units</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="trade-form-grid-bottom">
+                      <div class="form-consent-wrap">
+                          <label class="checkbox-label">
+                              <input type="checkbox" name="Consent" value="Yes" required checked>
+                              <span>I agree to be contacted by Tulia Cosmetics by phone, WhatsApp or email about this trade enquiry. See our <a href="https://tuliacosmetics.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
+                          </label>
+                      </div>
+                      <div class="form-submit-wrap">
+                          <button type="submit" class="btn btn-primary w-full trade-submit-btn">GET TRADE PRICING</button>
+                      </div>
+                  </div>
+                </form>
+
+                <div id="form-message" class="form-message" style="display: none;"></div>
             </div>
         </div>
 
