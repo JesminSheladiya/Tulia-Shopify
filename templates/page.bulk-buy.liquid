@@ -120,24 +120,27 @@
                 <form id="wholesale-enquiry-form"
                       class="trade-form"
                       action="https://formsubmit.co/tuliacosmetics2026@gmail.com"
-                      method="POST">
+                      method="POST"
+                      novalidate>
 
                   <input type="hidden" name="_subject" value="🔔 New Tulia Wholesale Enquiry">
                   <input type="hidden" name="_template" value="table">
                   <input type="hidden" name="_next" value="/pages/bulk-buy?success=true">
-                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_captcha" value="true">
                   <input type="hidden" name="_autoresponse" value="Thanks for your enquiry! We'll WhatsApp you within 24 hrs with trade pricing. — Team Tulia">
                   <input type="hidden" name="_honey" value="">
                   <input type="hidden" name="_replyto" value="noreply@tuliacosmetics.com">
+                  <input type="hidden" name="_gotcha" value="" id="honey-pot">
+                  <input type="hidden" name="form_timestamp" id="form-timestamp" value="">
 
                   <div class="trade-form-grid-top">
                       <div class="form-group">
                           <label for="your-name">Your name</label>
-                          <input type="text" id="your-name" name="Name" required>
+                          <input type="text" id="your-name" name="Name" placeholder="Enter your first and last name" required minlength="3" maxlength="50" pattern="[A-Za-z]+\s+[A-Za-z\s\.]+" title="Enter at least first and last name (letters, spaces and dots only)">
                       </div>
                       <div class="form-group">
                           <label for="business-name">Business name</label>
-                          <input type="text" id="business-name" name="Business Name" required>
+                          <input type="text" id="business-name" name="Business Name" placeholder="Enter your business/brand name" required minlength="2" maxlength="100">
                       </div>
                       <div class="form-group">
                           <label for="business-type">Business type</label>
@@ -155,11 +158,11 @@
                       </div>
                       <div class="form-group">
                           <label for="whatsapp-number">WhatsApp number</label>
-                          <input type="tel" id="whatsapp-number" name="WhatsApp" placeholder="+91" required>
+                          <input type="tel" id="whatsapp-number" name="WhatsApp" placeholder="Enter 10-digit mobile number" required pattern="[6-9]\d{9}" title="Enter a valid 10-digit Indian mobile number starting with 6, 7, 8 or 9" inputmode="numeric" maxlength="10">
                       </div>
                       <div class="form-group">
                           <label for="city">City</label>
-                          <input type="text" id="city" name="City" required>
+                          <input type="text" id="city" name="City" placeholder="Enter your city" required minlength="2" maxlength="50" pattern="[A-Za-z\s]+" title="Only letters and spaces allowed">
                       </div>
                       <div class="form-group">
                           <label for="opening-order">Opening order</label>
