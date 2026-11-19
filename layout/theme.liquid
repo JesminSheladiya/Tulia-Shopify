@@ -6,6 +6,15 @@
 
 
 <head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W7766LPC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+
+
   <!-- Google Tag Manager: loads ONLY after cookie consent (cookie-banner snippet calls tuliaLoadGTM on Accept) -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -291,6 +300,17 @@
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7766LPC"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+
   <a href="#MainContent" class="skip-to-content">Skip to content</a>
   {% comment %} GTM noscript removed: tracking (incl. noscript) loads only after cookie consent {% endcomment %}
 

@@ -35,11 +35,25 @@
         }
     </style>
 
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W7766LPC"></script>
+    <!-- End Google Tag Manager -->
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ 'wholesale-page.css' | asset_url }}">
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7766LPC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    </script>
 
     <!-- ===== HEADER (Same as Bulk-Buy Page) ===== -->
     <header class="site-header">
@@ -116,7 +130,7 @@
 
                 <!-- CTA Actions -->
                 <div class="thank-you-actions">
-                    <a href="/collections/all" class="btn btn-primary-light">Continue Shopping</a>
+                    <a href="javascript:history.back()" class="btn btn-primary-light">Back to Site</a>
                     <a href="https://wa.me/918148148487" target="_blank" rel="noopener noreferrer"
                         class="btn btn-primary whatsapp-btn">
                         <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"
