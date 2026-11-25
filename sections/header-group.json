@@ -103,7 +103,7 @@
         "nav_retail_partner": {
           "type": "nav_link",
           "settings": {
-            "label": "Become our Retail Partner",
+            "label": "Retail Partner",
             "link": "/pages/become-our-partner",
             "position": "right"
           }

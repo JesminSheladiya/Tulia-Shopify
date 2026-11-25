@@ -493,25 +493,27 @@ ul {
 .header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
 }
 
 .header-left {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.header-icons-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-}
-
-.header-center {
+    justify-content: space-between;
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
 }
 
 .logo-link {
@@ -1841,7 +1843,7 @@ ul {
     }
 
     .header-container {
-        grid-template-columns: auto 1fr auto;
+        gap: 1.5rem;
     }
 
     .header-logo {

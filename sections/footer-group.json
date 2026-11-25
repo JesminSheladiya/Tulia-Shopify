@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -27,7 +27,7 @@
           "settings": {
             "heading": "BRAND",
             "menu": "",
-            "fallback_links": "Our Story | /pages/our-story\nContact Us | /pages/contact\nBecome our Retail Partner | /pages/become-our-partner"
+            "fallback_links": "Our Story | /pages/our-story\nContact Us | /pages/contact\nRetail Partner | /pages/become-our-partner"
           }
         },
         "col_learn": {
@@ -60,8 +60,8 @@
         "newsletter_title": "Outgrow the standards",
         "newsletter_desc": "Subscribe to our monthly newsletter to get the inside story",
         "show_localization": true,
-        "copyright": "Copyright Â© [year] Tulia Cosmetics. All rights reserved.",
-        "credit": "Developed with â¤ by Chimpzlab",
+        "copyright": "Copyright © [year] Tulia Cosmetics. All rights reserved.",
+        "credit": "Developed with ❤ by Chimpzlab",
         "credit_brand": "Chimpzlab",
         "credit_url": "https://chimpzlab.com"
       }
@@ -71,5 +71,3 @@
     "footer"
   ]
 }
-
-
