@@ -12,6 +12,12 @@
     assign coll_h1 = 'Treat Your Lips to Ultimate Care'
   elsif collection.handle == 'skincare-with-products'
     assign coll_h1 = 'Transform Your Skin with Advanced Skincare'
+  elsif collection.handle == 'the-dusky-edit'
+    assign coll_h1 = 'The Dusky Edit'
+  elsif collection.handle == 'the-waves-edit'
+    assign coll_h1 = 'The Waves Edit'
+  elsif collection.handle == 'the-tint-edit'
+    assign coll_h1 = 'The Tint Edit'
   endif
   
   assign coming_soon_input = section.settings.coming_soon_products | newline_to_br | strip_newlines | split: '<br />'

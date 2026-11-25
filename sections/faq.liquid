@@ -3,6 +3,13 @@
   assign entries = mf.value
 -%}
 <section class="section bg-surface extracted-style-225">
+  <style>
+    .group.extracted-style-226 .faq-icon { font-size: 1.75rem; font-weight: 700; line-height: 1; }
+    .group.extracted-style-226 .faq-icon-closed { display: inline-block; }
+    .group.extracted-style-226 .faq-icon-open { display: none; }
+    .group.extracted-style-226[open] .faq-icon-closed { display: none; }
+    .group.extracted-style-226[open] .faq-icon-open { display: inline-block; }
+  </style>
   <div class="container text-center max-w-4xl mx-auto">
     <h2 class="section-title italic-serif text-primary mb-medium">{{ section.settings.title | escape }}</h2>
     <div class="extracted-style-124">
@@ -18,7 +25,7 @@
           <details class="group extracted-style-226">
             <summary class="extracted-style-227">
               {{ q | escape }}
-              <span class="material-symbols-outlined">add</span>
+              <span class="faq-icon"><span class="faq-icon-open">-</span><span class="faq-icon-closed">+</span></span>
             </summary>
             <div class="extracted-style-228">{{ a | escape }}</div>
           </details>
@@ -28,7 +35,7 @@
           <details class="group extracted-style-226" {{ block.shopify_attributes }}>
             <summary class="extracted-style-227">
               {{ block.settings.question | escape }}
-              <span class="material-symbols-outlined">add</span>
+              <span class="faq-icon"><span class="faq-icon-open">-</span><span class="faq-icon-closed">+</span></span>
             </summary>
             <div class="extracted-style-228">{{ block.settings.answer | escape }}</div>
           </details>

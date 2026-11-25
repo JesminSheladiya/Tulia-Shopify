@@ -1,13 +1,28 @@
 <section class="section {{ section.settings.bg }}">
+  <style>
+    .group.extracted-style-226 summary .material-symbols-outlined {
+      display: inline-block;
+      transition: display 0.3s ease;
+    }
+    details[open] .icon-add,
+    .group.extracted-style-226.details-open .icon-add {
+      display: none;
+    }
+    details[open] .icon-remove,
+    .group.extracted-style-226.details-open .icon-remove {
+      display: inline-block;
+    }
+  </style>
   <div class="container text-{{ section.settings.header_align }} max-w-4xl mx-auto">
     {%- if section.settings.eyebrow != blank -%}<p class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
     {%- if section.settings.heading != blank -%}<h2 class="section-title italic-serif text-primary mb-medium">{{ section.settings.heading | escape }}</h2>{%- endif -%}
     <div class="generic-faq">
       {%- for block in section.blocks -%}
-        <details class="group extracted-style-226" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
+        <details class="group extracted-style-226" {{ block.shopify_attributes }}>
           <summary class="extracted-style-227">
             {{ block.settings.question | escape }}
-            <span class="material-symbols-outlined">{% if forloop.first and section.settings.open_first %}expand_less{% else %}add{% endif %}</span>
+            <span class="material-symbols-outlined icon-add">add</span>
+            <span class="material-symbols-outlined icon-remove">remove</span>
           </summary>
           <div class="extracted-style-228">{{ block.settings.answer }}</div>
         </details>

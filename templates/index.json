@@ -151,22 +151,22 @@
           "type": "edit",
           "settings": {
             "image": "shopify://shop_images/dusky-edit_33903a32-8d12-496c-8947-ca4190d568d5.jpg",
-            "coming_soon": true,
+            "coming_soon": false,
             "title": "The Dusky Edit",
             "description": "Sunscreen, Buttermax cream, Skin lightening facewash",
             "button_label": "Shop The Dusky Edit",
-            "link": ""
+            "link": "https://tuliacosmetics.com/collections/the-dusky-edit"
           }
         },
         "e2": {
           "type": "edit",
           "settings": {
             "image": "shopify://shop_images/waves-edit_cd5cabcb-f1fa-48fc-a009-0822e09bba65.jpg",
-            "coming_soon": true,
+            "coming_soon": false,
             "title": "The Waves Edit",
             "description": "Shampoo & Conditioner",
             "button_label": "Shop The Waves Edit",
-            "link": ""
+            "link": "https://tuliacosmetics.com/collections/the-waves-edit"
           }
         }
       },

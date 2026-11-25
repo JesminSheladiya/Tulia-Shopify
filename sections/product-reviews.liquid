@@ -34,13 +34,18 @@
                     {%- assign stars = block.settings.rating | times: 1 -%}
                     {%- for i in (1..5) -%}{%- if i <= stars -%}<span>★</span>{%- else -%}<span style="opacity:.3;">★</span>{%- endif -%}{%- endfor -%}
                   </div>
-                  {%- if block.settings.customer_image != blank -%}
-                    <img src="{{ block.settings.customer_image | image_url: width: 200 }}" alt="{{ block.settings.author | escape }}" class="customer-review-image">
-                  {%- endif -%}
                   <span class="extracted-style-204">Verified Buyer</span>
                 </div>
                 <h5 class="extracted-style-220">{{ block.settings.title | escape }}</h5>
                 <p class="extracted-style-221">{{ block.settings.text | escape }}</p>
+                {%- if block.settings.product_image != blank -%}
+                  <div class="review-product-image-wrapper">
+                    <button class="review-image-btn" onclick="openReviewImageModal('{{ block.settings.product_image | escape }}', '{{ block.settings.title | escape }}')">
+                      <img src="{{ block.settings.product_image | image_url: width: 400 }}" alt="{{ block.settings.title | escape }}" class="product-review-image">
+                      <span class="view-full">View full</span>
+                    </button>
+                  </div>
+                {%- endif -%}
                 <p class="extracted-style-222">{{ block.settings.author | escape }} — {{ block.settings.date | escape }}</p>
               </div>
             {%- endif -%}
@@ -58,15 +63,129 @@
     gap: 0.75rem;
     flex-wrap: wrap;
   }
-  .customer-review-image {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+  .product-review-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
     object-fit: cover;
-    flex-shrink: 0;
+    display: block;
+    cursor: pointer;
     border: 2px solid rgba(0,0,0,0.06);
   }
+  .review-product-image-wrapper {
+    margin-top: 1rem;
+    width: fit-content;
+  }
+  .review-image-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .view-full {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary, #420007);
+    font-weight: 600;
+  }
 </style>
+
+<!-- Review Image Modal -->
+<div id="review-image-modal" class="review-modal" style="display:none;">
+  <div class="review-modal-overlay" onclick="closeReviewImageModal()"></div>
+  <div class="review-modal-content" onclick="event.stopPropagation()">
+    <button class="review-modal-close" onclick="closeReviewImageModal()">&times;</button>
+    <img id="review-modal-image" src="" alt="" class="review-modal-image">
+    <p id="review-modal-title" class="review-modal-title"></p>
+  </div>
+</div>
+
+<style>
+  .review-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+  }
+  .review-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+  }
+  .review-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  .review-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    line-height: 1;
+  }
+  .review-modal-image {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  .review-modal-title {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  function openReviewImageModal(imageSrc, title) {
+    var modal = document.getElementById('review-image-modal');
+    var modalImg = document.getElementById('review-modal-image');
+    var modalTitle = document.getElementById('review-modal-title');
+    modalImg.src = imageSrc;
+    modalTitle.textContent = title;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeReviewImageModal() {
+    var modal = document.getElementById('review-image-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeReviewImageModal();
+  });
+</script>
 
 {% schema %}
 {
@@ -90,7 +209,7 @@
       "name": "Review",
       "settings": [
         { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Stars", "default": 5 },
-        { "type": "image_picker", "id": "customer_image", "label": "Customer image", "info": "Optional customer photo for the review" },
+        { "type": "image_picker", "id": "product_image", "label": "Product image", "info": "Optional product photo shown below the review text (like Google reviews)" },
         { "type": "text", "id": "title", "label": "Title", "default": "Soft and comfortable" },
         { "type": "textarea", "id": "text", "label": "Text", "default": "I liked how lightweight this cream feels. It does not feel sticky and keeps my lips soft for a long time." },
         { "type": "text", "id": "author", "label": "Author", "default": "Anonymous" },
