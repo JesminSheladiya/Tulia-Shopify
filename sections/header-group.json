@@ -99,6 +99,14 @@
             "link": "/#blog",
             "position": "right"
           }
+        },
+        "nav_retail_partner": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Become our Retail Partner",
+            "link": "/pages/become-our-partner",
+            "position": "right"
+          }
         }
       },
       "block_order": [
@@ -111,7 +119,8 @@
         "nav_concern",
         "nav_edits",
         "nav_about",
-        "nav_journal"
+        "nav_journal",
+        "nav_retail_partner"
       ],
       "settings": {
         "shop_label": "Shop",
