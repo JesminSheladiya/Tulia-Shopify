@@ -21,6 +21,17 @@
   <div class="container header-container">
     <div class="header-left">
       <button class="icon-btn mobile-menu" aria-label="Open menu"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+
+    <div class="header-center">
+      <a href="{{ routes.root_url }}" class="logo-link">
+        {%- if logo != blank -%}
+          <img src="{{ logo | image_url: width: 320 }}" width="320" height="87" alt="{{ shop.name | escape }}" class="header-logo">
+        {%- else -%}
+          <img src="{{ 'logo-color.png' | asset_url }}" width="432" height="118" alt="{{ shop.name | escape }}" class="header-logo">
+        {%- endif -%}
+      </a>
+
       <nav class="main-nav desktop-nav">
         <div class="mega-menu-trigger">
           <a href="{{ section.settings.shop_link | default: shop_all_link | default: '/collections/all-products' }}" class="nav-link shop-link" id="shop-trigger">{{ section.settings.shop_label }}</a>
@@ -93,29 +104,15 @@
           </div>
         </div>
         {%- for block in section.blocks -%}
-          {%- if block.type == 'nav_link' and block.settings.position == 'left' -%}
+          {%- if block.type == 'nav_link' -%}
             <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
           {%- endif -%}
         {%- endfor -%}
       </nav>
     </div>
 
-    <a href="{{ routes.root_url }}" class="logo-link">
-      {%- if logo != blank -%}
-        <img src="{{ logo | image_url: width: 320 }}" width="320" height="87" alt="{{ shop.name | escape }}" class="header-logo">
-      {%- else -%}
-        <img src="{{ 'logo-color.png' | asset_url }}" width="432" height="118" alt="{{ shop.name | escape }}" class="header-logo">
-      {%- endif -%}
-    </a>
 
     <div class="header-right">
-      <nav class="main-nav desktop-nav">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'nav_link' and block.settings.position == 'right' -%}
-            <a href="{{ block.settings.link | default: '#' }}" class="nav-link" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
-          {%- endif -%}
-        {%- endfor -%}
-      </nav>
       <div class="header-icons">
         {%- if section.settings.show_search -%}
           <button type="button" class="icon-btn" aria-label="Search" data-search-open><span class="material-symbols-outlined">search</span></button>

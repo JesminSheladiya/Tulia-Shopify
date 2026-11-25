@@ -491,24 +491,26 @@ ul {
 }
 
 .header-container {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-right: 3rem;
-    gap: 3rem;
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding-left: 3rem;
+}
+
+.header-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 3rem;
 }
 
