@@ -1,0 +1,47 @@
+<section class="section partner-highlight bg-surface-alt">
+  <div class="container partner-highlight-container">
+    <img src="{{ 'toni-and-guy.png' | asset_url }}" alt="{{ section.settings.partner_logo_alt | default: 'TONI & GUY' }}" class="partner-logo">
+    {%- if section.settings.caption != blank -%}
+      <p class="partner-caption">{{ section.settings.caption | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .partner-highlight {
+    padding: 5rem 0 4rem 0;
+  }
+  .partner-highlight-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .partner-logo {
+    max-width: 400px;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  .partner-caption {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    color: var(--on-surface-variant, #6b6b6b);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Partner Highlight",
+  "settings": [
+    { "type": "image_picker", "id": "partner_logo", "label": "Partner Logo" },
+    { "type": "text", "id": "partner_logo_alt", "label": "Logo Alt Text", "default": "Partner Logo" },
+    { "type": "text", "id": "caption", "label": "Caption", "default": "Our Primary Retail Partner" }
+  ],
+  "presets": [{ "name": "Partner Highlight" }]
+}
+{% endschema %}

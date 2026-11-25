@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "partner_highlight": {
+      "type": "partner-highlight",
+      "name": "Partner Highlight",
+      "settings": {
+        "partner_logo": "shopify://shop_images/toni-guy-logo.png",
+        "partner_logo_alt": "TONI & GUY",
+        "caption": "Our Primary Retail Partner"
+      }
+    },
     "generic_banner_cK3AeP": {
       "type": "generic-banner",
       "disabled": true,
@@ -42,10 +51,10 @@
         "content_align": "center",
         "content_valign": "center",
         "text_color": "dark",
-        "eyebrow": "Retail Partner",
+        "eyebrow": "Partner With Us",
         "heading": "Give Clients More to Return To",
         "subtext": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
-        "button_1_label": "Become a Retail Partner",
+        "button_1_label": "Partner With Us",
         "button_1_link": "#",
         "button_1_style": "btn-primary",
         "button_2_label": "",
@@ -116,7 +125,7 @@
         "eyebrow": "",
         "heading": "Let's build something beautiful together",
         "subtext": "",
-        "button_1_label": "Become a Retail Partner",
+        "button_1_label": "Partner With Us",
         "button_1_link": "#",
         "button_1_style": "btn-primary-light",
         "button_2_label": "",
@@ -128,11 +137,11 @@
       "type": "soma-retail-partner",
       "name": "SOMA Retail Partner",
       "settings": {
-        "subtitle": "RETAIL PARTNER",
-        "title": "Partner With Us & Grow Your Business",
+        "subtitle": "PARTNER WITH US",
+        "title": "Grow Your Business",
         "use_h1": true,
-        "description": "Introduce a skincare ritual that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
-        "btn_text": "BECOME A RETAIL PARTNER",
+        "description": "Introduce a skincare ritual to your customers that elevates your service, supports client loyalty, and gives every visit a thoughtful retail extension.",
+        "btn_text": "GET TRADE PRICING",
         "popup_title": "Partner With TULIA",
         "popup_desc": "Please fill out this form and our partnership team will reach out within 24-48 hours.",
         "bg_color": "#fcf9f8",
@@ -154,6 +163,7 @@
     }
   },
   "order": [
+    "partner_highlight",
     "generic_banner_cK3AeP",
     "hero",
     "benefits",
