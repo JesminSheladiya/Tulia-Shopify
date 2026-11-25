@@ -1,0 +1,133 @@
+<style>
+  .returns-page { font-family: 'Kanit', sans-serif; background: #fcf9f8; color: #1b1c1c; line-height: 1.6; }
+  .returns-page * { box-sizing: border-box; }
+  .returns-page .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .returns-page .eyebrow { font-family: 'Bodoni Moda', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: #420007; margin: 0 0 8px 0; font-weight: 600; }
+  .returns-page h1 { font-family: 'Bodoni Moda', serif; font-size: 40px; margin: 0 0 12px 0; font-weight: 600; letter-spacing: -0.5px; }
+  .returns-page .subtitle { font-size: 16px; color: #564241; margin: 0 0 30px 0; max-width: 600px; }
+  .returns-page .section { background: #fff; border: 1px solid #dcd1c4; border-radius: 12px; padding: 30px; margin-bottom: 24px; }
+  .returns-page .section h2 { font-family: 'Bodoni Moda', serif; font-size: 26px; margin: 0 0 16px 0; font-weight: 600; }
+  .returns-page label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #1b1c1c; }
+  .returns-page input, .returns-page textarea, .returns-page select { width: 100%; padding: 12px 14px; border: 1px solid #d8d8d8; border-radius: 6px; font-family: 'Kanit', sans-serif; font-size: 14px; background: #fff; margin-bottom: 16px; }
+  .returns-page input:focus, .returns-page textarea:focus, .returns-page select:focus { outline: none; border-color: #420007; }
+  .returns-page textarea { min-height: 110px; resize: vertical; }
+  .returns-page .file-wrap { border: 1px dashed #d8d8d8; border-radius: 6px; padding: 14px 16px; background: #faf8f5; margin-bottom: 16px; }
+  .returns-page .file-input { width: auto; padding: 6px; background: #fff; border: 1px solid #d8d8d8; border-radius: 4px; }
+  .returns-page .btn-primary { display: inline-block; background: #420007; color: #fff; border: none; padding: 14px 26px; border-radius: 6px; font-family: 'Kanit', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; width: 100%; text-align: center; }
+  .returns-page .btn-primary:hover { background: #630f17; }
+  .returns-page .btn-outline { display: inline-block; background: transparent; color: #420007; border: 1px solid #420007; padding: 13px 24px; border-radius: 6px; font-family: 'Kanit', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; margin-top: 10px; }
+  .returns-page .btn-outline:hover { background: #f2efe9; }
+  .returns-page .success { background: #eef6ee; border: 1px solid #c3e6cb; border-radius: 8px; padding: 20px; color: #1e5a2a; text-align: center; }
+  .returns-page .success .check { font-size: 40px; margin-bottom: 12px; }
+  .returns-page .success h3 { margin: 0 0 8px 0; font-family: 'Bodoni Moda', serif; font-size: 24px; font-weight: 600; }
+  .returns-page .success p { margin: 0; font-size: 14px; }
+  .returns-page .contacts { margin-top: 8px; font-size: 13px; color: #564241; }
+  .returns-page .contacts b { color: #1b1c1c; }
+  .returns-page .why-list { list-style: none; padding: 0; margin: 16px 0 0 0; }
+  .returns-page .why-list li { padding: 10px 0; border-bottom: 1px solid #f0eded; font-size: 14px; color: #1b1c1c; }
+  .returns-page .why-list li:last-child { border-bottom: none; }
+  .returns-page .why-list b { color: #420007; font-weight: 600; }
+  .returns-page .policy-note { font-size: 14px; color: #564241; margin: 0 0 20px 0; background: #faf8f5; border-left: 3px solid #420007; padding: 12px 16px; border-radius: 6px; }
+  .returns-page .hidden { display: none !important; }
+  @media (max-width: 640px) { .returns-page h1 { font-size: 30px; } .returns-page .section { padding: 20px; } }
+</style>
+
+<div class="returns-page">
+  <div class="container" style="padding-top: 40px; padding-bottom: 60px;">
+    <p class="eyebrow">Returns &amp; Refunds</p>
+    <h1>Start a Return</h1>
+    <p class="subtitle">Not your match? You can initiate a return online within 7 days of delivery. No calls or emails needed.</p>
+
+    <div class="section">
+      <h2>Return your order</h2>
+      <form id="tulia-return-form" novalidate>
+        <label for="return-order">Order number</label>
+        <input type="text" id="return-order" name="order_number" placeholder="e.g. #1005" required maxlength="20">
+
+        <label for="return-email">Email address on the order</label>
+        <input type="email" id="return-email" name="email" placeholder="you@example.com" required>
+
+        <label for="return-product">Product(s) to return</label>
+        <input type="text" id="return-product" name="products" placeholder="e.g. Skin Lightening Facewash, Lip Balm SPF 15" required>
+
+        <label for="return-reason">Reason for return</label>
+        <select id="return-reason" name="reason" required>
+          <option value="">Select a reason</option>
+          <option value="damaged_defective">Product received damaged or defective</option>
+          <option value="wrong_product">Wrong product received (different from what was ordered)</option>
+          <option value="meets_eligibility">Product meets return eligibility criteria</option>
+          <option value="other">Other applicable return reason</option>
+        </select>
+
+        <label for="return-refund">Refund method</label>
+        <select id="return-refund" name="refund_method" required>
+          <option value="">Select how you paid</option>
+          <option value="prepaid">Online payment (card / UPI / netbanking)</option>
+          <option value="cod">Cash on Delivery (COD)</option>
+        </select>
+
+        <p class="policy-note" style="margin-top:4px;"><b>Security:</b> For COD orders, bank / UPI details are requested only after your return is approved, via a secure link. Never share them in email or chat.</p>
+
+        <label for="return-detail">Tell us more (optional)</label>
+        <textarea id="return-detail" name="detail" placeholder="What didn’t work for you? Helps us improve."></textarea>
+
+        <label class="file-label" style="display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#1b1c1c;">Photos of the product (optional)</label>
+        <div class="file-wrap">
+          <input type="file" id="return-photos" name="photos" accept="image/*" multiple class="file-input">
+        </div>
+
+        <p class="policy-note" style="margin-top:4px;"><b>Eligibility:</b> Refunds are issued when the returned product meets our return eligibility criteria, was damaged/defective or different from what was ordered, or your order was cancelled before shipping. Non-refundable: products that have been used, opened or tampered with (unless damaged/defective), returns requested after the return window has closed, and items marked "final sale" or "non-returnable" at checkout.</p>
+
+        <button type="submit" class="btn-primary" id="return-submit">Submit Return Request</button>
+      </form>
+      <a href="/" class="btn-outline">Continue Shopping</a>
+    </div>
+
+    <div class="section">
+      <h2>How it works</h2>
+      <ul class="why-list">
+        <li><b>1. Submit</b> — Fill the form above with your order number and reason.</li>
+        <li><b>2. Approval</b> — Our team reviews and emails you a return authorization (RMA) within 1–2 business days.</li>
+        <li><b>3. Ship back</b> — Send the item to us with the RMA number clearly marked on the parcel.</li>
+        <li><b>4. Refund</b> — Once received and inspected, your refund is processed to the original payment method.</li>
+      </ul>
+      <p class="contacts"><b>Questions?</b> Email <a href="mailto:tulia@baptisthealthcare.in">tulia@baptisthealthcare.in</a> or call <a href="tel:+918148148487">+91 8148148487</a> (10:00 AM to 06:30 PM IST).</p>
+    </div>
+
+    <div id="return-success" class="success hidden">
+      <div class="check">✓</div>
+      <h3>Return request submitted</h3>
+      <p>We’ve received your request. Check your email for the return authorization and next steps.</p>
+    </div>
+  </div>
+</div>
+
+  <script>
+    var form = document.getElementById('tulia-return-form');
+    var success = document.getElementById('return-success');
+    var submitBtn = document.getElementById('return-submit');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+      var formData = new FormData(form);
+      fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'contact[tags]': 'return-request',
+          'body': 'New return request:\nOrder: ' + formData.get('order_number') + '\nEmail: ' + formData.get('email') + '\nProducts: ' + formData.get('products') + '\nReason: ' + formData.get('reason') + '\nRefund method: ' + formData.get('refund_method') + '\nDetail: ' + formData.get('detail') + '\nPhotos: ' + (formData.getAll('photos').length ? formData.getAll('photos').length + ' file(s)' : 'none')
+        })
+      }).then(function () {
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Return Request';
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      }).catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Return Request';
+        alert('Something went wrong. Please email tulia@baptisthealthcare.in directly.');
+      });
+    });
+  </script>

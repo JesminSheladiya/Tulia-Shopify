@@ -166,6 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
             pattern: 'Enter a valid 10-digit Indian mobile number (e.g., 9876543210)',
             invalid: 'Number must start with 6, 7, 8, or 9'
         },
+        'whatsapp-business-number': {
+            required: 'Please enter your 10-digit WhatsApp Business number',
+            pattern: 'Enter a valid 10-digit WhatsApp Business number (e.g., 9876543210)',
+            invalid: 'Number must start with 6, 7, 8, or 9'
+        },
         'city': {
             required: 'Please enter your city',
             minlength: 'City name must be at least 2 characters',
@@ -253,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
 
             case 'whatsapp-number':
+            case 'whatsapp-business-number':
                 if (!/^[6-9]\d{9}$/.test(value)) {
                     showFieldError(input, messages.pattern);
                     return false;
@@ -397,9 +403,11 @@ document.addEventListener('DOMContentLoaded', () => {
     style.textContent = '#honey-pot { display: none !important; opacity: 0; position: absolute; left: -9999px; }';
     document.head.appendChild(style);
 
-    // Restrict WhatsApp number field to numbers only (no +, -, spaces, letters, etc.)
-    const whatsappInput = document.getElementById('whatsapp-number');
-    if (whatsappInput) {
+    // Restrict WhatsApp number fields to numbers only (no +, -, spaces, letters, etc.)
+    ['whatsapp-number', 'whatsapp-business-number'].forEach((fieldId) => {
+        const whatsappInput = document.getElementById(fieldId);
+        if (!whatsappInput) return;
+
         whatsappInput.addEventListener('keydown', (e) => {
             // Allow: backspace, delete, tab, escape, enter, home, end, left/right arrows
             const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'Home', 'End', 'ArrowLeft', 'ArrowRight'];
@@ -440,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.target.value = e.target.value.slice(0, 10);
             }
         });
-    }
+    });
 
     // --- 9. FormSubmit Reliable Standard Submit ---
     const wholesaleForm = document.getElementById('wholesale-enquiry-form');
@@ -460,11 +468,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Prepend +91 to WhatsApp number before submitting
-            const whatsappInput = document.getElementById('whatsapp-number');
-            if (whatsappInput && whatsappInput.value && !whatsappInput.value.startsWith('+91')) {
-                whatsappInput.value = '+91' + whatsappInput.value.trim();
-            }
+            // Prepend +91 to WhatsApp numbers before submitting
+            ['whatsapp-number', 'whatsapp-business-number'].forEach((fieldId) => {
+                const whatsappInput = document.getElementById(fieldId);
+                if (whatsappInput && whatsappInput.value && !whatsappInput.value.startsWith('+91')) {
+                    whatsappInput.value = '+91' + whatsappInput.value.trim();
+                }
+            });
 
             // UI: Loading state
             submitBtn.disabled = true;

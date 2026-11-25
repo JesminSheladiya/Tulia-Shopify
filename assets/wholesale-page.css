@@ -2138,6 +2138,20 @@ ul {
     grid-column: span 1;
 }
 
+.trade-form-whatsapp-business {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1.25rem;
+}
+
+.trade-form-whatsapp-business .form-group {
+    width: 100%;
+}
+
+.trade-form-whatsapp-business .form-group label {
+    display: block;
+}
+
 .trade-form-grid-bottom {
     display: grid;
     grid-template-columns: 1fr auto;

@@ -64,20 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 sequenceImg.src = frames[frameIndex].src;
             }
 
-            // Text reveal staggered and stays
+            // Text reveal: hero heading visible from the start (no fade-in) for LCP.
+            // CTA + pointer still reveal on scroll for visual rhythm.
             const heroEyebrow = document.getElementById('hero-eyebrow');
             const heroPointer = document.getElementById('hero-pointer');
             const heroDesc = document.getElementById('hero-desc');
 
-            if (progress < 0.15) {
-                if(heroTitle) { heroTitle.style.opacity = '0'; heroTitle.style.transform = 'translateY(20px)'; }
-                if(heroEyebrow) { heroEyebrow.style.opacity = '0'; heroEyebrow.style.transform = 'translateY(20px)'; }
-                if(heroDesc) { heroDesc.style.opacity = '0'; heroDesc.style.transform = 'translateY(20px)'; }
-            } else {
-                if(heroTitle) { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }
-                if(heroEyebrow) { heroEyebrow.style.opacity = '1'; heroEyebrow.style.transform = 'translateY(0)'; }
-                if(heroDesc) { heroDesc.style.opacity = '1'; heroDesc.style.transform = 'translateY(0)'; }
-            }
+            if(heroTitle) { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }
+            if(heroEyebrow) { heroEyebrow.style.opacity = '1'; heroEyebrow.style.transform = 'translateY(0)'; }
+            if(heroDesc) { heroDesc.style.opacity = '1'; heroDesc.style.transform = 'translateY(0)'; }
 
             if (progress < 0.4) {
                 if(heroCta) { heroCta.style.opacity = '0'; heroCta.style.transform = 'translateY(20px)'; }

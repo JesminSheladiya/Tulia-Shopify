@@ -6,16 +6,19 @@
 
 
 <head>
-  <!-- Google Tag Manager -->
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W7766LPC"></script>
+  {% comment %}
+    Short URL alias: /about-us -> /pages/about-us.
+    Shopify pages always live under /pages/, so a true 301 needs
+    Admin → Online Store → Navigation → URL Redirects. This browser-side
+    redirect is a fallback until that admin redirect is in place.
+    Uses location.pathname because request.path is /404 on Shopify's 404 page.
+  {% endcomment %}
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    if (window.location.pathname.replace(/\/$/, '') === '/about-us') {
+      window.location.replace('/pages/about-us');
+    }
   </script>
-
-
-  <!-- Google Tag Manager: loads ONLY after cookie consent (cookie-banner snippet calls tuliaLoadGTM on Accept) -->
+  <!-- Google Tag Manager (consent-gated): loads only after cookie consent via cookie-banner snippet -->
   <script>
     window.dataLayer = window.dataLayer || [];
     window.tuliaGTMLoaded = false;
@@ -31,13 +34,10 @@
     (function () {
       var consent = null;
       try { consent = localStorage.getItem('tulia_cookie_consent'); } catch (e) {}
-      var apiAllowed = false;
-      try {
-        if (window.Shopify && Shopify.customerPrivacy && typeof Shopify.customerPrivacy.marketingAllowed === 'function') {
-          apiAllowed = Shopify.customerPrivacy.marketingAllowed() === true;
-        }
-      } catch (e) {}
-      if (consent === 'accepted' || apiAllowed) window.tuliaLoadGTM();
+      // Only load GTM on explicit consent — never auto-allow via Shopify's API
+      // default, which can return true in non-GDPR regions before the user
+      // has actually accepted cookies.
+      if (consent === 'accepted') window.tuliaLoadGTM();
     })();
   </script>
   <!-- End Google Tag Manager (consent-gated) -->
@@ -56,13 +56,15 @@
     <link rel="icon" href="{{ 'fav-icon.png' | asset_url }}">
   {%- endif -%}
 
-  {% comment %} Custom page titles per URL {% endcomment %}
+  {% comment %} Custom page titles per URL — aligned to Tulia Keywords Mapping sheet.
+    Each product matches both its current handle and the suggested handle so the
+    metadata survives a handle change in Shopify Admin. {% endcomment %}
   {%- liquid
     assign custom_page_title = blank
     if request.page_type == 'index'
-      assign custom_page_title = 'Premium Skincare, Haircare & Lip Care | Tulia Cosmetics'
+      assign custom_page_title = 'Premium Cosmetics & Beauty Brand | Tulia Cosmetics'
     elsif collection.handle == 'all-products'
-      assign custom_page_title = 'Shop All Cosmetics, Skincare & Haircare | Tulia Cosmetics'
+      assign custom_page_title = 'Premium Cosmetics & Skincare Brands | Tulia Cosmetics'
     elsif collection.handle == 'all'
       assign custom_page_title = 'Explore Our Full Range of Beauty Products | Tulia Cosmetics'
     elsif collection.handle == 'hair-scalp'
@@ -72,36 +74,48 @@
     elsif collection.handle == 'skincare-with-products'
       assign custom_page_title = 'Natural Skincare Products & Facewashes | Tulia Cosmetics'
     elsif page.handle == 'about-us'
-      assign custom_page_title = 'About Us | Pure, Safe & Effective Beauty | Tulia Cosmetics'
+      assign custom_page_title = 'About Us | Premium Cosmetics & Beauty Brands | Tulia Cosmetics'
     elsif page.handle == 'contact'
       assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
     elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
       assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
-    elsif product.handle == 'lip-balm'
-      assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
-    elsif product.handle == 'all-in-one-conditioner'
-      assign custom_page_title = 'All-in-One Hair Conditioner for Smooth Hair | Tulia Cosmetics'
+    elsif product.handle == 'lip-balm' or product.handle == 'spf-15-lip-balm'
+      assign custom_page_title = 'SPF 15 Lip Balm for Soft & Hydrated Lips | Tulia Cosmetics'
+    elsif product.handle == 'all-in-one-conditioner' or product.handle == 'premium-hair-conditioner'
+      assign custom_page_title = 'Premium All-in-One Hair Conditioner | Tulia Cosmetics'
+    elsif product.handle == 'lipz-lightening-cream' or product.handle == 'premium-lip-lightening-cream'
+      assign custom_page_title = 'Premium Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
+    elsif product.handle == 'all-in-one-shampoo' or product.handle == 'premium-all-in-one-hair-shampoo'
+      assign custom_page_title = 'All-in-One Moisturising Hair Shampoo | Tulia Cosmetics'
+    elsif product.handle == 'body-butter-cream'
+      assign custom_page_title = 'Nourishing & Moisturising Body Butter Cream | Tulia Cosmetics'
+    elsif product.handle == 'the-physical-sunscreen-gel' or product.handle == 'premium-physical-sunscreen-gel'
+      assign custom_page_title = 'Premium Physical Sunscreen Gel for Daily Use | Tulia Cosmetics'
     elsif product.handle == 'skin-lightening-brightening-facewash'
       assign custom_page_title = 'Skin Lightening & Brightening Facewash | Tulia Cosmetics'
-    elsif product.handle == 'lipz-lightening-cream'
-      assign custom_page_title = 'Lipz Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
     endif
 
     if custom_page_title == blank
       if request.path == '/pages/about-us'
-        assign custom_page_title = 'About Us | Pure, Safe & Effective Beauty | Tulia Cosmetics'
+        assign custom_page_title = 'About Us | Premium Cosmetics & Beauty Brands | Tulia Cosmetics'
       elsif request.path == '/pages/contact'
         assign custom_page_title = 'Contact Us | Get in Touch with Tulia Cosmetics Support'
       elsif request.path contains 'become'
         assign custom_page_title = 'Become a Partner & Distributor | Tulia Cosmetics'
       elsif request.path contains '/products/lip-balm'
-        assign custom_page_title = 'Nourishing Lip Balm for Dry Lips | Tulia Cosmetics'
+        assign custom_page_title = 'SPF 15 Lip Balm for Soft & Hydrated Lips | Tulia Cosmetics'
       elsif request.path contains '/products/all-in-one-conditioner'
-        assign custom_page_title = 'All-in-One Hair Conditioner for Smooth Hair | Tulia Cosmetics'
+        assign custom_page_title = 'Premium All-in-One Hair Conditioner | Tulia Cosmetics'
+      elsif request.path contains '/products/lipz-lightening-cream'
+        assign custom_page_title = 'Premium Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
+      elsif request.path contains '/products/all-in-one-shampoo'
+        assign custom_page_title = 'All-in-One Moisturising Hair Shampoo | Tulia Cosmetics'
+      elsif request.path contains '/products/body-butter-cream'
+        assign custom_page_title = 'Nourishing & Moisturising Body Butter Cream | Tulia Cosmetics'
+      elsif request.path contains '/products/the-physical-sunscreen-gel'
+        assign custom_page_title = 'Premium Physical Sunscreen Gel for Daily Use | Tulia Cosmetics'
       elsif request.path contains '/products/skin-lightening-brightening-facewash'
         assign custom_page_title = 'Skin Lightening & Brightening Facewash | Tulia Cosmetics'
-      elsif request.path contains '/products/lipz-lightening-cream'
-        assign custom_page_title = 'Lipz Lip Lightening Cream for Dark Lips | Tulia Cosmetics'
       endif
     endif
   -%}
@@ -117,13 +131,15 @@
     {%- endif -%}
   </title>
 
-  {% comment %} Custom meta descriptions per URL {% endcomment %}
+  {% comment %} Custom meta descriptions per URL — aligned to Tulia Keywords Mapping sheet.
+    Each product matches both its current handle and the suggested handle so the
+    metadata survives a handle change in Shopify Admin. {% endcomment %}
   {%- liquid
     assign custom_meta_description = blank
     if request.page_type == 'index'
-      assign custom_meta_description = 'Discover Tulia Cosmetics for clean, high-performance skincare, hair, and lip care essentials. Nourish your skin naturally with our premium beauty formulas.'
+      assign custom_meta_description = 'Premium cosmetics brand from Tulia Cosmetics. Shop skincare, haircare, lip care and everyday beauty essentials formulated with care.'
     elsif collection.handle == 'all-products'
-      assign custom_meta_description = 'Explore our full range of clean skincare, hair care, and lip care products at Tulia Cosmetics. Shop natural formulas crafted for healthy, glowing skin.'
+      assign custom_meta_description = 'Shop our full range of premium skincare, haircare and lip care products at Tulia Cosmetics. Enjoy thoughtfully formulated beauty essentials for everyday care.'
     elsif collection.handle == 'all'
       assign custom_meta_description = 'Browse the complete Tulia Cosmetics collection. Discover top-rated skincare essentials, nourishing hair formulas, and hydrating lip care products.'
     elsif collection.handle == 'hair-scalp'
@@ -133,44 +149,60 @@
     elsif collection.handle == 'skincare-with-products'
       assign custom_meta_description = 'Transform your skincare routine with Tulia Cosmetics. Explore our gentle, effective cleansers, serums, and moisturizers for radiant, healthy skin.'
     elsif page.handle == 'about-us'
-      assign custom_meta_description = "Learn about Tulia Cosmetics' commitment to natural beauty, high-quality ingredients, and sustainable skincare solutions designed to empower your skin."
+      assign custom_meta_description = "At Tulia Cosmetics, we believe in premium beauty products that support your skin's natural renewal through carefully selected ingredients and thoughtful skincare."
     elsif page.handle == 'contact'
       assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
     elsif page.handle == 'become-our-partner' or page.handle == 'become-a-partner'
       assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
-    elsif product.handle == 'lip-balm'
-      assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
-    elsif product.handle == 'all-in-one-conditioner'
-      assign custom_meta_description = 'An advanced all-in-one hair conditioner by Tulia Cosmetics that detangles, smooths, and deeply nourishes your hair for a healthy, radiant shine.'
+    elsif product.handle == 'lip-balm' or product.handle == 'spf-15-lip-balm'
+      assign custom_meta_description = 'Shop SPF 15 lip balm by Tulia Cosmetics for soft, moisturised lips. Its nourishing formula helps prevent dryness while providing everyday sun protection.'
+    elsif product.handle == 'all-in-one-conditioner' or product.handle == 'premium-hair-conditioner'
+      assign custom_meta_description = 'Buy premium hair conditioner from Tulia Cosmetics. This all-in-one formula helps hydrate dry hair, control frizz and leave hair soft, smooth and manageable.'
+    elsif product.handle == 'lipz-lightening-cream' or product.handle == 'premium-lip-lightening-cream'
+      assign custom_meta_description = 'Premium lip lightening cream by Tulia Cosmetics. Its hydrating formula helps reduce lip pigmentation, improve uneven tone and keep lips soft and smooth.'
+    elsif product.handle == 'all-in-one-shampoo' or product.handle == 'premium-all-in-one-hair-shampoo'
+      assign custom_meta_description = 'Shop all-in-one premium moisturising hair shampoo from Tulia Cosmetics. Gently cleanse your scalp, retain moisture and keep hair soft, smooth and manageable.'
+    elsif product.handle == 'body-butter-cream'
+      assign custom_meta_description = 'Buy premium moisturising body butter cream by Tulia Cosmetics. Its rich formula helps lock in moisture, nourish dry skin and improve softness for daily care.'
+    elsif product.handle == 'the-physical-sunscreen-gel' or product.handle == 'premium-physical-sunscreen-gel'
+      assign custom_meta_description = 'Shop premium physical sunscreen gel by Tulia Cosmetics. Formulated with 25% zinc oxide, SPF 50+ PA+++ protection and a smooth finish without visible white patches.'
     elsif product.handle == 'skin-lightening-brightening-facewash'
-      assign custom_meta_description = 'An active-powered skin brightening facewash by Tulia Cosmetics that gently cleanses, removes impurities, and promotes an even, glowing complexion.'
-    elsif product.handle == 'lipz-lightening-cream'
-      assign custom_meta_description = "A restorative lip lightening cream by Tulia Cosmetics that helps reduce dark pigmentation and restores your lips' natural, healthy pink tone."
+      assign custom_meta_description = 'Shop skin lightening & brightening facewash by Tulia Cosmetics. Enriched with kojic acid and niacinamide to help reduce dullness, tan and uneven skin tone.'
     endif
 
     if custom_meta_description == blank
       if request.path == '/pages/about-us'
-        assign custom_meta_description = "Learn about Tulia Cosmetics' commitment to natural beauty, high-quality ingredients, and sustainable skincare solutions designed to empower your skin."
+        assign custom_meta_description = "At Tulia Cosmetics, we believe in premium beauty products that support your skin's natural renewal through carefully selected ingredients and thoughtful skincare."
       elsif request.path == '/pages/contact'
         assign custom_meta_description = 'Have questions about our products or your order? Get in touch with the Tulia Cosmetics team. We are here to help you with all your skincare needs.'
       elsif request.path contains 'become'
         assign custom_meta_description = 'Partner with Tulia Cosmetics! Join our growing network of beauty stockists, distributors, and partners to share clean, premium skincare products worldwide.'
       elsif request.path contains '/products/lip-balm'
-        assign custom_meta_description = 'A rich, potent lip balm by Tulia Cosmetics designed to deeply hydrate, heal, and protect your lips, keeping them soft and smooth all day long.'
+        assign custom_meta_description = 'Shop SPF 15 lip balm by Tulia Cosmetics for soft, moisturised lips. Its nourishing formula helps prevent dryness while providing everyday sun protection.'
       elsif request.path contains '/products/all-in-one-conditioner'
-        assign custom_meta_description = 'An advanced all-in-one hair conditioner by Tulia Cosmetics that detangles, smooths, and deeply nourishes your hair for a healthy, radiant shine.'
-      elsif request.path contains '/products/skin-lightening-brightening-facewash'
-        assign custom_meta_description = 'An active-powered skin brightening facewash by Tulia Cosmetics that gently cleanses, removes impurities, and promotes an even, glowing complexion.'
+        assign custom_meta_description = 'Buy premium hair conditioner from Tulia Cosmetics. This all-in-one formula helps hydrate dry hair, control frizz and leave hair soft, smooth and manageable.'
       elsif request.path contains '/products/lipz-lightening-cream'
-        assign custom_meta_description = "A restorative lip lightening cream by Tulia Cosmetics that helps reduce dark pigmentation and restores your lips' natural, healthy pink tone."
+        assign custom_meta_description = 'Premium lip lightening cream by Tulia Cosmetics. Its hydrating formula helps reduce lip pigmentation, improve uneven tone and keep lips soft and smooth.'
+      elsif request.path contains '/products/all-in-one-shampoo'
+        assign custom_meta_description = 'Shop all-in-one premium moisturising hair shampoo from Tulia Cosmetics. Gently cleanse your scalp, retain moisture and keep hair soft, smooth and manageable.'
+      elsif request.path contains '/products/body-butter-cream'
+        assign custom_meta_description = 'Buy premium moisturising body butter cream by Tulia Cosmetics. Its rich formula helps lock in moisture, nourish dry skin and improve softness for daily care.'
+      elsif request.path contains '/products/the-physical-sunscreen-gel'
+        assign custom_meta_description = 'Shop premium physical sunscreen gel by Tulia Cosmetics. Formulated with 25% zinc oxide, SPF 50+ PA+++ protection and a smooth finish without visible white patches.'
+      elsif request.path contains '/products/skin-lightening-brightening-facewash'
+        assign custom_meta_description = 'Shop skin lightening & brightening facewash by Tulia Cosmetics. Enriched with kojic acid and niacinamide to help reduce dullness, tan and uneven skin tone.'
       endif
     endif
   -%}
 
   {% if custom_meta_description != blank %}
-    <meta name="description" content="{{ custom_meta_description | escape }}">
+    <meta name="description" content="{{ custom_meta_description | escape | replace: '&#39;', "'" }}">
   {% elsif page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+    <meta name="description" content="{{ page_description | escape | replace: '&#39;', "'" }}">
+  {% endif %}
+{% comment %} Keywords {% endcomment %}
+  {% if template.name == 'index' %}
+    <meta name="keywords" content="Premium cosmetics brand">
   {% endif %}
 
   {% comment %} Open Graph + Twitter share tags {% endcomment %}
@@ -206,7 +238,7 @@
   <meta property="og:title" content="{{ og_title | escape }}">
   <meta property="og:type" content="{{ og_type }}">
   {%- if og_description != blank -%}
-    <meta property="og:description" content="{{ og_description | escape }}">
+    <meta property="og:description" content="{{ og_description | escape | replace: '&#39;', "'" }}">
   {%- endif -%}
   {%- if og_image != blank -%}
     <meta property="og:image" content="https:{{ og_image }}">
@@ -215,7 +247,7 @@
   <meta name="twitter:card" content="{% if og_image != blank %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:title" content="{{ og_title | escape }}">
   {%- if og_description != blank -%}
-    <meta name="twitter:description" content="{{ og_description | escape }}">
+    <meta name="twitter:description" content="{{ og_description | escape | replace: '&#39;', "'" }}">
   {%- endif -%}
   {%- if og_image != blank -%}
     <meta name="twitter:image" content="https:{{ og_image }}">
@@ -223,7 +255,7 @@
 
   {% comment %} Brand tokens: Musky (display) + Montserrat (body, locally hosted in assets). {% endcomment %}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=add,apartment,arrow_left_alt,arrow_right_alt,arrow_upward,auto_awesome,autorenew,block,brightness_auto,brush,chat,check,check_circle,chevron_left,chevron_right,content_cut,credit_card,eco,equalizer,expand_more,fact_check,format_quote,healing,health_and_safety,light_mode,local_activity,local_hospital,local_mall,local_shipping,location_on,lock,menu,pets,play_circle,psychology,redeem,replay,routine,schedule,science,search,spa,storefront,today,touch_app,verified,verified_user,visibility,water_drop&display=swap" rel="stylesheet">
 
   {{ content_for_header }}
 
@@ -300,17 +332,6 @@
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7766LPC"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  </script>
-
   <a href="#MainContent" class="skip-to-content">Skip to content</a>
   {% comment %} GTM noscript removed: tracking (incl. noscript) loads only after cookie consent {% endcomment %}
 

@@ -1,5 +1,14 @@
 /*
  * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+/*
+ * ------------------------------------------------------------
  * All-In-One Shampoo product page - dedicated template with
  * shampoo-specific content (specs, science, ritual, clinical
  * stats, recommended, cross-sell, FAQ). Assign to the All-In-One
@@ -574,7 +583,7 @@
           "type": "product",
           "settings": {
             "product": "",
-            "product_handle": "all-in-one-conditioner",
+            "product_handle": "premium-hair-conditioner",
             "badge": "SHINE",
             "title": "Tulia All-in-one Conditioner",
             "size": "",
@@ -702,7 +711,7 @@
           "settings": {
             "quote": "My hair feels clean without that overly dry feeling after washing. I've been liking it for regular wash days.",
             "name": "Ananya Menon",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t2": {
@@ -710,7 +719,7 @@
           "settings": {
             "quote": "I like how it cleanses my scalp while leaving the lengths feeling softer. It works nicely with the conditioner.",
             "name": "Keerthana Nair",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t3": {
@@ -718,7 +727,7 @@
           "settings": {
             "quote": "My hair tends to feel rough after shampooing, but this leaves it feeling smoother and easier to manage.",
             "name": "Nithya Krishnan",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t4": {
@@ -726,7 +735,7 @@
           "settings": {
             "quote": "I have colour-treated hair, so I look for products that help maintain its look. This has been a nice addition to my routine.",
             "name": "Maria Joseph",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t5": {
@@ -734,7 +743,7 @@
           "settings": {
             "quote": "The lather is nice and it rinses off easily. My hair feels fresh after every wash.",
             "name": "Harini Subramanian",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t6": {
@@ -742,7 +751,7 @@
           "settings": {
             "quote": "I like that my hair doesn't feel weighed down after using it. It leaves a clean, light feel.",
             "name": "Pavithra Suresh",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t7": {
@@ -750,7 +759,7 @@
           "settings": {
             "quote": "My hair has been feeling quite dry lately. This shampoo leaves it feeling softer when I follow with the conditioner.",
             "name": "Aishwarya Raman",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t8": {
@@ -758,7 +767,7 @@
           "settings": {
             "quote": "A good everyday shampoo for my hair. It cleans my scalp and doesn't leave my lengths feeling too rough.",
             "name": "Sharon D'Souza",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t9": {
@@ -766,7 +775,7 @@
           "settings": {
             "quote": "I've been using this with the All-in-One Conditioner and like how manageable my hair feels afterwards.",
             "name": "Divya Narayanan",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t10": {
@@ -774,7 +783,7 @@
           "settings": {
             "quote": "My hair looks smoother after washing and feels easier to comb through. Happy with the overall experience.",
             "name": "Roshini Mathew",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t11": {
@@ -782,7 +791,7 @@
           "settings": {
             "quote": "I wanted something that would cleanse well without leaving my hair feeling stripped. This has worked well for me.",
             "name": "Joel Thomas",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t12": {
@@ -790,7 +799,7 @@
           "settings": {
             "quote": "The shampoo feels gentle on my scalp and leaves my hair feeling fresh. I like the simple wash routine.",
             "name": "Meera Iyer",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t13": {
@@ -798,7 +807,7 @@
           "settings": {
             "quote": "I have chemically treated hair and wanted a shampoo that fits into my routine. This has been easy to use.",
             "name": "Lakshmi Priya",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t14": {
@@ -806,7 +815,7 @@
           "settings": {
             "quote": "My hair feels softer after washing and I like that it doesn't feel coated or heavy.",
             "name": "Esther Paul",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t15": {
@@ -814,7 +823,7 @@
           "settings": {
             "quote": "It leaves my scalp feeling clean and my hair has a nice smooth feel once it dries.",
             "name": "Sanjana Shetty",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t16": {
@@ -822,7 +831,7 @@
           "settings": {
             "quote": "I like the texture and how easily it spreads through wet hair. It rinses out without much effort.",
             "name": "Fathima Rahman",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t17": {
@@ -830,7 +839,7 @@
           "settings": {
             "quote": "My hair gets frizzy after a wash, but this paired with the conditioner makes it easier to manage.",
             "name": "Gopika Krishnan",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t18": {
@@ -838,7 +847,7 @@
           "settings": {
             "quote": "A straightforward shampoo that cleans well. My hair feels fresh and not overly dry afterwards.",
             "name": "Arjun Nair",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t19": {
@@ -846,7 +855,7 @@
           "settings": {
             "quote": "I use it on my regular wash days and like how soft my hair feels after conditioning.",
             "name": "Rebecca Thomas",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t20": {
@@ -854,7 +863,7 @@
           "settings": {
             "quote": "My colour-treated hair looks fresh after washing and the formula feels comfortable to use.",
             "name": "Kavya Balaji",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t21": {
@@ -862,7 +871,7 @@
           "settings": {
             "quote": "It gives my scalp a clean feel while my lengths still feel manageable. I have been enjoying it.",
             "name": "Anjali Kurup",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         },
         "t22": {
@@ -870,7 +879,7 @@
           "settings": {
             "quote": "I like how my hair feels after the wash. It feels smoother and takes less effort to detangle.",
             "name": "Michelle Fernandes",
-            "product": "all-in-one-shampoo"
+            "product": "premium-all-in-one-hair-shampoo"
           }
         }
       },

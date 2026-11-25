@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -387,7 +396,7 @@
           "settings": {
             "quote": "has to be one of the best lip balm in my vanity helps moisturize my lips and can be used on lipstick as well for a glowy touch",
             "name": "Juili Mathew",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r2": {
@@ -395,7 +404,7 @@
           "settings": {
             "quote": "It really helped with reducuing my lip pigmentation i used to so insecure about my dual lip tone now it's a consistent pink tone throughout all thanks to the night lip cream",
             "name": "Aanya Sharma",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r3": {
@@ -411,7 +420,7 @@
           "settings": {
             "quote": "after using this conditioner on my hair it feels so shiny and soft and such a nice fresh feel on my hair",
             "name": "Abin Thomas",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r5": {
@@ -419,7 +428,7 @@
           "settings": {
             "quote": "sucha premium balm and looks really aesthetic",
             "name": "Ananya Menon",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r6": {
@@ -427,7 +436,7 @@
           "settings": {
             "quote": "been using it for 2 weeks now and i can definitely notice reduction in my lip pigmentation",
             "name": "Kavya Kapoor",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r7": {
@@ -443,7 +452,7 @@
           "settings": {
             "quote": "my hair feels super soft after using tulia's all in one conditioner and shampoo",
             "name": "Arya Mehta",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r9": {
@@ -451,7 +460,7 @@
           "settings": {
             "quote": "in love with the packaging also the lip balm is so moisturizing on my lips",
             "name": "Rakhi Sharma",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r10": {
@@ -459,7 +468,7 @@
           "settings": {
             "quote": "have recommended this to all my friends and they'll also agree when i say its the best out in the market for lips",
             "name": "Keerthana Reddy",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r11": {
@@ -475,7 +484,7 @@
           "settings": {
             "quote": "my hair feels so soft after using this",
             "name": "Arun Kumar",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r13": {
@@ -483,7 +492,7 @@
           "settings": {
             "quote": "this is permanently in my handbag now",
             "name": "Kavitha Rajan",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r14": {
@@ -491,7 +500,7 @@
           "settings": {
             "quote": "really loved how soft my lips feel after using this regularly",
             "name": "Karan Malhotra",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r15": {
@@ -507,7 +516,7 @@
           "settings": {
             "quote": "really liked how easily it detangles my hair I usually struggle with my lengths after shampooing but this makes them much easier to manage",
             "name": "Neha Menon",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r17": {
@@ -515,7 +524,7 @@
           "settings": {
             "quote": "really like how moisturising it feels without being sticky or heavy",
             "name": "Meera Joshi",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r18": {
@@ -523,7 +532,7 @@
           "settings": {
             "quote": "I have been using this every night and honestly the difference in the appearance of my lips is something I can notice. They look much more even now.",
             "name": "Vivek Nair",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r19": {
@@ -539,7 +548,7 @@
           "settings": {
             "quote": "my hair feels smoother, softer and looks much more polished after using this",
             "name": "Rohan Kapoor",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r21": {
@@ -547,7 +556,7 @@
           "settings": {
             "quote": "the SPF is honestly what made me pick this up and I ended up loving how comfortable it feels on my lips too",
             "name": "Joseph Varghese",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r22": {
@@ -555,7 +564,7 @@
           "settings": {
             "quote": "started using this mainly for pigmentation and i'm really happy with how it has worked so far",
             "name": "Priyanka Nair",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r23": {
@@ -571,7 +580,7 @@
           "settings": {
             "quote": "I\u2019ve been using this after every wash and the difference in how manageable my hair feels is really noticeable",
             "name": "Joel Mathew",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r25": {
@@ -579,7 +588,7 @@
           "settings": {
             "quote": "I keep applying this throughout the day because my lips feel so much softer after using it",
             "name": "Abin Thomas",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r26": {
@@ -587,7 +596,7 @@
           "settings": {
             "quote": "the texture is so easy to use and it fits perfectly into my night routine",
             "name": "Ishita Malhotra",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r27": {
@@ -603,7 +612,7 @@
           "settings": {
             "quote": "the best part for me is that my hair doesn\u2019t feel weighed down after conditioning it feels soft but still has movement",
             "name": "Dev Patel",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r29": {
@@ -611,7 +620,7 @@
           "settings": {
             "quote": "such an easy everyday product it's moisturising, comfortable",
             "name": "Ishaan Gupta",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r30": {
@@ -619,7 +628,7 @@
           "settings": {
             "quote": "after a few weeks my lips started looking much more even and less dull definitely going to continue using it",
             "name": "Nikhil Menon",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r31": {
@@ -635,7 +644,7 @@
           "settings": {
             "quote": "my hair usually gets really dry and frizzy, especially after being outside for a long time this has made my hair feel much softer and easier to manage",
             "name": "Sneha Pillai",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r33": {
@@ -643,7 +652,7 @@
           "settings": {
             "quote": "love that it has SPF because I never really thought about protecting my lips from the sun before",
             "name": "Aparna Menon",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r34": {
@@ -651,7 +660,7 @@
           "settings": {
             "quote": "I wasn\u2019t expecting to enjoy a lip treatment this much but this has become a regular part of my skincare",
             "name": "Sana Khan",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r35": {
@@ -667,7 +676,7 @@
           "settings": {
             "quote": "my hair feels noticeably softer after using this",
             "name": "Shalini Kumar",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r37": {
@@ -675,7 +684,7 @@
           "settings": {
             "quote": "this has officially become my handbag essential",
             "name": "Tanya Shah",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r38": {
@@ -683,7 +692,7 @@
           "settings": {
             "quote": "really happy with how my lips look now. they feel softer and the pigmentation looks much better",
             "name": "Pavithra Suresh",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r39": {
@@ -699,7 +708,7 @@
           "settings": {
             "quote": "really liked how easy it made my hair to comb through after washing",
             "name": "Priya Agarwal",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r41": {
@@ -707,7 +716,7 @@
           "settings": {
             "quote": "really smooth on the lips and keeps them moisturised for a good amount of time",
             "name": "Aishwarya Menon",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r42": {
@@ -715,7 +724,7 @@
           "settings": {
             "quote": "been using it consistently at night and I can actually see a difference in the overall appearance of my lips",
             "name": "Swathi Mohan",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r43": {
@@ -731,7 +740,7 @@
           "settings": {
             "quote": "this has made such a difference to the way my hair feels after shampooing much softer and easier to handle",
             "name": "Sanjana Shetty",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r45": {
@@ -739,7 +748,7 @@
           "settings": {
             "quote": "I bought it for the SPF and ended up loving the texture too",
             "name": "Malavika Nambiar",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r46": {
@@ -747,7 +756,7 @@
           "settings": {
             "quote": "my lips look much more even now and I honestly did not expect to notice a difference this soon",
             "name": "Diya Sethi",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r47": {
@@ -763,7 +772,7 @@
           "settings": {
             "quote": "my ends usually feel dry but they feel much smoother after using this conditioner",
             "name": "Simran Kaur",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r49": {
@@ -771,7 +780,7 @@
           "settings": {
             "quote": "always carry this with me now. especially when I\u2019m going out during the day",
             "name": "Kiara Khanna",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r50": {
@@ -779,7 +788,7 @@
           "settings": {
             "quote": "really like how simple this is to use at night it has become one of those products I don\u2019t skip anymore",
             "name": "Amritha Nair",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r51": {
@@ -795,7 +804,7 @@
           "settings": {
             "quote": "love how soft my hair feels without looking flat",
             "name": "Meghana Reddy",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r53": {
@@ -803,7 +812,7 @@
           "settings": {
             "quote": "my lips feel soft without that thick layer that some lip balms leave behind",
             "name": "Reshma Thomas",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r54": {
@@ -811,7 +820,7 @@
           "settings": {
             "quote": "the pigmentation around my lips has always bothered me and this has made a visible difference",
             "name": "Ira Desai",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r55": {
@@ -827,7 +836,7 @@
           "settings": {
             "quote": "I have been using this regularly and my hair feels much more manageable throughout the day",
             "name": "Maria D'Souza",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r57": {
@@ -835,7 +844,7 @@
           "settings": {
             "quote": "honestly one of the easiest products to use every day. swipe it on and you\u2019re done",
             "name": "Mahi Gupta",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r58": {
@@ -843,7 +852,7 @@
           "settings": {
             "quote": "very happy with how soft my lips feel after using this",
             "name": "Ann Mathew",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r59": {
@@ -859,7 +868,7 @@
           "settings": {
             "quote": "the conditioner spreads nicely through the lengths and rinses out easily my hair feels soft afterwards",
             "name": "Anushka Jain",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r61": {
@@ -867,7 +876,7 @@
           "settings": {
             "quote": "love that it has SPF because lip care with sun protection is something I had completely overlooked before",
             "name": "Alina Fernandes",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r62": {
@@ -875,7 +884,7 @@
           "settings": {
             "quote": "I started using it because my lips looked quite dull and uneven after using it consistently they look healthier and more even",
             "name": "Sharon George",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r63": {
@@ -891,7 +900,7 @@
           "settings": {
             "quote": "my hair gets quite frizzy after washing and this has helped it look much more controlled",
             "name": "Riya Varghese",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r65": {
@@ -899,7 +908,7 @@
           "settings": {
             "quote": "I keep this beside my bed and in my handbag. that\u2019s probably enough to explain how much I use it",
             "name": "Catherine Paul",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r66": {
@@ -907,7 +916,7 @@
           "settings": {
             "quote": "the best thing is that it does not feel like an extra step in my routine I apply it before bed and forget about it",
             "name": "Shreya Nair",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r67": {
@@ -923,7 +932,7 @@
           "settings": {
             "quote": "really happy with the finish my hair feels conditioned but still light",
             "name": "Avni Kulkarni",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r69": {
@@ -931,7 +940,7 @@
           "settings": {
             "quote": "the texture is really comfortable and it gives my lips that nice moisturised look",
             "name": "Tanvi Iyer",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r70": {
@@ -939,7 +948,7 @@
           "settings": {
             "quote": "have actually started seeing a difference in the darker areas of my lips",
             "name": "Theresa Antony",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r71": {
@@ -955,7 +964,7 @@
           "settings": {
             "quote": "this has become my favourite part of my hair wash routine the softness after rinsing is so good",
             "name": "Christina Xavier",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r73": {
@@ -963,7 +972,7 @@
           "settings": {
             "quote": "perfect for quick touch ups during the day my lips don\u2019t feel dry after using it",
             "name": "Michelle Rosario",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r74": {
@@ -971,7 +980,7 @@
           "settings": {
             "quote": "my lips look brighter and feel softer really happy I decided to try this",
             "name": "Myra Chawla",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r75": {
@@ -987,7 +996,7 @@
           "settings": {
             "quote": "I noticed the biggest difference around my ends they feel much smoother and less rough now",
             "name": "Jasmine Pereira",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r77": {
@@ -995,7 +1004,7 @@
           "settings": {
             "quote": "I usually don\u2019t finish lip balms but this one is already becoming a regular in my routine",
             "name": "Aditi Menon",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r78": {
@@ -1003,7 +1012,7 @@
           "settings": {
             "quote": "I was mainly looking for something that could help with lip pigmentation and this has worked really well for me",
             "name": "Leona Thomas",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r79": {
@@ -1019,7 +1028,7 @@
           "settings": {
             "quote": "I like that I can use it after every wash and my hair doesn\u2019t feel weighed down",
             "name": "Alicia Fernandez",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r81": {
@@ -1027,7 +1036,7 @@
           "settings": {
             "quote": "really like how lightweight it feels. I can apply it whenever my lips need some moisture",
             "name": "Grace Mathew",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r82": {
@@ -1035,7 +1044,7 @@
           "settings": {
             "quote": "using this every night has become a habit now my lips definitely look less dull than they did before",
             "name": "Melanie D'Silva",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r83": {
@@ -1051,7 +1060,7 @@
           "settings": {
             "quote": "the softness lasts even after my hair dries definitely something I wanted from a conditioner",
             "name": "Nandini Roy",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r85": {
@@ -1059,7 +1068,7 @@
           "settings": {
             "quote": "this is now the first thing I reach for before heading out",
             "name": "Nimisha Menon",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r86": {
@@ -1067,7 +1076,7 @@
           "settings": {
             "quote": "love how comfortable this feels on the lips no heavy feeling and the results have been really nice",
             "name": "Sia Mukherjee",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r87": {
@@ -1083,7 +1092,7 @@
           "settings": {
             "quote": "my hair normally needs a lot of effort after washing but this has made it much easier to manage it feels smoother and looks healthier too",
             "name": "Devika Pillai",
-            "product": "all-in-one-conditioner"
+            "product": "premium-hair-conditioner"
           }
         },
         "r89": {
@@ -1091,7 +1100,7 @@
           "settings": {
             "quote": "the SPF is a really nice addition to an everyday lip balm and the formula feels comfortable too",
             "name": "Isha Reddy",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r90": {
@@ -1099,7 +1108,7 @@
           "settings": {
             "quote": "after using it regularly I noticed that my lip colour looked much more even that was exactly what I wanted",
             "name": "Anjali Kurup",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r91": {
@@ -1107,7 +1116,7 @@
           "settings": {
             "quote": "simple product but something I find myself using multiple times a day",
             "name": "Gopika Krishnan",
-            "product": "lip-balm"
+            "product": "spf-15-lip-balm"
           }
         },
         "r92": {
@@ -1115,7 +1124,7 @@
           "settings": {
             "quote": "this is one of those products where consistency actually made a difference for me",
             "name": "Roshni Dutta",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r93": {
@@ -1123,7 +1132,7 @@
           "settings": {
             "quote": "my lips used to look quite pigmented around the edges and that has improved a lot",
             "name": "Mariya Sebastian",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         },
         "r94": {
@@ -1131,7 +1140,7 @@
           "settings": {
             "quote": "really pleased with the overall change my lips feel softer and the pigmentation looks much less noticeable",
             "name": "Merin Joseph",
-            "product": "lipz-lightening-cream"
+            "product": "premium-lip-lightening-cream"
           }
         }
       },

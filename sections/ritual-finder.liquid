@@ -13,7 +13,7 @@
 <section id="ritual-finder" class="section reveal bg-surface-alt">
   <div class="container">
     <div class="section-header text-center mb-large">
-      {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h2 class="section-title text-primary ritual-headline extracted-style-12">{{ section.settings.title | escape }}</h2>
       <div class="divider mx-auto"></div>
       {%- if section.settings.subtitle != blank -%}<p class="section-subtitle">{{ section.settings.subtitle | escape }}</p>{%- endif -%}

@@ -1,9 +1,6 @@
 {% comment %}
-  Custom robots.txt: Shopify defaults preserved + custom sitemap reference.
-  NOTE: Shopify's default /sitemap.xml cannot be overridden - it is
-  auto-generated at the platform level. So the custom sitemap is served
-  at /pages/custom-sitemap and referenced here. Submit it separately
-  in Google Search Console.
+  robots.txt: Shopify defaults preserved. Shopify's default /sitemap.xml is
+  auto-generated at the platform level and referenced via group.sitemap.
 {% endcomment %}
 {% for group in robots.default_groups %}
   {{- group.user_agent -}}
@@ -12,4 +9,3 @@
   {% endfor %}
   {{- group.sitemap -}}
 {% endfor %}
-Sitemap: {{ shop.url }}/pages/custom-sitemap

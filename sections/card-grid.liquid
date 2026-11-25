@@ -2,7 +2,7 @@
   <div class="container">
     {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
       <div class="section-header text-{{ section.settings.header_align }} mb-large">
-        {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
         {%- if section.settings.heading != blank -%}<h2 class="section-title text-primary">{{ section.settings.heading | escape }}</h2>{%- endif -%}
         {%- if section.settings.subheading != blank -%}<p class="section-subtitle">{{ section.settings.subheading | escape }}</p>{%- endif -%}
       </div>

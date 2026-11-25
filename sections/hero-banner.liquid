@@ -31,11 +31,11 @@
   <div class="scroll-container">
     <div class="canvas-wrapper">
       {%- if section.settings.use_sequence -%}
-        <img id="sequence-img" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
+        <img id="sequence-img" src="{{ 'frame-001.webp' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
       {%- elsif section.settings.fallback_image != blank -%}
         <img id="sequence-img" src="{{ section.settings.fallback_image | image_url: width: 1920 }}" width="1920" height="2400" alt="{{ section.settings.title | strip_html | escape }}">
       {%- else -%}
-        <img id="sequence-img" src="{{ 'frame-001.png' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
+        <img id="sequence-img" src="{{ 'frame-001.webp' | asset_url }}" width="1916" height="1080" alt="{{ section.settings.title | strip_html | escape }}">
       {%- endif -%}
       <div class="hero-overlay"></div>
     </div>
@@ -88,7 +88,7 @@
         {%- assign num = i | prepend: '00' -%}
         {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
         {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
-        "{{ 'frame-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+        "{{ 'frame-' | append: num | append: '.webp' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     ];
     window.tuliaHeroFramesMobile = [
@@ -96,7 +96,7 @@
         {%- assign num = i | prepend: '00' -%}
         {%- if i >= 10 and i < 100 -%}{%- assign num = i | prepend: '0' -%}{%- endif -%}
         {%- if i >= 100 -%}{%- assign num = i -%}{%- endif -%}
-        "{{ 'frame-v-' | append: num | append: '.png' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
+        "{{ 'frame-v-' | append: num | append: '.webp' | asset_url }}"{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     ];
   </script>

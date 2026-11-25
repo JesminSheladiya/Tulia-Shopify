@@ -41,28 +41,28 @@
       <div class="extracted-style-193">
         {%- assign ritual_video_file = section.settings.video_url -%}
         {%- if ritual_video_file == blank -%}
-          {%- if product.handle == 'lip-balm' -%}
+          {%- if product.handle == 'spf-15-lip-balm' -%}
             {%- assign ritual_video_file = 'lip-balm-video- men.mp4' -%}
-          {%- elsif product.handle == 'lipz-lightening-cream' -%}
+          {%- elsif product.handle == 'premium-lip-lightening-cream' -%}
             {%- assign ritual_video_file = 'lipz-lightening-cream.mp4' -%}
-          {%- elsif product.handle == 'all-in-one-conditioner' -%}
+          {%- elsif product.handle == 'premium-hair-conditioner' -%}
             {%- assign ritual_video_file = 'conditioner-men.mp4' -%}
           {%- elsif product.handle == 'skin-lightening-brightening-facewash' -%}
             {%- assign ritual_video_file = 'facewash-men.mp4' -%}
-          {%- elsif product.handle == 'all-in-one-shampoo' -%}
+          {%- elsif product.handle == 'premium-all-in-one-hair-shampoo' -%}
             {%- assign ritual_video_file = 'shampoo- women.mp4' -%}
           {%- endif -%}
         {%- endif -%}
 
-        {%- if product.handle == 'lip-balm' or product.handle == 'lipz-lightening-cream' or product.handle == 'all-in-one-conditioner' or product.handle == 'skin-lightening-brightening-facewash' -%}
+        {%- if product.handle == 'spf-15-lip-balm' or product.handle == 'premium-lip-lightening-cream' or product.handle == 'premium-hair-conditioner' or product.handle == 'skin-lightening-brightening-facewash' -%}
           {%- if ritual_video_file != blank -%}
-            {%- if product.handle == 'lip-balm' -%}
+            {%- if product.handle == 'spf-15-lip-balm' -%}
               {%- assign men_video_src = 'lip-balm-video- women.mp4' | asset_url -%}
               {%- assign women_video_src = 'lip-balm-video- men.mp4' | asset_url -%}
-            {%- elsif product.handle == 'lipz-lightening-cream' -%}
+            {%- elsif product.handle == 'premium-lip-lightening-cream' -%}
               {%- assign men_video_src = 'lipz-lightening-cream-women.mp4' | asset_url -%}
               {%- assign women_video_src = 'lipz-lightening-cream-men.mp4' | asset_url -%}
-            {%- elsif product.handle == 'all-in-one-conditioner' -%}
+            {%- elsif product.handle == 'premium-hair-conditioner' -%}
               {%- assign men_video_src = 'conditioner-men.mp4' | asset_url -%}
               {%- assign women_video_src = 'conditioner-women.mp4' | asset_url -%}
             {%- elsif product.handle == 'skin-lightening-brightening-facewash' -%}

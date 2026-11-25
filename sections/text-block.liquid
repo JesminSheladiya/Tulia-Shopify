@@ -1,6 +1,6 @@
 <section class="section {{ section.settings.bg }}">
   <div class="container generic-text text-{{ section.settings.align }}" style="max-width: {{ section.settings.max_width }}px;">
-    {%- if section.settings.eyebrow != blank -%}<h6 class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</h6>{%- endif -%}
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow text-muted">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
     {%- if section.settings.heading != blank -%}
       <h2 class="section-title text-primary">{{ section.settings.heading | escape | newline_to_br }}</h2>
       {%- if section.settings.show_divider -%}<div class="divider {% if section.settings.align == 'center' %}mx-auto{% endif %}"></div>{%- endif -%}

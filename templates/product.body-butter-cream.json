@@ -1,5 +1,14 @@
 /*
  * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+/*
+ * ------------------------------------------------------------
  * ButterMax Cream product page - dedicated template with
  * sunscreen-specific content mapped from the source document.
  * Assign to the ButterMax Cream product in Admin >
@@ -462,7 +471,7 @@
           "type": "product",
           "settings": {
             "product": "",
-            "product_handle": "lip-balm",
+            "product_handle": "spf-15-lip-balm",
             "badge": "PREP",
             "title": "Tulia Lip Balm",
             "size": "",
@@ -474,7 +483,7 @@
           "type": "product",
           "settings": {
             "product": "",
-            "product_handle": "lipz-lightening-cream",
+            "product_handle": "premium-lip-lightening-cream",
             "badge": "REPAIR",
             "title": "Tulia Lipz Lightening Cream",
             "size": "",

@@ -44,7 +44,7 @@
           "settings": {
             "heading": "HELP",
             "menu": "",
-            "fallback_links": "Shipping & Returns |/policies/shipping-policy\nTrack Order | /pages/contact\nPrivacy Policy |/policies/privacy-policy\nTerms & Conditions |/policies/terms-of-service\nRefund Policy |/policies/refund-policy"
+            "fallback_links": "Shipping & Returns |/pages/returns\nReturn your product | /pages/returns\nTrack Order | /pages/contact\nPrivacy Policy |/policies/privacy-policy\nTerms & Conditions |/policies/terms-of-service\nRefund Policy |/policies/refund-policy"
           }
         }
       },
@@ -55,7 +55,7 @@
         "col_help"
       ],
       "settings": {
-        "waitlist_heading": "",
+        "waitlist_heading": "Stay in touch",
         "newsletter_eyebrow": "OUR MONTHLY NEWSLETTER",
         "newsletter_title": "Outgrow the standards",
         "newsletter_desc": "Subscribe to our monthly newsletter to get the inside story",
