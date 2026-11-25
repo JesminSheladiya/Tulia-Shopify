@@ -24,19 +24,61 @@
               {%- endif -%}
               <p class="extracted-style-72">{{ block.settings.quote | escape }}</p>
               {%- assign show_product_image = false -%}
+              {%- assign image_file = '' -%}
               {%- if block.settings.product_image != blank -%}
                 {%- assign show_product_image = true -%}
+                {%- assign image_file = block.settings.product_image -%}
               {%- elsif block.settings.name == "Meera Joshi" and product.handle == "spf-15-lip-balm" -%}
                 {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-spf15-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Harini Subramanian" and product.handle == "skin-lightening-brightening-facewash" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'cream-facewash-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Nithya Krishnan" and product.handle == "skin-lightening-brightening-facewash" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'facewash-lipbalm-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Divya Narayanan" and product.handle == "skin-lightening-brightening-facewash" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'facewash-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Aanya Sharma" and product.handle == "premium-lip-lightening-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'fcewash-cream-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Keerthana Reddy" and product.handle == "premium-lip-lightening-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-double-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Priyanka Nair" and product.handle == "premium-lip-lightening-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-cream-facewash-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Rakhi Sharma" and product.handle == "spf-15-lip-balm" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'facewash-lipbalm-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Kavitha Rajan" and product.handle == "spf-15-lip-balm" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Aparna Menon" and product.handle == "spf-15-lip-balm" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-women-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Arya Mehta" and product.handle == "premium-hair-conditioner" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-facewash-conditioner-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Aishwarya Menon" and product.handle == "body-butter-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'cream-facewash-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Maria Thomas" and product.handle == "body-butter-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'fcewash-cream-reviews.jpeg' -%}
+              {%- elsif block.settings.name == "Pavithra Nair" and product.handle == "body-butter-cream" -%}
+                {%- assign show_product_image = true -%}
+                {%- assign image_file = 'lipbalm-cream-facewash-reviews.jpeg' -%}
               {%- endif -%}
               {%- if show_product_image -%}
                 <div class="testimonial-product-image-wrapper">
-                  <button class="testimonial-image-btn" onclick="openTestimonialImageModal('{{ block.settings.product_image | default: 'lipbalm-spf15-reviews.jpeg' | asset_url | escape }}', '{{ block.settings.name | escape }}')">
-                    {%- if block.settings.product_image != blank -%}
-                      <img src="{{ block.settings.product_image | image_url: width: 200 }}" alt="{{ block.settings.name | escape }}" class="testimonial-product-image">
-                    {%- else -%}
-                      <img src="{{ 'lipbalm-spf15-reviews.jpeg' | asset_url }}" alt="{{ block.settings.name | escape }}" class="testimonial-product-image">
-                    {%- endif -%}
+                  {%- assign img_src = image_file -%}
+                  {%- unless img_src contains '://' -%}
+                    {%- assign img_src = img_src | asset_url -%}
+                  {%- endunless -%}
+                  <button class="testimonial-image-btn" onclick="openTestimonialImageModal('{{ img_src | escape }}', '{{ block.settings.name | escape }}')">
+                    <img src="{{ img_src }}" alt="{{ block.settings.name | escape }}" class="testimonial-product-image">
                   </button>
                 </div>
               {%- endif -%}
